@@ -1,23 +1,27 @@
 import 'package:flutter/cupertino.dart';
 
 class Logo extends StatelessWidget {
-  const Logo({
-    super.key,
-    required this.title,
-  });
 
-  final String title;
+  final double width;
+  final double height;
+
+  const Logo({
+    required this.width,
+    required this.height,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Image.asset(
-          "assets/images/ROPA.png",
-          height: 500,
-          width: 500,
-        ),
-      ],
+    return Center(
+      child: Column(
+        children: [
+          Image.asset(
+            "assets/images/ROPA.png",
+            height: height,
+            width: width,
+          ),
+        ],
+      ),
     );
   }
 }
