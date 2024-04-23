@@ -1,13 +1,11 @@
-
 import 'package:final_project_team02/holder/welcome/login/login_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/Logo.dart';
+import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_form_field.dart';
 import '../../../theme.dart';
 import '../../../validate.dart';
-
 
 class joinPage extends StatefulWidget {
   const joinPage({super.key});
@@ -27,8 +25,9 @@ class _joinPageState extends State<joinPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(micon: Icons.home),
       backgroundColor: Colors.white,
-      body: Column(
+      body: ListView(
         children: [
           Logo(width: 250, height: 250),
           Expanded(
@@ -65,9 +64,9 @@ class _joinPageState extends State<joinPage> {
                     ),
                     SizedBox(height: 25.0),
 
-                    //개인정보처리 동의(필수)
-                    buildProcessingInformation(),
-                    const SizedBox(height: 25.0),
+                    // //개인정보처리 동의(필수)
+                    // buildProcessingInformation(),
+                    // const SizedBox(height: 25.0),
 
                     // 회원가입 버튼
                     buildJoinButton(context),

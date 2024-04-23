@@ -1,9 +1,7 @@
-
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/Logo.dart';
+import '../../components/custom_app_bar.dart';
 import '../../components/welcome_button.dart';
 import '../../size.dart';
 import '../../theme.dart';
@@ -16,21 +14,20 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(micon: Icons.home),
       backgroundColor: Colors.white,
-      body: Column(
+      body: ListView(
         children: [
           SizedBox(height: xlargeGap),
           Logo(width: 500, height: 500),
           Row(
             children: [
               Expanded(
-                child: Container(
-                  child: WelcomeButton(
-                    buttonText: '로그인',
-                    onTap: Loginpage(),
-                    color: lightColorScheme.primary,
-                    textColor: Colors.white,
-                  ),
+                child: WelcomeButton(
+                  buttonText: '로그인',
+                  onTap: Loginpage(),
+                  color: lightColorScheme.primary,
+                  textColor: Colors.white,
                 ),
               ),
               Expanded(

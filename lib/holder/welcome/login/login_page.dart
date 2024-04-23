@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+
 import '../../../components/Logo.dart';
+import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_form_field.dart';
 import '../../../theme.dart';
 import '../../../validate.dart';
 import '../join/join_page.dart';
-
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
@@ -22,57 +23,59 @@ class _SignInPageState extends State<Loginpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: Column(
-          children: [
-            Logo(width: 250, height: 250),
-            Expanded(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Form(
-                  key: _formSignInKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const SizedBox(height: 40.0),
+      appBar: CustomAppBar(micon: Icons.home),
+      backgroundColor: Colors.white,
+      body: ListView(
+        children: [
+          Logo(width: 250, height: 250),
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Form(
+                key: _formSignInKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 40.0),
 
-                      // 이메일 폼 필드
-                      CustomFormField(
-                        text: 'Email',
-                        controller: email,
-                        validator: validatePassword(),
-                      ),
-                      const SizedBox(height: 25.0),
+                    // 이메일 폼 필드
+                    CustomFormField(
+                      text: 'Email',
+                      controller: email,
+                      validator: validatePassword(),
+                    ),
+                    const SizedBox(height: 25.0),
 
-                      // 패스워드 폼 필드
-                      CustomFormField(
-                        text: 'Password',
-                        controller: password,
-                        validator: validatePassword(),
-                      ),
-                      const SizedBox(height: 25.0),
+                    // 패스워드 폼 필드
+                    CustomFormField(
+                      text: 'Password',
+                      controller: password,
+                      validator: validatePassword(),
+                    ),
+                    const SizedBox(height: 25.0),
 
-                      //비밀번호 찾기
-                      buildFindPassword(),
-                      const SizedBox(height: 25.0),
+                    // //비밀번호 찾기
+                    // buildFindPassword(),
+                    // const SizedBox(height: 25.0),
 
-                      //로그인 완료 후 얼러트
-                      buildLoginFinishAllert(context),
-                      const SizedBox(height: 25.0),
+                    // //로그인 완료 후 얼러트
+                    // buildLoginFinishAllert(context),
+                    // const SizedBox(height: 25.0),
 
-                      Divider(thickness: 0.7, color: Colors.grey),
+                    Divider(thickness: 0.7, color: Colors.grey),
 
-                      const SizedBox(height: 25.0),
+                    const SizedBox(height: 25.0),
 
-                      // 가입하신 적이 없나요? 문구       // don't have an account
-                      buildJoinButton(context),
-                    ],
-                  ),
-                )
+                    // 가입하신 적이 없나요? 문구       // don't have an account
+                    buildJoinButton(context),
+                  ],
+                ),
               ),
             ),
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 
   Widget buildJoinButton(BuildContext context) {
@@ -114,7 +117,7 @@ class _SignInPageState extends State<Loginpage> {
           if (_formSignInKey.currentState!.validate() && rememberPassword) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
-                content: Text('로그인 중입니다.'),
+                content: Text('로그인중입니다.'),
               ),
             );
           }
