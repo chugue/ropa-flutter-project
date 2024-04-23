@@ -8,15 +8,19 @@ class BottomControl extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 50),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Icon(Icons.home),
-          Icon(CupertinoIcons.bag),
-          Icon(CupertinoIcons.person_fill),
-        ],
+    return Container(
+      height: 120, // 바텀 네비게이션바의 높이
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 50),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Icon(Icons.home),
+            Icon(CupertinoIcons.bag),
+            Icon(CupertinoIcons.person_fill),
+          ],
+        ),
       ),
     );
   }
