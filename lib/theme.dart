@@ -34,7 +34,6 @@ const darkColorScheme = ColorScheme(
 );
 
 ThemeData lightMode = ThemeData(
-  useMaterial3: true,
   brightness: Brightness.light,
   colorScheme: lightColorScheme,
   elevatedButtonTheme: ElevatedButtonThemeData(
