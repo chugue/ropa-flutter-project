@@ -30,6 +30,7 @@ class ProfileMenus extends StatelessWidget {
                   Icon(
                     CupertinoIcons.chevron_right,
                     color: Colors.black87,
+                    size: 16,
                   ),
                 ],
               ),

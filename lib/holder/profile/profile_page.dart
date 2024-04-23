@@ -42,14 +42,18 @@ class ProfileSetting extends StatelessWidget {
           SizedBox(height: 10) // 비밀번호 변경
         ],
       ),
-      bottomNavigationBar: Stack(
-        alignment: Alignment.topCenter, // 스택 내에서 위젯들을 위쪽 중앙에 정렬
-        children: [
-          BottomControl(),
-          Positioned(
-            child: BottomButton(),
-          ),
-        ],
+      bottomNavigationBar: SizedBox(
+        height: 120,
+        child: Stack(
+          alignment: Alignment.bottomCenter, // 스택 내에서 위젯들을 위쪽 중앙에 정렬
+          children: [
+            BottomControl(),
+            Positioned(
+              bottom: 60,
+              child: BottomButton(),
+            ),
+          ],
+        ),
       ),
     );
   }
