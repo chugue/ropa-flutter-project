@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'MyPage/my_page.dart';
+import 'MyPage/creator/creator_page.dart';
 
 class MainHolder extends StatelessWidget {
   const MainHolder({super.key});
@@ -9,7 +9,7 @@ class MainHolder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: MyPage(),
+      body: CreatorPage(),
     );
   }
 }

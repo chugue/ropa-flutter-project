@@ -1,13 +1,13 @@
-import 'package:final_project_team02/holder/MyPage/my_page_body.dart';
-import 'package:final_project_team02/holder/MyPage/my_page_header.dart';
+import 'package:final_project_team02/holder/MyPage/creator/creator_page_body.dart';
+import 'package:final_project_team02/holder/MyPage/creator/creator_page_header.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import '../../components/custom_app_bar.dart';
+import '../../../components/custom_app_bar.dart';
 
 
-class MyPage extends StatelessWidget {
-  const MyPage({super.key});
+class CreatorPage extends StatelessWidget {
+  const CreatorPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +19,11 @@ class MyPage extends StatelessWidget {
           return [
             SliverToBoxAdapter(
               //프로필 설정 버튼까지
-              child: MyPageHeader(),
+              child: CreatorPageheader(),
             ),
           ];
         },
-        body: MyPageBody(),
+        body: CreatorPageBody(),
       ),
     );
   }

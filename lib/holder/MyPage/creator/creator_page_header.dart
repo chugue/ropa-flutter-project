@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 
-import '../../components/custom_button.dart';
-import '../../theme.dart';
+import '../../../components/custom_button.dart';
+import '../../../theme.dart';
 
-class MyPageHeader extends StatelessWidget {
-  const MyPageHeader({super.key});
+class CreatorPageheader extends StatelessWidget {
+  const CreatorPageheader({super.key});
 
   @override
   Widget build(BuildContext context) {

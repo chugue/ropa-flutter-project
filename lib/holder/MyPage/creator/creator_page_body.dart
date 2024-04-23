@@ -5,8 +5,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
 
-class MyPageBody extends StatelessWidget {
-  const MyPageBody({super.key});
+class CreatorPageBody extends StatelessWidget {
+  const CreatorPageBody({super.key});
 
   @override
   Widget build(BuildContext context) {
