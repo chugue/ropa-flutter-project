@@ -27,7 +27,7 @@ class ProfileSetting extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 20),
         children: [
           SizedBox(height: 10),
-          _buildTitle(), // 프로필 설정
+          _buildTitle(), // 프로필 제목
           _buildPhoto(), // 사진, 바꾸기 칼럼
           SizedBox(height: 10),
           TextForm("이메일"), // 이메일
