@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-
 
 class CreatorPageBody extends StatelessWidget {
   const CreatorPageBody({super.key});
@@ -37,6 +34,7 @@ class CreatorPageBody extends StatelessWidget {
       ],
     );
   }
+
   TabBar _buildTabBar() {
     return TabBar(
       tabs: [
@@ -73,7 +71,7 @@ class CreatorPageBody extends StatelessWidget {
                   aspectRatio: 4,
                   child: ClipRRect(
                     child: Image.network(
-                       // "https://picsum.photos/400/400",
+                        // "https://picsum.photos/400/400",
                         "https://picsum.photos/id/${index + 1}/600/600",
                         fit: BoxFit.cover),
                   ),
@@ -87,7 +85,8 @@ class CreatorPageBody extends StatelessWidget {
                     Text("옷제목",
                         style: TextStyle(
                             color: Colors.black,
-                            fontSize: 25, fontWeight: FontWeight.bold)),
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold)),
                     Text(
                       "옷설명",
                       style: TextStyle(
@@ -95,7 +94,10 @@ class CreatorPageBody extends StatelessWidget {
                       ),
                     ),
                     //numberFormat 사용하면되
-                    Text("가격 : 10,000원", style: TextStyle(fontWeight: FontWeight.bold),),
+                    Text(
+                      "가격 : 10,000원",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     SizedBox(height: 15),
                   ],
                 ),
@@ -121,7 +123,7 @@ class CreatorPageBody extends StatelessWidget {
         return Stack(
           children: [
             InkWell(
-              onTap: (){},
+              onTap: () {},
               child: AspectRatio(
                 aspectRatio: 1,
                 child: Image.network(
@@ -132,7 +134,10 @@ class CreatorPageBody extends StatelessWidget {
             Positioned(
               right: 10,
               top: 10,
-              child: Icon(Icons.auto_awesome_motion,color: Colors.white,),
+              child: Icon(
+                Icons.auto_awesome_motion,
+                color: Colors.white,
+              ),
               //auto_awesome_motion
               //style
               //filter_none
@@ -143,11 +148,9 @@ class CreatorPageBody extends StatelessWidget {
     );
   }
 
-
   //가격 1,000원 쉼표, 넣기
   String numberFormat(String price) {
     final formatter = NumberFormat('#,###');
     return formatter.format(int.parse(price));
   }
-
 }
