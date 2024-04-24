@@ -32,12 +32,39 @@ class MainHolder extends StatelessWidget {
                       ),
                     ),
                   ),
+                  TabBar(),
                 ],
               ),
             ),
           ],
         ), // 예를 들어, 주소 결과를 출력
       ),
+    );
+  }
+}
+
+class TabBar extends StatefulWidget {
+  const TabBar({
+    super.key,
+  });
+
+  @override
+  State<TabBar> createState() => _TabBarState();
+}
+
+class _TabBarState extends State<TabBar> with SingleTickerProviderStateMixin{
+  TabController? _tabController;
+
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = new TabController(length: 2, vsync: this);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TabBar(
     );
   }
 }
