@@ -40,6 +40,7 @@ dependencies:
   font_awesome_flutter: ^10.5.0
   intl: ^0.18.1
   ionicons: ^0.2.2
+  remedi_kopo: ^0.0.2
 
 dev_dependencies:
   flutter_test:
