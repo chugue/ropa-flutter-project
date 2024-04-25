@@ -37,18 +37,32 @@ class _MainHolderState extends State<MainHolder> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: CustomScrollView(
-        slivers: [
-          _AppBar(),
-          _AdScroll(pageController: _pageController),
-          _MainTitle(),
-          _CreatorScroll(),
-          _MainTitleAnother(),
-          _OotdScroll(),
-          _moreStyle(),
-        ],
-      ),
+      body: CustomScrolView(pageController: _pageController),
       // body: SettingsPage(),
+    );
+  }
+}
+
+class CustomScrolView extends StatelessWidget {
+  const CustomScrolView({
+    super.key,
+    required PageController pageController,
+  }) : _pageController = pageController;
+
+  final PageController _pageController;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomScrollView(
+      slivers: [
+        _AppBar(),
+        _AdScroll(pageController: _pageController),
+        _MainTitle(),
+        _CreatorScroll(),
+        _MainTitleAnother(),
+        _OotdScroll(),
+        _moreStyle(),
+      ],
     );
   }
 }
