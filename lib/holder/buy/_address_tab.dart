@@ -126,13 +126,8 @@ class InputAddress extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "받는사람",
-                  style: TextStyle(
-                    color: Colors.black87,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+                SmallTitle(text: "받는사람"),
+                SizedBox(height: 20),
               ],
             ),
           ),
@@ -143,4 +138,26 @@ class InputAddress extends StatelessWidget {
       ),
     );
   }
+}
+
+class SmallTitle extends StatelessWidget {
+  final String text;
+
+  const SmallTitle({
+    required this.text,
+  });
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "받는사람",
+      style: TextStyle(
+        color: Colors.black87,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+
+
 }
