@@ -23,7 +23,7 @@ class _SignInPageState extends State<Loginpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(micon: Icons.home),
+      appBar: CustomAppBar(miconRight: Icons.home, miconLeft: Icons.settings),
       backgroundColor: Colors.white,
       body: ListView(
         children: [

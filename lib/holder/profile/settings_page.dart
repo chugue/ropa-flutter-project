@@ -1,8 +1,8 @@
 // 설정 페이지
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/bottom_control.dart';
+import '../../components/custom_app_bar.dart';
 import '_profile_menus.dart';
 import '_profile_small_title.dart';
 
@@ -14,11 +14,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        leading: Icon(CupertinoIcons.chevron_left),
-        toolbarHeight: 45,
-      ),
+      appBar: CustomAppBar(miconRight: Icons.home, miconLeft: Icons.settings),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 20),
         children: [

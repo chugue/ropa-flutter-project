@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
+import '../holder/profile/profile_page.dart';
 import '../theme.dart';
 
 class custom_button extends StatelessWidget {
@@ -15,7 +14,10 @@ class custom_button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ProfileSetting()));
+      },
       child: Container(
         width: 400,
         height: 30,

@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class CreatorPageBody extends StatelessWidget {
-  const CreatorPageBody({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -68,7 +66,7 @@ class CreatorPageBody extends StatelessWidget {
             children: [
               Expanded(
                 child: AspectRatio(
-                  aspectRatio: 4,
+                  aspectRatio: 2 / 1,
                   child: ClipRRect(
                     child: Image.network(
                         // "https://picsum.photos/400/400",
@@ -87,12 +85,10 @@ class CreatorPageBody extends StatelessWidget {
                             color: Colors.black,
                             fontSize: 25,
                             fontWeight: FontWeight.bold)),
-                    Text(
-                      "옷설명",
-                      style: TextStyle(
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
+                    Text("옷설명",
+                        style: TextStyle(
+                          overflow: TextOverflow.ellipsis,
+                        )),
                     //numberFormat 사용하면되
                     Text(
                       "가격 : 10,000원",
@@ -127,7 +123,7 @@ class CreatorPageBody extends StatelessWidget {
               child: AspectRatio(
                 aspectRatio: 1,
                 child: Image.network(
-                    "https://picsum.photos/id/${index + 1}/600/600",
+                    "https://picsum.photos/id/${index + 1}/1000/1000",
                     fit: BoxFit.cover),
               ),
             ),
