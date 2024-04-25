@@ -25,7 +25,7 @@ class _joinPageState extends State<joinPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(micon: Icons.home),
+      appBar: CustomAppBar(miconRight: Icons.home, miconLeft: Icons.settings),
       backgroundColor: Colors.white,
       body: ListView(
         children: [
