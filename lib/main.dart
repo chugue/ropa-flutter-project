@@ -17,19 +17,30 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme(),
-      home: Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          leading: Icon(CupertinoIcons.chevron_left),
-          toolbarHeight: 45,
-        ),
-        body: ListView(
-          children: [
-            _pageTitle(),
-            AddressTab(),
-          ],
-        ), // 예를 들어, 주소 결과를 출력
+      home: BuyPage(),
+    );
+  }
+}
+
+class BuyPage extends StatelessWidget {
+  const BuyPage({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        leading: Icon(CupertinoIcons.chevron_left),
+        toolbarHeight: 45,
       ),
+      body: ListView(
+        children: [
+          _pageTitle(),
+          AddressTab(),
+        ],
+      ), // 예를 들어, 주소 결과를 출력
     );
   }
 }
