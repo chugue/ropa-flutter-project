@@ -1,11 +1,12 @@
 import 'dart:async';
 
 import 'package:final_project_team02/models/popular_outfit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../components/main_app_bar.dart';
 import '../models/creator.dart';
 import '../models/slide_ad.dart';
+import 'codi/codi_page.dart';
 import 'main_components/auto_ad_slider.dart';
 import 'main_components/creator_circle.dart';
 
@@ -43,7 +44,7 @@ class _MainHolderState extends State<MainHolder> {
       backgroundColor: Colors.white,
       body: CustomScrollView(
         slivers: [
-          _AppBar(),
+          MainAppBar(),
           _AdScroll(pageController: _pageController),
           _MainTitle(),
           _CreatorScroll(),
@@ -183,39 +184,6 @@ class _AdScroll extends StatelessWidget {
   }
 }
 
-class _AppBar extends StatelessWidget {
-  const _AppBar({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverAppBar(
-      pinned: true,
-      title: Row(
-        children: [
-          SizedBox(
-            child: Image.asset(
-              "assets/images/ropa_logo.png",
-              width: 120,
-            ),
-          ),
-        ],
-      ),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: Icon(
-            CupertinoIcons.ellipsis,
-            size: 30,
-          ),
-        ),
-        SizedBox(width: 16),
-      ],
-    );
-  }
-}
-
 class PopularOotd extends StatelessWidget {
   const PopularOotd({
     super.key,
@@ -230,12 +198,24 @@ class PopularOotd extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
         children: [
-          SizedBox(
-            width: 150,
-            height: 150,
-            child: Image.asset(
-              ootd.Img,
-              fit: BoxFit.cover,
+          GestureDetector(
+            onTap: () {
+              print("사진 클릭 됨");
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => CodiPage(
+                          ootd: ootd,
+                        )),
+              );
+            },
+            child: SizedBox(
+              width: 150,
+              height: 150,
+              child: Image.asset(
+                ootd.Img,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           SizedBox(
