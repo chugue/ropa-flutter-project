@@ -1,8 +1,8 @@
-import 'package:final_project_team02/holder/MyPage/creator/_creator_page_body.dart';
-import 'package:final_project_team02/holder/MyPage/creator/_creator_page_header.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/custom_app_bar.dart';
+import 'components/_creator_page_body.dart';
+import 'components/_creator_page_header.dart';
 
 class CreatorPage extends StatelessWidget {
   const CreatorPage({super.key});
@@ -10,7 +10,7 @@ class CreatorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(micon: Icons.home),
+      appBar: CustomAppBar(miconRight: Icons.home, miconLeft: Icons.settings),
       backgroundColor: Colors.white,
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {

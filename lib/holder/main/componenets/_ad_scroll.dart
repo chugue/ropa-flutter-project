@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../models/slide_ad.dart';
+import '../../../models/slide_ad.dart';
 import '_auto_ad_slider.dart';
 
 class AdScroll extends StatelessWidget {
