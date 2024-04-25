@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:final_project_team02/models/popular_outfit.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../components/main_app_bar.dart';
@@ -42,18 +43,32 @@ class _MainHolderState extends State<MainHolder> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: CustomScrollView(
-        slivers: [
-          MainAppBar(),
-          _AdScroll(pageController: _pageController),
-          _MainTitle(),
-          _CreatorScroll(),
-          _MainTitleAnother(),
-          _OotdScroll(),
-          _moreStyle(),
-        ],
-      ),
+      body: CustomScrolView(pageController: _pageController),
       // body: SettingsPage(),
+    );
+  }
+}
+
+class CustomScrolView extends StatelessWidget {
+  const CustomScrolView({
+    super.key,
+    required PageController pageController,
+  }) : _pageController = pageController;
+
+  final PageController _pageController;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomScrollView(
+      slivers: [
+        _AppBar(),
+        _AdScroll(pageController: _pageController),
+        _MainTitle(),
+        _CreatorScroll(),
+        _MainTitleAnother(),
+        _OotdScroll(),
+        _moreStyle(),
+      ],
     );
   }
 }
@@ -180,6 +195,39 @@ class _AdScroll extends StatelessWidget {
           },
         ),
       ),
+    );
+  }
+}
+
+class _AppBar extends StatelessWidget {
+  const _AppBar({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      pinned: true,
+      title: Row(
+        children: [
+          SizedBox(
+            child: Image.asset(
+              "assets/images/ropa_logo.png",
+              width: 120,
+            ),
+          ),
+        ],
+      ),
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: Icon(
+            CupertinoIcons.ellipsis,
+            size: 30,
+          ),
+        ),
+        SizedBox(width: 16),
+      ],
     );
   }
 }
