@@ -1,24 +1,21 @@
-import 'package:final_project_team02/holder/MyPage/user/components/order_mileage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-import '../../../../components/custom_button.dart';
 import '../../../../theme.dart';
 
-class MyPageheader extends StatelessWidget {
-  const MyPageheader({super.key});
-
+class CreatorPageheader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
           SizedBox(height: 30),
           _buildCreatorPic(),
           SizedBox(height: 20),
-          custom_button(title: "프로필 설정"),
+          _buildCreatorComment(),
           SizedBox(height: 20),
-          OrderMileage(orderId: 10, mileageId: 200),
         ],
       ),
     );
@@ -43,6 +40,8 @@ class MyPageheader extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('회원 이름', style: textTheme().displayMedium), // :TODO 04수정
+            Text('180cm • 70kg • 직장인',
+                style: textTheme().bodyMedium), // :TODO 04수정
           ],
         ),
       ],
