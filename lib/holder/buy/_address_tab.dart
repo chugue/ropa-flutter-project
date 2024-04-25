@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '_choose_address.dart';
+import '_input_address.dart';
 
 class AddressTab extends StatefulWidget {
   const AddressTab({Key? key}) : super(key: key);
@@ -109,55 +108,4 @@ class _AddressTabState extends State<AddressTab>
       ],
     );
   }
-}
-
-class InputAddress extends StatelessWidget {
-  const InputAddress({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SmallTitle(text: "받는사람"),
-                SizedBox(height: 20),
-              ],
-            ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class SmallTitle extends StatelessWidget {
-  final String text;
-
-  const SmallTitle({
-    required this.text,
-  });
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      "받는사람",
-      style: TextStyle(
-        color: Colors.black87,
-        fontWeight: FontWeight.w600,
-      ),
-    );
-  }
-
-
 }

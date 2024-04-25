@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ChooseAddress extends StatefulWidget {
@@ -21,6 +20,7 @@ class _ChooseAddressState extends State<ChooseAddress> {
           children: [
             Expanded(
               child: RadioListTile<String>(
+                activeColor: Colors.black87,
                 title: Text(
                   "회원 정보와 동일",
                   style: TextStyle(
@@ -40,6 +40,7 @@ class _ChooseAddressState extends State<ChooseAddress> {
             ),
             Expanded(
               child: RadioListTile<String>(
+                activeColor: Colors.black87,
                 title: Text("새로운 배송지",
                     style: TextStyle(
                       fontSize: 15,
