@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'holder/buy/_address_tab.dart';
 import 'holder/main/home_page.dart';
-import 'holder/main_hoder.dart';
+import 'holder/main_holder.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,10 +24,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: theme(),
       home: MainHolder(),
-      initialRoute: "/home",
-      routes: {
-        "/home": (context) => HomePage(),
-      },
+
     );
   }
 }
