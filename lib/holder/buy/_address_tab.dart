@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
+import '_choose_address.dart';
 
 class AddressTab extends StatefulWidget {
   const AddressTab({Key? key}) : super(key: key);
@@ -40,9 +43,10 @@ class _AddressTabState extends State<AddressTab>
       labelPadding: EdgeInsets.zero,
       indicator: BoxDecoration(
         color: Colors.white,
-        border: Border.all(
-          color: Colors.black12,
-          width: 0.5,
+        border: Border(
+          top: BorderSide(color: Colors.black12, width: 0.5),
+          left: BorderSide(color: Colors.black12, width: 0.5),
+          right: BorderSide(color: Colors.black12, width: 0.5),
         ),
       ),
       labelColor: Colors.black,
@@ -69,9 +73,9 @@ class _AddressTabState extends State<AddressTab>
             width: double.infinity,
             child: Center(
               child: Text(
-                "직접 입력",
+                "직접입력",
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ),
@@ -85,9 +89,58 @@ class _AddressTabState extends State<AddressTab>
     return TabBarView(
       controller: _tabController,
       children: [
-        Container(color: Colors.green),
-        Container(color: Colors.red),
+        Container(
+          color: Colors.white,
+        ),
+        Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              ChooseAddress(),
+              InputAddress(),
+              Container(),
+              Container(),
+              Container(),
+              Container(),
+              Container(),
+            ],
+          ),
+        ),
       ],
+    );
+  }
+}
+
+class InputAddress extends StatelessWidget {
+  const InputAddress({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "받는사람",
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+          ),
+        ],
+      ),
     );
   }
 }
