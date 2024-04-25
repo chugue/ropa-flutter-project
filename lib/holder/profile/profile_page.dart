@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../components/bottom_button.dart';
 import '../../components/bottom_control.dart';
+import '../main_components/positioned_button.dart';
 import '_text_form.dart';
 
 class ProfileSetting extends StatelessWidget {
@@ -48,10 +49,7 @@ class ProfileSetting extends StatelessWidget {
           alignment: Alignment.bottomCenter, // 스택 내에서 위젯들을 위쪽 중앙에 정렬
           children: [
             BottomControl(),
-            Positioned(
-              bottom: 60,
-              child: BottomButton(),
-            ),
+            PositionedButton(),
           ],
         ),
       ),
@@ -119,3 +117,5 @@ class ProfileSetting extends StatelessWidget {
         ),
       );
 }
+
+
