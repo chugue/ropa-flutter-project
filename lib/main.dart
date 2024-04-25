@@ -2,6 +2,8 @@ import 'package:final_project_team02/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'holder/buy/_address_tab.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
         body: ListView(
           children: [
             _pageTitle(),
-            ProfileTab(),
+            AddressTab(),
           ],
         ), // 예를 들어, 주소 결과를 출력
       ),
@@ -32,67 +34,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class ProfileTab extends StatefulWidget {
-  const ProfileTab({Key? key}) : super(key: key);
-
-  @override
-  State<ProfileTab> createState() => _ProfileTabState();
-}
-
-class _ProfileTabState extends State<ProfileTab>
-    with SingleTickerProviderStateMixin {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black12,
-      height: 500,
-      child: Column(
-        children: [
-          _buildTabBar(),
-          Expanded(child: _buildTabBarView()),
-        ],
-      ),
-    );
-  }
-
-  TabController? _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = new TabController(length: 2, vsync: this);
-  }
-
-  Widget _buildTabBar() {
-    return TabBar(
-      indicator: BoxDecoration(
-        color: Colors.white,
-      ),
-      controller: _tabController,
-      tabs: [
-        Tab(
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-          ),
-        ),
-        Tab(
-          text: "직접 입력",
-        ),
-      ],
-    );
-  }
-
-  Widget _buildTabBarView() {
-    return TabBarView(
-      controller: _tabController,
-      children: [
-        Container(color: Colors.green),
-        Container(color: Colors.red),
-      ],
-    );
-  }
-}
 
 Widget _pageTitle() {
   return Container(
