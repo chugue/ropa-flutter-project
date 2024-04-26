@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '_small_title.dart';
+import 'small_title.dart';
 
 class LeftSideTitle extends StatelessWidget {
   const LeftSideTitle({

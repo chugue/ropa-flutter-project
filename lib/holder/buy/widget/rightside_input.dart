@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
-import '_address_search.dart';
-import '_mobile_input.dart';
-import '_text_form.dart';
+import 'address_search.dart';
 import 'email_field.dart';
+import 'mobile_input.dart';
+import 'text_form.dart';
 
 class RightSideInput extends StatelessWidget {
   const RightSideInput({
