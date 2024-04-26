@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'components/buy_box_divider.dart';
+import 'components/buy_info_title.dart';
 import 'components/buy_main_address.dart';
 import 'components/main_order_title.dart';
 
@@ -23,6 +24,8 @@ class BuyPage extends StatelessWidget {
           BuyMainAddress(),
           BuyBoxDivider(),
           MainOrderTitle(),
+          BuyBoxDivider(),
+          BuyInfoTitle(),
           BuyBoxDivider(),
         ],
       ),
