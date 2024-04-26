@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../_core/constants/theme.dart';
 import '../../profile/profile_page.dart';
-import '../../../theme.dart';
 
 class MyPageCustomButton extends StatelessWidget {
   const MyPageCustomButton({

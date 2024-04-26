@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../theme.dart';
+import '../../../../_core/constants/theme.dart';
 import '../../_components/my_page_custom_button.dart';
 import '../../_components/my_page_order_mileage.dart';
 
