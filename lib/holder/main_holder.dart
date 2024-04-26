@@ -4,12 +4,11 @@ import 'package:final_project_team02/models/popular_outfit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../components/main_app_bar.dart';
 import '../models/creator.dart';
 import '../models/slide_ad.dart';
 import 'codi/codi_page.dart';
-import 'main_components/auto_ad_slider.dart';
-import 'main_components/creator_circle.dart';
+import 'main/componenets/_auto_ad_slider.dart';
+import 'main/componenets/_creator_circle.dart';
 
 class MainHolder extends StatefulWidget {
   const MainHolder({super.key});
