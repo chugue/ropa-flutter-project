@@ -2,7 +2,7 @@ import 'package:final_project_team02/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'holder/buy/_address_tab_view.dart';
+import 'holder/buy/widget/_address_tab_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,7 +44,6 @@ class BuyPage extends StatelessWidget {
     );
   }
 }
-
 
 Widget _pageTitle() {
   return Container(

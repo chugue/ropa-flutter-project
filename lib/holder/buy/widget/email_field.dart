@@ -1,53 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
-import '_address_search.dart';
-import '_leftside_title.dart';
-import '_mobile_input.dart';
-import '_small_title.dart';
-import '_text_form.dart';
-
-class InputAddress extends StatelessWidget {
-  final _formkey = GlobalKey<FormState>();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 22),
-        child: Row(
-          children: [
-            LeftSideTitle(),
-            Expanded(
-              flex: 2,
-              child: Form(
-                key: _formkey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    TextForm(text: "이름"),
-                    SizedBox(height: 15),
-                    AddressSearch(),
-                    SizedBox(height: 15),
-                    TextForm(text: "기본주소"),
-                    SizedBox(height: 15),
-                    TextForm(text: "나머지 주소 (선택 입력 가능)"),
-                    SizedBox(height: 15),
-                    MobileInput(),
-                    SizedBox(height: 15),
-                    EmailField(),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 class EmailField extends StatelessWidget {
   const EmailField({
     super.key,
@@ -74,7 +27,6 @@ class EmailField extends StatelessWidget {
         ),
         Container(
           height: 40,
-          width: 5,
           child: Center(
             child: Text(
               " @ ",
@@ -82,7 +34,7 @@ class EmailField extends StatelessWidget {
             ),
           ),
         ),
-        // EmailDropDown(),
+        EmailDropDown(),
       ],
     );
   }
@@ -141,24 +93,30 @@ class _EmailDropDownState extends State<EmailDropDown> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: _showModal,
+    return Expanded(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 8),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          border: Border.all(color: Colors.black38),
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              child: Text(
-                dropdownValue ?? '010',
-                style: TextStyle(fontSize: 15, color: Colors.black87),
-              ),
+        height: 40,
+        child: GestureDetector(
+          onTap: _showModal,
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              border: Border.all(color: Colors.black38),
             ),
-            Icon(Ionicons.chevron_down_outline, size: 16),
-          ],
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    maxLines: 1,
+                    dropdownValue ?? 'gmail.com',
+                    style: TextStyle(fontSize: 15, color: Colors.black87),
+                  ),
+                ),
+                Icon(Ionicons.chevron_down_outline, size: 16),
+              ],
+            ),
+          ),
         ),
       ),
     );
