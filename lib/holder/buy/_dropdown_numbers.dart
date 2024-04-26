@@ -28,14 +28,22 @@ class _DropDownNumbersState extends State<DropDownNumbers> {
           child: ListView.builder(
             itemCount: list.length,
             itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                title: Text(list[index]),
-                onTap: () {
-                  setState(() {
-                    dropdownValue = list[index];
-                  });
-                  Navigator.pop(context);
-                },
+              return Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: ListTile(
+                      title: Text(list[index]),
+                      onTap: () {
+                        setState(() {
+                          dropdownValue = list[index];
+                        });
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                  Divider(height: 1),
+                ],
               );
             },
           ),
