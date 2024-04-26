@@ -1,4 +1,4 @@
-import 'package:final_project_team02/holder/MyPage/user/components/user_apply_button.dart';
+import 'package:final_project_team02/holder/MyPage/user/components/use_my_pager_apply_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

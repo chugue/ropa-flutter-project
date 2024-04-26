@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../holder/profile/profile_page.dart';
-import '../theme.dart';
+import '../../profile/profile_page.dart';
+import '../../../theme.dart';
 
-class custom_button extends StatelessWidget {
-  const custom_button({
+class MyPageCustomButton extends StatelessWidget {
+  const MyPageCustomButton({
     super.key,
     required this.title,
   });

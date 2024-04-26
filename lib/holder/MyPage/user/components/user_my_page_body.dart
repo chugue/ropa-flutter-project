@@ -1,10 +1,7 @@
 import 'package:final_project_team02/holder/MyPage/user/components/user_my_page_bottom.dart';
-import 'package:final_project_team02/holder/MyPage/user/components/user_my_page_order_mileage.dart';
+import 'package:final_project_team02/holder/MyPage/user/components/user_my_page_header.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../components/custom_button.dart';
-import '../../../../theme.dart';
-import '../../creator/components/creator_my_page_header.dart';
 
 class UserMyPageBody extends StatelessWidget {
   const UserMyPageBody({
@@ -18,7 +15,7 @@ class UserMyPageBody extends StatelessWidget {
         return [
           SliverToBoxAdapter(
             //프로필 설정 버튼까지
-            child: MyPageheader(),
+            child: UserMyPageheader(),
           ),
         ];
       },

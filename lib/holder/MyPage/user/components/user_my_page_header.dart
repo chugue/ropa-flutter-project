@@ -1,8 +1,7 @@
-import 'package:final_project_team02/holder/MyPage/user/components/user_my_page_order_mileage.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../components/custom_button.dart';
 import '../../../../theme.dart';
+import '../../_components/my_page_custom_button.dart';
+import '../../_components/my_page_order_mileage.dart';
 
 class UserMyPageheader extends StatelessWidget {
   @override
@@ -14,9 +13,9 @@ class UserMyPageheader extends StatelessWidget {
           SizedBox(height: 30),
           _buildCreatorPic(),
           SizedBox(height: 20),
-          custom_button(title: "프로필 설정"),
+          MyPageCustomButton(title: "프로필 설정"),
           SizedBox(height: 20),
-          UserMyPageOrderMileage(orderId: 10, mileageId: 200),
+          MyPageOrderMileage(orderId: 10, mileageId: 200),
         ],
       ),
     );
@@ -47,17 +46,4 @@ class UserMyPageheader extends StatelessWidget {
     );
   }
 
-  Widget _buildCreatorComment() {
-    return Row(
-      children: [
-        Column(
-          children: [
-            Text('어깨 넓은 보통 체형', style: textTheme().headlineSmall),
-            Text('어깨 넓은 보통 체형', style: textTheme().headlineSmall),
-            Text('어깨 넓은 보통 체형', style: textTheme().headlineSmall),
-          ],
-        ),
-      ],
-    );
-  }
 }

@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 
 import '../../../../theme.dart';
 
-class CreatorPageheader extends StatelessWidget {
+class CreatorViewPageheader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
