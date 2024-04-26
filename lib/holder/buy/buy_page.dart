@@ -1,8 +1,9 @@
-import 'package:final_project_team02/holder/buy/widget/address_tab_view.dart';
-import 'package:final_project_team02/holder/buy/widget/delivery_request.dart';
-import 'package:final_project_team02/holder/buy/widget/main_title.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'components/buy_box_divider.dart';
+import 'components/buy_main_address.dart';
+import 'components/main_order_title.dart';
 
 class BuyPage extends StatelessWidget {
   const BuyPage({
@@ -19,9 +20,10 @@ class BuyPage extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          PageTitle(),
-          AddressTab(),
-          DelieveryRequest(),
+          BuyMainAddress(),
+          BuyBoxDivider(),
+          MainOrderTitle(),
+          BuyBoxDivider(),
         ],
       ),
     );

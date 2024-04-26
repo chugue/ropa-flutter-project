@@ -32,11 +32,18 @@ class _SaveDefaultAdressState extends State<SaveDefaultAdress> {
               });
             },
           ),
-          Text(
-            "기본 배송지로 저장",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 15,
+          InkWell(
+            onTap: () {
+              setState(() {
+                _saveDefaultAddress = !_saveDefaultAddress;
+              });
+            },
+            child: Text(
+              "기본 배송지로 저장",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 15,
+              ),
             ),
           ),
         ],

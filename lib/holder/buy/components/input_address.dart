@@ -1,4 +1,4 @@
-import 'package:final_project_team02/holder/buy/widget/rightside_input.dart';
+import 'package:final_project_team02/holder/buy/components/rightside_input.dart';
 import 'package:flutter/material.dart';
 
 import 'leftside_title.dart';

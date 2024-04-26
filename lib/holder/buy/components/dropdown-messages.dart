@@ -63,29 +63,27 @@ class _DropDownMessagesState extends State<DropDownMessages> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
-      child: Expanded(
-        child: Container(
-          height: 40,
-          child: GestureDetector(
-            onTap: _showModal,
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                border: Border.all(color: Colors.black38),
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      maxLines: 1,
-                      dropdownValue ?? list.first,
-                      style: TextStyle(fontSize: 15, color: Colors.black87),
-                    ),
+      child: Container(
+        height: 40,
+        child: GestureDetector(
+          onTap: _showModal,
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              border: Border.all(color: Colors.black38),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    maxLines: 1,
+                    dropdownValue ?? list.first,
+                    style: TextStyle(fontSize: 15, color: Colors.black87),
                   ),
-                  Icon(Ionicons.chevron_down_outline, size: 16),
-                ],
-              ),
+                ),
+                Icon(Ionicons.chevron_down_outline, size: 16),
+              ],
             ),
           ),
         ),
