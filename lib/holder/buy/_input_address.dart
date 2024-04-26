@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 
 import '_address_search.dart';
+import '_leftside_title.dart';
 import '_mobile_input.dart';
 import '_small_title.dart';
 import '_text_form.dart';
@@ -15,23 +17,7 @@ class InputAddress extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 22),
         child: Row(
           children: [
-            Expanded(
-              flex: 1,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // SizedBox(height: 20),
-                  SmallTitle(text: "받는사람"),
-                  SizedBox(height: 50),
-                  SmallTitle(text: "주소"),
-                  SizedBox(height: 130),
-                  SmallTitle(text: "휴대전화"),
-                  SizedBox(height: 40),
-                  SmallTitle(text: "이메일"),
-                ],
-              ),
-            ),
+            LeftSideTitle(),
             Expanded(
               flex: 2,
               child: Form(
@@ -77,6 +63,7 @@ class EmailField extends StatelessWidget {
           child: TextFormField(
             maxLines: 1,
             decoration: InputDecoration(
+              contentPadding: EdgeInsets.symmetric(vertical: 2, horizontal: 10),
               border: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: Colors.black26,
@@ -87,13 +74,93 @@ class EmailField extends StatelessWidget {
         ),
         Container(
           height: 40,
+          width: 5,
           child: Center(
-              child: Text(
-            " @ ",
-            style: TextStyle(fontSize: 15, color: Colors.black87),
-          )),
-        )
+            child: Text(
+              " @ ",
+              style: TextStyle(fontSize: 15, color: Colors.black87),
+            ),
+          ),
+        ),
+        // EmailDropDown(),
       ],
+    );
+  }
+}
+
+class EmailDropDown extends StatefulWidget {
+  const EmailDropDown({super.key});
+
+  @override
+  State<EmailDropDown> createState() => _EmailDropDownState();
+}
+
+class _EmailDropDownState extends State<EmailDropDown> {
+  final List<String> list = <String>['gmail.com', 'naver.com', 'hanmail.net'];
+  String? dropdownValue;
+
+  @override
+  void initState() {
+    super.initState();
+    dropdownValue = list.first;
+  }
+
+  void _showModal() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          color: Colors.white,
+          height: 400,
+          child: ListView.builder(
+            itemCount: list.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: ListTile(
+                      title: Text(list[index]),
+                      onTap: () {
+                        setState(() {
+                          dropdownValue = list[index];
+                        });
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                  Divider(height: 1),
+                ],
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: _showModal,
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 8),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5),
+          border: Border.all(color: Colors.black38),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Text(
+                dropdownValue ?? '010',
+                style: TextStyle(fontSize: 15, color: Colors.black87),
+              ),
+            ),
+            Icon(Ionicons.chevron_down_outline, size: 16),
+          ],
+        ),
+      ),
     );
   }
 }

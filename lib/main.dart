@@ -2,29 +2,22 @@ import 'package:final_project_team02/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'holder/buy/_address_tab.dart';
-import 'holder/main/home_page.dart';
-import 'holder/main_holder.dart';
+import 'holder/buy/_address_tab_view.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme(),
-      home: MainHolder(),
-
+      home: BuyPage(),
     );
   }
 }
@@ -51,6 +44,7 @@ class BuyPage extends StatelessWidget {
     );
   }
 }
+
 
 Widget _pageTitle() {
   return Container(

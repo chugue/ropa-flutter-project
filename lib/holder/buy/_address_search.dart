@@ -14,9 +14,9 @@ class AddressSearch extends StatelessWidget {
             height: 40,
             decoration: BoxDecoration(
               border: Border(
-                left: BorderSide(color: Colors.black26),
-                top: BorderSide(color: Colors.black26),
-                bottom: BorderSide(color: Colors.black26),
+                left: BorderSide(color: Colors.black45),
+                top: BorderSide(color: Colors.black45),
+                bottom: BorderSide(color: Colors.black45),
               ),
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(4),
