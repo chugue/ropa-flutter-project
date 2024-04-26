@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../components/custom_app_bar.dart';
-import '../user/components/user_my_page_body.dart';
+import '../user/components/user_my_page_bottom.dart';
 import '../user/components/user_my_page_header.dart';
 
 class CreatorMyPage extends StatelessWidget {

@@ -1,10 +1,10 @@
-import 'package:final_project_team02/holder/MyPage/user/components/order_mileage.dart';
+import 'package:final_project_team02/holder/MyPage/user/components/user_my_page_order_mileage.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../components/custom_button.dart';
 import '../../../../theme.dart';
 
-class MyPageheader extends StatelessWidget {
+class UserMyPageheader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,7 +16,7 @@ class MyPageheader extends StatelessWidget {
           SizedBox(height: 20),
           custom_button(title: "프로필 설정"),
           SizedBox(height: 20),
-          OrderMileage(orderId: 10, mileageId: 200),
+          UserMyPageOrderMileage(orderId: 10, mileageId: 200),
         ],
       ),
     );
