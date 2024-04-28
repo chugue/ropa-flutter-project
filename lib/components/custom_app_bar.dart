@@ -1,15 +1,19 @@
+import 'package:final_project_team02/holder/cart/cart_page.dart';
 import 'package:final_project_team02/holder/profile/settings_page.dart';
 import 'package:flutter/material.dart';
 
+import '../holder/cart/cart_page_view_model.dart';
 import '../holder/main_holder.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final IconData? miconRight;
-  final IconData? miconLeft;
+  final home;
+  final setting;
+  final cart;
 
   const CustomAppBar({
-    required this.miconRight,
-    required this.miconLeft,
+    required this.home,
+    required this.setting,
+    required this.cart,
   });
 
   @override
@@ -25,15 +29,21 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 MaterialPageRoute(builder: (context) => MainHolder()),
               );
             },
-            child: Icon(miconRight),
+            child: Icon(home),
           ),
-          TextButton(
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SettingsPage()));
-            },
-            child: Icon(miconLeft),
-          ),
+          Row(
+            children: [
+              TextButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SettingsPage()));
+                },
+                child: Icon(setting),
+              ),
+              CartPage(cartIcon: cart,),
+            ],
+          )
+
         ],
       ),
     );
@@ -43,3 +53,4 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   // TODO: implement preferredSize
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
+
