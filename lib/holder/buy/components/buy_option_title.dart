@@ -1,9 +1,9 @@
 import 'package:expandable/expandable.dart';
-import 'package:final_project_team02/holder/buy/components/save_default_buy_option.dart';
+import 'package:final_project_team02/holder/buy/components/buy_option_save_default_buy_option.dart';
 import 'package:flutter/material.dart';
 
 import 'buy_main_title.dart';
-import 'buy_options.dart';
+import 'buy_option_buy_options.dart';
 
 class BuyOptionTitle extends StatelessWidget {
   const BuyOptionTitle({

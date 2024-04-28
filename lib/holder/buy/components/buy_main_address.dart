@@ -2,8 +2,8 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
 import 'buy_main_address_address_tab.dart';
+import 'buy_main_address_delivery_request.dart';
 import 'buy_main_title.dart';
-import 'delivery_request.dart';
 
 class BuyMainAddress extends StatelessWidget {
   const BuyMainAddress({
@@ -27,7 +27,7 @@ class BuyMainAddress extends StatelessWidget {
       expanded: Column(
         children: [
           BuyMainAddressAddressTab(),
-          BuyMainAddressDelieveryRequest(),
+          BuyMainAddressDeliveryRequest(),
         ],
       ),
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'choose_address.dart';
-import 'input_address.dart';
+import 'buy_main_address_delivery_address_tab_choose_address.dart';
+import 'buy_main_address_delivery_address_tab_input_address.dart';
 
 class BuyMainAddressAddressTab extends StatefulWidget {
   const BuyMainAddressAddressTab({Key? key}) : super(key: key);

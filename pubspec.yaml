@@ -42,6 +42,7 @@ dependencies:
   ionicons: ^0.2.2
   remedi_kopo: ^0.0.2
   expandable: ^5.0.1
+  tosspayments_widget_sdk_flutter: ^2.0.2
 
 dev_dependencies:
   flutter_test:

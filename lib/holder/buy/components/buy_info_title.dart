@@ -1,7 +1,7 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
-import 'buy_info_row.dart';
+import 'buy_info_buy_info_row.dart';
 import 'buy_main_title.dart';
 
 class BuyInfoTitle extends StatelessWidget {

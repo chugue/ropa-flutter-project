@@ -1,4 +1,4 @@
-import 'package:final_project_team02/holder/buy/components/bottom_control_with_button.dart';
+import 'package:final_project_team02/components/bottom_control_with_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -41,7 +41,7 @@ class ProfileSetting extends StatelessWidget {
           SizedBox(height: 10) // 비밀번호 변경
         ],
       ),
-      bottomNavigationBar: BottomControlWithButton(),
+      bottomNavigationBar: BottomControlWithButton(text: "변경하기"),
     );
   }
 

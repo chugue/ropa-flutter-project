@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 
-import 'address_search.dart';
-import 'email_field.dart';
-import 'mobile_input.dart';
-import 'text_form.dart';
+import 'buy_main_address_delivery_address_tab_input_address_leftside_text_form.dart';
+import 'buy_main_address_delivery_address_tab_input_address_rightside_address_search.dart';
+import 'buy_main_address_delivery_address_tab_input_address_rightside_email_field.dart';
+import 'buy_main_address_delivery_address_tab_input_address_rightside_mobile_input.dart';
 
-class RightSideInput extends StatelessWidget {
-  const RightSideInput({
+class RightSide extends StatelessWidget {
+  const RightSide({
     super.key,
     required GlobalKey<FormState> formkey,
   }) : _formkey = formkey;

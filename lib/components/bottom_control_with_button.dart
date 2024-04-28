@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../components/bottom_control.dart';
-import '../../main/componenets/positioned_button.dart';
+import '../holder/main/componenets/positioned_button.dart';
+import 'bottom_control.dart';
 
 class BottomControlWithButton extends StatelessWidget {
   String text;

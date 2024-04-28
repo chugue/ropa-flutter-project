@@ -1,10 +1,10 @@
-import 'package:final_project_team02/holder/buy/components/save_default_address.dart';
+import 'package:final_project_team02/holder/buy/components/buy_main_address_delivery_request_save_default_address.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'dropdown-messages.dart';
+import 'buy_main_address_delivery_request_dropdown_messages.dart';
 
-class BuyMainAddressDelieveryRequest extends StatelessWidget {
-  const BuyMainAddressDelieveryRequest({
+class BuyMainAddressDeliveryRequest extends StatelessWidget {
+  const BuyMainAddressDeliveryRequest({
     super.key,
   });
 

@@ -1,7 +1,7 @@
-import 'package:final_project_team02/holder/buy/components/rightside_input.dart';
+import 'package:final_project_team02/holder/buy/components/buy_main_address_delivery_address_tab_input_address_rightside.dart';
 import 'package:flutter/material.dart';
 
-import 'leftside_title.dart';
+import 'buy_main_address_delivery_address_tab_input_address_leftside.dart';
 
 class InputAddress extends StatelessWidget {
   final _formkey = GlobalKey<FormState>();
@@ -13,8 +13,8 @@ class InputAddress extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 22),
         child: Row(
           children: [
-            LeftSideTitle(),
-            RightSideInput(formkey: _formkey),
+            LeftSide(),
+            RightSide(formkey: _formkey),
           ],
         ),
       ),

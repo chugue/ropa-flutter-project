@@ -2,7 +2,7 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
 import 'buy_main_title.dart';
-import 'ordering_items.dart';
+import 'main_order_ordering_items.dart';
 
 class MainOrderTitle extends StatelessWidget {
   const MainOrderTitle({

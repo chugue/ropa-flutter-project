@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
-import 'small_title.dart';
+import 'buy_main_address_delivery_address_tab_input_address_leftside_small_title.dart';
 
-class LeftSideTitle extends StatelessWidget {
-  const LeftSideTitle({
+class LeftSide extends StatelessWidget {
+  const LeftSide({
     super.key,
   });
 
