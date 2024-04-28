@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
 // 커스텀 폼 필드
-class UserMyPageApplyFormField extends StatelessWidget {
+class UserMyPageApplyModalBodyCustomTextField extends StatelessWidget {
   final controller;
   final obscureText;
   final validator;
-  final hintext;
+  final hinText;
 
-  const UserMyPageApplyFormField({
-    required this.hintext,
+
+  const UserMyPageApplyModalBodyCustomTextField({
     required this.controller,
     this.obscureText = false,
+    required this.hinText,
     required this.validator,
   });
 
@@ -23,8 +24,8 @@ class UserMyPageApplyFormField extends StatelessWidget {
       obscuringCharacter: '*',
       validator: validator,
       decoration: InputDecoration(
+        hintText: hinText,
         border: UnderlineInputBorder(),
-        hintText: '${hintext} 입력하세요.',
         hintStyle: const TextStyle(
           color: Colors.black26,
         ),

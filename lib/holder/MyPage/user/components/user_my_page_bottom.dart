@@ -1,10 +1,10 @@
-import 'package:final_project_team02/holder/MyPage/user/components/use_my_pager_apply_button.dart';
 import 'package:final_project_team02/holder/MyPage/user/components/user_tab_bar_closet.dart';
 import 'package:final_project_team02/holder/MyPage/user/components/user_tab_bar_grid.dart';
 import 'package:final_project_team02/holder/MyPage/user/components/user_tab_var.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'apply/user_my_page_apply_modal_body.dart';
 
 class UserMyPageBottom extends StatelessWidget {
   @override
@@ -37,7 +37,7 @@ class UserMyPageBottom extends StatelessWidget {
             ),
           ],
         ),
-        UserMyPageApplyButton()
+        UserMyPageApplyModalBody()
       ],
     );
   }
