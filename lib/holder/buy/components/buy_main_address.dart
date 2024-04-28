@@ -1,7 +1,7 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
-import 'address_tab_view.dart';
+import 'buy_main_address_address_tab.dart';
 import 'buy_main_title.dart';
 import 'delivery_request.dart';
 
@@ -26,8 +26,8 @@ class BuyMainAddress extends StatelessWidget {
       collapsed: SizedBox(),
       expanded: Column(
         children: [
-          AddressTab(),
-          DelieveryRequest(),
+          BuyMainAddressAddressTab(),
+          BuyMainAddressDelieveryRequest(),
         ],
       ),
     );

@@ -37,7 +37,7 @@ class BuyInfoTitle extends StatelessWidget {
             ),
           ),
           Container(
-            height: 40,
+            height: 50,
             padding: EdgeInsets.symmetric(horizontal: 20),
             color: Color(0xFFF4F7FF),
             child: Row(

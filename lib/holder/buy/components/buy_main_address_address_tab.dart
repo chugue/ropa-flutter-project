@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import 'choose_address.dart';
 import 'input_address.dart';
 
-class AddressTab extends StatefulWidget {
-  const AddressTab({Key? key}) : super(key: key);
+class BuyMainAddressAddressTab extends StatefulWidget {
+  const BuyMainAddressAddressTab({Key? key}) : super(key: key);
 
   @override
-  State<AddressTab> createState() => _AddressTabState();
+  State<BuyMainAddressAddressTab> createState() =>
+      _BuyMainAddressAddressTabState();
 }
 
-class _AddressTabState extends State<AddressTab>
+class _BuyMainAddressAddressTabState extends State<BuyMainAddressAddressTab>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {

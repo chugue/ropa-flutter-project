@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 
 import 'dropdown-messages.dart';
 
-class DelieveryRequest extends StatelessWidget {
-  const DelieveryRequest({
+class BuyMainAddressDelieveryRequest extends StatelessWidget {
+  const BuyMainAddressDelieveryRequest({
     super.key,
   });
 
