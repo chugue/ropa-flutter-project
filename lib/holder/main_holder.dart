@@ -1,9 +1,17 @@
+import 'dart:async';
+
+import 'package:final_project_team02/models/popular_outfit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'MyPage/creator/creator_view_page.dart';
 import 'MyPage/user/user_my_page.dart';
 import 'main/home_page.dart';
+import '../models/creator.dart';
+import '../models/slide_ad.dart';
+import 'codi/codi_page.dart';
+import 'main/componenets/_auto_ad_slider.dart';
+import 'main/componenets/_creator_circle.dart';
 
 class MainHolder extends StatefulWidget {
   @override

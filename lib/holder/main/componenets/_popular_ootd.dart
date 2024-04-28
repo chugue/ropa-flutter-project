@@ -1,6 +1,8 @@
 import 'package:final_project_team02/models/popular_outfit.dart';
 import 'package:flutter/material.dart';
 
+import '../../codi/codi_page.dart';
+
 class PopularOotd extends StatelessWidget {
   const PopularOotd({
     super.key,
@@ -15,12 +17,24 @@ class PopularOotd extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
         children: [
-          SizedBox(
-            width: 150,
-            height: 150,
-            child: Image.asset(
-              ootd.Img,
-              fit: BoxFit.cover,
+          GestureDetector(
+            onTap: () {
+              print("사진 클릭 됨");
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => CodiPage(
+                          ootd: ootd,
+                        )),
+              );
+            },
+            child: SizedBox(
+              width: 150,
+              height: 150,
+              child: Image.asset(
+                ootd.Img,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           SizedBox(
