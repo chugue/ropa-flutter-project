@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../components/Logo.dart';
 import '../../components/custom_app_bar.dart';
 import '../../components/welcome_button.dart';
-import '../../size.dart';
-import '../../theme.dart';
+import '../../_core/constants/size.dart';
+import '../../../../_core/constants/theme.dart';
 import 'join/join_page.dart';
 import 'login/login_page.dart';
 
@@ -25,7 +25,7 @@ class WelcomePage extends StatelessWidget {
               Expanded(
                 child: WelcomeButton(
                   buttonText: '로그인',
-                  onTap: Loginpage(),
+                  onTap: LoginPage(),
                   color: lightColorScheme.primary,
                   textColor: Colors.white,
                 ),
@@ -33,7 +33,7 @@ class WelcomePage extends StatelessWidget {
               Expanded(
                 child: WelcomeButton(
                   buttonText: '회원가입',
-                  onTap: joinPage(),
+                  onTap: JoinPage(),
                   color: lightColorScheme.primary,
                   textColor: Colors.white,
                 ),

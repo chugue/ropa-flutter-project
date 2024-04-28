@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../../../_core/constants/theme.dart';
 import 'package:flutter/widgets.dart';
 
-import '../../../../theme.dart';
 
-class CreatorPageheader extends StatelessWidget {
+class CreatorViewPageheader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
