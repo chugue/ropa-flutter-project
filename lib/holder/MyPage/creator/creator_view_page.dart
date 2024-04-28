@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../components/custom_app_bar.dart';
-import 'components/_creator_page_body.dart';
-import 'components/_creator_page_header.dart';
+import 'components/creator_view_page_body.dart';
+import 'components/creator_view_page_header.dart';
 
 class CreatorPage extends StatelessWidget {
   const CreatorPage({super.key});
@@ -17,11 +17,11 @@ class CreatorPage extends StatelessWidget {
           return [
             SliverToBoxAdapter(
               //프로필 설정 버튼까지
-              child: CreatorPageheader(),
+              child: CreatorViewPageheader(),
             ),
           ];
         },
-        body: CreatorPageBody(),
+        body: CreatorViewPageBottom(),
       ),
     );
   }
