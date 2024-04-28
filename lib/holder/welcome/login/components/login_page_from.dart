@@ -1,7 +1,6 @@
+import 'package:final_project_team02/_core/uitls/validator_util.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../_core/constants/theme.dart';
-import '../../../../_core/uitll/validate.dart';
 import '../../../../components/custom_form_field.dart';
 import '../../join/join_page.dart';
 
@@ -33,7 +32,7 @@ class _LoginPageFromState extends State<LoginPageFrom> {
           CustomFormField(
             text: 'Email',
             controller: email,
-            validator: validatePassword(),
+            validator: validateEmail(),
           ),
           const SizedBox(height: 25.0),
 

@@ -2,8 +2,8 @@ import 'package:final_project_team02/holder/welcome/login/login_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../_core/constants/theme.dart';
+import '../../../../_core/uitls/validator_util.dart';
 import '../../../../components/custom_form_field.dart';
-import '../../../../_core/uitll/validate.dart';
 
 
 
@@ -37,7 +37,7 @@ class _JoinPageFromFieldState extends State<JoinPageFrom> {
           CustomFormField(
             text: 'Email',
             controller: email,
-            validator: validatePassword(),
+            validator: validateEmail(),
           ),
           const SizedBox(height: 25.0),
 
@@ -53,7 +53,7 @@ class _JoinPageFromFieldState extends State<JoinPageFrom> {
           CustomFormField(
             text: 'NickName',
             controller: nickName,
-            validator: validatePassword(),
+            validator: validateNickName(),
           ),
           SizedBox(height: 25.0),
 
