@@ -1,11 +1,6 @@
-import 'package:final_project_team02/holder/main/home_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../../_core/constants/theme.dart';
-
 
 class CartPageBodyChoiceButton extends StatelessWidget {
   const CartPageBodyChoiceButton({
@@ -18,12 +13,11 @@ class CartPageBodyChoiceButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Container(
-          width: 200,
+          width: 100,
           height: 60,
           decoration: BoxDecoration(
             color: Colors.white,
-            border: Border.all(
-                color: Colors.grey.shade400, width: 1), // 테두리 설정
+            border: Border.all(color: Colors.grey.shade400, width: 1), // 테두리 설정
           ),
           child: InkWell(
             onTap: () {},
@@ -36,12 +30,11 @@ class CartPageBodyChoiceButton extends StatelessWidget {
           ),
         ),
         Container(
-          width: 200,
+          width: 100,
           height: 60,
           decoration: BoxDecoration(
             color: Colors.white,
-            border: Border.all(
-                color: Colors.grey.shade400, width: 1), // 테두리 설정
+            border: Border.all(color: Colors.grey.shade400, width: 1), // 테두리 설정
           ),
           child: InkWell(
             hoverColor: Colors.red,

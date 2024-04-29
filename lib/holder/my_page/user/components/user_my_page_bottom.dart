@@ -1,9 +1,9 @@
-import 'package:final_project_team02/holder/MyPage/user/components/user_tab_bar_closet.dart';
-import 'package:final_project_team02/holder/MyPage/user/components/user_tab_bar_grid.dart';
-import 'package:final_project_team02/holder/MyPage/user/components/user_tab_var.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:final_project_team02/holder/my_page/user/components/user_tab_bar_closet.dart';
+import 'package:final_project_team02/holder/my_page/user/components/user_tab_bar_grid.dart';
+import 'package:final_project_team02/holder/my_page/user/components/user_tab_var.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'apply/user_my_page_apply_modal_body.dart';
 
 class UserMyPageBottom extends StatelessWidget {
@@ -48,8 +48,3 @@ class UserMyPageBottom extends StatelessWidget {
     return formatter.format(int.parse(price));
   }
 }
-
-
-
-
-

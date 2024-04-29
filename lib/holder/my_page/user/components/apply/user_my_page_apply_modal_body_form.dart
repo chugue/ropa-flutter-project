@@ -1,8 +1,7 @@
-import 'package:final_project_team02/holder/MyPage/user/components/apply/user_my_page_apply_modal_body_form_apply_button.dart';
-import 'package:final_project_team02/holder/MyPage/user/components/apply/user_my_page_apply_modal_body_form_job_drop_box.dart';
-import 'package:final_project_team02/holder/MyPage/user/components/apply/user_my_page_apply_modal_body_form_text_field.dart';
-import 'package:final_project_team02/holder/MyPage/user/components/apply/user_my_page_apply_modal_body_form_title.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:final_project_team02/holder/my_page/user/components/apply/user_my_page_apply_modal_body_form_apply_button.dart';
+import 'package:final_project_team02/holder/my_page/user/components/apply/user_my_page_apply_modal_body_form_job_drop_box.dart';
+import 'package:final_project_team02/holder/my_page/user/components/apply/user_my_page_apply_modal_body_form_text_field.dart';
+import 'package:final_project_team02/holder/my_page/user/components/apply/user_my_page_apply_modal_body_form_title.dart';
 import 'package:flutter/material.dart';
 
 class UserMyPageApplyModalBodyForm extends StatelessWidget {
@@ -58,7 +57,6 @@ class UserMyPageApplyModalBodyForm extends StatelessWidget {
                         children: [
                           UserMyPageApplyModalFormTitle(),
                           Divider(),
-
                           SizedBox(height: 20),
                           UserMyPageApplyModalBodyFormTextField(
                             title: "키 ",
@@ -81,7 +79,8 @@ class UserMyPageApplyModalBodyForm extends StatelessWidget {
                             physical: "",
                           ),
                           SizedBox(height: 20),
-                          UserMyPageApplyModalBodyJopDropBox(title: "직업 ",list: ["작장인","대학생"]),
+                          UserMyPageApplyModalBodyJopDropBox(
+                              title: "직업 ", list: ["작장인", "대학생"]),
                           SizedBox(height: 40),
                           UserMyPageApplyModalBodyApplyButton(),
                         ],
@@ -95,6 +94,7 @@ class UserMyPageApplyModalBodyForm extends StatelessWidget {
 
           /// 바텀시트 드래그 가능 여부
           enableDrag: true,
+
           /// 바텀시트가 아닌 부분을 클릭했을 때 닫기
           isDismissible: true,
 
@@ -118,5 +118,3 @@ class UserMyPageApplyModalBodyForm extends StatelessWidget {
     );
   }
 }
-
-

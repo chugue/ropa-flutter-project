@@ -1,7 +1,6 @@
-import 'package:final_project_team02/holder/MyPage/user/components/user_my_page_bottom.dart';
-import 'package:final_project_team02/holder/MyPage/user/components/user_my_page_header.dart';
+import 'package:final_project_team02/holder/my_page/user/components/user_my_page_bottom.dart';
+import 'package:final_project_team02/holder/my_page/user/components/user_my_page_header.dart';
 import 'package:flutter/material.dart';
-
 
 class UserMyPageBody extends StatelessWidget {
   const UserMyPageBody({
