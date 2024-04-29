@@ -22,16 +22,22 @@ class UserMyPageApplyModalBodyJopDropBox extends StatelessWidget {
               fontWeight: FontWeight.bold),
         ),
         DropdownMenu<String>(
-          initialSelection: list.first,
+          initialSelection: null,
           onSelected: (String? value) {
 
           },
-          dropdownMenuEntries: list
-              .map<DropdownMenuEntry<String>>(
-                  (String value) {
-                return DropdownMenuEntry<String>(
-                    value: value, label: value);
-              }).toList(),
+          dropdownMenuEntries: [
+            DropdownMenuEntry<String>(
+              value: "",
+              label: "선택", // 힌트 텍스트
+            ),
+            ...list.map<DropdownMenuEntry<String>>((String value) {
+              return DropdownMenuEntry<String>(
+                value: value,
+                label: value,
+              );
+            }).toList(),
+          ],
         ),
       ],
     );

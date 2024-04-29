@@ -13,12 +13,16 @@ class BottomButton extends StatelessWidget {
       width: 350,
       height: 50,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+
+
+        },
         child: const Text(
           "변경하기",
           style: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w600
+              fontSize: 25,
+              fontWeight: FontWeight.w600,
+            color: Colors.white,
           ),
         ),
         style: ElevatedButton.styleFrom(
