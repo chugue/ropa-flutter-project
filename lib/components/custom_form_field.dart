@@ -20,12 +20,7 @@ class CustomFormField extends StatelessWidget {
       controller: controller,
       obscureText: obscureText,
       obscuringCharacter: '*',
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return '${text}를 입력해주세요';
-        }
-        return null;
-      },
+      validator: validator,
       decoration: InputDecoration(
         label: Text("${text}"),
         hintText: '${text}',

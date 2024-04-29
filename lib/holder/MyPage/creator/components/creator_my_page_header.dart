@@ -1,10 +1,10 @@
-import 'package:final_project_team02/holder/MyPage/user/components/order_mileage.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../components/custom_button.dart';
-import '../../../../theme.dart';
+import '../../../../_core/constants/theme.dart';
+import '../../_components/my_page_custom_button.dart';
+import '../../_components/my_page_order_mileage.dart';
 
-class MyPageheader extends StatelessWidget {
+class CreatorMyPageheader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,9 +14,9 @@ class MyPageheader extends StatelessWidget {
           SizedBox(height: 30),
           _buildCreatorPic(),
           SizedBox(height: 20),
-          custom_button(title: "프로필 설정"),
+          MyPageCustomButton(title: "프로필 설정"),
           SizedBox(height: 20),
-          OrderMileage(orderId: 10, mileageId: 200),
+          MyPageOrderMileage(orderId: 10, mileageId: 200),
         ],
       ),
     );
@@ -41,23 +41,12 @@ class MyPageheader extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('회원 이름', style: textTheme().displayMedium), // :TODO 04수정
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget _buildCreatorComment() {
-    return Row(
-      children: [
-        Column(
-          children: [
-            Text('어깨 넓은 보통 체형', style: textTheme().headlineSmall),
-            Text('어깨 넓은 보통 체형', style: textTheme().headlineSmall),
-            Text('어깨 넓은 보통 체형', style: textTheme().headlineSmall),
+            Text('180cm • 70kg • 직장인',
+                style: textTheme().bodyMedium), // :TODO 04수정
           ],
         ),
       ],
     );
   }
 }
+

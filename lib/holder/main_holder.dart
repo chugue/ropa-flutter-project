@@ -1,9 +1,17 @@
+import 'dart:async';
+
+import 'package:final_project_team02/models/popular_outfit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'MyPage/creator/creator_view_page.dart';
 import 'MyPage/user/user_my_page.dart';
 import 'main/home_page.dart';
+import '../models/creator.dart';
+import '../models/slide_ad.dart';
+import 'codi/codi_page.dart';
+import 'main/componenets/_auto_ad_slider.dart';
+import 'main/componenets/_creator_circle.dart';
 
 class MainHolder extends StatefulWidget {
   @override
@@ -11,7 +19,7 @@ class MainHolder extends StatefulWidget {
 }
 
 class _MainHorderState extends State<MainHolder> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -32,19 +40,27 @@ class _MainHorderState extends State<MainHolder> {
     return BottomNavigationBar(
       showSelectedLabels: false,
       //글자를 없애고 가운데로 배치한다.
+
       showUnselectedLabels: false,
       //선택이 될때 글자가 보인다.
+
       backgroundColor: Colors.white,
       //선택된 아이콘에 색상 보여주기
-      selectedItemColor: Colors.grey.shade200,
+
+      selectedItemColor: Colors.black,
       //클릭시 아이콘 색상
-      unselectedItemColor: Colors.black,
+
+      unselectedItemColor: Colors.grey.shade400,
+      //아이콘 색상
+
+
       currentIndex: _selectedIndex,
       onTap: (i) => {
         setState(() {
           _selectedIndex = i;
         })
       },
+
       items: [
         BottomNavigationBarItem(label: 'ㅁ', icon: Icon(CupertinoIcons.home)),
         BottomNavigationBarItem(label: 'ㅁ', icon: Icon(CupertinoIcons.bag)),

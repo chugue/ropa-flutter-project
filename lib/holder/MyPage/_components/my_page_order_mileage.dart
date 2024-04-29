@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class OrderMileage extends StatelessWidget {
+class MyPageOrderMileage extends StatelessWidget {
   final int orderId;
   final int mileageId;
 
-  const OrderMileage({
+  const MyPageOrderMileage({
     required this.orderId,
     required this.mileageId,
   });
