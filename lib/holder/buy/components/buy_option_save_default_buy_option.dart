@@ -19,8 +19,8 @@ class _SaveDefaultBuyOptionState extends State<SaveDefaultBuyOption> {
       child: Row(
         children: [
           Checkbox(
-            fillColor: WidgetStateColor.resolveWith((states) {
-              if (states.contains(WidgetState.selected)) {
+            fillColor: MaterialStateProperty.resolveWith((states) {
+              if (states.contains(MaterialState.selected)) {
                 return Colors.black; // 체크되었을 때의 색상
               }
               return Colors.white; // 비체크 상태일 때의 색상
