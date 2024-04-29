@@ -8,7 +8,6 @@ import 'package:tosspayments_widget_sdk_flutter/payment_widget.dart';
 import 'package:tosspayments_widget_sdk_flutter/widgets/agreement.dart';
 import 'package:tosspayments_widget_sdk_flutter/widgets/payment_method.dart';
 import '_core/constants/theme.dart';
-import 'holder/buy/_address_tab.dart';
 import 'holder/main_holder.dart';
 
 void main() {
