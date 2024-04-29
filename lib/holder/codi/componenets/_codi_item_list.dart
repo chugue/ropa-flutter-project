@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'package:final_project_team02/holder/item/item_page.dart';
+import 'package:flutter/material.dart';
 
 import '../../../models/codi.dart';
 
@@ -22,16 +23,27 @@ class ItemList extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: codiList[CodiIndex].itemImg.length,
                   itemBuilder: (context, CodiItemIndex) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.40,
-                        child: Image.asset(
-                          codiList[CodiIndex].itemImg[CodiItemIndex],
-                          // 'assets/example_image_$index.jpg',
-                          fit: BoxFit.cover,
+                    return Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            print("사진 클릭 됨");
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ItemPage()),
+                            );
+                          },
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.40,
+                            child: Image.asset(
+                              codiList[CodiIndex].itemImg[CodiItemIndex],
+                              // 'assets/example_image_$index.jpg',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     );
                   },
                 ),
