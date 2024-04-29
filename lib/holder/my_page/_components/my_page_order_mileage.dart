@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../order/order_page.dart';
+import '../../order/order_history_page.dart';
 
 class MyPageOrderMileage extends StatelessWidget {
   final int orderId;
@@ -21,7 +21,7 @@ class MyPageOrderMileage extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          OrderPage(orderId: orderId),
+          OrderHistoryPage(orderId: orderId),
           Container(width: 2, height: 50, color: Colors.white),
           InkWell(
             onTap: () {},

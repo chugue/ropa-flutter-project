@@ -23,33 +23,20 @@ class UserMyPageApplyModalBodyForm extends StatelessWidget {
           context: context,
           builder: (BuildContext context) {
             return Container(
-              margin: const EdgeInsets.only(
-                left: 25,
-                right: 25,
-                bottom: 60,
-              ), // 모달 좌우하단 여백 크기
+              margin: buildEdgeInsets(), // 모달 좌우하단 여백 크기
               decoration: const BoxDecoration(
-                color: Colors.grey, // 모달 배경색
-                borderRadius: BorderRadius.all(
-                  Radius.circular(20),
-                ),
-              ),
+                  color: Colors.grey, // 모달 배경색
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(20), //
-                  ),
-                ),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: Container(
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(20), //
-                      ),
-                    ),
+                        border: Border.all(color: Colors.grey.shade200),
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: Column(
@@ -116,5 +103,13 @@ class UserMyPageApplyModalBodyForm extends StatelessWidget {
         style: TextStyle(color: Colors.white, fontSize: 30),
       ),
     );
+  }
+
+  EdgeInsets buildEdgeInsets() {
+    return const EdgeInsets.only(
+              left: 25,
+              right: 25,
+              bottom: 60,
+            );
   }
 }
