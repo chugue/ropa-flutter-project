@@ -1,10 +1,10 @@
 // 설정 페이지
+import 'package:final_project_team02/holder/profile/components/_profile_small_title.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/bottom_control.dart';
 import '../../components/custom_app_bar.dart';
-import '_profile_menus.dart';
-import '_profile_small_title.dart';
+import 'components/_profile_menus.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({

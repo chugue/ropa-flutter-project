@@ -1,20 +1,23 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class AddressTab extends StatefulWidget {
-  const AddressTab({Key? key}) : super(key: key);
+import 'buy_main_address_delivery_address_tab_choose_address.dart';
+import 'buy_main_address_delivery_address_tab_input_address.dart';
+
+class BuyMainAddressAddressTab extends StatefulWidget {
+  const BuyMainAddressAddressTab({Key? key}) : super(key: key);
 
   @override
-  State<AddressTab> createState() => _AddressTabState();
+  State<BuyMainAddressAddressTab> createState() =>
+      _BuyMainAddressAddressTabState();
 }
 
-class _AddressTabState extends State<AddressTab>
+class _BuyMainAddressAddressTabState extends State<BuyMainAddressAddressTab>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black12,
-      height: 500,
+      height: 480,
       child: DefaultTabController(
         length: 2,
         child: Column(
@@ -32,7 +35,7 @@ class _AddressTabState extends State<AddressTab>
   @override
   void initState() {
     super.initState();
-    _tabController = new TabController(length: 2, vsync: this);
+    _tabController = new TabController(length: 2, vsync: this, initialIndex: 1);
   }
 
   Widget _buildTabBar() {
@@ -40,9 +43,10 @@ class _AddressTabState extends State<AddressTab>
       labelPadding: EdgeInsets.zero,
       indicator: BoxDecoration(
         color: Colors.white,
-        border: Border.all(
-          color: Colors.black12,
-          width: 0.5,
+        border: Border(
+          top: BorderSide(color: Colors.black12, width: 0.5),
+          left: BorderSide(color: Colors.black12, width: 0.5),
+          right: BorderSide(color: Colors.black12, width: 0.5),
         ),
       ),
       labelColor: Colors.black,
@@ -69,9 +73,9 @@ class _AddressTabState extends State<AddressTab>
             width: double.infinity,
             child: Center(
               child: Text(
-                "직접 입력",
+                "직접입력",
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ),
@@ -85,8 +89,20 @@ class _AddressTabState extends State<AddressTab>
     return TabBarView(
       controller: _tabController,
       children: [
-        Container(color: Colors.green),
-        Container(color: Colors.red),
+        Container(
+          color: Colors.white,
+        ),
+        Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              ChooseAddress(),
+              InputAddress(),
+              SizedBox(height: 10),
+              Divider(color: Colors.black12),
+            ],
+          ),
+        ),
       ],
     );
   }

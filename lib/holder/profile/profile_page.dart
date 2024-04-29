@@ -1,9 +1,8 @@
+import 'package:final_project_team02/components/bottom_control_with_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../components/bottom_control.dart';
-import '../main/componenets/positioned_button.dart';
-import '_text_form.dart';
+import 'components/_text_form.dart';
 
 class ProfileSetting extends StatelessWidget {
   const ProfileSetting({
@@ -42,16 +41,7 @@ class ProfileSetting extends StatelessWidget {
           SizedBox(height: 10) // 비밀번호 변경
         ],
       ),
-      bottomNavigationBar: SizedBox(
-        height: 120,
-        child: Stack(
-          alignment: Alignment.bottomCenter, // 스택 내에서 위젯들을 위쪽 중앙에 정렬
-          children: [
-            BottomControl(),
-            PositionedButton(),
-          ],
-        ),
-      ),
+      bottomNavigationBar: BottomControlWithButton(text: "변경하기"),
     );
   }
 
