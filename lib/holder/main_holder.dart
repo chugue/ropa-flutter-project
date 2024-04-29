@@ -11,7 +11,7 @@ class MainHolder extends StatefulWidget {
 }
 
 class _MainHorderState extends State<MainHolder> {
-  int _selectedIndex = 2;
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {

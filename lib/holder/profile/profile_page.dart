@@ -12,46 +12,41 @@ class ProfileSetting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(CupertinoIcons.chevron_left),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
+    return Stack(
+      children: [
+        Scaffold(
+          appBar: AppBar(
+            elevation: 0,
+            leading: IconButton(
+              icon: Icon(CupertinoIcons.chevron_left),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            toolbarHeight: 45,
+          ),
+          body: ListView(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            children: [
+              SizedBox(height: 10),
+              _buildTitle(), // 프로필 제목
+              _buildPhoto(), // 사진, 바꾸기 칼럼
+              SizedBox(height: 10),
+              TextForm("이메일"), // 이메일
+              SizedBox(height: 50), // 마진
+              TextForm("이름"), // 이름
+              SizedBox(height: 50),
+              TextForm("닉네임"), // 닉네임
+              SizedBox(height: 50),
+              _buildMobileChange(), // 휴대폰 번호 변경
+              SizedBox(height: 50),
+              TextForm("비밀번호 변경"),
+              SizedBox(height: 10) // 비밀번호 변경
+            ],
+          ),
         ),
-        toolbarHeight: 45,
-      ),
-      body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        children: [
-          SizedBox(height: 10),
-          _buildTitle(), // 프로필 제목
-          _buildPhoto(), // 사진, 바꾸기 칼럼
-          SizedBox(height: 10),
-          TextForm("이메일"), // 이메일
-          SizedBox(height: 50), // 마진
-          TextForm("이름"), // 이름
-          SizedBox(height: 50),
-          TextForm("닉네임"), // 닉네임
-          SizedBox(height: 50),
-          _buildMobileChange(), // 휴대폰 번호 변경
-          SizedBox(height: 50),
-          TextForm("비밀번호 변경"),
-          SizedBox(height: 10) // 비밀번호 변경
-        ],
-      ),
-      bottomNavigationBar: SizedBox(
-        height: 120,
-        child: Stack(
-          alignment: Alignment.bottomCenter, // 스택 내에서 위젯들을 위쪽 중앙에 정렬
-          children: [
-            BottomControl(),
-            PositionedButton(),
-          ],
-        ),
-      ),
+        PositionedButton(),
+      ],
     );
   }
 

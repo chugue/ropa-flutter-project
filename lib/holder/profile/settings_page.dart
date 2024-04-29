@@ -41,7 +41,6 @@ class SettingsPage extends StatelessWidget {
           ProfileMenus(field: "회원탈퇴", value: ""),
         ],
       ),
-      bottomNavigationBar: BottomControl(),
     );
   }
 }
