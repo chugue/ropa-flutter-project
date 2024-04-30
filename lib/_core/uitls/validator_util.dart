@@ -1,3 +1,6 @@
+
+
+
 import 'package:validators/validators.dart';
 
 Function validateNickName() {
