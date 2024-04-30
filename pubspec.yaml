@@ -42,8 +42,6 @@ dependencies:
   ionicons: ^0.2.2
   remedi_kopo: ^0.0.2
   expandable: ^5.0.1
-  tosspayments_widget_sdk_flutter: ^2.0.2
-  # 라이브러리 버전 문제가 발생하면 pub dev에서 최신 버전으로 업그레이드하세요
   flutter_svg: ^2.0.6
   validators: ^3.0.0
   dio: ^5.2.0 # 서버와 통신하기 위해 필요한 라이브러리 입니다.

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 
@@ -134,7 +135,7 @@ class _ItemPageState extends State<ItemPage> {
                         style: TextStyle(fontSize: 16),
                       ),
                       Icon(
-                        FontAwesome.a_solid,
+                        CupertinoIcons.info,
                         size: 16,
                       )
                     ],
