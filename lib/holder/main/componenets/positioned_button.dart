@@ -12,6 +12,8 @@ class PositionedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
+      left: 10,
+      right: 10,
       bottom: 60,
       child: BottomButton(text: text),
     );

@@ -49,7 +49,7 @@ class _MainHolderState extends State<HomePage> {
     return _timer = Timer.periodic(Duration(seconds: 4), (timer) {
       int nextPage = (_pageController.page?.toInt() ?? 0) + 1;
       if (nextPage == slideAdList.length) {
-        nextPage = 0; // 마지막 이미지가 끝나면 첫 이미지로
+        nextPage = 0; // ✅마지막 이미지가 끝나면 첫 이미지로
       }
       _pageController.animateToPage(
         nextPage,
