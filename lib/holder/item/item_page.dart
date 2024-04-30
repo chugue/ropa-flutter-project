@@ -134,7 +134,7 @@ class _ItemPageState extends State<ItemPage> {
                         style: TextStyle(fontSize: 16),
                       ),
                       Icon(
-                        FontAwesome.chevron_right,
+                        FontAwesome.a_solid,
                         size: 16,
                       )
                     ],

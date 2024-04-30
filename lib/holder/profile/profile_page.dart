@@ -1,10 +1,8 @@
-import 'package:final_project_team02/components/bottom_control_with_button.dart';
+import 'package:final_project_team02/holder/profile/components/_text_form.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../components/bottom_control.dart';
 import '../main/componenets/positioned_button.dart';
-import '_text_form.dart';
 
 class ProfileSetting extends StatelessWidget {
   const ProfileSetting({
@@ -46,7 +44,7 @@ class ProfileSetting extends StatelessWidget {
             ],
           ),
         ),
-        PositionedButton(),
+        PositionedButton(text: "결제하기"),
       ],
     );
   }

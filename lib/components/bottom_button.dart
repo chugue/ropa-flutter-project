@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class BottomButton extends StatelessWidget {
+  final String text;
+
   const BottomButton({
-    super.key,
+    required this.text,
   });
 
   @override
@@ -12,11 +14,11 @@ class BottomButton extends StatelessWidget {
       height: 50,
       child: ElevatedButton(
         onPressed: () {},
-        child: const Text(
-          "변경하기",
+        child: Text(
+          text,
           style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.w600,
+            fontSize: 25,
+            fontWeight: FontWeight.w600,
             color: Colors.white,
           ),
         ),
