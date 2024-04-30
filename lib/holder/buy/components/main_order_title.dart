@@ -11,7 +11,11 @@ class MainOrderTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ExpandableController expController =
+        new ExpandableController(initialExpanded: true);
+
     return ExpandablePanel(
+      controller: expController,
       header: Padding(
         padding: const EdgeInsets.all(20),
         child: BuyMainTitle(text: "주문상품"),
@@ -23,23 +27,22 @@ class MainOrderTitle extends StatelessWidget {
         headerAlignment: ExpandablePanelHeaderAlignment.center,
       ),
       collapsed: SizedBox(),
-      expanded: ListView(
-        shrinkWrap: true,
+      expanded: Column(
         children: [
-          OrderingItems(
-              itemTitle: 'VL8814 웰라이트 와이드데님',
-              subTitle: 'Black Heavy Brush',
-              options: '[옵션: L (32)]',
-              qty: '수량: 1개',
-              price: "48,700원",
-              photoPath: "assets/images/ootd/ootd03.webp"),
-          OrderingItems(
-              itemTitle: 'VL8814 웰라이트 와이드데님',
-              subTitle: 'Black Heavy Brush',
-              options: '[옵션: L (32)]',
-              qty: '수량: 1개',
-              price: "48,700원",
-              photoPath: "assets/images/ootd/ootd01.jpg"),
+          ListView.builder(
+            itemCount: 3,
+            shrinkWrap: true,
+            primary: false,
+            itemBuilder: (context, index) {
+              return OrderingItems(
+                  itemTitle: 'VL8814 웰라이트 와이드데님',
+                  subTitle: 'Black Heavy Brush',
+                  options: '[옵션: L (32)]',
+                  qty: '수량: 1개',
+                  price: "48,700원",
+                  photoPath: "assets/images/ootd/ootd03.webp");
+            },
+          ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20),
             color: Colors.black12,

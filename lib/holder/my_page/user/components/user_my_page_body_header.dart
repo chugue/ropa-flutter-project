@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+
 import '../../../../_core/constants/theme.dart';
 import '../../_components/my_page_custom_button.dart';
 import '../../_components/my_page_order_mileage.dart';
 
-class UserMyPageheader extends StatelessWidget {
+class UserMyPageBodyTop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -45,5 +46,4 @@ class UserMyPageheader extends StatelessWidget {
       ],
     );
   }
-
 }

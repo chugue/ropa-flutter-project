@@ -1,12 +1,12 @@
-import 'package:final_project_team02/holder/my_page/user/components/user_tab_bar_closet.dart';
-import 'package:final_project_team02/holder/my_page/user/components/user_tab_bar_grid.dart';
-import 'package:final_project_team02/holder/my_page/user/components/user_tab_var.dart';
+import 'package:final_project_team02/holder/my_page/user/components/user_my_page_body_bottom_tab_bar_closet.dart';
+import 'package:final_project_team02/holder/my_page/user/components/user_my_page_body_bottom_tab_bar_grid.dart';
+import 'package:final_project_team02/holder/my_page/user/components/user_my_page_body_bottom_tab_var.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'apply/user_my_page_apply_modal_body.dart';
 
-class UserMyPageBottom extends StatelessWidget {
+class UserMyPageBodyBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(

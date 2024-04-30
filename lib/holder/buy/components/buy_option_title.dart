@@ -12,7 +12,10 @@ class BuyOptionTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ExpandableController expController =
+        new ExpandableController(initialExpanded: true);
     return ExpandablePanel(
+      controller: expController,
       header: Padding(
         padding: const EdgeInsets.all(20),
         child: BuyMainTitle(text: "결제수단"),

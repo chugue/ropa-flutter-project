@@ -1,7 +1,7 @@
-import 'package:final_project_team02/holder/buy/components/buy_main_address_delivery_address_tab_input_address_rightside.dart';
 import 'package:flutter/material.dart';
 
 import 'buy_main_address_delivery_address_tab_input_address_leftside.dart';
+import 'buy_main_address_delivery_address_tab_input_address_rightside.dart';
 
 class InputAddress extends StatelessWidget {
   final _formkey = GlobalKey<FormState>();

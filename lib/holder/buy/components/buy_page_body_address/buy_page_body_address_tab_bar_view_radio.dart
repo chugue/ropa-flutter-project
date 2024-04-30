@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ChooseAddress extends StatefulWidget {
-  const ChooseAddress({
-    super.key,
-  });
-
+class BuyPageBodyAddressTabBarViewRadio extends StatefulWidget {
   @override
-  State<ChooseAddress> createState() => _ChooseAddressState();
+  State<BuyPageBodyAddressTabBarViewRadio> createState() =>
+      BuyPageBodyAddressTabBarViewRadioState();
 }
 
-class _ChooseAddressState extends State<ChooseAddress> {
-  String _selectedOption = "option1"; // 초기 선택된 옵션
+class BuyPageBodyAddressTabBarViewRadioState
+    extends State<BuyPageBodyAddressTabBarViewRadio> {
+  String _selectedOption = "option1";
+
   @override
   Widget build(BuildContext context) {
     return Padding(

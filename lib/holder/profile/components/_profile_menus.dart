@@ -5,10 +5,7 @@ class ProfileMenus extends StatelessWidget {
   final String field;
   final String value;
 
-  const ProfileMenus({
-    required this.field,
-    required this.value,
-  });
+  const ProfileMenus({required this.field, required this.value});
 
   @override
   Widget build(BuildContext context) {

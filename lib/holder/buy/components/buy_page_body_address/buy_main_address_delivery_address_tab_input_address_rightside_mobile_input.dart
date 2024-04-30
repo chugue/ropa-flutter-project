@@ -1,6 +1,5 @@
+import 'package:final_project_team02/holder/buy/components/buy_page_body_address/buy_main_address_delivery_address_tab_input_address_rightside_mobile_input_dropdown_numbers.dart';
 import 'package:flutter/material.dart';
-
-import 'buy_main_address_delivery_address_tab_input_address_rightside_mobile_input_dropdown_numbers.dart';
 
 class MobileInput extends StatelessWidget {
   const MobileInput({

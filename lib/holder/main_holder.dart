@@ -1,9 +1,9 @@
+import 'package:final_project_team02/holder/buy/buy_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'main/home_page.dart';
 import 'my_page/creator/creator_view_page.dart';
-import 'my_page/user/user_my_page.dart';
 
 class MainHolder extends StatefulWidget {
   @override
@@ -11,7 +11,7 @@ class MainHolder extends StatefulWidget {
 }
 
 class _MainHorderState extends State<MainHolder> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class _MainHorderState extends State<MainHolder> {
         children: [
           HomePage(),
           CreatorPage(),
-          UserMyPage(),
+          BuyPage(),
         ],
       ),
       bottomNavigationBar: _buildBottomNavigationBar(),
