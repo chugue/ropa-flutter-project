@@ -1,9 +1,9 @@
-import 'package:final_project_team02/ui/holder/my_page/creator/creator_view_page.dart';
+import 'package:final_project_team02/ui/holder/home/home_page.dart';
 import 'package:final_project_team02/ui/holder/my_page/user/user_my_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'home/home_page.dart';
+import 'codi/codi_insert_page/codi_insert_page.dart';
 
 class MainHolder extends StatefulWidget {
   @override
@@ -20,7 +20,7 @@ class _MainHorderState extends State<MainHolder> {
         index: _selectedIndex,
         children: [
           HomePage(),
-          CreatorPage(),
+          CodiInsertPage(),
           UserMyPage(),
         ],
       ),
