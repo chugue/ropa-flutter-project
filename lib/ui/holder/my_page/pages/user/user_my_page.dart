@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../components/custom_app_bar.dart';
+import '../../../../components/custom_app_bar.dart';
 import 'components/user_my_page_body.dart';
 
 class UserMyPage extends StatelessWidget {

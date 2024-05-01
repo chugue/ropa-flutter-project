@@ -1,7 +1,7 @@
-import 'package:final_project_team02/ui/holder/my_page/user/components/apply/user_my_page_apply_modal_body_form_apply_button.dart';
-import 'package:final_project_team02/ui/holder/my_page/user/components/apply/user_my_page_apply_modal_body_form_job_drop_box.dart';
-import 'package:final_project_team02/ui/holder/my_page/user/components/apply/user_my_page_apply_modal_body_form_text_field.dart';
-import 'package:final_project_team02/ui/holder/my_page/user/components/apply/user_my_page_apply_modal_body_form_title.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/user_my_page_apply_modal_body_form_apply_button.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/user_my_page_apply_modal_body_form_job_drop_box.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/user_my_page_apply_modal_body_form_text_field.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/user_my_page_apply_modal_body_form_title.dart';
 import 'package:flutter/material.dart';
 
 class UserMyPageApplyModalBodyForm extends StatelessWidget {

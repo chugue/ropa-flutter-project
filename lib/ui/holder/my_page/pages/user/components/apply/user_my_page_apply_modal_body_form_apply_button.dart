@@ -1,6 +1,5 @@
+import 'package:final_project_team02/ui/holder/home/home_page.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../home/home_page.dart';
 
 class UserMyPageApplyModalBodyApplyButton extends StatelessWidget {
   @override

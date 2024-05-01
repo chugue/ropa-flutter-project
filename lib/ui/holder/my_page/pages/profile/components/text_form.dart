@@ -12,7 +12,7 @@ class TextForm extends StatelessWidget {
           children: [
             Text(
               text,
-              style: TextStyle(color: Colors.black87, fontSize: 13),
+              style: TextStyle(color: Colors.black54, fontSize: 13),
             ),
             TextField(
               decoration: InputDecoration(

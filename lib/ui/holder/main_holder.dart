@@ -1,5 +1,5 @@
-import 'package:final_project_team02/ui/holder/my_page/creator/creator_view_page.dart';
-import 'package:final_project_team02/ui/holder/my_page/user/user_my_page.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_view_page.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/user_my_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -54,7 +54,7 @@ class _MainHorderState extends State<MainHolder> {
 
       items: [
         BottomNavigationBarItem(label: 'ㅁ', icon: Icon(CupertinoIcons.home)),
-        BottomNavigationBarItem(label: 'ㅁ', icon: Icon(CupertinoIcons.bag)),
+        BottomNavigationBarItem(label: 'ㅁ', icon: Icon(CupertinoIcons.search)),
         BottomNavigationBarItem(
             label: 'ㅁ', icon: Icon(CupertinoIcons.person_fill)),
         // BottomNavigationBarItem(

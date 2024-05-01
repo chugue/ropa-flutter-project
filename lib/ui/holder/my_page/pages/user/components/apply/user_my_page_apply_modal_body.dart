@@ -1,4 +1,4 @@
-import 'package:final_project_team02/ui/holder/my_page/user/components/apply/user_my_page_apply_modal_body_form.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/user_my_page_apply_modal_body_form.dart';
 import 'package:flutter/material.dart';
 
 class UserMyPageApplyModalBody extends StatelessWidget {
