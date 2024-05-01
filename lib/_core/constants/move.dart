@@ -1,15 +1,14 @@
-import 'package:final_project_team02/holder/port_one/components/certification.dart';
-import 'package:final_project_team02/holder/port_one/components/certification_result.dart';
-import 'package:final_project_team02/holder/port_one/components/certification_test.dart';
-import 'package:final_project_team02/holder/port_one/components/home.dart';
-import 'package:final_project_team02/holder/port_one/components/payment.dart';
-import 'package:final_project_team02/holder/port_one/components/payment_result.dart';
-import 'package:final_project_team02/holder/port_one/port_one_page.dart';
+import 'package:final_project_team02/ui/holder/auth/join/join_page.dart';
+import 'package:final_project_team02/ui/holder/auth/login/login_page.dart';
+import 'package:final_project_team02/ui/holder/port_one/components/certification.dart';
+import 'package:final_project_team02/ui/holder/port_one/components/certification_result.dart';
+import 'package:final_project_team02/ui/holder/port_one/components/certification_test.dart';
+import 'package:final_project_team02/ui/holder/port_one/components/home.dart';
+import 'package:final_project_team02/ui/holder/port_one/components/payment.dart';
+import 'package:final_project_team02/ui/holder/port_one/components/payment_result.dart';
+import 'package:final_project_team02/ui/holder/port_one/port_one_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
-
-import '../../holder/welcome/join/join_page.dart';
-import '../../holder/welcome/login/login_page.dart';
 
 class Move {
   static String loginPage = "/login";
