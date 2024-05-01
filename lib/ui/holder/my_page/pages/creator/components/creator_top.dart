@@ -3,7 +3,7 @@ import 'package:final_project_team02/ui/holder/my_page/_components/my_page_custo
 import 'package:final_project_team02/ui/holder/my_page/_components/my_page_order_mileage.dart';
 import 'package:flutter/material.dart';
 
-class CreatorMyPageheader extends StatelessWidget {
+class CreatorTop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(

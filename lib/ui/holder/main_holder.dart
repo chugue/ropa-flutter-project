@@ -1,5 +1,5 @@
-import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_view_page.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/user_my_page.dart';
+import 'package:final_project_team02/ui/holder/serach/search_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +11,7 @@ class MainHolder extends StatefulWidget {
 }
 
 class _MainHorderState extends State<MainHolder> {
-  int _selectedIndex = 2;
+  int _selectedIndex = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class _MainHorderState extends State<MainHolder> {
         index: _selectedIndex,
         children: [
           HomePage(),
-          CreatorPage(),
+          SearchPage(),
           UserMyPage(),
         ],
       ),

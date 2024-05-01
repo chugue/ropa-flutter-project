@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class CreatorViewPageheader extends StatelessWidget {
+class CreatorViewTop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(

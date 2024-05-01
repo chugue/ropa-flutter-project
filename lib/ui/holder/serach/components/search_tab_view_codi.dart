@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class UserTabCloset extends StatelessWidget {
-  const UserTabCloset({
+class SearchTabViewCodi extends StatelessWidget {
+  const SearchTabViewCodi({
     super.key,
   });
 

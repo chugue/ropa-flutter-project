@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class UserTabCloset extends StatelessWidget {
-  const UserTabCloset({
+class CreatorViewTabViewCloset extends StatelessWidget {
+  const CreatorViewTabViewCloset({
     super.key,
   });
 
@@ -23,7 +23,7 @@ class UserTabCloset extends StatelessWidget {
             children: [
               Expanded(
                 child: AspectRatio(
-                  aspectRatio: 4,
+                  aspectRatio: 2 / 1,
                   child: ClipRRect(
                     child: Image.network(
                         // "https://picsum.photos/400/400",
@@ -33,7 +33,7 @@ class UserTabCloset extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 10),
+                padding: const EdgeInsets.only(left: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -42,12 +42,10 @@ class UserTabCloset extends StatelessWidget {
                             color: Colors.black,
                             fontSize: 25,
                             fontWeight: FontWeight.bold)),
-                    Text(
-                      "옷설명",
-                      style: TextStyle(
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
+                    Text("옷설명",
+                        style: TextStyle(
+                          overflow: TextOverflow.ellipsis,
+                        )),
                     //numberFormat 사용하면되
                     Text(
                       "가격 : 10,000원",
@@ -56,7 +54,7 @@ class UserTabCloset extends StatelessWidget {
                     SizedBox(height: 15),
                   ],
                 ),
-              ),
+              )
             ],
           ),
         );

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 
-import 'creator_bottom.dart';
-import 'creator_top.dart';
+import 'creator_view_bottom.dart';
+import 'creator_view_top.dart';
 
-class CreatorBody extends StatelessWidget {
-  const CreatorBody({
+class CreatorViewBody extends StatelessWidget {
+  const CreatorViewBody({
     super.key,
   });
 
@@ -15,11 +15,11 @@ class CreatorBody extends StatelessWidget {
         return [
           SliverToBoxAdapter(
             //프로필 설정 버튼까지
-            child: CreatorTop(),
+            child: CreatorViewTop(),
           ),
         ];
       },
-      body: CreatorBottom(),
+      body: CreatorViewBottom(),
     );
   }
 }
