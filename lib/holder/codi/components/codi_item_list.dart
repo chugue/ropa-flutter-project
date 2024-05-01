@@ -1,7 +1,6 @@
 import 'package:final_project_team02/holder/item/item_page.dart';
+import 'package:final_project_team02/models/codi.dart';
 import 'package:flutter/material.dart';
-
-import '../../../models/codi.dart';
 
 class ItemList extends StatelessWidget {
   const ItemList({
