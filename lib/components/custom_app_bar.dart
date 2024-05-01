@@ -2,8 +2,7 @@ import 'package:final_project_team02/holder/cart/cart_page.dart';
 import 'package:final_project_team02/holder/profile/settings_page.dart';
 import 'package:flutter/material.dart';
 
-import '../holder/cart/cart_page_view_model.dart';
-import '../holder/main_holder.dart';
+import 'package:final_project_team02/holder/main_holder.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final home;

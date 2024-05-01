@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../models/creator.dart';
-import '_creator_circle.dart';
+import 'package:final_project_team02/models/creator.dart';
+import 'package:final_project_team02/holder/main/components/home_creator_circle.dart';
 
 class CreatorScroll extends StatelessWidget {
   const CreatorScroll({
