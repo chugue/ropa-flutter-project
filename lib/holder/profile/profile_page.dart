@@ -1,8 +1,7 @@
+import 'package:final_project_team02/holder/main/components/positioned_button.dart';
 import 'package:final_project_team02/holder/profile/components/_text_form.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../main/componenets/positioned_button.dart';
 
 class ProfileSetting extends StatelessWidget {
   const ProfileSetting({

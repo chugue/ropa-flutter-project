@@ -1,6 +1,5 @@
+import 'package:final_project_team02/models/codi.dart';
 import 'package:flutter/cupertino.dart';
-
-import '../../../models/codi.dart';
 
 class CodiMainScroll extends StatelessWidget {
   const CodiMainScroll({

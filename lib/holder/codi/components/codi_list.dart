@@ -1,6 +1,5 @@
+import 'package:final_project_team02/models/popular_outfit.dart';
 import 'package:flutter/cupertino.dart';
-
-import '../../../models/popular_outfit.dart';
 
 class CodiList extends StatelessWidget {
   const CodiList({
