@@ -1,4 +1,4 @@
-import 'package:final_project_team02/holder/main_holder.dart';
+import 'package:final_project_team02/ui/holder/main_holder.dart';
 import 'package:flutter/material.dart';
 
 import '_core/constants/theme.dart';
