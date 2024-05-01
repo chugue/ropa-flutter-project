@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../codi/codi_page.dart';
 
-class PopularOotd extends StatelessWidget {
+class PopularOotd extends StatefulWidget {
   const PopularOotd({
     super.key,
     required this.ootd,
@@ -11,6 +11,11 @@ class PopularOotd extends StatelessWidget {
 
   final Ootd ootd;
 
+  @override
+  State<PopularOotd> createState() => _PopularOotdState();
+}
+
+class _PopularOotdState extends State<PopularOotd> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,7 +29,7 @@ class PopularOotd extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) => CodiPage(
-                          ootd: ootd,
+                          ootd: widget.ootd,
                         )),
               );
             },
@@ -32,7 +37,7 @@ class PopularOotd extends StatelessWidget {
               width: 150,
               height: 150,
               child: Image.asset(
-                ootd.Img,
+                widget.ootd.Img,
                 fit: BoxFit.cover,
               ),
             ),
@@ -44,12 +49,20 @@ class PopularOotd extends StatelessWidget {
               children: <Widget>[
                 IconButton(
                     onPressed: () {
-                      // TODO : 좋아요 기능넣기
+                      setState(() {
+                        widget.ootd.meLike = !widget.ootd.meLike;
+                        if (widget.ootd.meLike) {
+                          widget.ootd.like += 1; // 좋아요 추가
+                        } else {
+                          widget.ootd.like -= 1; // 좋아요 제거
+                        }
+                      });
                     },
-                    icon: ootd.meLike == true /* 아이콘 인데, true면 ? false면 : */
+                    icon: widget.ootd.meLike ==
+                            true /* 아이콘 인데, true면 ? false면 : */
                         ? Icon(Icons.favorite, color: Colors.red)
                         : Icon(Icons.favorite_outline)),
-                Text("${ootd.like}"),
+                Text("${widget.ootd.like}"),
               ],
             ),
           ),

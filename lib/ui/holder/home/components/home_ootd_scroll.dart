@@ -2,7 +2,7 @@ import 'package:final_project_team02/models/popular_outfit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '_popular_ootd.dart';
+import 'home_popular_ootd.dart';
 
 class OotdScroll extends StatelessWidget {
   @override

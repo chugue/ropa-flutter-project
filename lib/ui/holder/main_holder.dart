@@ -1,9 +1,9 @@
-import 'package:final_project_team02/ui/holder/auth/join/join_page.dart';
-import 'package:final_project_team02/ui/holder/auth/login/login_page.dart';
+import 'package:final_project_team02/ui/holder/my_page/creator/creator_view_page.dart';
+import 'package:final_project_team02/ui/holder/my_page/user/user_my_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'main/home_page.dart';
+import 'home/home_page.dart';
 
 class MainHolder extends StatefulWidget {
   @override
@@ -20,8 +20,8 @@ class _MainHorderState extends State<MainHolder> {
         index: _selectedIndex,
         children: [
           HomePage(),
-          LoginPage(),
-          JoinPage(),
+          CreatorPage(),
+          UserMyPage(),
         ],
       ),
       bottomNavigationBar: _buildBottomNavigationBar(),
