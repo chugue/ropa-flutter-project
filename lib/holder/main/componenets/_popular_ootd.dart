@@ -44,12 +44,20 @@ class PopularOotd extends StatelessWidget {
               children: <Widget>[
                 IconButton(
                     onPressed: () {
-                      // TODO : 좋아요 기능넣기
+                      setState(() {
+                        widget.ootd.meLike = !widget.ootd.meLike;
+                        if (widget.ootd.meLike) {
+                          widget.ootd.like += 1; // 좋아요 추가
+                        } else {
+                          widget.ootd.like -= 1; // 좋아요 제거
+                        }
+                      });
                     },
-                    icon: ootd.meLike == true /* 아이콘 인데, true면 ? false면 : */
+                    icon: widget.ootd.meLike ==
+                            true /* 아이콘 인데, true면 ? false면 : */
                         ? Icon(Icons.favorite, color: Colors.red)
                         : Icon(Icons.favorite_outline)),
-                Text("${ootd.like}"),
+                Text("${widget.ootd.like}"),
               ],
             ),
           ),

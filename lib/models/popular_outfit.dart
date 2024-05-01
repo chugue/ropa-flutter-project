@@ -1,8 +1,8 @@
 class Ootd {
   final id;
   final Img;
-  final like;
-  late final meLike;
+  late int like;
+  bool meLike;
 
   Ootd({
     required this.id,
