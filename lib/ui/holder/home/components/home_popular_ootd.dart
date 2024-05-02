@@ -1,7 +1,7 @@
 import 'package:final_project_team02/models/popular_outfit.dart';
 import 'package:flutter/material.dart';
 
-import '../../codi/codi_page.dart';
+import '../../codi/codi_detail_page/codi_page.dart';
 
 class PopularOotd extends StatefulWidget {
   const PopularOotd({
@@ -12,7 +12,9 @@ class PopularOotd extends StatefulWidget {
   final Ootd ootd;
 
   @override
-  State<PopularOotd> createState() => _PopularOotdState();
+  State<PopularOotd> createState() {
+    return _PopularOotdState();
+  }
 }
 
 class _PopularOotdState extends State<PopularOotd> {
