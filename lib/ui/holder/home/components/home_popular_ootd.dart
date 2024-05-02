@@ -12,7 +12,9 @@ class PopularOotd extends StatefulWidget {
   final Ootd ootd;
 
   @override
-  State<PopularOotd> createState() => _PopularOotdState();
+  State<PopularOotd> createState() {
+    return _PopularOotdState();
+  }
 }
 
 class _PopularOotdState extends State<PopularOotd> {

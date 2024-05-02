@@ -1,3 +1,4 @@
+import 'package:final_project_team02/ui/holder/codi/codi_item_insert_page/codi_item_insert_page.dart';
 import 'package:flutter/material.dart';
 
 class ItemInsert extends StatelessWidget {
@@ -13,6 +14,12 @@ class ItemInsert extends StatelessWidget {
         onTap: () {
           // 상품추가 메서드 추가
           print("${category} 상품 추가 선택됨");
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ItemInsertPage(category: category),
+            ),
+          );
         },
         child: Column(
           children: [
