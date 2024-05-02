@@ -1,19 +1,19 @@
 import 'dart:async';
 
+import 'package:final_project_team02/models/popular_outfit.dart';
 import 'package:final_project_team02/models/slide_ad.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:final_project_team02/ui/holder/codi/codi_page.dart';
+import 'package:flutter/material.dart';
 
 import 'home_ad_scroll.dart';
 import 'home_creator_scroll.dart';
+import 'home_item_scroll.dart';
 import 'home_main_title.dart';
 import 'home_main_title_another.dart';
 import 'home_more_style.dart';
-import 'home_ootd_scroll.dart';
 import 'home_sliver_app_bar.dart';
 
 class HomeBody extends StatefulWidget {
-  const HomeBody({super.key});
-
   @override
   State<HomeBody> createState() => _HomeBodyState();
 }
@@ -35,8 +35,46 @@ class _HomeBodyState extends State<HomeBody> {
         MainTitle(),
         CreatorScroll(),
         MainTitleAnother(),
-        OotdScroll(),
+        ItemScroll(),
         MoreStyle(),
+        SliverGrid(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, // ✅한 행에 두 개의 항목
+            crossAxisSpacing: 10.0,
+            mainAxisSpacing: 12.0,
+          ),
+          delegate: SliverChildBuilderDelegate(
+            (context, index) {
+              return Stack(
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  CodiPage(ootd: ootdList[index])));
+                    },
+                    child: Image.network(
+                      // "https://picsum.photos/400/400",
+                      "https://picsum.photos/id/${index + 1}/600/600",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Positioned(
+                    right: 10,
+                    top: 10,
+                    child: Icon(
+                      Icons.auto_awesome_motion,
+                      color: Colors.white,
+                    ),
+                  )
+                ],
+              );
+            },
+            childCount: 8,
+          ),
+        ),
       ],
     );
   }

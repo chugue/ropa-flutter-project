@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 
-class SaveDefaultBuyOption extends StatefulWidget {
-  const SaveDefaultBuyOption({
-    super.key,
-  });
-
+class BuyPayMentDefaultOptions extends StatefulWidget {
   @override
-  State<SaveDefaultBuyOption> createState() => _SaveDefaultBuyOptionState();
+  State<BuyPayMentDefaultOptions> createState() =>
+      _BuyPayMentDefaultOptionsState();
 }
 
-class _SaveDefaultBuyOptionState extends State<SaveDefaultBuyOption> {
+class _BuyPayMentDefaultOptionsState extends State<BuyPayMentDefaultOptions> {
   bool _saveDefaultBuyOption = false;
 
   @override
@@ -19,12 +16,14 @@ class _SaveDefaultBuyOptionState extends State<SaveDefaultBuyOption> {
       child: Row(
         children: [
           Checkbox(
-            fillColor: MaterialStateColor.resolveWith((states) {
-              if (states.contains(MaterialState.selected)) {
-                return Colors.black; // 체크되었을 때의 색상
-              }
-              return Colors.white; // 비체크 상태일 때의 색상
-            }),
+            fillColor: MaterialStateColor.resolveWith(
+              (states) {
+                if (states.contains(MaterialState.selected)) {
+                  return Colors.black; // 체크되었을 때의 색상
+                }
+                return Colors.white; // 비체크 상태일 때의 색상
+              },
+            ),
             value: _saveDefaultBuyOption,
             onChanged: (value) {
               setState(() {

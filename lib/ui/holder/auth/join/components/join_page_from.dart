@@ -4,20 +4,17 @@ import 'package:final_project_team02/ui/components/custom_form_field.dart';
 import 'package:final_project_team02/ui/holder/auth/login/login_page.dart';
 import 'package:flutter/material.dart';
 
-class JoinPageFrom extends StatefulWidget {
+class JoinFrom extends StatefulWidget {
   @override
-  State<JoinPageFrom> createState() => _JoinPageFromFieldState();
+  State<JoinFrom> createState() => _JoinFromState();
 }
 
-class _JoinPageFromFieldState extends State<JoinPageFrom> {
+class _JoinFromState extends State<JoinFrom> {
   final _formSignupKey = GlobalKey<FormState>();
-
   final email = TextEditingController();
-  // 값을 분석
   final password = TextEditingController();
-  // 값을 분석
   final nickName = TextEditingController();
-  // 값을 분석
+
   bool agreePersonalData = true;
 
   @override
@@ -117,7 +114,7 @@ class _JoinPageFromFieldState extends State<JoinPageFrom> {
             );
           }
         },
-        child: Text('회원가입 완료'),
+        child: Text('회원가입'),
       ),
     );
   }

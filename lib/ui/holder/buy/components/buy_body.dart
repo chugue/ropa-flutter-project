@@ -1,16 +1,12 @@
-import 'package:final_project_team02/ui/components/bottom_button.dart';
 import 'package:final_project_team02/ui/holder/buy/components/buy_address/buy_adress.dart';
 import 'package:final_project_team02/ui/holder/buy/components/buy_info_title.dart';
-import 'package:final_project_team02/ui/holder/buy/components/buy_option_title.dart';
+import 'package:final_project_team02/ui/holder/buy/components/buy_order.dart';
+import 'package:final_project_team02/ui/holder/buy/components/buy_order_button.dart';
 import 'package:final_project_team02/ui/holder/buy/components/buy_page_buy_box_divider.dart';
-import 'package:final_project_team02/ui/holder/buy/components/main_order_title.dart';
+import 'package:final_project_team02/ui/holder/buy/components/buy_pay_ment.dart';
 import 'package:flutter/cupertino.dart';
 
-class BuyPageBody extends StatelessWidget {
-  const BuyPageBody({
-    super.key,
-  });
-
+class BuyBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -22,16 +18,20 @@ class BuyPageBody extends StatelessWidget {
           BuyAddress(),
           BuyPageBodyBoxDivider(),
 
-          BuyOrderTitle(),
+          //주문상품
+          BuyOrder(),
           BuyPageBodyBoxDivider(),
 
-          BuyInfoTitle(),
+          //결제정보
+          BuyInfo(),
           BuyPageBodyBoxDivider(),
 
-          BuyOptionTitle(),
+          //결제수단
+          BuyPayMent(),
           BuyPageBodyBoxDivider(),
 
-          BottomButton(text: "48,700원 결제하기")
+          //결제 하기
+          BuyOrderButton(text: "48,700원 결제하기")
         ],
       ),
     );

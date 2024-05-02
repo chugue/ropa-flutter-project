@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../../components/logo.dart';
-import 'login_page_from.dart';
+import 'login_from.dart';
 
-class LoginPageBody extends StatelessWidget {
-  const LoginPageBody({
-    super.key,
-  });
-
+class LoginBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -16,7 +12,7 @@ class LoginPageBody extends StatelessWidget {
         Expanded(
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: LoginPageFrom(),
+            child: LoginFrom(),
           ),
         ),
       ],

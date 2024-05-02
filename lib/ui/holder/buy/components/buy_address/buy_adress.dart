@@ -1,7 +1,7 @@
 import 'package:expandable/expandable.dart';
 import 'package:final_project_team02/ui/holder/buy/components/buy_address/buy_address_request.dart';
 import 'package:final_project_team02/ui/holder/buy/components/buy_address/buy_address_tab.dart';
-import 'package:final_project_team02/ui/holder/buy/components/buy_main_title.dart';
+import 'package:final_project_team02/ui/holder/buy/components/custom_main_title.dart';
 import 'package:flutter/material.dart';
 
 class BuyAddress extends StatelessWidget {
@@ -17,7 +17,7 @@ class BuyAddress extends StatelessWidget {
       controller: expController,
       header: Padding(
         padding: const EdgeInsets.all(20),
-        child: BuyMainTitle(text: "배송지"),
+        child: CustomMainTitle(text: "배송지"),
       ),
       theme: ExpandableThemeData(
         iconColor: Colors.black,

@@ -1,3 +1,4 @@
+import 'package:final_project_team02/ui/holder/item/item_page.dart';
 import 'package:flutter/material.dart';
 
 class CreatorViewTabViewCloset extends StatelessWidget {
@@ -22,13 +23,19 @@ class CreatorViewTabViewCloset extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                child: AspectRatio(
-                  aspectRatio: 2 / 1,
-                  child: ClipRRect(
-                    child: Image.network(
-                        // "https://picsum.photos/400/400",
-                        "https://picsum.photos/id/${index + 1}/600/600",
-                        fit: BoxFit.cover),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ItemPage()));
+                  },
+                  child: AspectRatio(
+                    aspectRatio: 2 / 1,
+                    child: ClipRRect(
+                      child: Image.network(
+                          // "https://picsum.photos/400/400",
+                          "https://picsum.photos/id/${index + 1}/600/600",
+                          fit: BoxFit.cover),
+                    ),
                   ),
                 ),
               ),

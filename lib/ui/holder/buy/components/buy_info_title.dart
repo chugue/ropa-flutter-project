@@ -1,14 +1,10 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
-import 'buy_info_buy_info_row.dart';
-import 'buy_main_title.dart';
+import 'buy_info_row.dart';
+import 'custom_main_title.dart';
 
-class BuyInfoTitle extends StatelessWidget {
-  const BuyInfoTitle({
-    super.key,
-  });
-
+class BuyInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ExpandableController expController =
@@ -18,7 +14,7 @@ class BuyInfoTitle extends StatelessWidget {
       controller: expController,
       header: Padding(
         padding: const EdgeInsets.all(20),
-        child: BuyMainTitle(text: "결제정보"),
+        child: CustomMainTitle(text: "결제정보"),
       ),
       theme: ExpandableThemeData(
         iconColor: Colors.black,

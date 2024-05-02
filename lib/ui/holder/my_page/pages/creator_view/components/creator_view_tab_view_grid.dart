@@ -1,4 +1,7 @@
+import 'package:final_project_team02/models/popular_outfit.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../codi/codi_page.dart';
 
 class CreatorViewTabViewGird extends StatelessWidget {
   const CreatorViewTabViewGird({
@@ -20,7 +23,12 @@ class CreatorViewTabViewGird extends StatelessWidget {
         return Stack(
           children: [
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CodiPage(ootd: ootdList.first)));
+              },
               child: AspectRatio(
                 aspectRatio: 1,
                 child: Image.network(

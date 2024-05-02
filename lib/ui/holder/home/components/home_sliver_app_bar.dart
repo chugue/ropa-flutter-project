@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeSliverAppBar extends StatelessWidget {
@@ -12,7 +11,7 @@ class HomeSliverAppBar extends StatelessWidget {
         children: [
           SizedBox(
             child: Image.asset(
-              "assets/images/ropa_logo.png",
+              "assets/images/ropa_home_logo.png",
               width: 120,
             ),
           ),
@@ -22,8 +21,7 @@ class HomeSliverAppBar extends StatelessWidget {
         IconButton(
           onPressed: () {},
           icon: Icon(
-            CupertinoIcons.ellipsis,
-            size: 30,
+            Icons.notifications,
           ),
         ),
         SizedBox(width: 16),

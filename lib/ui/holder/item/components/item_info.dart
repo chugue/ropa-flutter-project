@@ -68,15 +68,10 @@ class ItemInfo extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(25),
             child: Image.asset(
-              "assets/images/ropa_logo.png",
+              "assets/images/ropa_home_logo.png",
               width: 50,
               height: 50,
             ),
-          ),
-          SizedBox(width: 16),
-          Text(
-            "ROPA",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
         ],
       ),

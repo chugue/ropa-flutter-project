@@ -3,11 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../components/logo.dart';
 import 'join_page_from.dart';
 
-class JoinPageBody extends StatelessWidget {
-  const JoinPageBody({
-    super.key,
-  });
-
+class JoinBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -16,7 +12,7 @@ class JoinPageBody extends StatelessWidget {
         Expanded(
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: JoinPageFrom(),
+            child: JoinFrom(),
           ),
         ),
       ],

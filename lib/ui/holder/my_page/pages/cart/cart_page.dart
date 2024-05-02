@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 
-import 'components/order_history_page_body.dart';
+import 'components/cart_page_body.dart';
 
-class OrderHistoryPage extends StatelessWidget {
-  const OrderHistoryPage({
-    required this.orderId,
+class CartPage extends StatelessWidget {
+  final cartIcon;
+
+  const CartPage({
+    required this.cartIcon,
   });
-
-  final int orderId;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
+    return TextButton(
+      child: Icon(cartIcon),
+      onPressed: () {
         showModalBottomSheet(
           context: context,
           builder: (context) {
-
-            return OrderHistoryPageBody();
-
+            //바디
+            return CartPageBody();
           },
 
           //바텀 모양
@@ -33,7 +33,7 @@ class OrderHistoryPage extends StatelessWidget {
           enableDrag: true,
 
           /// 바텀시트가 아닌 부분을 클릭했을 때 닫기
-          // isDismissible: true,
+          isDismissible: true,
 
           /// 사이즈 조절
           constraints: const BoxConstraints(
@@ -48,14 +48,6 @@ class OrderHistoryPage extends StatelessWidget {
           useSafeArea: true,
         );
       },
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text("주문조회", style: TextStyle(color: Colors.black26, fontSize: 25)),
-          Text("${orderId}",
-              style: TextStyle(color: Colors.black, fontSize: 20)),
-        ],
-      ),
     );
   }
 }

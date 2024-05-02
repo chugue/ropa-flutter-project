@@ -11,15 +11,14 @@ import 'codi_main_scroll.dart';
 import 'codi_title.dart';
 
 class CodiBody extends StatelessWidget {
-  const CodiBody({
-    super.key,
-    required this.ootd,
-  });
-
   final Ootd ootd;
+
+  CodiBody({required this.ootd});
 
   @override
   Widget build(BuildContext context) {
+    // watch  (상태 관리)
+
     return CustomScrollView(
       slivers: [
         MainAppBar(),

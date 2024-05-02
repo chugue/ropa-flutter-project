@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../components/custom_app_bar.dart';
-import 'components/join_page_body.dart';
+import 'components/join_body.dart';
 
 class JoinPage extends StatelessWidget {
   const JoinPage({super.key});
@@ -15,7 +15,7 @@ class JoinPage extends StatelessWidget {
         cart: null,
       ),
       backgroundColor: Colors.white,
-      body: JoinPageBody(),
+      body: JoinBody(),
     );
   }
 }

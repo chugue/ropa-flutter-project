@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class OrderingItems extends StatelessWidget {
+class BuyOrderItemCard extends StatelessWidget {
   String itemTitle;
   String subTitle;
   String options;
@@ -9,7 +9,7 @@ class OrderingItems extends StatelessWidget {
   String price;
   String photoPath;
 
-  OrderingItems({
+  BuyOrderItemCard({
     required this.itemTitle,
     required this.subTitle,
     required this.options,
