@@ -1,7 +1,7 @@
+import 'package:final_project_team02/ui/holder/serach/components/search_tab_bar.dart';
+import 'package:final_project_team02/ui/holder/serach/components/search_tab_view_Item.dart';
+import 'package:final_project_team02/ui/holder/serach/components/search_tab_view_codi.dart';
 import 'package:flutter/material.dart';
-
-import '../../my_page/pages/user/components/user_my_page_body_bottom_tab_bar_closet.dart';
-import '../../my_page/pages/user/components/user_my_page_body_bottom_tab_var.dart';
 
 class SearchBody extends StatelessWidget {
   const SearchBody({
@@ -17,7 +17,6 @@ class SearchBody extends StatelessWidget {
             return [
               SliverAppBar(
                 floating: true,
-                snap: false,
                 pinned: true,
                 flexibleSpace: Padding(
                   padding: const EdgeInsets.symmetric(
@@ -37,26 +36,61 @@ class SearchBody extends StatelessWidget {
                   ),
                 ),
               ),
-              SliverToBoxAdapter(
-                child: UserTabBar(),
+              SliverPersistentHeader(
+                delegate: MyPersistentHeaderDelegate(
+                    minHeight: 50,
+                    maxHeight: 50,
+                    child:
+                        Container(color: Colors.white, child: SearchTabBar())),
+                pinned: true,
               ),
             ];
           },
           body: Column(
             children: [
+              SizedBox(height: 60),
               //탭바
               Expanded(
                 child: TabBarView(
                   children: [
                     //탭바 그리드
-                    Align(child: Text("크리에이터가 되어 자신의 멋진 코디를 뽐내 보세요.!!")),
+                    SearchTabViewCodi(),
                     //탭바 옷장
-                    UserTabCloset(),
+                    SearchTabViewItem(),
                   ],
                 ),
               ),
             ],
           )),
     );
+  }
+}
+
+class MyPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
+  final double minHeight;
+  final double maxHeight;
+  final Widget child;
+
+  MyPersistentHeaderDelegate({
+    required this.child,
+    required this.minHeight,
+    required this.maxHeight,
+  });
+
+  @override
+  double get maxExtent => maxHeight;
+
+  @override
+  double get minExtent => minHeight;
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return false;
+  }
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return child;
   }
 }
