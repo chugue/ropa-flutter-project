@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../order/order_history_page.dart';
+import '../pages/order/order_history_page.dart';
 
 class MyPageOrderMileage extends StatelessWidget {
   final int orderId;

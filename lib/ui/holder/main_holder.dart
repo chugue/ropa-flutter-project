@@ -1,9 +1,9 @@
-import 'package:final_project_team02/ui/holder/home/home_page.dart';
-import 'package:final_project_team02/ui/holder/my_page/user/user_my_page.dart';
+import 'package:final_project_team02/ui/holder/serach/search_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'codi/codi_insert_page/codi_insert_page.dart';
+import 'home/home_page.dart';
+import 'my_page/pages/user/user_my_page.dart';
 
 class MainHolder extends StatefulWidget {
   @override
@@ -11,7 +11,7 @@ class MainHolder extends StatefulWidget {
 }
 
 class _MainHorderState extends State<MainHolder> {
-  int _selectedIndex = 2;
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class _MainHorderState extends State<MainHolder> {
         index: _selectedIndex,
         children: [
           HomePage(),
-          CodiInsertPage(),
+          SearchPage(),
           UserMyPage(),
         ],
       ),
@@ -54,7 +54,7 @@ class _MainHorderState extends State<MainHolder> {
 
       items: [
         BottomNavigationBarItem(label: 'ㅁ', icon: Icon(CupertinoIcons.home)),
-        BottomNavigationBarItem(label: 'ㅁ', icon: Icon(CupertinoIcons.bag)),
+        BottomNavigationBarItem(label: 'ㅁ', icon: Icon(CupertinoIcons.search)),
         BottomNavigationBarItem(
             label: 'ㅁ', icon: Icon(CupertinoIcons.person_fill)),
         // BottomNavigationBarItem(

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:final_project_team02/ui/holder/buy/buy_page.dart';
 import 'package:flutter/material.dart';
 
 import 'item_buy_options.dart';
@@ -60,7 +61,12 @@ class ItemBuyButton extends StatelessWidget {
                               ),
                               InkWell(
                                 hoverColor: Colors.transparent,
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => BuyPage()));
+                                },
                                 child: Container(
                                   child: Padding(
                                     padding: const EdgeInsets.all(16.0),
@@ -97,7 +103,7 @@ class ItemBuyButton extends StatelessWidget {
                   /// 사이즈 조절
                   constraints: const BoxConstraints(
                     maxWidth: double.infinity,
-                    maxHeight: 550,
+                    maxHeight: 300,
                   ),
 
                   isScrollControlled: true,
