@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'components/creator_view_body.dart';
 
-class CreatorPage extends StatelessWidget {
-  const CreatorPage({super.key});
+class CreatorViewPage extends StatelessWidget {
+  const CreatorViewPage({super.key});
 
   @override
   Widget build(BuildContext context) {

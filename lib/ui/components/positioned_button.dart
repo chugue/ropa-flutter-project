@@ -1,6 +1,5 @@
+import 'package:final_project_team02/ui/components/bottom_button.dart';
 import 'package:flutter/cupertino.dart';
-
-import '../../../components/bottom_button.dart';
 
 class PositionedButton extends StatelessWidget {
   String text;

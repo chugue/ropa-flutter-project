@@ -1,8 +1,8 @@
-import 'package:final_project_team02/ui/holder/cart/cart_page.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/settings/settings_page.dart';
 import 'package:flutter/material.dart';
 
 import '../holder/main_holder.dart';
+import '../holder/my_page/pages/cart/cart_page.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final home;

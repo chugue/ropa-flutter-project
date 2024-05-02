@@ -16,7 +16,6 @@ class SearchBody extends StatelessWidget {
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return [
               SliverAppBar(
-                floating: true,
                 pinned: true,
                 flexibleSpace: Padding(
                   padding: const EdgeInsets.symmetric(
@@ -36,26 +35,30 @@ class SearchBody extends StatelessWidget {
                   ),
                 ),
               ),
-              SliverPersistentHeader(
-                delegate: MyPersistentHeaderDelegate(
-                    minHeight: 50,
-                    maxHeight: 50,
-                    child:
-                        Container(color: Colors.white, child: SearchTabBar())),
-                pinned: true,
-              ),
+              SliverAppBar(
+                floating: true,
+                flexibleSpace: SearchTabBar(),
+              )
+              // SliverPersistentHeader(
+              //   delegate: MyPersistentHeaderDelegate(
+              //       minHeight: 50,
+              //       maxHeight: 50,
+              //       child:
+              //           Container(color: Colors.white, child: SearchTabBar())),
+              //   pinned: true,
+              // )
             ];
           },
           body: Column(
             children: [
-              SizedBox(height: 60),
               //탭바
               Expanded(
                 child: TabBarView(
                   children: [
-                    //탭바 그리드
+                    //탭바 코디
                     SearchTabViewCodi(),
-                    //탭바 옷장
+
+                    //탭바 아이템
                     SearchTabViewItem(),
                   ],
                 ),

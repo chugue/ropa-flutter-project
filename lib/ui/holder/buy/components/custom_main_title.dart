@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class BuyMainTitle extends StatelessWidget {
+class CustomMainTitle extends StatelessWidget {
   String text;
 
-  BuyMainTitle({
+  CustomMainTitle({
     required this.text,
   });
 

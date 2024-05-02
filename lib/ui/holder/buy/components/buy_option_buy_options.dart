@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class BuyOptions extends StatefulWidget {
+class BuyPayMentOptions extends StatefulWidget {
   @override
-  _BuyOptionsState createState() => _BuyOptionsState();
+  _BuyPayMentOptionsState createState() => _BuyPayMentOptionsState();
 }
 
-class _BuyOptionsState extends State<BuyOptions> {
+class _BuyPayMentOptionsState extends State<BuyPayMentOptions> {
   int? selectedValue;
 
   List<Option> _options = [

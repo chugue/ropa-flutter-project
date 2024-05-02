@@ -1,9 +1,9 @@
-import 'package:final_project_team02/ui/holder/my_page/pages/user/user_my_page.dart';
 import 'package:final_project_team02/ui/holder/serach/search_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'home/home_page.dart';
+import 'my_page/pages/user/user_my_page.dart';
 
 class MainHolder extends StatefulWidget {
   @override
@@ -11,7 +11,7 @@ class MainHolder extends StatefulWidget {
 }
 
 class _MainHorderState extends State<MainHolder> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {

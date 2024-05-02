@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 
 import '../../../../components/custom_form_field.dart';
 
-class LoginPageFrom extends StatefulWidget {
+class LoginFrom extends StatefulWidget {
   @override
-  State<LoginPageFrom> createState() => _LoginPageFromState();
+  State<LoginFrom> createState() => _LoginFromState();
 }
 
-class _LoginPageFromState extends State<LoginPageFrom> {
+class _LoginFromState extends State<LoginFrom> {
   final email = TextEditingController();
   final password = TextEditingController();
   final _formSignInKey = GlobalKey<FormState>();

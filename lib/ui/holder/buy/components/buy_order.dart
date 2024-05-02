@@ -1,14 +1,10 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
-import 'buy_main_title.dart';
-import 'main_order_ordering_items.dart';
+import 'buy_order_item_card.dart';
+import 'custom_main_title.dart';
 
-class BuyOrderTitle extends StatelessWidget {
-  const BuyOrderTitle({
-    super.key,
-  });
-
+class BuyOrder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ExpandableController expController =
@@ -18,7 +14,7 @@ class BuyOrderTitle extends StatelessWidget {
       controller: expController,
       header: Padding(
         padding: const EdgeInsets.all(20),
-        child: BuyMainTitle(text: "주문상품"),
+        child: CustomMainTitle(text: "주문상품"),
       ),
       theme: ExpandableThemeData(
         iconColor: Colors.black,
@@ -34,7 +30,7 @@ class BuyOrderTitle extends StatelessWidget {
             shrinkWrap: true,
             primary: false,
             itemBuilder: (context, index) {
-              return OrderingItems(
+              return BuyOrderItemCard(
                   itemTitle: 'VL8814 웰라이트 와이드데님',
                   subTitle: 'Black Heavy Brush',
                   options: '[옵션: L (32)]',
