@@ -1,4 +1,4 @@
-import 'package:final_project_team02/models/slide_ad.dart';
+import 'package:final_project_team02/data/domain_data/slide_ad.dart';
 import 'package:flutter/cupertino.dart';
 
 class AutoAdSlider extends StatelessWidget {

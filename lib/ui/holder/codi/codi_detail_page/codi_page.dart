@@ -1,6 +1,7 @@
-import 'package:final_project_team02/models/popular_outfit.dart';
-import 'package:final_project_team02/ui/holder/codi/components/codi_body.dart';
+import 'package:final_project_team02/data/domain_data/popular_outfit.dart';
 import 'package:flutter/material.dart';
+
+import 'components/codi_page_body.dart';
 
 class CodiPage extends StatelessWidget {
   const CodiPage({super.key, required this.ootd});
