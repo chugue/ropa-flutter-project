@@ -1,9 +1,8 @@
-import 'package:final_project_team02/ui/holder/codi/codi_insert_page/codi_insert_page.dart';
+import 'package:final_project_team02/ui/holder/home/home_page.dart';
+import 'package:final_project_team02/ui/holder/inquiry/inquiry_page2.dart';
 import 'package:final_project_team02/ui/holder/serach/search_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'home/home_page.dart';
 
 class MainHolder extends StatefulWidget {
   @override
@@ -21,7 +20,7 @@ class _MainHorderState extends State<MainHolder> {
         children: [
           HomePage(),
           SearchPage(),
-          CodiInsertPage(),
+          InquiryPage2(),
         ],
       ),
       bottomNavigationBar: _buildBottomNavigationBar(),
