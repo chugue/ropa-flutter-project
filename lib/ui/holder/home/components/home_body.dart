@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:final_project_team02/models/popular_outfit.dart';
 import 'package:final_project_team02/models/slide_ad.dart';
-import 'package:final_project_team02/ui/holder/codi/codi_page.dart';
 import 'package:flutter/material.dart';
 
+import '../../codi/codi_detail_page/codi_page.dart';
 import 'home_ad_scroll.dart';
 import 'home_creator_scroll.dart';
 import 'home_item_scroll.dart';
