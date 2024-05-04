@@ -10,9 +10,11 @@ class InquiryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
-          Icons.chevron_left,
-          size: 30,
+        leading: IconButton(
+          icon: Icon(Icons.chevron_left, size: 30),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         title: Text(
           "1대1 문의내역",
