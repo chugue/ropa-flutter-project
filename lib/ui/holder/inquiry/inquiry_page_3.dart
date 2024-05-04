@@ -3,8 +3,8 @@ import 'package:final_project_team02/models/inquiry.dart';
 import 'package:final_project_team02/ui/holder/inquiry/components/inquiry_list.dart';
 import 'package:flutter/material.dart';
 
-class InquiryPage extends StatelessWidget {
-  const InquiryPage({super.key});
+class InquiryPage3 extends StatelessWidget {
+  const InquiryPage3({super.key});
 
   @override
   Widget build(BuildContext context) {
