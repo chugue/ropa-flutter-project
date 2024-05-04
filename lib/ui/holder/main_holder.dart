@@ -1,8 +1,9 @@
-import 'package:final_project_team02/ui/holder/home/home_page.dart';
 import 'package:final_project_team02/ui/holder/inquiry/inquiry_page2.dart';
 import 'package:final_project_team02/ui/holder/serach/search_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'my_page/pages/user/user_my_page.dart';
 
 class MainHolder extends StatefulWidget {
   @override
@@ -18,9 +19,9 @@ class _MainHorderState extends State<MainHolder> {
       body: IndexedStack(
         index: _selectedIndex,
         children: [
-          HomePage(),
-          SearchPage(),
           InquiryPage2(),
+          SearchPage(),
+          UserMyPage(),
         ],
       ),
       bottomNavigationBar: _buildBottomNavigationBar(),
