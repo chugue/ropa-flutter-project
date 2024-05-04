@@ -1,8 +1,8 @@
+import 'package:final_project_team02/ui/holder/home/home_page.dart';
 import 'package:final_project_team02/ui/holder/serach/search_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'home/home_page.dart';
 import 'my_page/pages/user/user_my_page.dart';
 
 class MainHolder extends StatefulWidget {
@@ -37,7 +37,7 @@ class _MainHorderState extends State<MainHolder> {
       //선택이 될때 글자가 보인다.
 
       backgroundColor: Colors.white,
-      //선택된 아이콘에 색상 보여주기
+      //선택된 아이콘에 색상 보여ㅈ기
 
       selectedItemColor: Colors.black,
       //클릭시 아이콘 색상

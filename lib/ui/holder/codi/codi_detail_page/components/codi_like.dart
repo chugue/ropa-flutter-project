@@ -1,4 +1,4 @@
-import 'package:final_project_team02/models/popular_outfit.dart';
+import 'package:final_project_team02/models/ootd.dart';
 import 'package:flutter/material.dart';
 
 class CodiLike extends StatefulWidget {

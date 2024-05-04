@@ -1,7 +1,6 @@
+import 'package:final_project_team02/models/ootd.dart';
+import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_page.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../models/popular_outfit.dart';
-import '../../codi/codi_detail_page/codi_page.dart';
 
 class SearchTabViewCodi extends StatelessWidget {
   const SearchTabViewCodi({
