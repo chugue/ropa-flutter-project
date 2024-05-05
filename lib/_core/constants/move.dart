@@ -1,5 +1,7 @@
 import 'package:final_project_team02/ui/holder/auth/join/join_page.dart';
 import 'package:final_project_team02/ui/holder/auth/login/login_page.dart';
+import 'package:final_project_team02/ui/holder/home/home_page.dart';
+import 'package:final_project_team02/ui/holder/main_holder.dart';
 import 'package:final_project_team02/ui/holder/port_one/components/certification.dart';
 import 'package:final_project_team02/ui/holder/port_one/components/certification_result.dart';
 import 'package:final_project_team02/ui/holder/port_one/components/certification_test.dart';
@@ -11,7 +13,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 class Move {
+  static String mainHoder = "/mainHoder";
   static String loginPage = "/login";
+  static String homePage = "/home";
   static String joinPage = "/join";
   static String payment = "/payment";
   static String paymentTest = "/paymentTest";
@@ -19,6 +23,8 @@ class Move {
 
 Map<String, Widget Function(BuildContext)> getRouters() {
   return {
+    Move.mainHoder: (context) => MainHolder(),
+    Move.homePage: (context) => const HomePage(),
     Move.loginPage: (context) => const LoginPage(),
     Move.joinPage: (context) => const JoinPage(),
     Move.payment: (context) => Payment(),

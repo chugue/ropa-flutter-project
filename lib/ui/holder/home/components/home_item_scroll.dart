@@ -1,6 +1,6 @@
+import 'package:final_project_team02/data/domain_data/codi.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../models/codi.dart';
 import '../../item/item_page.dart';
 
 class ItemScroll extends StatelessWidget {

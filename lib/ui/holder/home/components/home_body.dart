@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:final_project_team02/models/ootd.dart';
-import 'package:final_project_team02/models/slide_ad.dart';
+import 'package:final_project_team02/data/domain_data/ootd.dart';
+import 'package:final_project_team02/data/domain_data/slide_ad.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_page.dart';
 import 'package:final_project_team02/ui/holder/home/components/home_ad_scroll.dart';
 import 'package:final_project_team02/ui/holder/home/components/home_creator_scroll.dart';

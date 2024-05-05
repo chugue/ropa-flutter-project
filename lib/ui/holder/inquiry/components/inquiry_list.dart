@@ -1,4 +1,4 @@
-import 'package:final_project_team02/models/inquiry.dart';
+import 'package:final_project_team02/data/domain_data/inquiry.dart';
 import 'package:flutter/material.dart';
 
 // 📢stf로 관리하겠습니다.

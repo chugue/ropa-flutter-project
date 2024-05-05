@@ -1,4 +1,4 @@
-import 'package:final_project_team02/models/inquiry.dart';
+import 'package:final_project_team02/data/domain_data/inquiry.dart';
 import 'package:final_project_team02/ui/holder/inquiry/inquiry_detail_page/components/inquiry_detail_answer.dart';
 import 'package:final_project_team02/ui/holder/inquiry/inquiry_detail_page/components/inquiry_detail_qestion.dart';
 import 'package:flutter/cupertino.dart';

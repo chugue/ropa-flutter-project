@@ -1,4 +1,4 @@
-import 'package:final_project_team02/models/ootd.dart';
+import 'package:final_project_team02/data/domain_data/ootd.dart';
 import 'package:final_project_team02/ui/components/main_app_bar.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/components/codi_content.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/components/codi_create_at.dart';

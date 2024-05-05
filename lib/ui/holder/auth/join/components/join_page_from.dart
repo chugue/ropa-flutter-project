@@ -3,24 +3,23 @@ import 'package:final_project_team02/_core/uitls/validator_util.dart';
 import 'package:final_project_team02/ui/components/custom_form_field.dart';
 import 'package:final_project_team02/ui/holder/auth/login/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class JoinFrom extends StatefulWidget {
-  @override
-  State<JoinFrom> createState() => _JoinFromState();
-}
+import '../../../../../data/dtos/user_request.dart';
+import '../../../../../data/session_data/session_data.dart';
 
-class _JoinFromState extends State<JoinFrom> {
-  final _formSignupKey = GlobalKey<FormState>();
-  final email = TextEditingController();
-  final password = TextEditingController();
-  final nickName = TextEditingController();
+class JoinFrom extends ConsumerWidget {
+  final _formKey = GlobalKey<FormState>();
+  final _email = TextEditingController();
+  final _password = TextEditingController();
+  final _nickName = TextEditingController();
 
   bool agreePersonalData = true;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Form(
-      key: _formSignupKey,
+      key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -29,7 +28,7 @@ class _JoinFromState extends State<JoinFrom> {
           // 이메일 폼 필드
           CustomFormField(
             text: 'Email',
-            controller: email,
+            controller: _email,
             validator: validateEmail(),
           ),
           const SizedBox(height: 25.0),
@@ -37,7 +36,7 @@ class _JoinFromState extends State<JoinFrom> {
           // 패스워드 폼 필드
           CustomFormField(
             text: 'Password',
-            controller: password,
+            controller: _password,
             validator: validatePassword(),
           ),
           const SizedBox(height: 25.0),
@@ -45,7 +44,7 @@ class _JoinFromState extends State<JoinFrom> {
           //닉네임 폼 필드
           CustomFormField(
             text: 'NickName',
-            controller: nickName,
+            controller: _nickName,
             validator: validateNickName(),
           ),
           SizedBox(height: 25.0),
@@ -55,66 +54,35 @@ class _JoinFromState extends State<JoinFrom> {
           // const SizedBox(height: 25.0),
 
           // 회원가입 버튼
-          buildJoinButton(context),
+          ElevatedButton(
+            onPressed: () {
+              bool isOk = _formKey.currentState!.validate();
+              if (isOk) {
+                String nickName = _nickName.text.trim();
+                String password = _password.text.trim();
+                String email = _email.text.trim();
+                print(
+                    "nickName: ${nickName} password: ${password} email: ${email}");
+
+                JoinReqDTO joinReqDTO = JoinReqDTO(
+                  nickName: nickName,
+                  password: password,
+                  email: email,
+                );
+                print("joinReqDTO: ${joinReqDTO.toJson()}");
+                SessionData s = ref.read(sessionProvider);
+
+                s.join(joinReqDTO);
+              }
+            },
+            child: Text('회원가입'),
+          ),
           SizedBox(height: 30.0),
 
           // '가입하신 적이 있나요?' 문구
           _buildSignUpCheck(context),
           SizedBox(height: 20.0),
         ],
-      ),
-    );
-  }
-
-  //개인정보처리 동의(필수)
-  Widget buildProcessingInformation() {
-    return Row(
-      children: [
-        Checkbox(
-          value: agreePersonalData,
-          onChanged: (bool? value) {
-            setState(() {
-              agreePersonalData = value!;
-            });
-          },
-          activeColor: lightColorScheme.primary,
-        ),
-        const Text(
-          '개인정보 처리에 동의합니다.',
-          style: TextStyle(
-            color: Colors.black45,
-          ),
-        ),
-        Text(
-          '(필수)',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: lightColorScheme.primary,
-          ),
-        ),
-      ],
-    );
-  }
-
-  // 회원가입 버튼
-  Widget buildJoinButton(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: () {
-          if (_formSignupKey.currentState!.validate() && agreePersonalData) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('회원가입 신청을 완료하고 있습니다.'),
-              ),
-            );
-          } else if (!agreePersonalData) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('개인정보 처리에 동의해주시길 바랍니다.')),
-            );
-          }
-        },
-        child: Text('회원가입'),
       ),
     );
   }
