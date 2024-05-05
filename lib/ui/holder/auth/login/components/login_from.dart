@@ -1,25 +1,23 @@
 import 'package:final_project_team02/_core/constants/move.dart';
 import 'package:final_project_team02/_core/constants/theme.dart';
 import 'package:final_project_team02/_core/uitls/validator_util.dart';
+import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../data/dtos/user_request.dart';
 import '../../../../components/custom_form_field.dart';
 
-class LoginFrom extends StatefulWidget {
-  @override
-  State<LoginFrom> createState() => _LoginFromState();
-}
-
-class _LoginFromState extends State<LoginFrom> {
-  final email = TextEditingController();
-  final password = TextEditingController();
-  final _formSignInKey = GlobalKey<FormState>();
+class LoginFrom extends ConsumerWidget {
+  final _email = TextEditingController();
+  final _password = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
   bool rememberPassword = true;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Form(
-      key: _formSignInKey,
+      key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -28,7 +26,7 @@ class _LoginFromState extends State<LoginFrom> {
           // 이메일 폼 필드
           CustomFormField(
             text: 'Email',
-            controller: email,
+            controller: _email,
             validator: validateEmail(),
           ),
           const SizedBox(height: 25.0),
@@ -36,17 +34,32 @@ class _LoginFromState extends State<LoginFrom> {
           // 패스워드 폼 필드
           CustomFormField(
             text: 'Password',
-            controller: password,
+            controller: _password,
             validator: validatePassword(),
           ),
           const SizedBox(height: 25.0),
 
-          // //비밀번호 찾기
-          // buildFindPassword(),
-          // const SizedBox(height: 25.0),
-
           //로그인 완료 후 얼러트
-          buildLoginFinishAllert(context),
+          ElevatedButton(
+            onPressed: () {
+              bool isOk = _formKey.currentState!.validate();
+
+              if (isOk) {
+                String email = _email.text.trim();
+                String password = _password.text.trim();
+                print("email: ${email}, pw: ${password}");
+                LoginReqDTO loginReqDTO =
+                    LoginReqDTO(email: email, password: password);
+
+                print("LoginReqDTO: ${loginReqDTO.toJson()}");
+
+                SessionData s = ref.read(sessionProvider);
+
+                s.login(loginReqDTO);
+              }
+            },
+            child: const Text('로그인'),
+          ),
           const SizedBox(height: 25.0),
 
           Divider(thickness: 0.7, color: Colors.grey),
@@ -72,7 +85,7 @@ class _LoginFromState extends State<LoginFrom> {
         ),
         InkWell(
           onTap: () {
-            Navigator.pushNamed(
+            Navigator.popAndPushNamed(
               context,
               Move.joinPage,
             );
@@ -89,24 +102,6 @@ class _LoginFromState extends State<LoginFrom> {
     );
   }
 
-  Widget buildLoginFinishAllert(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: () {
-          if (_formSignInKey.currentState!.validate() && rememberPassword) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('로그인중입니다.'),
-              ),
-            );
-          }
-        },
-        child: const Text('로그인'),
-      ),
-    );
-  }
-
   Widget buildFindPassword() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -115,11 +110,7 @@ class _LoginFromState extends State<LoginFrom> {
           children: [
             Checkbox(
               value: rememberPassword,
-              onChanged: (bool? value) {
-                setState(() {
-                  rememberPassword = value!;
-                });
-              },
+              onChanged: (bool? value) {},
               activeColor: lightColorScheme.primary,
             ),
             const Text(

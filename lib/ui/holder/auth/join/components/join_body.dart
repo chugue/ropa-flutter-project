@@ -8,7 +8,7 @@ class JoinBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        Logo(width: 250, height: 250),
+        Logo(width: 250, height: 150),
         Expanded(
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 25),
