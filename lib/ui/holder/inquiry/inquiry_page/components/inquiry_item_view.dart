@@ -36,7 +36,26 @@ class InquiryItemView extends StatelessWidget {
                 );
               },
               tileColor: Colors.grey[200],
-              title: InquiryState(formattedDate: formattedDate, index: index),
+              leading: SizedBox(
+                width: 48.0,
+                height: 48.0,
+                child: Image.network(inquiryList[index].brand.logo),
+              ),
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  InquiryState(
+                    formattedDate: formattedDate,
+                    index: index,
+                  ),
+                  Text(
+                    "브랜드 : " + inquiryList[index].brand.name,
+                    style: TextStyle(
+                      fontSize: 12.0,
+                    ),
+                  ),
+                ],
+              ),
               subtitle: Column(
                 children: [
                   InquiryTitle(index: index),

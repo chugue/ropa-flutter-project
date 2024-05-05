@@ -14,20 +14,9 @@ class InquiryDetailQuestionTitle extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(
-          Icons.quora,
-          size: 36.0,
-        ),
-        Text(
-          ".",
-          style: TextStyle(
-            fontSize: 30,
-            color: Colors.black,
-          ),
-        ),
         Expanded(
           child: Text(
-            inquiry.title,
+            "제목 : " + inquiry.title,
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.bold,

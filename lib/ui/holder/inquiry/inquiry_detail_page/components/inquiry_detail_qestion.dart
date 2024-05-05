@@ -23,6 +23,21 @@ class InquiryDetailQuestion extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Row(
+            children: [
+              Icon(
+                Icons.quora,
+                size: 36.0,
+              ),
+              Text(
+                ".",
+                style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.black,
+                ),
+              ),
+            ],
+          ),
           InquiryDetailQuestionTitle(inquiry: inquiry),
           SizedBox(height: 10),
           InquiryDetailQustionContent(inquiry: inquiry),

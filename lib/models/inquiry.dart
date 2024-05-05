@@ -1,3 +1,5 @@
+import 'package:final_project_team02/models/brand.dart';
+
 class InquiryItem {
   final int id;
   final String title;
@@ -6,8 +8,12 @@ class InquiryItem {
 
   final String state;
 
+  /* 📢 답변 */
   final String answer;
   final DateTime answerCreatedAt;
+
+  /* 📢 브랜드 추가*/
+  final Brand brand;
 
   InquiryItem({
     required this.id,
@@ -17,6 +23,7 @@ class InquiryItem {
     required this.state,
     required this.answer,
     required this.answerCreatedAt, // null 값을 위해 초기화 값을 null로
+    required this.brand,
   });
 }
 
@@ -29,6 +36,7 @@ List<InquiryItem> inquiryList = [
     state: "답변 대기",
     answer: "null",
     answerCreatedAt: DateTime(0),
+    brand: brands[0],
   ),
   InquiryItem(
     id: 2,
@@ -38,6 +46,7 @@ List<InquiryItem> inquiryList = [
     state: "답변 아직",
     answer: "null",
     answerCreatedAt: DateTime(0),
+    brand: brands[1],
   ),
   InquiryItem(
     id: 3,
@@ -47,6 +56,7 @@ List<InquiryItem> inquiryList = [
     state: "답변 대기",
     answer: "푸하하하하하",
     answerCreatedAt: DateTime(2024, 5, 04, 11, 30),
+    brand: brands[2],
   ),
   InquiryItem(
     id: 4,
@@ -56,6 +66,7 @@ List<InquiryItem> inquiryList = [
     state: "답변 완료",
     answer: "푸하하하하하",
     answerCreatedAt: DateTime(2024, 5, 04, 12, 45),
+    brand: brands[3],
   ),
   InquiryItem(
     id: 5,
@@ -65,6 +76,7 @@ List<InquiryItem> inquiryList = [
     state: "답변 완료",
     answer: "푸하하하하하",
     answerCreatedAt: DateTime(2024, 5, 04, 13, 55),
+    brand: brands[4],
   ),
   InquiryItem(
     id: 6,
@@ -74,6 +86,7 @@ List<InquiryItem> inquiryList = [
     state: "답변 완료",
     answer: "답변 5",
     answerCreatedAt: DateTime(2024, 5, 04, 14, 30),
+    brand: brands[5],
   ),
   InquiryItem(
     id: 7,
@@ -83,6 +96,7 @@ List<InquiryItem> inquiryList = [
     state: "답변 완료",
     answer: "답변 7",
     answerCreatedAt: DateTime(2024, 5, 04, 15, 20),
+    brand: brands[5],
   ),
   InquiryItem(
     id: 8,
@@ -92,5 +106,6 @@ List<InquiryItem> inquiryList = [
     state: "답변 완료",
     answer: "답변 8",
     answerCreatedAt: DateTime(2024, 5, 04, 16, 10),
+    brand: brands[0],
   ),
 ];

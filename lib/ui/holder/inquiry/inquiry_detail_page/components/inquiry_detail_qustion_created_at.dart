@@ -13,7 +13,7 @@ class InquiryDetailQustionCreatedAt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      DateFormat("yyyy-MM-dd HH:mm").format(inquiry.createdAt),
+      "작성일 : " + DateFormat("yyyy-MM-dd HH:mm").format(inquiry.createdAt),
       style: TextStyle(fontSize: 14.0),
     );
   }
