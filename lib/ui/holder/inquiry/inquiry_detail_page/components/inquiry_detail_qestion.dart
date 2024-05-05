@@ -23,7 +23,7 @@ class InquiryDetailQuestion extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          InquiryDetailQustionTitle(inquiry: inquiry),
+          InquiryDetailQuestionTitle(inquiry: inquiry),
           SizedBox(height: 10),
           InquiryDetailQustionContent(inquiry: inquiry),
           SizedBox(height: 10),
