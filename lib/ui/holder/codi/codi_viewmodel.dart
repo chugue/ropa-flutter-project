@@ -1,10 +1,10 @@
-import 'package:final_project_team02/data/domain_data/popular_outfit.dart';
+import 'package:final_project_team02/data/domain_data/ootd.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CodiModel {
-  List<Ootd> list;
+  List<Ootd> ootdList;
 
-  CodiModel(this.list);
+  CodiModel(this.ootdList);
 }
 
 class CodiViewModel extends StateNotifier<CodiModel?> {
@@ -12,5 +12,5 @@ class CodiViewModel extends StateNotifier<CodiModel?> {
 }
 
 final codiProvider = StateNotifierProvider<CodiViewModel, CodiModel?>((ref) {
-  return CodiViewModel(null);
+  return CodiViewModel(ootdList.first.id);
 });

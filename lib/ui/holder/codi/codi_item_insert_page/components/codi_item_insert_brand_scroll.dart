@@ -1,4 +1,4 @@
-import 'package:final_project_team02/models/brand.dart';
+import 'package:final_project_team02/data/domain_data/brand.dart';
 import 'package:flutter/cupertino.dart';
 
 class BrandScroll extends StatelessWidget {

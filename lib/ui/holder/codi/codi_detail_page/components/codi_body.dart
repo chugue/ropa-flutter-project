@@ -1,14 +1,13 @@
-import 'package:final_project_team02/data/domain_data/popular_outfit.dart';
+import 'package:final_project_team02/data/domain_data/ootd.dart';
 import 'package:final_project_team02/ui/components/main_app_bar.dart';
+import 'package:final_project_team02/ui/holder/codi/codi_detail_page/components/codi_content.dart';
+import 'package:final_project_team02/ui/holder/codi/codi_detail_page/components/codi_create_at.dart';
+import 'package:final_project_team02/ui/holder/codi/codi_detail_page/components/codi_item_list.dart';
+import 'package:final_project_team02/ui/holder/codi/codi_detail_page/components/codi_like.dart';
+import 'package:final_project_team02/ui/holder/codi/codi_detail_page/components/codi_list.dart';
+import 'package:final_project_team02/ui/holder/codi/codi_detail_page/components/codi_main_scroll.dart';
+import 'package:final_project_team02/ui/holder/codi/codi_detail_page/components/codi_title.dart';
 import 'package:flutter/cupertino.dart';
-
-import 'codi_content.dart';
-import 'codi_create_at.dart';
-import 'codi_item_list.dart';
-import 'codi_like.dart';
-import 'codi_list.dart';
-import 'codi_main_scroll.dart';
-import 'codi_title.dart';
 
 class CodiBody extends StatelessWidget {
   final Ootd ootd;

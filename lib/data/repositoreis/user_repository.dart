@@ -6,7 +6,7 @@ import '../dtos/respons_dto.dart';
 import '../dtos/user_request.dart';
 
 class UserRepository {
-  Future<ResponseDTO> fetchJoin(JoinReqDTO requestDTO) async {
+  Future<ResponseDTO> callJoin(JoinReqDTO requestDTO) async {
     final response = await dio.post("/user/join", data: requestDTO.toJson());
     Logger().d(response.data!);
 
@@ -14,7 +14,7 @@ class UserRepository {
     return responseDTO;
   }
 
-  Future<ResponseDTO> fetchLogin(LoginReqDTO loginReqDTO) async {
+  Future<ResponseDTO> callLogin(LoginReqDTO loginReqDTO) async {
     final response = await dio.post("/user/login", data: loginReqDTO.toJson());
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
 

@@ -31,7 +31,7 @@ class SessionData extends SessionUser {
   }
 
   Future<void> join(JoinReqDTO joinReqDTO) async {
-    ResponseDTO responseDTO = await UserRepository().fetchJoin(joinReqDTO);
+    ResponseDTO responseDTO = await UserRepository().callJoin(joinReqDTO);
 
     // 비지니스 로직
     if (responseDTO.success) {
@@ -44,7 +44,7 @@ class SessionData extends SessionUser {
   }
 
   Future<void> login(LoginReqDTO loginReqDTO) async {
-    var (responseDTO) = await UserRepository().fetchLogin(loginReqDTO);
+    var (responseDTO) = await UserRepository().callLogin(loginReqDTO);
 
     if (responseDTO.success) {
       this.user = responseDTO.response;
