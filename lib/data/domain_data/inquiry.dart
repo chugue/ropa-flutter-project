@@ -1,4 +1,4 @@
-import 'package:final_project_team02/models/brand.dart';
+import 'brand.dart';
 
 class InquiryItem {
   final int id;
