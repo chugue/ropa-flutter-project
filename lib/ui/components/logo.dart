@@ -15,7 +15,7 @@ class Logo extends StatelessWidget {
       child: Column(
         children: [
           Image.asset(
-            "assets/images/ROPA.png",
+            "assets/images/ropa_home_logo.png",
             height: height,
             width: width,
           ),

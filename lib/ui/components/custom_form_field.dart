@@ -23,7 +23,7 @@ class CustomFormField extends StatelessWidget {
       validator: validator,
       decoration: InputDecoration(
         label: Text("${text}"),
-        hintText: '${text}',
+        // hintText: '${text}',
         hintStyle: const TextStyle(
           color: Colors.black26,
         ),

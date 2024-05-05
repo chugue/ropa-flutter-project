@@ -1,34 +1,30 @@
+import 'package:final_project_team02/ui/holder/main_viewmodel.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/user_my_page.dart';
 import 'package:final_project_team02/ui/holder/home/home_page.dart';
 import 'package:final_project_team02/ui/holder/serach/search_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'home/home_page.dart';
 import 'my_page/pages/user/user_my_page.dart';
 
-class MainHolder extends StatefulWidget {
+class MainHolder extends ConsumerWidget {
   @override
-  State<MainHolder> createState() => _MainHorderState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    MainHolderModel? model = ref.watch(mainHolderProvider);
 
-class _MainHorderState extends State<MainHolder> {
-  int _selectedIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(
-        index: _selectedIndex,
-        children: [
-          HomePage(),
-          SearchPage(),
-          UserMyPage(),
-        ],
+        index: model!.selectedIndexId,
+        children: [HomePage(), SearchPage(), UserMyPage()],
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
+      bottomNavigationBar: _buildBottomNavigationBar(context, model, ref),
     );
   }
 
-  BottomNavigationBar _buildBottomNavigationBar() {
+  BottomNavigationBar _buildBottomNavigationBar(
+      BuildContext context, MainHolderModel model, WidgetRef ref) {
     return BottomNavigationBar(
       showSelectedLabels: false,
       //글자를 없애고 가운데로 배치한다.
@@ -45,11 +41,11 @@ class _MainHorderState extends State<MainHolder> {
       unselectedItemColor: Colors.grey.shade400,
       //아이콘 색상
 
-      currentIndex: _selectedIndex,
+      currentIndex: model!.selectedIndexId,
       onTap: (i) => {
-        setState(() {
-          _selectedIndex = i;
-        })
+        // 선택된 인덱스를 모델에 업데이트
+        ref.read(mainHolderProvider.notifier).state =
+            MainHolderModel(selectedIndexId: i)
       },
 
       items: [
