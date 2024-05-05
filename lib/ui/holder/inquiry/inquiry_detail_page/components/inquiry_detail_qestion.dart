@@ -15,7 +15,7 @@ class InquiryDetailQuestion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(10),
@@ -23,21 +23,7 @@ class InquiryDetailQuestion extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Icon(
-                Icons.quora,
-                size: 36.0,
-              ),
-              Text(
-                ".",
-                style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.black,
-                ),
-              ),
-            ],
-          ),
+          _qIcon(),
           InquiryDetailQuestionTitle(inquiry: inquiry),
           SizedBox(height: 10),
           InquiryDetailQustionContent(inquiry: inquiry),
@@ -45,6 +31,24 @@ class InquiryDetailQuestion extends StatelessWidget {
           InquiryDetailQustionCreatedAt(inquiry: inquiry),
         ],
       ),
+    );
+  }
+
+  Row _qIcon() {
+    return Row(
+      children: [
+        Icon(
+          Icons.quora,
+          size: 36.0,
+        ),
+        Text(
+          ".",
+          style: TextStyle(
+            fontSize: 30,
+            color: Colors.black,
+          ),
+        ),
+      ],
     );
   }
 }
