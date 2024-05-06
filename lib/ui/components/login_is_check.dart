@@ -27,7 +27,6 @@ class LoginIsCheck extends ConsumerWidget {
           children: [
             InkWell(
               onTap: () {
-
                 Navigator.pushNamed(context, Move.loginPage);
               },
               child: Container(

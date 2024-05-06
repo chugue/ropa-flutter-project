@@ -25,7 +25,7 @@ class _MainHorderState extends State<MainHolder> {
         children: [
           HomePage(),
           SearchPage(),
-          LoginPage(),
+          UserMyPage(),
         ],
       ),
       bottomNavigationBar: _buildBottomNavigationBar(),

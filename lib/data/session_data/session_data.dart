@@ -21,14 +21,7 @@ class SessionData extends SessionUser {
   final mContext = navigatorKey.currentContext;
 
   SessionData();
-  //
-  // void loginCheck(String path) {
-  //   if (isLogin) {
-  //     Navigator.pushNamed(mContext!, path);
-  //   } else {
-  //     Navigator.pushNamed(mContext!, Move.loginPage);
-  //   }
-  // }
+
 
   Future<void> join(JoinReqDTO joinReqDTO) async {
     ResponseDTO responseDTO = await UserRepository().callJoin(joinReqDTO);

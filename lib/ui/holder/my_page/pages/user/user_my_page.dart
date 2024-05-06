@@ -13,14 +13,19 @@ class UserMyPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     SessionData sessionData = ref.watch(sessionProvider);
-    return Scaffold(
-      appBar: CustomAppBar(
-        home: Icons.home,
-        setting: Icons.settings,
-        cart: Icons.shopping_basket,
-      ),
-      backgroundColor: Colors.white,
-      body: UserMyPageBody(),
-    );
+    if(sessionData.user?.id  ==null){
+      return LoginIsCheck();
+    }else{
+      return Scaffold(
+        appBar: CustomAppBar(
+          home: Icons.home,
+          setting: Icons.settings,
+          cart: Icons.shopping_basket,
+        ),
+        backgroundColor: Colors.white,
+        body: UserMyPageBody(),
+      );
+    }
+
   }
 }
