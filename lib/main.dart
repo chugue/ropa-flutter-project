@@ -1,3 +1,4 @@
+import 'package:final_project_team02/_core/constants/move.dart';
 import 'package:final_project_team02/ui/holder/main_holder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -26,7 +27,8 @@ class _MyAppState extends State<MyApp> {
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       theme: theme(),
-      home: MainHolder(),
+      initialRoute: Move.mainHoder,
+      routes: getRouters(),
     );
   }
 }

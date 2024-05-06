@@ -9,11 +9,6 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        home: Icons.home,
-        setting: Icons.settings,
-        cart: null,
-      ),
       backgroundColor: Colors.white,
       body: LoginBody(),
     );

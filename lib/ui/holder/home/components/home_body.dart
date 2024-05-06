@@ -10,14 +10,10 @@ import 'package:final_project_team02/ui/holder/home/components/home_main_title.d
 import 'package:final_project_team02/ui/holder/home/components/home_main_title_another.dart';
 import 'package:final_project_team02/ui/holder/home/components/home_more_style.dart';
 import 'package:final_project_team02/ui/holder/home/components/home_sliver_app_bar.dart';
+import 'package:final_project_team02/ui/holder/home/components/more_style_codi.dart';
 import 'package:flutter/material.dart';
 
-class HomeBody extends StatefulWidget {
-  @override
-  State<HomeBody> createState() => _HomeBodyState();
-}
-
-class _HomeBodyState extends State<HomeBody> {
+class HomeBody extends StatelessWidget {
   final PageController _pageController = PageController();
 
   Timer? _timer;
@@ -27,7 +23,6 @@ class _HomeBodyState extends State<HomeBody> {
     timer();
     return CustomScrollView(
       slivers: [
-        HomeSliverAppBar(),
         //광고 스크롤
         AdScroll(pageController: _pageController),
         //메인 타이틀
@@ -36,44 +31,7 @@ class _HomeBodyState extends State<HomeBody> {
         MainTitleAnother(),
         ItemScroll(),
         MoreStyle(),
-        SliverGrid(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // ✅한 행에 두 개의 항목
-            crossAxisSpacing: 10.0,
-            mainAxisSpacing: 12.0,
-          ),
-          delegate: SliverChildBuilderDelegate(
-            (context, index) {
-              return Stack(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  CodiPage(ootd: ootdList[index])));
-                    },
-                    child: Image.network(
-                      // "https://picsum.photos/400/400",
-                      "https://picsum.photos/id/${index + 1}/600/600",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Positioned(
-                    right: 10,
-                    top: 10,
-                    child: Icon(
-                      Icons.auto_awesome_motion,
-                      color: Colors.white,
-                    ),
-                  )
-                ],
-              );
-            },
-            childCount: 8,
-          ),
-        ),
+        MoreStyleCodi(),
       ],
     );
   }
@@ -95,3 +53,4 @@ class _HomeBodyState extends State<HomeBody> {
     );
   }
 }
+

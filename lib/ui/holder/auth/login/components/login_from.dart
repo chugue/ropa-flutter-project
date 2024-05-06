@@ -47,6 +47,7 @@ class LoginFrom extends ConsumerWidget {
               if (isOk) {
                 String email = _email.text.trim();
                 String password = _password.text.trim();
+
                 print("email: ${email}, pw: ${password}");
                 LoginReqDTO loginReqDTO =
                     LoginReqDTO(email: email, password: password);

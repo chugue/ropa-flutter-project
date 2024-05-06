@@ -1,4 +1,6 @@
+import 'package:final_project_team02/_core/constants/move.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class Logo extends StatelessWidget {
   final double width;
@@ -12,14 +14,20 @@ class Logo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        children: [
-          Image.asset(
-            "assets/images/ropa_home_logo.png",
-            height: height,
-            width: width,
-          ),
-        ],
+      child: InkWell(
+        hoverColor: Colors.transparent,
+        onTap: (){
+          Navigator.pushNamedAndRemoveUntil(context,Move.mainHoder, (route) => false);
+        },
+        child: Column(
+          children: [
+            Image.asset(
+              "assets/images/ropa_home_logo.png",
+              height: height,
+              width: width,
+            ),
+          ],
+        ),
       ),
     );
   }
