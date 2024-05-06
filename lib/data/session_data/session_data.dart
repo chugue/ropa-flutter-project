@@ -21,14 +21,14 @@ class SessionData extends SessionUser {
   final mContext = navigatorKey.currentContext;
 
   SessionData();
-
-  void loginCheck(String path) {
-    if (isLogin) {
-      Navigator.pushNamed(mContext!, path);
-    } else {
-      Navigator.pushNamed(mContext!, Move.loginPage);
-    }
-  }
+  //
+  // void loginCheck(String path) {
+  //   if (isLogin) {
+  //     Navigator.pushNamed(mContext!, path);
+  //   } else {
+  //     Navigator.pushNamed(mContext!, Move.loginPage);
+  //   }
+  // }
 
   Future<void> join(JoinReqDTO joinReqDTO) async {
     ResponseDTO responseDTO = await UserRepository().callJoin(joinReqDTO);
@@ -44,13 +44,14 @@ class SessionData extends SessionUser {
   }
 
   Future<void> login(LoginReqDTO loginReqDTO) async {
+    print("loginReqDTOdddd : ${loginReqDTO.toJson()}");
     var (responseDTO) = await UserRepository().callLogin(loginReqDTO);
 
     if (responseDTO.success) {
       this.user = responseDTO.response;
       this.isLogin = true;
 
-      Navigator.pushNamed(mContext!, Move.mainHoder);
+      Navigator.pushNamedAndRemoveUntil(mContext!, Move.mainHoder, (route) => false);
     } else {
       ScaffoldMessenger.of(mContext!).showSnackBar(
           SnackBar(content: Text("로그인 실패 : ${responseDTO.errorMessage}")));

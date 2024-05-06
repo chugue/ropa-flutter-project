@@ -10,6 +10,8 @@ class MainHolderModel {
 
 class MainHolderViewModel extends StateNotifier<MainHolderModel> {
   MainHolderViewModel() : super(MainHolderModel(selectedIndexId: 0));
+
+
 }
 
 final mainHolderProvider =

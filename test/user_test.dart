@@ -2,7 +2,7 @@ import 'package:final_project_team02/data/dtos/user_request.dart';
 import 'package:final_project_team02/data/repositoreis/user_repository.dart';
 
 void main() async {
-  await callLogin_test();
+  await callLogin_test2();
 }
 
 Future<void> callJoin_test() async {

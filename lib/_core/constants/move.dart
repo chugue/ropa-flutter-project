@@ -1,3 +1,4 @@
+import 'package:final_project_team02/ui/components/login_is_check.dart';
 import 'package:final_project_team02/ui/holder/auth/join/join_page.dart';
 import 'package:final_project_team02/ui/holder/auth/login/login_page.dart';
 import 'package:final_project_team02/ui/holder/home/home_page.dart';
@@ -19,10 +20,12 @@ class Move {
   static String joinPage = "/join";
   static String payment = "/payment";
   static String paymentTest = "/paymentTest";
+  static String loginIsCheck = "/loginIsCheck";
 }
 
 Map<String, Widget Function(BuildContext)> getRouters() {
   return {
+    Move.loginIsCheck: (context) => LoginIsCheck(),
     Move.mainHoder: (context) => MainHolder(),
     Move.homePage: (context) => const HomePage(),
     Move.loginPage: (context) => const LoginPage(),
