@@ -16,7 +16,7 @@ class InquiryDetailQuestionTitle extends StatelessWidget {
       children: [
         Expanded(
           child: Text(
-            "제목 : " + inquiry.title,
+            inquiry.title,
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.bold,

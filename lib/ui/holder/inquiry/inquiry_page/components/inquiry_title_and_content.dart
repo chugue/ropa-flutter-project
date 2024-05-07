@@ -1,5 +1,6 @@
 import 'package:final_project_team02/data/domain_data/inquiry.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class InquiryTitle extends StatelessWidget {
   const InquiryTitle({
@@ -12,6 +13,7 @@ class InquiryTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           "제목 : ",
@@ -20,8 +22,10 @@ class InquiryTitle extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        Text(
-          inquiryList[index].title,
+        Expanded(
+          child: Text(
+            inquiryList[index].title,
+          ),
         ),
       ],
     );
