@@ -5,7 +5,7 @@ import 'package:logger/logger.dart';
 final dio = Dio(
   BaseOptions(
     //자기 IP넣기
-    baseUrl: "http://192.168.10.161:8080",
+    baseUrl: "http://172.26.80.1:8080",
     contentType: "application/json; charset=utf-8",
     validateStatus: (status) => true,
   ),
