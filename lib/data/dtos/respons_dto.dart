@@ -1,7 +1,7 @@
 class ResponseDTO {
   int status;
-  bool success;
   String errorMessage;
+  bool success;
   dynamic response;
 
   ResponseDTO({
@@ -18,5 +18,4 @@ class ResponseDTO {
         errorMessage: json["errorMessage"] ?? "",
         response: json["response"] ?? "");
   }
-//
 }

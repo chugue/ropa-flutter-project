@@ -16,12 +16,13 @@ class TextForm extends StatelessWidget {
             ),
             TextField(
               decoration: InputDecoration(
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black12),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black12),
-                  )),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black12),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black12),
+                ),
+              ),
             ),
           ],
         ),
