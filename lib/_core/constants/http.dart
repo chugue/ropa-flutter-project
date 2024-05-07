@@ -2,10 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:logger/logger.dart';
 
+final baseURL = "http://192.168.123.100:8080";
+
 final dio = Dio(
   BaseOptions(
     //자기 IP넣기
-    baseUrl: "http://192.168.0.59:8080",
+    baseUrl:baseURL,
     contentType: "application/json; charset=utf-8",
     validateStatus: (status) => true,
   ),
