@@ -36,7 +36,6 @@ class SessionData extends SessionUser {
   }
 
   Future<void> login(LoginReqDTO loginReqDTO) async {
-    print("loginReqDTOdddd : ${loginReqDTO.toJson()}");
     var (responseDTO) = await UserRepository().callLogin(loginReqDTO);
 
     if (responseDTO.success) {

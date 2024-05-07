@@ -24,6 +24,7 @@ class UserRepository {
 
     if (responseDTO.success) {
       responseDTO.response = User.fromJson(responseDTO.response);
+      var accessToken = await secureStorage.read(key: 'accessToken');
 
       return (responseDTO);
     } else {

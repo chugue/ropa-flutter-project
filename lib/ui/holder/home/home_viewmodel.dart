@@ -1,24 +1,42 @@
+import 'package:final_project_team02/data/dtos/respons_dto.dart';
+import 'package:final_project_team02/data/repositoreis/home_repository.dart';
+import 'package:final_project_team02/main.dart';
 import 'package:final_project_team02/ui/holder/home/home_data/popular_codi_photos.dart';
 import 'package:final_project_team02/ui/holder/home/home_data/popular_items_photos.dart';
 import 'package:final_project_team02/ui/holder/home/home_data/popular_user_photos.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 
 class HomeModel {
-  final List<PopularCodiPhotos> CodiPhotos;
-  final List<PopularItemsPhotos> ItemsPhotos;
-  final List<PopularUserPhotos> UserPhotos;
+  final List<PopularCodiPhotos> codiPhotos;
+  final List<PopularItemsPhotos> itemsPhotos;
+  final List<PopularUserPhotos> userPhotos;
 
   const HomeModel({
-    required this.CodiPhotos,
-    required this.ItemsPhotos,
-    required this.UserPhotos,
+    required this.codiPhotos,
+    required this.itemsPhotos,
+    required this.userPhotos,
   });
 }
 
 class HomeViewModel extends StateNotifier<HomeModel?> {
-  HomeViewModel(super.state);
-}
+  final mContext = navigatorKey.currentContext;
 
+  HomeViewModel(super.state);
+
+  Future<void> notifyInit() async {
+    ResponseDTO responseDTO = await HomeRepository().callHomeList();
+
+    if (responseDTO.success) {
+      HomeModel homeModel = responseDTO.response;
+      Logger().i(homeModel.toString());
+      Logger().d(homeModel.toString());
+      state = homeModel;
+    }
+  }
+}
+//
 final homeProvider = StateNotifierProvider<HomeViewModel, HomeModel?>((ref) {
-  return HomeViewModel(null);
+  return HomeViewModel(null)..notifyInit();
 });

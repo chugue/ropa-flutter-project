@@ -3,6 +3,7 @@ import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/ui/holder/home/home_data/popular_codi_photos.dart';
 import 'package:final_project_team02/ui/holder/home/home_data/popular_items_photos.dart';
 import 'package:final_project_team02/ui/holder/home/home_data/popular_user_photos.dart';
+import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
 import 'package:logger/logger.dart';
 
 class HomeRepository {
@@ -23,10 +24,10 @@ class HomeRepository {
       List<dynamic> popularItemsPhotos =
           responseDTO.response["popularItemsPhotos"];
       Logger().d(popularItemsPhotos);
-      List<PopularItemsPhotos> ItemsPhoto = popularItemsPhotos
+      List<PopularItemsPhotos> ItemsPhotos = popularItemsPhotos
           .map((e) => PopularItemsPhotos.fromJson(e))
           .toList();
-      Logger().d(ItemsPhoto);
+      Logger().d(ItemsPhotos);
 
       List<dynamic> popularCodiPhotos =
           responseDTO.response["popularCodiPhotos"];
@@ -34,6 +35,9 @@ class HomeRepository {
       List<PopularCodiPhotos> CodiPhotos =
           popularCodiPhotos.map((e) => PopularCodiPhotos.fromJson(e)).toList();
       Logger().d(CodiPhotos);
+
+      HomeModel homeModel = HomeModel(codiPhotos: CodiPhotos, itemsPhotos: ItemsPhotos, userPhotos: UserPhotos);
+      responseDTO.response = homeModel;
     }
     return responseDTO;
   }

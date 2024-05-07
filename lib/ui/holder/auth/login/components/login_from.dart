@@ -41,6 +41,7 @@ class LoginFrom extends ConsumerWidget {
 
           //로그인 완료 후 얼러트
           ElevatedButton(
+
             onPressed: () {
               bool isOk = _formKey.currentState!.validate();
 
@@ -48,11 +49,8 @@ class LoginFrom extends ConsumerWidget {
                 String email = _email.text.trim();
                 String password = _password.text.trim();
 
-                print("email: ${email}, pw: ${password}");
                 LoginReqDTO loginReqDTO =
                     LoginReqDTO(email: email, password: password);
-
-                print("LoginReqDTO: ${loginReqDTO.toJson()}");
 
                 SessionData s = ref.read(sessionProvider);
 

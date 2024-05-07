@@ -20,6 +20,8 @@ var interceptor = InterceptorsWrapper(
   onRequest: (options, handler) async {
     //토큰을 secureStorage에서 읽는다.
     var accessToken = await secureStorage.read(key: 'accessToken');
+    Logger().d(accessToken.toString());
+
     print("onRequest 토큰: $accessToken");
 
     if (accessToken != null) {
@@ -27,6 +29,7 @@ var interceptor = InterceptorsWrapper(
     } else {
       print("나 토큰이 없어");
     }
+
     return handler.next(options);
   },
   onResponse: (response, handler) async {
