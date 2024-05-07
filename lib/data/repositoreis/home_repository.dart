@@ -10,6 +10,7 @@ class HomeRepository {
     final response = await dio.get('/home-lists');
 
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+
     // Logger().d(responseDTO.response);
     if (responseDTO.success) {
       List<dynamic> popularUserPhotos =

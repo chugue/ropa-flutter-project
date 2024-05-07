@@ -30,4 +30,13 @@ class UserRepository {
       throw new Exception("${responseDTO.errorMessage}");
     }
   }
+
+  Future<void> callProfile() async {
+    final response = await dio.get("/app/profile");
+
+    Logger().d(response.data!);
+    //
+    // ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+    // return responseDTO;
+  }
 }

@@ -29,11 +29,13 @@ var interceptor = InterceptorsWrapper(
   },
   onResponse: (response, handler) async {
     var authorizationHeader = response.headers["Authorization"];
+
     if (authorizationHeader != null) {
       var accessToken = authorizationHeader[0].split("Bearer ")[1];
-      print("onResponse 토큰: " + accessToken);
+      print("onResponse 토큰: $accessToken");
       await secureStorage.write(key: "accessToken", value: accessToken);
     }
+
     return handler.next(response);
   },
   onError: (error, handler) {
