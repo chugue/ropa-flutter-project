@@ -1,15 +1,12 @@
 import 'dart:async';
 
-import 'package:final_project_team02/data/domain_data/ootd.dart';
-import 'package:final_project_team02/data/domain_data/slide_ad.dart';
-import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_page.dart';
+import 'package:final_project_team02/data/global_data/slide_ad.dart';
 import 'package:final_project_team02/ui/holder/home/components/home_ad_scroll.dart';
 import 'package:final_project_team02/ui/holder/home/components/home_creator_scroll.dart';
 import 'package:final_project_team02/ui/holder/home/components/home_item_scroll.dart';
 import 'package:final_project_team02/ui/holder/home/components/home_main_title.dart';
 import 'package:final_project_team02/ui/holder/home/components/home_main_title_another.dart';
 import 'package:final_project_team02/ui/holder/home/components/home_more_style.dart';
-import 'package:final_project_team02/ui/holder/home/components/home_sliver_app_bar.dart';
 import 'package:final_project_team02/ui/holder/home/components/more_style_codi.dart';
 import 'package:flutter/material.dart';
 
@@ -53,4 +50,3 @@ class HomeBody extends StatelessWidget {
     );
   }
 }
-

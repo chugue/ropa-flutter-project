@@ -1,7 +1,7 @@
+import 'package:final_project_team02/data/global_data/user.dart';
 import 'package:logger/logger.dart';
 
 import '../../_core/constants/http.dart';
-import '../domain_data/user.dart';
 import '../dtos/respons_dto.dart';
 import '../dtos/user_request.dart';
 
@@ -16,6 +16,7 @@ class UserRepository {
 
   Future<ResponseDTO> callLogin(LoginReqDTO loginReqDTO) async {
     final response = await dio.post("/user/login", data: loginReqDTO.toJson());
+
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
 
     Logger().d(response.headers["Authorization"]!.first);

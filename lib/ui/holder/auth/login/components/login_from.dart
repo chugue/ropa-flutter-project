@@ -9,8 +9,8 @@ import '../../../../../data/dtos/user_request.dart';
 import '../../../../components/custom_form_field.dart';
 
 class LoginFrom extends ConsumerWidget {
-  final _email = TextEditingController();
-  final _password = TextEditingController();
+  final _email = TextEditingController(text: 'user1@example.com');
+  final _password = TextEditingController(text: '1234');
   final _formKey = GlobalKey<FormState>();
   bool rememberPassword = true;
 

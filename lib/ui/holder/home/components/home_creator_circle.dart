@@ -1,4 +1,4 @@
-import 'package:final_project_team02/data/domain_data/creator.dart';
+import 'package:final_project_team02/data/global_data/creator.dart';
 import 'package:flutter/material.dart';
 
 import '../../my_page/pages/creator_view/creator_view_page.dart';

@@ -1,9 +1,9 @@
+import 'package:final_project_team02/data/global_data/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../_core/constants/move.dart';
 import '../../main.dart';
-import '../domain_data/user.dart';
 import '../dtos/respons_dto.dart';
 import '../dtos/user_request.dart';
 import '../repositoreis/user_repository.dart';
@@ -21,7 +21,6 @@ class SessionData extends SessionUser {
   final mContext = navigatorKey.currentContext;
 
   SessionData();
-
 
   Future<void> join(JoinReqDTO joinReqDTO) async {
     ResponseDTO responseDTO = await UserRepository().callJoin(joinReqDTO);
@@ -44,7 +43,8 @@ class SessionData extends SessionUser {
       this.user = responseDTO.response;
       this.isLogin = true;
 
-      Navigator.pushNamedAndRemoveUntil(mContext!, Move.mainHoder, (route) => false);
+      Navigator.pushNamedAndRemoveUntil(
+          mContext!, Move.mainHoder, (route) => false);
     } else {
       ScaffoldMessenger.of(mContext!).showSnackBar(
           SnackBar(content: Text("로그인 실패 : ${responseDTO.errorMessage}")));

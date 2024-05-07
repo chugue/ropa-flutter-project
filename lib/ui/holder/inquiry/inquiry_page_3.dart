@@ -1,5 +1,5 @@
 import 'package:expandable/expandable.dart';
-import 'package:final_project_team02/data/domain_data/inquiry.dart';
+import 'package:final_project_team02/data/global_data/inquiry.dart';
 import 'package:final_project_team02/ui/holder/inquiry/components/inquiry_list.dart';
 import 'package:flutter/material.dart';
 
