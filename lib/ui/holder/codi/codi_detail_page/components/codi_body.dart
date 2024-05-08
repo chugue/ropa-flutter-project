@@ -21,7 +21,6 @@ class CodiBody extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // watch  (상태 관리)
     CodiDetailModel? model = ref.watch(codiDetailProvider(codiId));
-    print("model: ${model!.mainPhotos.length}");
 
     return CustomScrollView(
       slivers: [
@@ -31,7 +30,9 @@ class CodiBody extends ConsumerWidget {
         ),
         CodiLike(),
         CodiCreatedAt(),
-        CodiContent(),
+        CodiContent(
+          model: model,
+        ),
         CodiTitle(title: "아이템 목록"),
         ItemList(),
         CodiTitle(title: "코디 목록"),

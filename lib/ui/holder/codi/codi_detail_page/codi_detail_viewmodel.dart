@@ -6,6 +6,7 @@ import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail_data/main_photos.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail_data/other_codi_photos.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 
 class CodiDetailModel {
   final Codi codi;
@@ -31,8 +32,8 @@ class CodiDetailViewModel extends StateNotifier<CodiDetailModel?> {
     ResponseDTO responseDTO = await CodiRepository().callCodiDetail(codiId);
 
     if (responseDTO.success) {
-      CodiDetailModel model = responseDTO.response;
-      state = model;
+      state = responseDTO.response;
+      Logger().d(responseDTO.response);
     }
     return responseDTO;
   }
