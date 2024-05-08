@@ -1,4 +1,4 @@
-import 'package:final_project_team02/data/domain_data/inquiry.dart';
+import 'package:final_project_team02/data/global_data/inquiry.dart';
 import 'package:final_project_team02/ui/holder/inquiry/inquiry_detail_page/components/inquiry_detail_body.dart';
 import 'package:flutter/material.dart';
 

@@ -1,39 +1,48 @@
 import 'dart:async';
 
-import 'package:final_project_team02/data/domain_data/ootd.dart';
-import 'package:final_project_team02/data/domain_data/slide_ad.dart';
-import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_page.dart';
+import 'package:final_project_team02/data/global_data/slide_ad.dart';
 import 'package:final_project_team02/ui/holder/home/components/home_ad_scroll.dart';
 import 'package:final_project_team02/ui/holder/home/components/home_creator_scroll.dart';
 import 'package:final_project_team02/ui/holder/home/components/home_item_scroll.dart';
 import 'package:final_project_team02/ui/holder/home/components/home_main_title.dart';
 import 'package:final_project_team02/ui/holder/home/components/home_main_title_another.dart';
 import 'package:final_project_team02/ui/holder/home/components/home_more_style.dart';
-import 'package:final_project_team02/ui/holder/home/components/home_sliver_app_bar.dart';
 import 'package:final_project_team02/ui/holder/home/components/more_style_codi.dart';
+import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomeBody extends StatelessWidget {
+class HomeBody extends ConsumerWidget {
   final PageController _pageController = PageController();
 
   Timer? _timer;
 
   @override
-  Widget build(BuildContext context) {
-    timer();
-    return CustomScrollView(
-      slivers: [
-        //광고 스크롤
-        AdScroll(pageController: _pageController),
-        //메인 타이틀
-        MainTitle(),
-        CreatorScroll(),
-        MainTitleAnother(),
-        ItemScroll(),
-        MoreStyle(),
-        MoreStyleCodi(),
-      ],
-    );
+  Widget build(BuildContext context, WidgetRef ref) {
+    HomeModel? model = ref.watch(homeProvider);
+
+    if (model == null) {
+      return Center(child: CircularProgressIndicator());
+    } else {
+      timer();
+      return CustomScrollView(
+        slivers: [
+          //광고 스크롤
+          AdScroll(pageController: _pageController),
+          //메인 타이틀
+          MainTitle(),
+          SliverToBoxAdapter(
+            child: CreatorScroll(model: model),
+          ),
+          MainTitleAnother(),
+          SliverToBoxAdapter(
+            child: ItemScroll(model: model),
+          ),
+          MoreStyle(),
+          MoreStyleCodi(model: model),
+        ],
+      );
+    }
   }
 
   Timer timer() {
@@ -53,4 +62,3 @@ class HomeBody extends StatelessWidget {
     );
   }
 }
-

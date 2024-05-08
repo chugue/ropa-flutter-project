@@ -13,10 +13,9 @@ class ResponseDTO {
 
   factory ResponseDTO.fromJson(Map<String, dynamic> json) {
     return ResponseDTO(
-        success: json["success"] ?? null,
+        success: json["success"],
         status: json["status"],
         errorMessage: json["errorMessage"] ?? "",
         response: json["response"] ?? "");
   }
-//
 }

@@ -1,11 +1,13 @@
-import 'package:final_project_team02/data/domain_data/ootd.dart';
+import 'package:final_project_team02/data/global_data/ootd.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_page.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 
 class MoreStyleCodi extends StatelessWidget {
-  const MoreStyleCodi({
-    super.key,
+  final HomeModel? model;
+
+  MoreStyleCodi({
+    required this.model,
   });
 
   @override
@@ -17,7 +19,7 @@ class MoreStyleCodi extends StatelessWidget {
         mainAxisSpacing: 12.0,
       ),
       delegate: SliverChildBuilderDelegate(
-            (context, index) {
+        (context, index) {
           return Stack(
             children: [
               InkWell(
@@ -30,7 +32,7 @@ class MoreStyleCodi extends StatelessWidget {
                 },
                 child: Image.network(
                   // "https://picsum.photos/400/400",
-                  "https://picsum.photos/id/${index + 1}/600/600",
+                  "https://picsum.photos/id/${model!.codiPhotos[index].photoId}/600/600",
                   fit: BoxFit.cover,
                 ),
               ),

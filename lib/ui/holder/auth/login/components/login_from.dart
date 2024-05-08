@@ -9,8 +9,8 @@ import '../../../../../data/dtos/user_request.dart';
 import '../../../../components/custom_form_field.dart';
 
 class LoginFrom extends ConsumerWidget {
-  final _email = TextEditingController();
-  final _password = TextEditingController();
+  final _email = TextEditingController(text: 'user1@example.com');
+  final _password = TextEditingController(text: '1234');
   final _formKey = GlobalKey<FormState>();
   bool rememberPassword = true;
 
@@ -41,6 +41,7 @@ class LoginFrom extends ConsumerWidget {
 
           //로그인 완료 후 얼러트
           ElevatedButton(
+
             onPressed: () {
               bool isOk = _formKey.currentState!.validate();
 
@@ -48,11 +49,8 @@ class LoginFrom extends ConsumerWidget {
                 String email = _email.text.trim();
                 String password = _password.text.trim();
 
-                print("email: ${email}, pw: ${password}");
                 LoginReqDTO loginReqDTO =
                     LoginReqDTO(email: email, password: password);
-
-                print("LoginReqDTO: ${loginReqDTO.toJson()}");
 
                 SessionData s = ref.read(sessionProvider);
 

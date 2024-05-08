@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../../data/domain_data/user.dart';
+import '../../../../../data/global_data/user.dart';
 import '../../../../../main.dart';
 
 class UserMyPageModel {
