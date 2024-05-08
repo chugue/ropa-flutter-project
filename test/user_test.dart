@@ -19,7 +19,7 @@ Future<void> callLogin_test() async {
 Future<void> callLogin_test2() async {
   LoginReqDTO reqDTO =
       LoginReqDTO(email: "user1@example.com", password: "1234");
-  await UserRepository().callLogin(reqDTO);
+  final response = await UserRepository().callLogin(reqDTO);
 }
 
 Future<void> callProfile_test() async {

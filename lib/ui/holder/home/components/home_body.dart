@@ -8,29 +8,41 @@ import 'package:final_project_team02/ui/holder/home/components/home_main_title.d
 import 'package:final_project_team02/ui/holder/home/components/home_main_title_another.dart';
 import 'package:final_project_team02/ui/holder/home/components/home_more_style.dart';
 import 'package:final_project_team02/ui/holder/home/components/more_style_codi.dart';
+import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomeBody extends StatelessWidget {
+class HomeBody extends ConsumerWidget {
   final PageController _pageController = PageController();
 
   Timer? _timer;
 
   @override
-  Widget build(BuildContext context) {
-    timer();
-    return CustomScrollView(
-      slivers: [
-        //광고 스크롤
-        AdScroll(pageController: _pageController),
-        //메인 타이틀
-        MainTitle(),
-        CreatorScroll(),
-        MainTitleAnother(),
-        ItemScroll(),
-        MoreStyle(),
-        MoreStyleCodi(),
-      ],
-    );
+  Widget build(BuildContext context, WidgetRef ref) {
+    HomeModel? model = ref.watch(homeProvider);
+
+    if (model == null) {
+      return Center(child: CircularProgressIndicator());
+    } else {
+      timer();
+      return CustomScrollView(
+        slivers: [
+          //광고 스크롤
+          AdScroll(pageController: _pageController),
+          //메인 타이틀
+          MainTitle(),
+          SliverToBoxAdapter(
+            child: CreatorScroll(model: model),
+          ),
+          MainTitleAnother(),
+          SliverToBoxAdapter(
+            child: ItemScroll(model: model),
+          ),
+          MoreStyle(),
+          MoreStyleCodi(model: model),
+        ],
+      );
+    }
   }
 
   Timer timer() {

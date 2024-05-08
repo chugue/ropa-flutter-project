@@ -24,8 +24,6 @@ class UserRepository {
 
     if (responseDTO.success) {
       responseDTO.response = User.fromJson(responseDTO.response);
-      var accessToken = await secureStorage.read(key: 'accessToken');
-
       return (responseDTO);
     } else {
       throw new Exception("${responseDTO.errorMessage}");
@@ -34,7 +32,6 @@ class UserRepository {
 
   Future<void> callProfile() async {
     final response = await dio.get("/app/profile");
-
     Logger().d(response.data!);
     //
     // ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
