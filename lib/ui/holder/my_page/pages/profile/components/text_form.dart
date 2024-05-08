@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class TextForm extends StatelessWidget {
   final String text;
 
-  TextForm(this.text);
+  const TextForm({
+    required this.text,
+  });
 
   @override
   Widget build(BuildContext context) => Container(
@@ -11,7 +13,7 @@ class TextForm extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              text,
+              "${text}",
               style: TextStyle(color: Colors.black54, fontSize: 13),
             ),
             TextField(

@@ -1,3 +1,4 @@
+import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/data/dtos/user_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,12 +12,12 @@ import '../repositoreis/user_repository.dart';
 
 class SessionUser {
   User? user;
-  UserProfile? userProfile;
   bool isLogin = false;
   int? selectedUserId;
 
   /* ✅토큰 추가 */
   String? accessToken;
+  UserProfile? userProfile;
 
   SessionUser();
 }
@@ -41,10 +42,13 @@ class SessionData extends SessionUser {
   }
 
   Future<void> login(LoginReqDTO loginReqDTO) async {
-    print("loginReqDTOdddd : ${loginReqDTO.toJson()}");
-    var (responseDTO) = await UserRepository().callLogin(loginReqDTO);
+    print("loginReqDTO : ${loginReqDTO.toJson()}");
+    var (responseDTO, accessToken) =
+        await UserRepository().callLogin(loginReqDTO);
 
     if (responseDTO.success) {
+      await secureStorage.write(key: "accessToken", value: accessToken);
+
       this.user = responseDTO.response;
       this.userProfile = responseDTO.response;
       this.accessToken = accessToken;

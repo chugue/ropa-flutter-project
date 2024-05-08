@@ -1,4 +1,4 @@
-import 'package:final_project_team02/ui/holder/codi/codi_insert_page/components/codi_insert_page_body.dart';
+import 'package:final_project_team02/ui/holder/home/home_page.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/user_my_page.dart';
 import 'package:final_project_team02/ui/holder/serach/search_page.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,7 +18,7 @@ class _MainHorderState extends State<MainHolder> {
       body: IndexedStack(
         index: _selectedIndex,
         children: [
-          CodiInsetPageBody(),
+          HomePage(),
           SearchPage(),
           UserMyPage(),
         ],

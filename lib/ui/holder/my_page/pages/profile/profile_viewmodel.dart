@@ -10,7 +10,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class UserProfileModel {
   UserProfile userProfile;
 
-  UserProfileModel(this.userProfile);
+  UserProfileModel(
+    this.userProfile,
+  );
+
 // User user;
 // UserProfileModel(this.user);
 }
@@ -26,27 +29,30 @@ class UserProfileViewModel extends StateNotifier<UserProfileModel?> {
     SessionData sessionData = ref.read(sessionProvider);
     String jwt = sessionData.accessToken!;
 
-    // ResponseDTO responseDTO = await UserProfileRepository()
-    //     .fetchUserProfile(sessionData.userProfile!.userId, jwt);
-    ResponseDTO responseDTO = await UserProfileRepository()
-        .fetchUserProfile(sessionData.userProfile!.userId, jwt);
+    print(sessionData.accessToken);
+    print(jwt);
 
-    print("뷰모델 : ${responseDTO.status}");
-    if (responseDTO.status == 200) {
+    ResponseDTO responseDTO =
+        await UserProfileRepository().fetchUserProfile(jwt);
+
+    print("✅✅✅✅✅✅✅뷰모델 : ${responseDTO.success}");
+    if (responseDTO.success) {
       state = UserProfileModel(responseDTO.response);
     } else {
-      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(
-          content: Text("프로필 정보 보기 실패 : ${responseDTO.errorMessage}")));
+      ScaffoldMessenger.of(mContext!).showSnackBar(
+        SnackBar(
+          content: Text("✅✅✅✅✅✅✅프로필 정보 보기 실패 : ${responseDTO.errorMessage}"),
+        ),
+      );
     }
   }
 }
 
 // 창고 관리자
-// final UserProfileProvider = StateNotifierProvider.family
-//     .autoDispose<UserProfileViewModel, UserProfileModel?, int>((ref, userId) {
-//   return UserProfileViewModel(null, ref)..notifyInit();
-// });
+
 final UserProfileProvider =
-    StateNotifierProvider<UserProfileViewModel, UserProfileModel?>((ref) {
-  return UserProfileViewModel(null, ref)..notifyInit();
-});
+    StateNotifierProvider<UserProfileViewModel, UserProfileModel?>(
+  (ref) {
+    return UserProfileViewModel(null, ref)..notifyInit(); /* 초기 상태 null */
+  },
+);

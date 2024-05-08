@@ -1,15 +1,15 @@
-class Photo {
+class PhotoDTO {
   final int id;
   final String name;
   final String path;
 
-  Photo({
+  PhotoDTO({
     required this.id,
     required this.name,
     required this.path,
   });
 
-  Photo.fromJson(Map<String, dynamic> json)
+  PhotoDTO.fromJson(Map<String, dynamic> json)
       : id = json["id"],
         name = json["name"],
         path = json["path"];

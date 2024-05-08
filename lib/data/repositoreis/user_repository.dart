@@ -14,7 +14,7 @@ class UserRepository {
     return responseDTO;
   }
 
-  Future<ResponseDTO> callLogin(LoginReqDTO loginReqDTO) async {
+  Future<(ResponseDTO, String)> callLogin(LoginReqDTO loginReqDTO) async {
     final response = await dio.post("/user/login", data: loginReqDTO.toJson());
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
 
@@ -23,8 +23,9 @@ class UserRepository {
 
     if (responseDTO.success) {
       responseDTO.response = User.fromJson(responseDTO.response);
+      final accessToken = response.headers["Authorization"]!.first;
 
-      return (responseDTO);
+      return (responseDTO, accessToken);
     } else {
       throw new Exception("${responseDTO.errorMessage}");
     }
