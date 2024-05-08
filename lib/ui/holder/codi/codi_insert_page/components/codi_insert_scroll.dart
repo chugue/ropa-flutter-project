@@ -1,4 +1,3 @@
-import 'package:final_project_team02/data/global_data/codi.dart';
 import 'package:flutter/material.dart';
 
 class CodiInsertScroll extends StatefulWidget {
@@ -20,11 +19,9 @@ class _CodiInsertScrollState extends State<CodiInsertScroll> {
             height: 120,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount:
-                  codiList[CodiIndex].mainImg.length /* ✅TODO : 추 후 + 1 */,
+              itemCount: 2 /* ✅TODO : 추 후 + 1 */,
               itemBuilder: (context, int index) {
-                if (index ==
-                    codiList[CodiIndex].mainImg.length - 1) /* ✅-1 지울 것*/ {
+                if (index == 2 - 1) /* ✅-1 지울 것*/ {
                   return GestureDetector(
                     onTap: () {
                       // TODO : 이미지 업로드 기능 구현
@@ -49,9 +46,9 @@ class _CodiInsertScrollState extends State<CodiInsertScroll> {
                     height: 120,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(codiList[CodiIndex].mainImg[index]),
-                        fit: BoxFit.cover,
-                      ),
+                          image: NetworkImage(
+                        "https://picsum.photos/id/${index + 1}/1000/1000",
+                      )),
                     ),
                   );
                 }

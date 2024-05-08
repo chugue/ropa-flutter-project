@@ -1,4 +1,3 @@
-import 'package:final_project_team02/data/global_data/codi.dart';
 import 'package:flutter/cupertino.dart';
 
 class CodiMainScroll extends StatelessWidget {
@@ -17,13 +16,12 @@ class CodiMainScroll extends StatelessWidget {
             return SizedBox(
               width: MediaQuery.of(context).size.width,
               child: PageView.builder(
-                itemCount: codiList[codiIndex].mainImg.length,
-                itemBuilder: (context, imgIndex) {
+                itemCount: 2,
+                itemBuilder: (context, index) {
                   // 각 코디의 이미지 리스트에 대한 페이지 뷰 빌드
-                  return Image.asset(
-                    codiList[codiIndex].mainImg[imgIndex],
-                    fit: BoxFit.cover,
-                  );
+                  return Image.network(
+                      "https://picsum.photos/id/${index + 1}/1000/1000",
+                      fit: BoxFit.cover);
                 },
               ),
             );

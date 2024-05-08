@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:final_project_team02/data/global_data/user.dart';
 import 'package:logger/logger.dart';
 
@@ -30,7 +31,16 @@ class UserRepository {
     }
   }
 
-  Future<void> callProfile() async {
+  Future<void> callProfile(String token) async {
+    final response = await dio.get("/app/profile",
+        options: Options(headers: {'Authorization': '$token'}));
+    Logger().d(response.data!);
+    //
+    // ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+    // return responseDTO;
+  }
+
+  Future<void> callProfileV2() async {
     final response = await dio.get("/app/profile");
     Logger().d(response.data!);
     //

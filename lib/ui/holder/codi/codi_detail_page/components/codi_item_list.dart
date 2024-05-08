@@ -1,4 +1,3 @@
-import 'package:final_project_team02/data/global_data/codi.dart';
 import 'package:final_project_team02/ui/holder/item/item_page.dart';
 import 'package:flutter/material.dart';
 
@@ -18,8 +17,8 @@ class ItemList extends StatelessWidget {
             return SizedBox(
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: codiList[CodiIndex].itemImg.length,
-                itemBuilder: (context, CodiItemIndex) {
+                itemCount: 5,
+                itemBuilder: (context, index) {
                   return Column(
                     children: [
                       GestureDetector(
@@ -35,11 +34,9 @@ class ItemList extends StatelessWidget {
                           height: MediaQuery.of(context).size.width * 0.40,
                           child: Padding(
                             padding: const EdgeInsets.only(right: 5.0),
-                            child: Image.asset(
-                              codiList[CodiIndex].itemImg[CodiItemIndex],
-                              // 'assets/example_image_$index.jpg',
-                              fit: BoxFit.cover,
-                            ),
+                            child: Image.network(
+                                "https://picsum.photos/id/${index + 1}/1000/1000",
+                                fit: BoxFit.cover),
                           ),
                         ),
                       ),

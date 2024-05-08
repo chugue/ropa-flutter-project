@@ -18,22 +18,20 @@ var interceptor = InterceptorsWrapper(
     //토큰을 secureStorage에서 읽는다.
     var accessToken = await secureStorage.read(key: 'accessToken');
     print("onRequest 토큰: $accessToken");
-    if (accessToken == null) {
-      print("onRequest 토큰: $accessToken");
-    }
+
     if (accessToken != null) {
-      options.headers['Authorization'] = 'Bearer $accessToken';
+      options.headers["Authorization"] = "Bearer $accessToken";
     } else {
       print("나 토큰이 없어");
     }
     return handler.next(options);
   },
   onResponse: (response, handler) async {
-    var authorizationHeader = response.headers['Authorization'];
+    var authorizationHeader = response.headers["Authorization"];
     if (authorizationHeader != null) {
-      var accessToken = authorizationHeader[0].split('Bearer ')[1];
+      var accessToken = authorizationHeader[0].split("Bearer ")[1];
       print("onResponse 토큰: " + accessToken);
-      await secureStorage.write(key: 'accessToken', value: accessToken);
+      await secureStorage.write(key: "accessToken", value: accessToken);
     }
     return handler.next(response);
   },

@@ -2,6 +2,7 @@ import 'package:final_project_team02/data/dtos/user_request.dart';
 import 'package:final_project_team02/data/repositoreis/user_repository.dart';
 
 void main() async {
+  // dio.interceptors.add(interceptor);
   await callProfile_test();
 }
 
@@ -23,5 +24,10 @@ Future<void> callLogin_test2() async {
 }
 
 Future<void> callProfile_test() async {
-  await UserRepository().callProfile();
+  await UserRepository().callProfileV2();
+}
+
+Future<void> callProfile_test2() async {
+  await UserRepository().callProfile(
+      'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuyCrOyaqeyekDHsnZgg7Iuk66qFIiwiaWQiOjEsImV4cCI6MTcxNTIzMTc4NCwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSJ9.OwPmgGXUSXFRDNqSWCywuH6tEz6QwF_p2Vy1jNAUaHLfEN75Nei31-kICT29krZqem6UiyJpfHX8P_68GD1idA');
 }

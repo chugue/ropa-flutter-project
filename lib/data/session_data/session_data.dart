@@ -11,6 +11,7 @@ import '../repositoreis/user_repository.dart';
 class SessionUser {
   User? user;
   bool isLogin = false;
+  String? accessToken;
   int? selectedUserId;
 
   SessionUser();
