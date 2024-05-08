@@ -23,7 +23,7 @@ var interceptor = InterceptorsWrapper(
     if (accessToken != null) {
       options.headers["Authorization"] = "Bearer $accessToken";
     } else {
-      print("나 토큰이 없어");
+      print("나 토큰이 없어 🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️서버 확인해 봤어?🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️");
     }
     return handler.next(options);
   },
