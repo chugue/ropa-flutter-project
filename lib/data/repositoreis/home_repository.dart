@@ -16,10 +16,10 @@ class HomeRepository {
     if (responseDTO.success) {
       List<dynamic> popularUserPhotos =
           responseDTO.response["popularUserPhotos"];
-      Logger().d(popularUserPhotos);
+      // Logger().d(popularUserPhotos);
       List<PopularUserPhotos> UserPhotos =
           popularUserPhotos.map((e) => PopularUserPhotos.fromJson(e)).toList();
-      Logger().d(UserPhotos);
+      // Logger().d(UserPhotos);
 
       List<dynamic> popularItemsPhotos =
           responseDTO.response["popularItemsPhotos"];
@@ -27,16 +27,19 @@ class HomeRepository {
       List<PopularItemsPhotos> ItemsPhotos = popularItemsPhotos
           .map((e) => PopularItemsPhotos.fromJson(e))
           .toList();
-      Logger().d(ItemsPhotos);
+      // Logger().d(ItemsPhotos);
 
       List<dynamic> popularCodiPhotos =
           responseDTO.response["popularCodiPhotos"];
-      Logger().d(popularCodiPhotos);
+      // Logger().d(popularCodiPhotos);
       List<PopularCodiPhotos> CodiPhotos =
           popularCodiPhotos.map((e) => PopularCodiPhotos.fromJson(e)).toList();
-      Logger().d(CodiPhotos);
+      // Logger().d(CodiPhotos);
 
-      HomeModel homeModel = HomeModel(codiPhotos: CodiPhotos, itemsPhotos: ItemsPhotos, userPhotos: UserPhotos);
+      HomeModel homeModel = HomeModel(
+          codiPhotos: CodiPhotos,
+          itemsPhotos: ItemsPhotos,
+          userPhotos: UserPhotos);
       responseDTO.response = homeModel;
     }
     return responseDTO;

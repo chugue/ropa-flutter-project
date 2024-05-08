@@ -1,5 +1,3 @@
-import 'package:final_project_team02/data/global_data/ootd.dart';
-import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_page.dart';
 import 'package:flutter/material.dart';
 
 class SearchTabViewCodi extends StatelessWidget {
@@ -23,10 +21,8 @@ class SearchTabViewCodi extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodiPage(ootd: ootdList.first)));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SizedBox()));
               },
               child: AspectRatio(
                 aspectRatio: 1,

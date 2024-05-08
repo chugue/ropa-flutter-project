@@ -1,7 +1,10 @@
+import 'package:intl/intl.dart';
+
 class Codi {
   final int codiId;
   final String description;
-  final String createdAt;
+  final DateTime createdAt;
+
   final bool isloved = false;
   final int loveCount;
 
@@ -16,13 +19,10 @@ class Codi {
     return Codi(
       codiId: json["codiId"],
       description: json["description"],
-      createdAt: json["createdAt"],
       loveCount: json["loveCount"],
+      createdAt: DateFormat("yyyy-mm-dd").parse(json["createdAt"]),
     );
   }
-//
-
-//
 }
 
 //
