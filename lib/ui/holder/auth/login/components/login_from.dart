@@ -41,7 +41,6 @@ class LoginFrom extends ConsumerWidget {
 
           //로그인 완료 후 얼러트
           ElevatedButton(
-
             onPressed: () {
               bool isOk = _formKey.currentState!.validate();
 
@@ -79,7 +78,7 @@ class LoginFrom extends ConsumerWidget {
         const Text(
           '가입하신 적이 없나요? ',
           style: TextStyle(
-            color: Colors.black45,
+            color: Colors.black,
           ),
         ),
         InkWell(

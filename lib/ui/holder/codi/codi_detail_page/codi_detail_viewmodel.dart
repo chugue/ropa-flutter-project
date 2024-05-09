@@ -1,6 +1,7 @@
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/global_data/codi.dart';
 import 'package:final_project_team02/data/repositoreis/codi_repo.dart';
+import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:final_project_team02/main.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail_data/item_photos.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail_data/main_photos.dart';
@@ -27,6 +28,22 @@ class CodiDetailViewModel extends StateNotifier<CodiDetailModel?> {
   final mContext = navigatorKey.currentContext;
 
   CodiDetailViewModel(super.state, this.ref);
+
+  Future<void> toggleLove(int codiId) async {
+    SessionData sessionData = ref.read(sessionProvider);
+
+    ResponseDTO responseDTO =
+        await CodiRepository().callLoveCount(codiId, sessionData.accessToken!);
+    if (responseDTO.success) {
+      if (state!.codi.isLoved == false) {
+        state!.codi.isLoved == true; // 토글
+        state!.codi.loveCount! + 1; // 증가
+      } else {
+        state!.codi.isLoved == false; // 토글
+        state!.codi.loveCount! - 1; // 증가
+      }
+    }
+  }
 
   Future<ResponseDTO> notifyInit(int codiId) async {
     ResponseDTO responseDTO = await CodiRepository().callCodiDetail(codiId);

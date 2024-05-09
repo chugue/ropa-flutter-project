@@ -31,8 +31,8 @@ class MoreStyleCodi extends StatelessWidget {
                               )));
                 },
                 child: Image.network(
-                  // "https://picsum.photos/400/400",
-                  "https://picsum.photos/id/${model!.codiPhotos[index].photoId}/600/600",
+                  // "https://picsum.photos/00/400",
+                  "https://picsum.photos/id/${model!.codiPhotos[index].codiId}/600/600",
                   fit: BoxFit.cover,
                 ),
               ),

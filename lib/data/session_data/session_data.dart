@@ -1,3 +1,4 @@
+import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/data/global_data/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -37,10 +38,15 @@ class SessionData extends SessionUser {
   }
 
   Future<void> login(LoginReqDTO loginReqDTO) async {
-    var (responseDTO) = await UserRepository().callLogin(loginReqDTO);
+    print("loginReqDTO : ${loginReqDTO.toJson()}");
+    var (responseDTO, accessToken) =
+        await UserRepository().callLogin(loginReqDTO);
 
     if (responseDTO.success) {
+      await secureStorage.write(key: "accessToken", value: accessToken);
+
       this.user = responseDTO.response;
+      this.accessToken = accessToken;
       this.isLogin = true;
 
       Navigator.pushNamedAndRemoveUntil(

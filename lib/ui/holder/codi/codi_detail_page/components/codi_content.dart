@@ -10,15 +10,13 @@ class CodiContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Text(
-          "${model!.codi.description}",
-          style: TextStyle(
-            fontSize: 12.0,
-            color: Colors.black,
-          ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Text(
+        "${model!.codi.description}",
+        style: TextStyle(
+          fontSize: 12.0,
+          color: Colors.black,
         ),
       ),
     );

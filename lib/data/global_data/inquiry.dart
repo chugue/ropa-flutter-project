@@ -55,7 +55,12 @@ List<InquiryItem> inquiryList = [
     createdAt: DateTime(2024, 5, 03, 14, 40),
     state: "답변 완료",
     answer: "푸하하하하하",
-    answerCreatedAt: DateTime(2024, 5, 04, 12, 45),
+    answerCreatedAt: DateTime(
+      2024,
+      5,
+      04,
+      12,
+    ),
   ),
   InquiryItem(
     id: 5,

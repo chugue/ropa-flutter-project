@@ -1,14 +1,9 @@
-import 'package:final_project_team02/ui/holder/auth/login/login_page.dart';
-import 'package:final_project_team02/ui/holder/main_viewmodel.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/user/user_my_page.dart';
 import 'package:final_project_team02/ui/holder/home/home_page.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/user_my_page.dart';
 import 'package:final_project_team02/ui/holder/serach/search_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'home/home_page.dart';
-import 'my_page/pages/user/user_my_page.dart';
 class MainHolder extends StatefulWidget {
   @override
   State<MainHolder> createState() => _MainHorderState();

@@ -1,4 +1,3 @@
-import 'package:final_project_team02/ui/holder/item/item_page.dart';
 import 'package:flutter/material.dart';
 
 class SearchTabViewItem extends StatelessWidget {
@@ -26,7 +25,7 @@ class SearchTabViewItem extends StatelessWidget {
                 child: InkWell(
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ItemPage()));
+                        MaterialPageRoute(builder: (context) => SizedBox()));
                   },
                   child: AspectRatio(
                     aspectRatio: 4,

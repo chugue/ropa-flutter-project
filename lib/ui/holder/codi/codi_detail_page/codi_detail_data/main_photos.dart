@@ -2,6 +2,7 @@ class MainPhotos {
   final int mainPhotoId;
   final String mainPhotoName;
   final String mainPhotoPath;
+  final bool isMainPhoto = true;
 
   const MainPhotos({
     required this.mainPhotoId,

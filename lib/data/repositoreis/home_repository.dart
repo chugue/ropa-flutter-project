@@ -4,7 +4,6 @@ import 'package:final_project_team02/ui/holder/home/home_data/popular_codi_photo
 import 'package:final_project_team02/ui/holder/home/home_data/popular_items_photos.dart';
 import 'package:final_project_team02/ui/holder/home/home_data/popular_user_photos.dart';
 import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
-import 'package:logger/logger.dart';
 
 class HomeRepository {
   Future<ResponseDTO> callHomeList() async {
@@ -23,7 +22,7 @@ class HomeRepository {
 
       List<dynamic> popularItemsPhotos =
           responseDTO.response["popularItemsPhotos"];
-      Logger().d(popularItemsPhotos);
+      // Logger().d(popularItemsPhotos);
       List<PopularItemsPhotos> ItemsPhotos = popularItemsPhotos
           .map((e) => PopularItemsPhotos.fromJson(e))
           .toList();

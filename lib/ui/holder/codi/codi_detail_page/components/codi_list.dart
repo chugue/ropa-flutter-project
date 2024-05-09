@@ -1,9 +1,12 @@
 import 'package:final_project_team02/data/global_data/ootd.dart';
+import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
 
 class CodiList extends StatelessWidget {
+  final CodiDetailModel? model;
+
   const CodiList({
-    super.key,
+    required this.model,
   });
 
   @override
@@ -16,10 +19,9 @@ class CodiList extends StatelessWidget {
       ),
       delegate: SliverChildBuilderDelegate(
         (context, index) {
-          return Image.asset(
-            ootdList[index].Img,
-            fit: BoxFit.cover,
-          );
+          return Image.network(
+              "https://picsum.photos/id/${model!.otherCodiPhotos[index].codiId + 1}/1000/1000",
+              fit: BoxFit.cover);
         },
         childCount: ootdList.length + 5,
       ),

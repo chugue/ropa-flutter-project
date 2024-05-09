@@ -4,12 +4,12 @@ class Codi {
   final int codiId;
   final String description;
   final DateTime createdAt;
-
-  final bool isloved = false;
+  final bool isLoved;
   final int loveCount;
 
   const Codi({
     required this.codiId,
+    required this.isLoved,
     required this.description,
     required this.createdAt,
     required this.loveCount,
@@ -17,9 +17,10 @@ class Codi {
 
   factory Codi.fromJson(Map<String, dynamic> json) {
     return Codi(
+      isLoved: json["isloved"],
       codiId: json["codiId"],
       description: json["description"],
-      loveCount: json["loveCount"],
+      loveCount: json["loveCount"] ?? null,
       createdAt: DateFormat("yyyy-mm-dd").parse(json["createdAt"]),
     );
   }
