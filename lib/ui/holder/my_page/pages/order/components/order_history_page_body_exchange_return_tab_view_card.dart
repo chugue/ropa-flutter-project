@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../../../_core/constants/theme.dart';
 
 class OrderHistoryPageBodyExchangeReturnTabViewCard extends StatelessWidget {
   final String itemName;
+  final String itemBrand;
   final int itemPrice;
   final String itemOptions;
   final String deliveryCharge;
   final String deliveryStatus;
+  final String applyDate;
+  final String whatTodo;
+  final String itemQty;
 
   OrderHistoryPageBodyExchangeReturnTabViewCard({
     required this.itemName,
@@ -15,10 +20,17 @@ class OrderHistoryPageBodyExchangeReturnTabViewCard extends StatelessWidget {
     required this.itemOptions,
     required this.deliveryCharge,
     required this.deliveryStatus,
+    required this.applyDate,
+    required this.whatTodo,
+    required this.itemBrand,
+    required this.itemQty,
   });
 
   @override
   Widget build(BuildContext context) {
+    final NumberFormat formatter = NumberFormat('#,###');
+    String itemPriceFormatter = formatter.format(itemPrice);
+
     return Expanded(
       child: ListView.builder(
         itemCount: 1, // 리스트에 표시할 항목의 개수
@@ -36,7 +48,7 @@ class OrderHistoryPageBodyExchangeReturnTabViewCard extends StatelessWidget {
                 children: [
                   Padding(
                       padding: const EdgeInsets.only(left: 5),
-                      child: Text("${deliveryStatus}",
+                      child: Text("${whatTodo}${deliveryStatus}",
                           style: TextStyle(
                               fontSize: 16.0,
                               color: Colors.black,
@@ -60,18 +72,66 @@ class OrderHistoryPageBodyExchangeReturnTabViewCard extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Text(
+                            "${applyDate} ${whatTodo}신청",
+                            style: TextStyle(fontSize: 14.0),
+                          ),
+                          Text(
+                            "${deliveryCharge} 배송",
+                            style: TextStyle(color: Colors.grey, fontSize: 12),
+                          ),
+                          Text(
+                            '${itemBrand}',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            softWrap: true,
+                          ),
                           Text('${itemName}', style: textTheme().displayMedium),
-                          Text('배송: ${deliveryCharge}',
-                              style: textTheme().displayMedium),
                           SizedBox(width: 16),
-                          Text('상품구매금액: ${itemPrice}원 ',
-                              style: textTheme().displayMedium),
                         ],
                       ),
                     ],
                   ),
                   Divider(),
-                  Text("[옵션 : ${itemOptions} ]"),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(width: 1),
+                              borderRadius: BorderRadius.circular(2.0),
+                            ),
+                            child: Text(" 옵션 ",
+                                style: TextStyle(color: Colors.grey)),
+                          ),
+                          SizedBox(width: 10),
+                          Text("${itemOptions}"),
+                        ],
+                      ),
+                      SizedBox(height: 5),
+                      Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(width: 1),
+                              borderRadius: BorderRadius.circular(2.0),
+                            ),
+                            child: Text(" 수량 ",
+                                style: TextStyle(color: Colors.grey)),
+                          ),
+                          SizedBox(width: 10),
+                          Text("${itemQty}개"),
+                        ],
+                      ),
+                      SizedBox(height: 5),
+                      Text(itemPriceFormatter + "원",
+                          style: textTheme().bodyLarge),
+                    ],
+                  ),
                 ],
               ),
             ),
