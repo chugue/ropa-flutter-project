@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/dtos/user_request.dart';
@@ -15,9 +14,8 @@ class UserRepo {
     // return responseDTO;
   }
 
-  Future<ResponseDTO> callUserProfile(String accessToken) async {
-    final response = await dio.get("/app/profile",
-        options: Options(headers: {"Authorization": accessToken}));
+  Future<ResponseDTO> callUserProfile() async {
+    final response = await dio.get("/app/profile");
     Logger().d(response.data!);
     print(response.data);
 

@@ -10,12 +10,13 @@ import 'package:logger/logger.dart';
 
 class CodiRepo {
   Future<ResponseDTO> callLoveCount(int codiId, String accessToken) async {
-    final response = await dio.get('/app/function/love/${codiId}',
+    final response = await dio.post('/app/function/love/${codiId}',
         options: Options(headers: {'Authorization': '${accessToken}'}));
-
     Logger().d(response.data!);
-
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+    if (responseDTO.success) {
+      responseDTO.response = Codi.fromJson(responseDTO.response);
+    }
     return responseDTO;
   }
 

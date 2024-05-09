@@ -12,7 +12,7 @@ void main() async {
 }
 
 Future<void> callUserProfile_test() async {
-  await UserRepo().callUserProfile(accessToken);
+  await UserRepo().callUserProfile();
 }
 
 Future<void> callSetting_test() async {

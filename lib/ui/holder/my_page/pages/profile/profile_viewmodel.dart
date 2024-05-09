@@ -32,7 +32,7 @@ class UserProfileViewModel extends StateNotifier<UserProfileModel?> {
     print(sessionData.accessToken);
     print(jwt);
 
-    ResponseDTO responseDTO = await UserRepo().callUserProfile(jwt);
+    ResponseDTO responseDTO = await UserRepo().callUserProfile();
 
     print("✅✅✅✅✅✅✅뷰모델 : ${responseDTO.success}");
     if (responseDTO.success) {

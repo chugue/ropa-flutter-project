@@ -8,6 +8,7 @@ import 'package:final_project_team02/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+// 싱글톤
 class SessionUser {
   User? user;
   bool isLogin = false;
@@ -46,6 +47,8 @@ class SessionData extends SessionUser {
       this.user = responseDTO.response;
       this.accessToken = accessToken;
       this.isLogin = true;
+
+      globalAccessToken = accessToken;
 
       Navigator.pushNamedAndRemoveUntil(
           mContext!, Move.mainHoder, (route) => false);

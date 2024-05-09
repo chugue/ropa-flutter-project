@@ -2,26 +2,29 @@ import 'package:intl/intl.dart';
 
 class Codi {
   final int codiId;
+  int? userId;
   final String description;
-  final DateTime createdAt;
+  DateTime? createdAt;
   final bool isLoved;
   final int loveCount;
 
-  const Codi({
+  Codi({
     required this.codiId,
-    required this.isLoved,
+    this.userId,
     required this.description,
     required this.createdAt,
+    required this.isLoved,
     required this.loveCount,
   });
 
   factory Codi.fromJson(Map<String, dynamic> json) {
     return Codi(
       isLoved: json["isloved"],
+      userId: json["userId"] ?? null,
       codiId: json["codiId"],
-      description: json["description"],
+      description: json["description"] ?? "",
       loveCount: json["loveCount"] ?? null,
-      createdAt: DateFormat("yyyy-mm-dd").parse(json["createdAt"]),
+      createdAt: DateFormat("yyyy-mm-dd").parse(json["createdAt"] ?? null),
     );
   }
 }

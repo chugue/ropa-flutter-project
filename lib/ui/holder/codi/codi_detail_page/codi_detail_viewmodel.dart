@@ -29,25 +29,33 @@ class CodiDetailViewModel extends StateNotifier<CodiDetailModel?> {
 
   CodiDetailViewModel(super.state, this.ref);
 
-  Future<void> toggleLove(int codiId) async {
+  Future<ResponseDTO> loveCount(int codiId) async {
     SessionData sessionData = ref.read(sessionProvider);
 
     ResponseDTO responseDTO =
         await CodiRepo().callLoveCount(codiId, sessionData.accessToken!);
+
     if (responseDTO.success) {
-      if (state!.codi.isLoved == false) {
-        state!.codi.isLoved == true; // 토글
-        state!.codi.loveCount! + 1; // 증가
-      } else {
-        state!.codi.isLoved == false; // 토글
-        state!.codi.loveCount! - 1; // 증가
-      }
+      bool isLoved = !state!.codi.isLoved;
+      int loveCount =
+          isLoved ? state!.codi.loveCount! + 1 : state!.codi.loveCount! - 1;
+
+      Codi codi = Codi(
+        codiId: codiId,
+        isLoved: isLoved,
+        description: state!.codi.description,
+        createdAt: state!.codi.createdAt,
+        loveCount: loveCount,
+      );
+
+      responseDTO.response = codi;
     }
+
+    return responseDTO;
   }
 
   Future<ResponseDTO> notifyInit(int codiId) async {
     ResponseDTO responseDTO = await CodiRepo().callCodiDetail(codiId);
-
     if (responseDTO.success) {
       state = responseDTO.response;
       Logger().d(responseDTO.response);
