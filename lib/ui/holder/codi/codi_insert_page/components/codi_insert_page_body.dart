@@ -1,9 +1,10 @@
 import 'package:final_project_team02/ui/holder/codi/codi_insert_page/components/codi_insert_item_insert_scroll.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_insert_page/components/codi_insert_scroll.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_insert_page/components/codi_insert_styling_comment.dart';
+import 'package:final_project_team02/ui/holder/codi/codi_insert_page/components/codi_insert_styling_title.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_insert_page/components/codi_insert_sub_title.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_insert_page/components/codi_insert_title.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class CodiInsetPageBody extends StatelessWidget {
   const CodiInsetPageBody({
@@ -24,6 +25,9 @@ class CodiInsetPageBody extends StatelessWidget {
             SizedBox(height: 50),
             CodiInsertSubTitle(subTitle: "착용 아이템"),
             ItemInsertScroll(),
+            SizedBox(height: 50),
+            CodiInsertSubTitle(subTitle: "제목"),
+            StylingTitle(),
             SizedBox(height: 50),
             CodiInsertSubTitle(subTitle: "스타일링 코멘트"),
             StylingComment(),

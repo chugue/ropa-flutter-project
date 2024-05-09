@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:logger/logger.dart';
 
 final baseURL = "http://192.168.0.59:8080";
 final dio = Dio(
@@ -24,16 +25,16 @@ var interceptor = InterceptorsWrapper(
     if (accessToken != null) {
       options.headers['Authorization'] = 'Bearer $accessToken';
     } else {
-      print("나 토큰이 없어");
+      print("나 토큰이 없어 🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️서버 확인해 봤어?🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️");
     }
     return handler.next(options);
   },
   onResponse: (response, handler) async {
-    var authorizationHeader = response.headers['Authorization'];
+    var authorizationHeader = response.headers["Authorization"];
     if (authorizationHeader != null) {
-      var accessToken = authorizationHeader[0].split('Bearer ')[1];
+      var accessToken = authorizationHeader[0].split("Bearer ")[1];
       print("onResponse 토큰: " + accessToken);
-      await secureStorage.write(key: 'accessToken', value: accessToken);
+      await secureStorage.write(key: "accessToken", value: accessToken);
     }
     return handler.next(response);
   },

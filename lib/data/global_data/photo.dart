@@ -1,21 +1,16 @@
-class Photo {
-  final int photoId;
+class PhotoDTO {
+  final int id;
   final String name;
   final String path;
-  final String sort;
 
-  const Photo({
-    required this.photoId,
+  PhotoDTO({
+    required this.id,
     required this.name,
     required this.path,
-    required this.sort,
   });
 
-  Photo.fromJson(Map<String, dynamic> json)
-      : photoId = json["photoId"],
+  PhotoDTO.fromJson(Map<String, dynamic> json)
+      : id = json["id"],
         name = json["name"],
-        path = json["path"],
-        sort = json["sort"];
-
-//
+        path = json["path"];
 }
