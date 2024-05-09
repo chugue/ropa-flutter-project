@@ -1,7 +1,6 @@
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/global_data/codi.dart';
 import 'package:final_project_team02/data/repositoreis/codi_repo.dart';
-import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:final_project_team02/main.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail_data/item_photos.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail_data/main_photos.dart';
@@ -30,19 +29,16 @@ class CodiDetailViewModel extends StateNotifier<CodiDetailModel?> {
   CodiDetailViewModel(super.state, this.ref);
 
   Future<ResponseDTO> loveCount(int codiId) async {
-    SessionData sessionData = ref.read(sessionProvider);
-
-    ResponseDTO responseDTO =
-        await CodiRepo().callLoveCount(codiId, sessionData.accessToken!);
+    ResponseDTO responseDTO = await CodiRepo().callLoveCount(codiId);
 
     if (responseDTO.success) {
       bool isLoved = !state!.codi.isLoved;
-      int loveCount =
-          isLoved ? state!.codi.loveCount! + 1 : state!.codi.loveCount! - 1;
+
+      int loveCount = state!.codi.loveCount! + 1;
 
       Codi codi = Codi(
         codiId: codiId,
-        isLoved: isLoved = true,
+        isLoved: isLoved,
         description: state!.codi.description,
         createdAt: state!.codi.createdAt,
         loveCount: loveCount,
@@ -58,6 +54,7 @@ class CodiDetailViewModel extends StateNotifier<CodiDetailModel?> {
         mainPhotos: mainPhotos,
         otherCodiPhotos: otherCodiPhotos,
       );
+      state = responseDTO.response;
     }
 
     return responseDTO;

@@ -20,7 +20,9 @@ class CodiLike extends ConsumerWidget {
           children: <Widget>[
             IconButton(
               onPressed: () {
-                //ref.read(codiDetailProvider(codiId).notifier).loveCount(codiId);
+                ref
+                    .read(codiDetailProvider(model.codi.codiId).notifier)
+                    .loveCount(model.codi.codiId);
               },
               icon: Icon(Icons.favorite,
                   color: model.codi.isLoved ? Colors.red : Colors.grey),

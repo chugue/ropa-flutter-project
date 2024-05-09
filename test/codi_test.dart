@@ -12,5 +12,5 @@ Future<void> callCodiDetail_test() async {
 }
 
 Future<void> callLoveCount_test() async {
-  await CodiRepo().callLoveCount(1, accessToken);
+  await CodiRepo().callLoveCount(1);
 }

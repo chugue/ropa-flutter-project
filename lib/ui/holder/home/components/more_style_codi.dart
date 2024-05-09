@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_page.dart';
 import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -30,11 +32,8 @@ class MoreStyleCodi extends StatelessWidget {
                                 codiId: model!.codiPhotos[index].codiId,
                               )));
                 },
-                child: Image.network(
-                  // "https://picsum.photos/00/400",
-                  "https://picsum.photos/id/${model!.codiPhotos[index].codiId}/600/600",
-                  fit: BoxFit.cover,
-                ),
+                child: Image.memory(
+                    base64.decode(model!.codiPhotos[index].base64)),
               ),
               Positioned(
                 right: 10,
