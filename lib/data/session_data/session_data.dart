@@ -1,14 +1,13 @@
 import 'package:final_project_team02/_core/constants/http.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/profile/profile_data/user_profile.dart';
+import 'package:final_project_team02/data/global_data/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../_core/constants/move.dart';
-import '../../main.dart';
-import '../domain_data/user.dart';
-import '../dtos/respons_dto.dart';
-import '../dtos/user_request.dart';
-import '../repositoreis/user_repository.dart';
+import 'package:final_project_team02/_core/constants/move.dart';
+import 'package:final_project_team02/main.dart';
+import 'package:final_project_team02/data/dtos/respons_dto.dart';
+import 'package:final_project_team02/data/dtos/user_request.dart';
+import 'package:final_project_team02/data/repositoreis/user_repository.dart';
 
 class SessionUser {
   User? user;
@@ -50,7 +49,6 @@ class SessionData extends SessionUser {
       await secureStorage.write(key: "accessToken", value: accessToken);
 
       this.user = responseDTO.response;
-      this.userProfile = responseDTO.response;
       this.accessToken = accessToken;
       this.isLogin = true;
 
