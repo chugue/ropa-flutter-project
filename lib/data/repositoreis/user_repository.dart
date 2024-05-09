@@ -2,9 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:final_project_team02/data/global_data/user.dart';
 import 'package:logger/logger.dart';
 
-import '../../_core/constants/http.dart';
-import '../dtos/respons_dto.dart';
-import '../dtos/user_request.dart';
+import 'package:final_project_team02/_core/constants/http.dart';
+import 'package:final_project_team02/data/dtos/respons_dto.dart';
+import 'package:final_project_team02/data/dtos/user_request.dart';
 
 class UserRepository {
   Future<void> callSetting() async {
@@ -27,6 +27,7 @@ class UserRepository {
     final response = await dio.post("/user/login", data: loginReqDTO.toJson());
 
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+
     Logger().d(response.data!);
 
     if (responseDTO.success) {

@@ -3,17 +3,20 @@ import 'package:final_project_team02/data/global_data/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../_core/constants/move.dart';
-import '../../main.dart';
-import '../dtos/respons_dto.dart';
-import '../dtos/user_request.dart';
-import '../repositoreis/user_repository.dart';
+import 'package:final_project_team02/_core/constants/move.dart';
+import 'package:final_project_team02/main.dart';
+import 'package:final_project_team02/data/dtos/respons_dto.dart';
+import 'package:final_project_team02/data/dtos/user_request.dart';
+import 'package:final_project_team02/data/repositoreis/user_repository.dart';
 
 class SessionUser {
   User? user;
   bool isLogin = false;
   String? accessToken;
   int? selectedUserId;
+
+  /* ✅토큰 추가 */
+  String? accessToken;
 
   SessionUser();
 }
@@ -23,6 +26,7 @@ class SessionData extends SessionUser {
   final mContext = navigatorKey.currentContext;
 
   SessionData();
+
 
   Future<void> join(JoinReqDTO joinReqDTO) async {
     ResponseDTO responseDTO = await UserRepository().callJoin(joinReqDTO);

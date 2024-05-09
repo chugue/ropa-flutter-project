@@ -23,26 +23,46 @@ class InquiryItemView extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListTile(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        InquiryDetailPage(inquiry: inquiryList[index]),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      InquiryDetailPage(inquiry: inquiryList[index]),
+                ),
+              );
+            },
+            tileColor: Colors.grey[200],
+            leading: SizedBox(
+              width: 48.0,
+              height: 48.0,
+              child: Image.network(inquiryList[index].brand.logo),
+            ),
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                InquiryState(
+                  formattedDate: formattedDate,
+                  index: index,
+                ),
+                Text(
+                  "브랜드 : " + inquiryList[index].brand.name,
+                  style: TextStyle(
+                    fontSize: 12.0,
                   ),
-                );
-              },
-              tileColor: Colors.grey[200],
-              title: InquiryState(formattedDate: formattedDate, index: index),
-              subtitle: Column(
-                children: [
-                  InquiryTitle(index: index),
-                  InquiryContent(index: index),
-                ],
-              )),
+                ),
+              ],
+            ),
+            subtitle: Column(
+              children: [
+                InquiryTitle(index: index),
+                InquiryContent(index: index),
+              ],
+            ),
+          ),
         );
       },
     );

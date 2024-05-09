@@ -1,3 +1,4 @@
+import 'package:final_project_team02/data/global_data/codi.dart';
 import 'package:flutter/material.dart';
 
 class CodiInsertScroll extends StatefulWidget {
@@ -40,16 +41,40 @@ class _CodiInsertScrollState extends State<CodiInsertScroll> {
                     ),
                   );
                 } else {
-                  return Container(
-                    margin: EdgeInsets.only(right: 16),
-                    width: 120,
-                    height: 120,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: NetworkImage(
-                        "https://picsum.photos/id/${index + 1}/1000/1000",
-                      )),
-                    ),
+                  return Stack(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 16),
+                        width: 120,
+                        height: 120,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image:
+                                AssetImage(codiList[CodiIndex].mainImg[index]),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      if (index == 0) /* ✅mainImg의 index, 추후 로직 변경*/
+
+                        Positioned(
+                          top: 5,
+                          right: 10,
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 5, vertical: 2),
+                            color: Colors.black.withOpacity(0.5),
+                            child: Text(
+                              "대표",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        )
+                    ],
                   );
                 }
               },

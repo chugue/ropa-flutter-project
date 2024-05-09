@@ -1,7 +1,9 @@
+import 'package:final_project_team02/ui/holder/inquiry/inquiry_detail_page/components/inquiry_brand.dart';
+import 'package:final_project_team02/ui/holder/inquiry/inquiry_detail_page/components/inquiry_code.dart';
 import 'package:final_project_team02/data/global_data/inquiry.dart';
 import 'package:final_project_team02/ui/holder/inquiry/inquiry_detail_page/components/inquiry_detail_answer.dart';
 import 'package:final_project_team02/ui/holder/inquiry/inquiry_detail_page/components/inquiry_detail_qestion.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class InquiryDetailPageBody extends StatelessWidget {
   const InquiryDetailPageBody({
@@ -18,6 +20,8 @@ class InquiryDetailPageBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          InquiryBrand(inquiry: inquiry),
+          InquiryCode(inquiry: inquiry),
           InquiryDetailQuestion(inquiry: inquiry),
           SizedBox(height: 10),
           InquiryDetailAnswer(inquiry: inquiry),
