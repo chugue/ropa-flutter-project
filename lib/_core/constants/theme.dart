@@ -41,9 +41,10 @@ ThemeData lightMode = ThemeData(
       backgroundColor: MaterialStateProperty.all<Color>(
         lightColorScheme.primary, // Slightly darker shade for the button
       ),
-      foregroundColor:
-          MaterialStateProperty.all<Color>(Colors.white), // text color
-      elevation: MaterialStateProperty.all<double>(5.0), // shadow
+      foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+      // text color
+      elevation: MaterialStateProperty.all<double>(5.0),
+      // shadow
       padding: MaterialStateProperty.all<EdgeInsets>(
           const EdgeInsets.symmetric(horizontal: 20, vertical: 18)),
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -64,12 +65,12 @@ ThemeData darkMode = ThemeData(
 // 2
 TextTheme textTheme() {
   return TextTheme(
-    displayLarge: GoogleFonts.openSans(fontSize: 18.0, color: Colors.black),
-    displayMedium: GoogleFonts.openSans(
+    displayLarge: GoogleFonts.notoSans(fontSize: 18.0, color: Colors.black),
+    displayMedium: GoogleFonts.notoSans(fontSize: 16.0, color: Colors.black),
+    bodyLarge: GoogleFonts.notoSans(
         fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.bold),
-    bodyLarge: GoogleFonts.openSans(fontSize: 16.0, color: Colors.black),
-    bodyMedium: GoogleFonts.openSans(fontSize: 14.0, color: Colors.grey),
-    titleMedium: GoogleFonts.openSans(fontSize: 15.0, color: Colors.black),
+    bodyMedium: GoogleFonts.notoSans(fontSize: 14.0, color: Colors.black),
+    titleMedium: GoogleFonts.notoSans(fontSize: 15.0, color: Colors.black),
   );
 }
 

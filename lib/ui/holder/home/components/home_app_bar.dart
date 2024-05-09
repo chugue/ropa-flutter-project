@@ -1,10 +1,8 @@
-
-
-
 import 'package:final_project_team02/_core/constants/move.dart';
+import 'package:final_project_team02/ui/holder/codi/codi_insert_page/codi_insert_page.dart';
 import 'package:flutter/material.dart';
 
-class HomeAppbar extends StatelessWidget  implements PreferredSizeWidget {
+class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppbar({
     super.key,
   });
@@ -16,8 +14,9 @@ class HomeAppbar extends StatelessWidget  implements PreferredSizeWidget {
         children: [
           SizedBox(
             child: InkWell(
-              onTap: (){
-                Navigator.pushNamedAndRemoveUntil(context, Move.mainHoder , (_) => false);
+              onTap: () {
+                Navigator.pushNamedAndRemoveUntil(
+                    context, Move.mainHoder, (_) => false);
               },
               child: Image.asset(
                 "assets/images/ropa_home_logo.png",
@@ -35,6 +34,16 @@ class HomeAppbar extends StatelessWidget  implements PreferredSizeWidget {
           ),
         ),
         SizedBox(width: 16),
+        IconButton(
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CodiInsertPage(),
+                ));
+          },
+          icon: Icon(Icons.add_circle),
+        ),
       ],
     );
   }
@@ -42,5 +51,4 @@ class HomeAppbar extends StatelessWidget  implements PreferredSizeWidget {
   @override
   // TODO: implement preferredSize
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
-
 }
