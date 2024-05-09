@@ -6,9 +6,9 @@ class Brand {
 }
 
 List<Brand> brands = [
-  Brand("SALOMON",
+  Brand("살로몬",
       "https://image.msscdn.net/mfile_s01/_brand/free_medium/salomon.png?202405021450"),
-  Brand("Lee",
+  Brand("리",
       "https://image.msscdn.net/mfile_s01/_brand/free_medium/lee.png?202404221204"),
   Brand("ESPIONAGE",
       "https://image.msscdn.net/mfile_s01/_brand/free_medium/espionage.png?202404231149"),

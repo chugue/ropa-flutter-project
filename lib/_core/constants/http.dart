@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:logger/logger.dart';
 
 final baseURL = "http://192.168.0.59:8080";
+
 final dio = Dio(
   BaseOptions(
     baseUrl: baseURL,
@@ -11,30 +13,24 @@ final dio = Dio(
 );
 
 const secureStorage = FlutterSecureStorage();
+var logger = Logger();
+
+String? globalAccessToken = null;
 
 // 인터셉터 생성
 var interceptor = InterceptorsWrapper(
   onRequest: (options, handler) async {
-    //토큰을 secureStorage에서 읽는다.
-    var accessToken = await secureStorage.read(key: 'accessToken');
-    print("onRequest 토큰: $accessToken");
-    if (accessToken == null) {
-      print("onRequest 토큰: $accessToken");
-    }
-    if (accessToken != null) {
-      options.headers['Authorization'] = 'Bearer $accessToken';
+    if (globalAccessToken != null) {
+      options.headers["Authorization"] = "Bearer $globalAccessToken";
     } else {
-      print("나 토큰이 없어");
+      print("나 토큰이 없어 🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️서버 확인해 봤어?🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️");
     }
+
+    logger.d("리퀘스트 헤더: ${options.headers}"); // 이 위치로 변경
     return handler.next(options);
   },
   onResponse: (response, handler) async {
-    var authorizationHeader = response.headers['Authorization'];
-    if (authorizationHeader != null) {
-      var accessToken = authorizationHeader[0].split('Bearer ')[1];
-      print("onResponse 토큰: " + accessToken);
-      await secureStorage.write(key: 'accessToken', value: accessToken);
-    }
+    logger.d(response.headers["Authorization"]);
     return handler.next(response);
   },
   onError: (error, handler) {

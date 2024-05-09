@@ -4,8 +4,10 @@ import 'creator_view_bottom.dart';
 import 'creator_view_top.dart';
 
 class CreatorViewBody extends StatelessWidget {
-  const CreatorViewBody({
-    super.key,
+  final int creatorId;
+
+  CreatorViewBody({
+    required this.creatorId,
   });
 
   @override

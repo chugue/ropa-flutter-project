@@ -1,5 +1,4 @@
 import 'package:final_project_team02/data/global_data/ootd.dart';
-import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_page.dart';
 import 'package:flutter/material.dart';
 
 class PopularOotd extends StatefulWidget {
@@ -28,10 +27,7 @@ class _PopularOotdState extends State<PopularOotd> {
               print("사진 클릭 됨");
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => CodiPage(
-                          ootd: widget.ootd,
-                        )),
+                MaterialPageRoute(builder: (context) => SizedBox()),
               );
             },
             child: SizedBox(

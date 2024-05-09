@@ -20,15 +20,19 @@ class _OrderHistoryPageBodyExchangeReturnTabViewState
     return Column(
       children: [
         OrderHistoryPageBodyExchangeReturnTabViewDropBox(
-          list: ["교환", "반품"],
+          list: ["교환신청", "반품신청"],
         ),
         SizedBox(height: 20),
         OrderHistoryPageBodyExchangeReturnTabViewCard(
+          applyDate: "2024.05.06",
           deliveryCharge: "무료",
-          deliveryStatus: "교환",
-          itemName: "상의",
+          whatTodo: "교환",
+          deliveryStatus: "진행 중",
+          itemName: "리버시블 플리스 가디건",
+          itemBrand: "그라미치",
           itemOptions: "free",
-          itemPrice: 352000, //쉼표 포멧 필요
+          itemPrice: 352000,
+          itemQty: '1',
         ),
         SizedBox(height: 20),
         Divider(),

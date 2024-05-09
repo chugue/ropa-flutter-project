@@ -1,4 +1,3 @@
-import 'package:final_project_team02/data/global_data/codi.dart';
 import 'package:flutter/material.dart';
 
 class CodiInsertScroll extends StatefulWidget {
@@ -20,11 +19,9 @@ class _CodiInsertScrollState extends State<CodiInsertScroll> {
             height: 120,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount:
-                  codiList[CodiIndex].mainImg.length /* ✅TODO : 추 후 + 1 */,
+              itemCount: 2 /* ✅TODO : 추 후 + 1 */,
               itemBuilder: (context, int index) {
-                if (index ==
-                    codiList[CodiIndex].mainImg.length - 1) /* ✅-1 지울 것*/ {
+                if (index == 2 - 1) /* ✅-1 지울 것*/ {
                   return GestureDetector(
                     onTap: () {
                       // TODO : 이미지 업로드 기능 구현
@@ -43,16 +40,36 @@ class _CodiInsertScrollState extends State<CodiInsertScroll> {
                     ),
                   );
                 } else {
-                  return Container(
-                    margin: EdgeInsets.only(right: 16),
-                    width: 120,
-                    height: 120,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(codiList[CodiIndex].mainImg[index]),
-                        fit: BoxFit.cover,
+                  return Stack(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 16),
+                        width: 120,
+                        height: 120,
+                        child: Image.network(
+                            "https://picsum.photos/id/${index + 1}/1000/1000",
+                            fit: BoxFit.cover),
                       ),
-                    ),
+                      if (index == 0) /* ✅mainImg의 index, 추후 로직 변경*/
+
+                        Positioned(
+                          top: 5,
+                          right: 10,
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 5, vertical: 2),
+                            color: Colors.black.withOpacity(0.5),
+                            child: Text(
+                              "대표",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        )
+                    ],
                   );
                 }
               },

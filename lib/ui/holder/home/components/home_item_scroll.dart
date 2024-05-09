@@ -29,7 +29,10 @@ class ItemScroll extends StatelessWidget {
                         print("사진 클릭 됨");
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => ItemPage()),
+                          MaterialPageRoute(
+                              builder: (context) => ItemPage(
+                                    itemId: model!.itemsPhotos[index].itemsId,
+                                  )),
                         );
                       },
                       child: SizedBox(
@@ -38,7 +41,7 @@ class ItemScroll extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.only(right: 5.0),
                           child: Image.network(
-                            "https://picsum.photos/id/${model!.itemsPhotos[index].photoId}/600/600",
+                            "https://picsum.photos/id/${model!.itemsPhotos[index].itemsId}/600/600",
                             fit: BoxFit.cover,
                           ),
                         ),

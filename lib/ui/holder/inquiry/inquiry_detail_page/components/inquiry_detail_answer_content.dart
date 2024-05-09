@@ -12,7 +12,7 @@ class InquiryDetailAnswerContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "내용 : ${inquiry.answer}",
+      inquiry.answer,
       style: TextStyle(fontSize: 16.0, color: Colors.black),
     );
   }
