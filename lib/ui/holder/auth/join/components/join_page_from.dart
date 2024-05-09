@@ -95,7 +95,7 @@ class JoinFrom extends ConsumerWidget {
         const Text(
           '가입하신 적이 있나요? ',
           style: TextStyle(
-            color: Colors.black45,
+            color: Colors.black,
           ),
         ),
         GestureDetector(

@@ -1,4 +1,3 @@
-import 'package:final_project_team02/data/global_data/ootd.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_page.dart';
 import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -27,12 +26,13 @@ class MoreStyleCodi extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              CodiPage(ootd: ootdList[index])));
+                          builder: (context) => CodiPage(
+                                codiId: model!.codiPhotos[index].codiId,
+                              )));
                 },
                 child: Image.network(
-                  // "https://picsum.photos/400/400",
-                  "https://picsum.photos/id/${model!.codiPhotos[index].photoId}/600/600",
+                  // "https://picsum.photos/00/400",
+                  "https://picsum.photos/id/${model!.codiPhotos[index].codiId}/600/600",
                   fit: BoxFit.cover,
                 ),
               ),

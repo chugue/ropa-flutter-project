@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 import 'components/creator_view_body.dart';
 
 class CreatorViewPage extends StatelessWidget {
-  const CreatorViewPage({super.key});
+  final int creatorId;
+
+  CreatorViewPage({
+    required this.creatorId,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +16,7 @@ class CreatorViewPage extends StatelessWidget {
       appBar:
           CustomAppBar(home: Icons.home, cart: null, setting: Icons.settings),
       backgroundColor: Colors.white,
-      body: CreatorViewBody(),
+      body: CreatorViewBody(creatorId: creatorId),
     );
   }
 }

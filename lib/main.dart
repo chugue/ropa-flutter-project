@@ -1,9 +1,8 @@
+import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/_core/constants/move.dart';
-import 'package:final_project_team02/ui/holder/main_holder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '_core/constants/http.dart';
 import '_core/constants/theme.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();

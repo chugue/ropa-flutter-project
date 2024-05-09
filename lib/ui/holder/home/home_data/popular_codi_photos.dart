@@ -4,6 +4,7 @@ class PopularCodiPhotos {
   final String name;
   final String path;
   final String sort;
+  final bool isMainPhoto;
 
   const PopularCodiPhotos({
     required this.photoId,
@@ -11,6 +12,7 @@ class PopularCodiPhotos {
     required this.name,
     required this.path,
     required this.sort,
+    required this.isMainPhoto,
   });
 
   factory PopularCodiPhotos.fromJson(Map<String, dynamic> json) {
@@ -20,6 +22,7 @@ class PopularCodiPhotos {
       name: json["name"],
       path: json["path"],
       sort: json["sort"],
+      isMainPhoto: json["isMainPhoto"],
     );
   }
 //

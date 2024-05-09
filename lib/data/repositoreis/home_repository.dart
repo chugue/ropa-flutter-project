@@ -4,7 +4,6 @@ import 'package:final_project_team02/ui/holder/home/home_data/popular_codi_photo
 import 'package:final_project_team02/ui/holder/home/home_data/popular_items_photos.dart';
 import 'package:final_project_team02/ui/holder/home/home_data/popular_user_photos.dart';
 import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
-import 'package:logger/logger.dart';
 
 class HomeRepository {
   Future<ResponseDTO> callHomeList() async {
@@ -16,27 +15,30 @@ class HomeRepository {
     if (responseDTO.success) {
       List<dynamic> popularUserPhotos =
           responseDTO.response["popularUserPhotos"];
-      Logger().d(popularUserPhotos);
+      // Logger().d(popularUserPhotos);
       List<PopularUserPhotos> UserPhotos =
           popularUserPhotos.map((e) => PopularUserPhotos.fromJson(e)).toList();
-      Logger().d(UserPhotos);
+      // Logger().d(UserPhotos);
 
       List<dynamic> popularItemsPhotos =
           responseDTO.response["popularItemsPhotos"];
-      Logger().d(popularItemsPhotos);
+      // Logger().d(popularItemsPhotos);
       List<PopularItemsPhotos> ItemsPhotos = popularItemsPhotos
           .map((e) => PopularItemsPhotos.fromJson(e))
           .toList();
-      Logger().d(ItemsPhotos);
+      // Logger().d(ItemsPhotos);
 
       List<dynamic> popularCodiPhotos =
           responseDTO.response["popularCodiPhotos"];
-      Logger().d(popularCodiPhotos);
+      // Logger().d(popularCodiPhotos);
       List<PopularCodiPhotos> CodiPhotos =
           popularCodiPhotos.map((e) => PopularCodiPhotos.fromJson(e)).toList();
-      Logger().d(CodiPhotos);
+      // Logger().d(CodiPhotos);
 
-      HomeModel homeModel = HomeModel(codiPhotos: CodiPhotos, itemsPhotos: ItemsPhotos, userPhotos: UserPhotos);
+      HomeModel homeModel = HomeModel(
+          codiPhotos: CodiPhotos,
+          itemsPhotos: ItemsPhotos,
+          userPhotos: UserPhotos);
       responseDTO.response = homeModel;
     }
     return responseDTO;

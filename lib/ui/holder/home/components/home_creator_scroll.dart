@@ -25,7 +25,10 @@ class CreatorScroll extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CreatorViewPage()),
+                    MaterialPageRoute(
+                        builder: (context) => CreatorViewPage(
+                              creatorId: model!.userPhotos[index].creatorId,
+                            )),
                   );
                 },
                 child: Container(

@@ -12,6 +12,7 @@ import 'package:final_project_team02/data/repositoreis/user_repository.dart';
 class SessionUser {
   User? user;
   bool isLogin = false;
+  String? accessToken;
   int? selectedUserId;
 
   /* ✅토큰 추가 */

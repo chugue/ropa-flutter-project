@@ -3,6 +3,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:logger/logger.dart';
 
 final baseURL = "http://192.168.0.59:8080";
+
 final dio = Dio(
   BaseOptions(
     baseUrl: baseURL,
@@ -12,21 +13,27 @@ final dio = Dio(
 );
 
 const secureStorage = FlutterSecureStorage();
+var logger = Logger();
 
 // 인터셉터 생성
 var interceptor = InterceptorsWrapper(
   onRequest: (options, handler) async {
-    //토큰을 secureStorage에서 읽는다.
-    var accessToken = await secureStorage.read(key: 'accessToken');
-    print("onRequest 토큰: $accessToken");
-    if (accessToken == null) {
-      print("onRequest 토큰: $accessToken");
+    var accessToken;
+    try {
+      accessToken = await secureStorage.read(key: 'accessToken');
+    } catch (e) {
+      print("토큰 없음");
     }
+
+    print("onRequest 토큰: $accessToken");
+
     if (accessToken != null) {
-      options.headers['Authorization'] = 'Bearer $accessToken';
+      options.headers["Authorization"] = "Bearer $accessToken";
     } else {
       print("나 토큰이 없어 🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️서버 확인해 봤어?🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️");
     }
+
+    logger.d("리퀘스트 헤더: ${options.headers}"); // 이 위치로 변경
     return handler.next(options);
   },
   onResponse: (response, handler) async {

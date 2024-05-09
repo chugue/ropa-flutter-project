@@ -1,11 +1,19 @@
-import 'package:final_project_team02/data/global_data/user.dart';
-import 'package:logger/logger.dart';
-
+import 'package:dio/dio.dart';
 import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/dtos/user_request.dart';
+import 'package:final_project_team02/data/global_data/user.dart';
+import 'package:logger/logger.dart';
 
 class UserRepository {
+  Future<void> callSetting() async {
+    final response = await dio.get("/app/setting");
+    Logger().d(response.data!);
+    //
+    // ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+    // return responseDTO;
+  }
+
   Future<ResponseDTO> callJoin(JoinReqDTO requestDTO) async {
     final response = await dio.post("/user/join", data: requestDTO.toJson());
     Logger().d(response.data!);
@@ -31,8 +39,23 @@ class UserRepository {
     }
   }
 
-  Future<void> callProfile() async {
-    final response = await dio.get("/app/profile");
+  Future<void> callProfile(String token) async {
+    final response = await dio.get("/app/profile",
+        options: Options(headers: {'Authorization': token}));
+    Logger().d(response.data!);
+    //
+    // ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+    // return responseDTO;
+  }
+
+  Future<void> callProfileV2() async {
+    var response;
+
+    try {
+      response = await dio.get("/app/profile");
+    } catch (e) {
+      logger.e('Failed to fetch profile: $e');
+    }
     Logger().d(response.data!);
     //
     // ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
