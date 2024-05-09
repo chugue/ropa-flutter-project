@@ -1,4 +1,4 @@
-import 'package:final_project_team02/ui/holder/port_one/port_one_page.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/user_my_page.dart';
 import 'package:flutter/material.dart';
 
 class BottomButton extends StatelessWidget {
@@ -15,8 +15,8 @@ class BottomButton extends StatelessWidget {
       height: 50,
       child: ElevatedButton(
         onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => PaymentTest()));
+          Navigator.pop(
+              context, MaterialPageRoute(builder: (context) => UserMyPage()));
         },
         child: Text(
           text,

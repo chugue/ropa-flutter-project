@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class UserMyPageApplyModalBodyJopDropBox extends StatelessWidget {
@@ -10,22 +9,17 @@ class UserMyPageApplyModalBodyJopDropBox extends StatelessWidget {
     required this.title,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Text(
           "${title}: ",
-          style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         DropdownMenu<String>(
           initialSelection: null,
-          onSelected: (String? value) {
-
-          },
+          onSelected: (String? value) {},
           dropdownMenuEntries: [
             DropdownMenuEntry<String>(
               value: "",
@@ -42,7 +36,4 @@ class UserMyPageApplyModalBodyJopDropBox extends StatelessWidget {
       ],
     );
   }
-
-
 }
-
