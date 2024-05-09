@@ -46,7 +46,7 @@ class UserMyPageApplyModalBodyForm extends StatelessWidget {
                           Divider(),
                           SizedBox(height: 20),
                           UserMyPageApplyModalBodyFormTextField(
-                            title: "키 ",
+                            title: "키    ",
                             hinText: "키를 ",
                             controller: height,
                             physical: "cm",
@@ -68,7 +68,22 @@ class UserMyPageApplyModalBodyForm extends StatelessWidget {
                           SizedBox(height: 20),
                           UserMyPageApplyModalBodyJopDropBox(
                               title: "직업 ", list: ["작장인", "대학생"]),
-                          SizedBox(height: 40),
+                          SizedBox(height: 20),
+                          TextField(
+                            minLines: 3,
+                            maxLines: 3,
+                            maxLength: 100,
+                            decoration: InputDecoration(
+                              hintText: "여러분에대 짧게 소개해주세요!",
+                              border: OutlineInputBorder(),
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 8.0, vertical: 8.0),
+                              // 상하 여백 조절
+                              hintStyle: TextStyle(
+                                  color: Colors.grey), // hintText의 위치 조절
+                            ),
+                          ),
+                          SizedBox(height: 20),
                           UserMyPageApplyModalBodyApplyButton(),
                         ],
                       ),
@@ -88,7 +103,7 @@ class UserMyPageApplyModalBodyForm extends StatelessWidget {
           /// 사이즈 조절
           constraints: const BoxConstraints(
             maxWidth: double.infinity,
-            maxHeight: 550,
+            maxHeight: 650,
           ),
 
           isScrollControlled: true,
