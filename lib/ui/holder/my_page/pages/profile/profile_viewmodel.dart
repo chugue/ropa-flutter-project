@@ -1,5 +1,5 @@
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
-import 'package:final_project_team02/data/repositoreis/user_profile_repository.dart';
+import 'package:final_project_team02/data/repositoreis/user_repo.dart';
 import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:final_project_team02/main.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/profile/profile_data/user_profile.dart';
@@ -10,7 +10,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class UserProfileModel {
   UserProfile userProfile;
 
-  UserProfileModel(this.userProfile,);
+  UserProfileModel(
+    this.userProfile,
+  );
 
 // User user;
 // UserProfileModel(this.user);
@@ -30,8 +32,7 @@ class UserProfileViewModel extends StateNotifier<UserProfileModel?> {
     print(sessionData.accessToken);
     print(jwt);
 
-    ResponseDTO responseDTO =
-    await UserProfileRepository().fetchUserProfile(jwt);
+    ResponseDTO responseDTO = await UserRepo().callUserProfile(jwt);
 
     print("✅✅✅✅✅✅✅뷰모델 : ${responseDTO.success}");
     if (responseDTO.success) {
@@ -49,9 +50,8 @@ class UserProfileViewModel extends StateNotifier<UserProfileModel?> {
 // 창고 관리자
 
 final UserProfileProvider =
-StateNotifierProvider<UserProfileViewModel, UserProfileModel?>(
-      (ref) {
-    return UserProfileViewModel(null, ref)
-      ..notifyInit(); /* 초기 상태 null */
+    StateNotifierProvider<UserProfileViewModel, UserProfileModel?>(
+  (ref) {
+    return UserProfileViewModel(null, ref)..notifyInit(); /* 초기 상태 null */
   },
 );

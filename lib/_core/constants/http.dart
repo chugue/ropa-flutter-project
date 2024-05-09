@@ -37,7 +37,11 @@ var interceptor = InterceptorsWrapper(
     return handler.next(options);
   },
   onResponse: (response, handler) async {
-    var authorizationHeader = response.headers["Authorization"];
+    logger.d(response.headers["Authorization"]);
+
+    var authorizationHeader = response.headers["Authorization"]!.first;
+    logger.d("${authorizationHeader}");
+
     if (authorizationHeader != null) {
       var accessToken = authorizationHeader[0].split("Bearer ")[1];
       print("onResponse 토큰: " + accessToken);

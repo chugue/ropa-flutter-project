@@ -33,7 +33,7 @@ class CodiDetailViewModel extends StateNotifier<CodiDetailModel?> {
     SessionData sessionData = ref.read(sessionProvider);
 
     ResponseDTO responseDTO =
-        await CodiRepository().callLoveCount(codiId, sessionData.accessToken!);
+        await CodiRepo().callLoveCount(codiId, sessionData.accessToken!);
     if (responseDTO.success) {
       if (state!.codi.isLoved == false) {
         state!.codi.isLoved == true; // 토글
@@ -46,7 +46,7 @@ class CodiDetailViewModel extends StateNotifier<CodiDetailModel?> {
   }
 
   Future<ResponseDTO> notifyInit(int codiId) async {
-    ResponseDTO responseDTO = await CodiRepository().callCodiDetail(codiId);
+    ResponseDTO responseDTO = await CodiRepo().callCodiDetail(codiId);
 
     if (responseDTO.success) {
       state = responseDTO.response;

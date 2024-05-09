@@ -1,22 +1,18 @@
 import 'package:final_project_team02/_core/constants/http.dart';
-import 'package:final_project_team02/data/global_data/user.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:final_project_team02/_core/constants/move.dart';
-import 'package:final_project_team02/main.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/dtos/user_request.dart';
-import 'package:final_project_team02/data/repositoreis/user_repository.dart';
+import 'package:final_project_team02/data/global_data/user.dart';
+import 'package:final_project_team02/data/repositoreis/user_repo.dart';
+import 'package:final_project_team02/main.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SessionUser {
   User? user;
   bool isLogin = false;
   String? accessToken;
   int? selectedUserId;
-
-  /* ✅토큰 추가 */
-  String? accessToken;
 
   SessionUser();
 }
@@ -27,9 +23,8 @@ class SessionData extends SessionUser {
 
   SessionData();
 
-
   Future<void> join(JoinReqDTO joinReqDTO) async {
-    ResponseDTO responseDTO = await UserRepository().callJoin(joinReqDTO);
+    ResponseDTO responseDTO = await UserRepo().callJoin(joinReqDTO);
 
     // 비지니스 로직
     if (responseDTO.success) {
@@ -43,8 +38,7 @@ class SessionData extends SessionUser {
 
   Future<void> login(LoginReqDTO loginReqDTO) async {
     print("loginReqDTO : ${loginReqDTO.toJson()}");
-    var (responseDTO, accessToken) =
-        await UserRepository().callLogin(loginReqDTO);
+    var (responseDTO, accessToken) = await UserRepo().callLogin(loginReqDTO);
 
     if (responseDTO.success) {
       await secureStorage.write(key: "accessToken", value: accessToken);

@@ -5,7 +5,7 @@ import 'package:final_project_team02/ui/holder/home/home_data/popular_items_phot
 import 'package:final_project_team02/ui/holder/home/home_data/popular_user_photos.dart';
 import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
 
-class HomeRepository {
+class HomeRepo {
   Future<ResponseDTO> callHomeList() async {
     final response = await dio.get('/home-lists');
 
