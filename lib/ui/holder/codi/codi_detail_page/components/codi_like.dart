@@ -3,16 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CodiLike extends ConsumerWidget {
-  final int codiId;
+  final CodiDetailModel model;
 
   const CodiLike({
-    required this.codiId,
+    required this.model,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CodiDetailModel? model = ref.watch(codiDetailProvider(codiId));
-
     return Padding(
       padding: const EdgeInsets.only(left: 8.0),
       child: SizedBox(
@@ -22,10 +20,10 @@ class CodiLike extends ConsumerWidget {
           children: <Widget>[
             IconButton(
               onPressed: () {
-                ref.read(codiDetailProvider(codiId).notifier).toggleLove();
+                //ref.read(codiDetailProvider(codiId).notifier).loveCount(codiId);
               },
               icon: Icon(Icons.favorite,
-                  color: model!.codi.isLoved ? Colors.red : Colors.grey),
+                  color: model.codi.isLoved ? Colors.red : Colors.grey),
             ),
             Text("${model.codi.loveCount}"),
           ],

@@ -5,5 +5,5 @@ void main() async {
 }
 
 Future<void> hello_test() async {
-  await HelloRepository().hello();
+  await HelloRepo().hello();
 }

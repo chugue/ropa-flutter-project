@@ -1,10 +1,9 @@
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
-import 'package:final_project_team02/data/repositoreis/home_repository.dart';
+import 'package:final_project_team02/data/repositoreis/home_repo.dart';
 import 'package:final_project_team02/main.dart';
 import 'package:final_project_team02/ui/holder/home/home_data/popular_codi_photos.dart';
 import 'package:final_project_team02/ui/holder/home/home_data/popular_items_photos.dart';
 import 'package:final_project_team02/ui/holder/home/home_data/popular_user_photos.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
@@ -26,7 +25,7 @@ class HomeViewModel extends StateNotifier<HomeModel?> {
   HomeViewModel(super.state);
 
   Future<void> notifyInit() async {
-    ResponseDTO responseDTO = await HomeRepository().callHomeList();
+    ResponseDTO responseDTO = await HomeRepo().callHomeList();
 
     if (responseDTO.success) {
       HomeModel homeModel = responseDTO.response;
@@ -36,6 +35,7 @@ class HomeViewModel extends StateNotifier<HomeModel?> {
     }
   }
 }
+
 //
 final homeProvider = StateNotifierProvider<HomeViewModel, HomeModel?>((ref) {
   return HomeViewModel(null)..notifyInit();

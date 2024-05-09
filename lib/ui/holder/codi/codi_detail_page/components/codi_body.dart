@@ -4,10 +4,11 @@ import 'package:final_project_team02/ui/holder/codi/codi_detail_page/components/
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/components/codi_item_list.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/components/codi_like.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/components/codi_list.dart';
-import 'package:final_project_team02/ui/holder/codi/codi_detail_page/components/codi_main_scroll.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/components/codi_title.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'codi_main_scroll.dart';
 
 class CodiBody extends ConsumerWidget {
   final int codiId;
@@ -21,20 +22,24 @@ class CodiBody extends ConsumerWidget {
     // watch  (상태 관리)
     CodiDetailModel? model = ref.watch(codiDetailProvider(codiId));
 
-    return CustomScrollView(
-      slivers: [
-        // MainAppBar(),
-        SliverToBoxAdapter(child: CodiMainScroll(model: model)),
-        SliverToBoxAdapter(child: CodiLike(codiId: model!.codi.codiId)),
+    if (model == null) {
+      return const CircularProgressIndicator();
+    } else {
+      return CustomScrollView(
+        slivers: [
+          // MainAppBar(),
+          SliverToBoxAdapter(child: CodiMainScroll(model: model)),
+          SliverToBoxAdapter(child: CodiLike(model: model)),
 
-        SliverToBoxAdapter(child: CodiCreatedAt()),
-        SliverToBoxAdapter(child: CodiContent(model: model)),
+          SliverToBoxAdapter(child: CodiCreatedAt()),
+          SliverToBoxAdapter(child: CodiContent(model: model)),
 
-        CodiTitle(title: "아이템 목록"),
-        SliverToBoxAdapter(child: ItemList(model: model)),
-        CodiTitle(title: "코디 목록"),
-        CodiList(model: model),
-      ],
-    );
+          CodiTitle(title: "아이템 목록"),
+          SliverToBoxAdapter(child: ItemList(model: model)),
+          CodiTitle(title: "코디 목록"),
+          CodiList(model: model),
+        ],
+      );
+    }
   }
 }

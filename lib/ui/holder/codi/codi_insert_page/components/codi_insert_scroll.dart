@@ -1,4 +1,3 @@
-import 'package:final_project_team02/data/global_data/codi.dart';
 import 'package:flutter/material.dart';
 
 class CodiInsertScroll extends StatefulWidget {
@@ -47,13 +46,9 @@ class _CodiInsertScrollState extends State<CodiInsertScroll> {
                         margin: EdgeInsets.only(right: 16),
                         width: 120,
                         height: 120,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image:
-                                AssetImage(codiList[CodiIndex].mainImg[index]),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                        child: Image.network(
+                            "https://picsum.photos/id/${index + 1}/1000/1000",
+                            fit: BoxFit.cover),
                       ),
                       if (index == 0) /* ✅mainImg의 index, 추후 로직 변경*/
 

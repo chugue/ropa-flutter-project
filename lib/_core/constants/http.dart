@@ -15,20 +15,13 @@ final dio = Dio(
 const secureStorage = FlutterSecureStorage();
 var logger = Logger();
 
+String? globalAccessToken = null;
+
 // 인터셉터 생성
 var interceptor = InterceptorsWrapper(
   onRequest: (options, handler) async {
-    var accessToken;
-    try {
-      accessToken = await secureStorage.read(key: 'accessToken');
-    } catch (e) {
-      print("토큰 없음");
-    }
-
-    print("onRequest 토큰: $accessToken");
-
-    if (accessToken != null) {
-      options.headers["Authorization"] = "Bearer $accessToken";
+    if (globalAccessToken != null) {
+      options.headers["Authorization"] = "Bearer $globalAccessToken";
     } else {
       print("나 토큰이 없어 🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️서버 확인해 봤어?🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️");
     }
@@ -37,12 +30,7 @@ var interceptor = InterceptorsWrapper(
     return handler.next(options);
   },
   onResponse: (response, handler) async {
-    var authorizationHeader = response.headers["Authorization"];
-    if (authorizationHeader != null) {
-      var accessToken = authorizationHeader[0].split("Bearer ")[1];
-      print("onResponse 토큰: " + accessToken);
-      await secureStorage.write(key: "accessToken", value: accessToken);
-    }
+    logger.d(response.headers["Authorization"]);
     return handler.next(response);
   },
   onError: (error, handler) {

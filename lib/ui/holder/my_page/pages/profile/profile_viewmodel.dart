@@ -1,5 +1,5 @@
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
-import 'package:final_project_team02/data/repositoreis/user_profile_repository.dart';
+import 'package:final_project_team02/data/repositoreis/user_repo.dart';
 import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:final_project_team02/main.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/profile/profile_data/user_profile.dart';
@@ -32,8 +32,7 @@ class UserProfileViewModel extends StateNotifier<UserProfileModel?> {
     print(sessionData.accessToken);
     print(jwt);
 
-    ResponseDTO responseDTO =
-        await UserProfileRepository().fetchUserProfile(jwt);
+    ResponseDTO responseDTO = await UserRepo().callUserProfile();
 
     print("✅✅✅✅✅✅✅뷰모델 : ${responseDTO.success}");
     if (responseDTO.success) {

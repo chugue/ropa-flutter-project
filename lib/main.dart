@@ -8,7 +8,7 @@ import '_core/constants/theme.dart';
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
-  // dio.interceptors.add(interceptor);
+  dio.interceptors.add(interceptor);
   runApp(ProviderScope(child: const MyApp()));
 }
 
