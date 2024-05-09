@@ -1,5 +1,5 @@
 import 'package:final_project_team02/_core/constants/http.dart';
-import 'package:final_project_team02/data/dtos/user_profile.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/profile/profile_data/user_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

@@ -18,7 +18,6 @@ class UserRepository {
     final response = await dio.post("/user/login", data: loginReqDTO.toJson());
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
 
-    Logger().d(response.headers["Authorization"]!.first);
     Logger().d(response.data!);
 
     if (responseDTO.success) {
