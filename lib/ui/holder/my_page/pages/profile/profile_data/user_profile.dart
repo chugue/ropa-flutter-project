@@ -1,4 +1,3 @@
-
 import 'package:final_project_team02/data/global_data/photo.dart';
 
 class UserProfile {

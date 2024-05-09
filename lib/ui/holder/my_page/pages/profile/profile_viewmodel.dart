@@ -10,7 +10,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class UserProfileModel {
   UserProfile userProfile;
 
-  UserProfileModel(this.userProfile,);
+  UserProfileModel(
+    this.userProfile,
+  );
 
 // User user;
 // UserProfileModel(this.user);
@@ -31,7 +33,7 @@ class UserProfileViewModel extends StateNotifier<UserProfileModel?> {
     print(jwt);
 
     ResponseDTO responseDTO =
-    await UserProfileRepository().fetchUserProfile(jwt);
+        await UserProfileRepository().fetchUserProfile(jwt);
 
     print("✅✅✅✅✅✅✅뷰모델 : ${responseDTO.success}");
     if (responseDTO.success) {
@@ -49,9 +51,8 @@ class UserProfileViewModel extends StateNotifier<UserProfileModel?> {
 // 창고 관리자
 
 final UserProfileProvider =
-StateNotifierProvider<UserProfileViewModel, UserProfileModel?>(
-      (ref) {
-    return UserProfileViewModel(null, ref)
-      ..notifyInit(); /* 초기 상태 null */
+    StateNotifierProvider<UserProfileViewModel, UserProfileModel?>(
+  (ref) {
+    return UserProfileViewModel(null, ref)..notifyInit(); /* 초기 상태 null */
   },
 );
