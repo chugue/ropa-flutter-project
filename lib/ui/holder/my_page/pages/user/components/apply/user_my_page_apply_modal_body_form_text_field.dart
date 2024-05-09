@@ -20,9 +20,12 @@ class UserMyPageApplyModalBodyFormTextField extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(
-          "${title}: ",
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        SizedBox(
+          width: 50,
+          child: Text(
+            "${title}: ",
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
         ),
         Container(
           width: 150,
@@ -45,7 +48,7 @@ class UserMyPageApplyModalBodyFormTextField extends StatelessWidget {
         ),
         Text(
           "${physical}",
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
       ],
     );
