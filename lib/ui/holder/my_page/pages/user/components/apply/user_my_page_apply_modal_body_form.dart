@@ -74,7 +74,7 @@ class UserMyPageApplyModalBodyForm extends StatelessWidget {
                             maxLines: 3,
                             maxLength: 100,
                             decoration: InputDecoration(
-                              hintText: "여러분에대 짧게 소개해주세요!",
+                              hintText: "여러분에 대해 짧게 소개해주세요!",
                               border: OutlineInputBorder(),
                               contentPadding: EdgeInsets.symmetric(
                                   horizontal: 8.0, vertical: 8.0),
