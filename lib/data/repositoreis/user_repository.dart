@@ -1,10 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:final_project_team02/data/global_data/user.dart';
-import 'package:logger/logger.dart';
-
 import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/dtos/user_request.dart';
+import 'package:final_project_team02/data/global_data/user.dart';
+import 'package:logger/logger.dart';
 
 class UserRepository {
   Future<void> callSetting() async {
