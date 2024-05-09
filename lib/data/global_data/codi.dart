@@ -12,7 +12,7 @@ class Codi {
     required this.codiId,
     this.userId,
     required this.description,
-    required this.createdAt,
+    this.createdAt,
     required this.isLoved,
     required this.loveCount,
   });
@@ -24,7 +24,9 @@ class Codi {
       codiId: json["codiId"],
       description: json["description"] ?? "",
       loveCount: json["loveCount"] ?? null,
-      createdAt: DateFormat("yyyy-mm-dd").parse(json["createdAt"] ?? null),
+      createdAt: json["createdAt"] == null
+          ? null
+          : DateFormat("yyyy-MM-dd").parse(json["createdAt"]),
     );
   }
 }

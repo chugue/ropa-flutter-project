@@ -42,13 +42,22 @@ class CodiDetailViewModel extends StateNotifier<CodiDetailModel?> {
 
       Codi codi = Codi(
         codiId: codiId,
-        isLoved: isLoved,
+        isLoved: isLoved = true,
         description: state!.codi.description,
         createdAt: state!.codi.createdAt,
         loveCount: loveCount,
       );
 
-      responseDTO.response = codi;
+      List<ItemPhotos> itemPhotos = state!.itemPhotos;
+      List<MainPhotos> mainPhotos = state!.mainPhotos;
+      List<OtherCodiPhotos> otherCodiPhotos = state!.otherCodiPhotos;
+
+      responseDTO.response = CodiDetailModel(
+        codi: codi,
+        itemPhotos: itemPhotos,
+        mainPhotos: mainPhotos,
+        otherCodiPhotos: otherCodiPhotos,
+      );
     }
 
     return responseDTO;
