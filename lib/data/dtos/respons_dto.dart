@@ -1,4 +1,5 @@
 class ResponseDTO {
+  int status;
   bool success;
   int status;
   String? errorMessage;

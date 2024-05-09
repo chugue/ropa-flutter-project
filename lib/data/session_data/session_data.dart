@@ -17,7 +17,6 @@ class SessionUser {
 
   /* ✅토큰 추가 */
   String? accessToken;
-  UserProfile? userProfile;
 
   SessionUser();
 }
@@ -27,6 +26,7 @@ class SessionData extends SessionUser {
   final mContext = navigatorKey.currentContext;
 
   SessionData();
+
 
   Future<void> join(JoinReqDTO joinReqDTO) async {
     ResponseDTO responseDTO = await UserRepository().callJoin(joinReqDTO);

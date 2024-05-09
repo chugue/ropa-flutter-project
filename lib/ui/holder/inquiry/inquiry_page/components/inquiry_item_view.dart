@@ -1,4 +1,4 @@
-import 'package:final_project_team02/data/domain_data/inquiry.dart';
+import 'package:final_project_team02/data/global_data/inquiry.dart';
 import 'package:final_project_team02/ui/holder/inquiry/inquiry_detail_page/InquiryDetailPage.dart';
 import 'package:final_project_team02/ui/holder/inquiry/inquiry_page/components/inquiry_content.dart';
 import 'package:final_project_team02/ui/holder/inquiry/inquiry_page/components/inquiry_state.dart';
