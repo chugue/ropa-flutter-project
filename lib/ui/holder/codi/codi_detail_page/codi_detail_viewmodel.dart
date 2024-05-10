@@ -1,4 +1,3 @@
-import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/global_data/codi.dart';
 import 'package:final_project_team02/data/repositoreis/codi_repo.dart';
@@ -32,62 +31,61 @@ class CodiDetailViewModel extends StateNotifier<CodiDetailModel?> {
   CodiDetailViewModel(super.state, this.ref, this.sessionData);
 
   Future<ResponseDTO> loveCount(int codiId) async {
-    logger.d("$codiId");
-    ResponseDTO responseDTO = await CodiRepo().callSaveLoveCount(codiId);
+    if (state!.codi.isLoved == false) {
+      ResponseDTO responseDTO = await CodiRepo().callSaveLoveCount(codiId);
+      if (responseDTO.success) {
+        bool isLoved = !state!.codi.isLoved;
+        int loveCount = state!.codi.loveCount! + 1;
 
-    if (responseDTO.success) {
-      bool isLoved = !state!.codi.isLoved;
-      int loveCount = state!.codi.loveCount! + 1;
+        Codi codi = Codi(
+          codiId: codiId,
+          isLoved: isLoved,
+          description: state!.codi.description,
+          createdAt: state!.codi.createdAt,
+          loveCount: loveCount,
+        );
 
-      Codi codi = Codi(
-        codiId: codiId,
-        isLoved: isLoved,
-        description: state!.codi.description,
-        createdAt: state!.codi.createdAt,
-        loveCount: loveCount,
-      );
+        List<ItemPhotos> itemPhotos = state!.itemPhotos;
+        List<MainPhotos> mainPhotos = state!.mainPhotos;
+        List<OtherCodiPhotos> otherCodiPhotos = state!.otherCodiPhotos;
 
-      List<ItemPhotos> itemPhotos = state!.itemPhotos;
-      List<MainPhotos> mainPhotos = state!.mainPhotos;
-      List<OtherCodiPhotos> otherCodiPhotos = state!.otherCodiPhotos;
+        responseDTO.response = CodiDetailModel(
+          codi: codi,
+          itemPhotos: itemPhotos,
+          mainPhotos: mainPhotos,
+          otherCodiPhotos: otherCodiPhotos,
+        );
+        state = responseDTO.response;
+      }
+      return responseDTO;
+    } else {
+      ResponseDTO responseDTO = await CodiRepo().callDeleteLoveCount(codiId);
+      if (responseDTO.success) {
+        bool isLoved = !state!.codi.isLoved;
+        int loveCount = state!.codi.loveCount! - 1;
 
-      responseDTO.response = CodiDetailModel(
-        codi: codi,
-        itemPhotos: itemPhotos,
-        mainPhotos: mainPhotos,
-        otherCodiPhotos: otherCodiPhotos,
-      );
+        Codi codi = Codi(
+          codiId: codiId,
+          isLoved: isLoved,
+          description: state!.codi.description,
+          createdAt: state!.codi.createdAt,
+          loveCount: loveCount,
+        );
 
-      state = responseDTO.response;
+        List<ItemPhotos> itemPhotos = state!.itemPhotos;
+        List<MainPhotos> mainPhotos = state!.mainPhotos;
+        List<OtherCodiPhotos> otherCodiPhotos = state!.otherCodiPhotos;
 
-      // } else {
-      //   ResponseDTO responseDTO = await CodiRepo().callDeleteLoveCount(codiId);
-      //
-      //   bool isLoved = !state!.codi.isLoved;
-      //   int loveCount = state!.codi.loveCount! - 1;
-      //
-      //   Codi codi = Codi(
-      //     codiId: codiId,
-      //     isLoved: isLoved,
-      //     description: state!.codi.description,
-      //     createdAt: state!.codi.createdAt,
-      //     loveCount: loveCount,
-      //   );
-      //
-      //   List<ItemPhotos> itemPhotos = state!.itemPhotos;
-      //   List<MainPhotos> mainPhotos = state!.mainPhotos;
-      //   List<OtherCodiPhotos> otherCodiPhotos = state!.otherCodiPhotos;
-      //
-      //   responseDTO.response = CodiDetailModel(
-      //     codi: codi,
-      //     mainPhotos: mainPhotos,
-      //     itemPhotos: itemPhotos,
-      //     otherCodiPhotos: otherCodiPhotos,
-      //   );
-      //   state = responseDTO.response;
-      // }
+        responseDTO.response = CodiDetailModel(
+          codi: codi,
+          mainPhotos: mainPhotos,
+          itemPhotos: itemPhotos,
+          otherCodiPhotos: otherCodiPhotos,
+        );
+        state = responseDTO.response;
+      }
+      return responseDTO;
     }
-    return responseDTO;
   }
 
   Future<ResponseDTO> notifyInit(int codiId) async {

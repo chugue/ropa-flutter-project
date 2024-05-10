@@ -1,4 +1,5 @@
-import 'package:final_project_team02/ui/components/custom_base64.dart';
+import 'dart:convert';
+
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_page.dart';
 import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -31,9 +32,13 @@ class MoreStyleCodi extends StatelessWidget {
                                 codiId: model!.codiPhotos[index].codiId,
                               )));
                 },
-                child: CustomBase64(
-                  model: model,
-                  index: index,
+                child: Container(
+                  width: double.infinity, // 셀의 전체 너비 사용
+                  height: double.infinity, // 셀의 전체 높이 사용
+                  child: Image.memory(
+                    Base64Decoder().convert(model!.codiPhotos[index].base64),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               Positioned(

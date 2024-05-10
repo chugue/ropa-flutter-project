@@ -47,4 +47,13 @@ class CreatorApplyReqDTO {
     required this.instagram,
     required this.job,
   });
+
+  Map<String, dynamic> toJson() {
+    return {
+      "height": this.height,
+      "weight": this.weight,
+      "instagram": this.instagram,
+      "job": this.job,
+    };
+  }
 }
