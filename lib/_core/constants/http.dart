@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:logger/logger.dart';
 
+// 192.168.219.111
+//
 final baseURL = "http://192.168.0.59:8080";
 
 final dio = Dio(
@@ -31,6 +33,7 @@ var interceptor = InterceptorsWrapper(
   },
   onResponse: (response, handler) async {
     logger.d(response.headers["Authorization"]);
+
     return handler.next(response);
   },
   onError: (error, handler) {

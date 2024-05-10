@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/item/item_page.dart';
 import 'package:flutter/material.dart';
@@ -38,9 +40,15 @@ class ItemList extends StatelessWidget {
                         height: MediaQuery.of(context).size.width * 0.40,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 5.0),
-                          child: Image.network(
-                              "https://picsum.photos/id/${model!.itemPhotos[index].itemsId + 1}/1000/1000",
-                              fit: BoxFit.cover),
+                          child: Container(
+                            width: double.infinity, // 셀의 전체 너비 사용
+                            height: double.infinity, // 셀의 전체 높이 사용
+                            child: Image.memory(
+                              Base64Decoder()
+                                  .convert(model!.itemPhotos[index].base64),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -54,3 +62,5 @@ class ItemList extends StatelessWidget {
     );
   }
 }
+
+//
