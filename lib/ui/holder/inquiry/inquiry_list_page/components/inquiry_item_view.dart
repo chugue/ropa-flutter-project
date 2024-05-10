@@ -1,20 +1,27 @@
 import 'package:final_project_team02/data/global_data/inquiry.dart';
+import 'package:final_project_team02/ui/components/custom_cirular.dart';
 import 'package:final_project_team02/ui/holder/inquiry/inquiry_detail_page/InquiryDetailPage.dart';
-import 'package:final_project_team02/ui/holder/inquiry/inquiry_page/components/inquiry_content.dart';
-import 'package:final_project_team02/ui/holder/inquiry/inquiry_page/components/inquiry_state.dart';
-import 'package:final_project_team02/ui/holder/inquiry/inquiry_page/components/inquiry_title_and_content.dart';
+import 'package:final_project_team02/ui/holder/inquiry/inquiry_list_page/components/inquiry_content.dart';
+import 'package:final_project_team02/ui/holder/inquiry/inquiry_list_page/components/inquiry_state.dart';
+import 'package:final_project_team02/ui/holder/inquiry/inquiry_list_page/components/inquiry_title_and_content.dart';
+import 'package:final_project_team02/ui/holder/inquiry/inquiry_list_page/inquiries_list_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class InquiryItemView extends StatelessWidget {
+  final InquiriesListModel? model;
+
   const InquiryItemView({
-    super.key,
+    this.model,
   });
 
   @override
   Widget build(BuildContext context) {
+    if (model == null) {
+      return CustomCirular();
+    }
     return ListView.builder(
-      itemCount: inquiryList.length,
+      itemCount: model!.inquiriesList.length,
       itemBuilder: (context, index) {
         /* DateTime 포맷 */
         String formattedDate =

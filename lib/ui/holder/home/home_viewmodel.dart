@@ -36,7 +36,6 @@ class HomeViewModel extends StateNotifier<HomeModel?> {
   }
 }
 
-//flutt
 final homeProvider = StateNotifierProvider<HomeViewModel, HomeModel?>((ref) {
   return HomeViewModel(null)..notifyInit();
 });

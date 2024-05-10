@@ -1,5 +1,5 @@
 import 'package:final_project_team02/_core/constants/theme.dart';
-import 'package:final_project_team02/ui/holder/inquiry/inquiry_page/inquiry_page.dart';
+import 'package:final_project_team02/ui/holder/inquiry/inquiry_list_page/inquiry_page.dart';
 import 'package:final_project_team02/ui/holder/my_page/_components/my_page_custom_button.dart';
 import 'package:final_project_team02/ui/holder/my_page/_components/my_page_order_mileage.dart';
 import 'package:flutter/material.dart';
