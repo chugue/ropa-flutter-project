@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/dtos/user_request.dart';
@@ -6,6 +7,23 @@ import 'package:final_project_team02/ui/holder/my_page/pages/profile/profile_dat
 import 'package:logger/logger.dart';
 
 class UserRepo {
+  Future<ResponseDTO> callUserCreatorApply(
+      UserCreatorApplyReqDTO reqDTO, String globalAccessToken) async {
+    final response = await dio.put("/app/creator-apply",
+        data: reqDTO.toJson(),
+        options: Options(headers: {'Authorization': globalAccessToken}));
+    Logger().d(response.data!);
+
+    ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+
+    if (responseDTO.success) {
+      responseDTO.response = User.fromJson(responseDTO.response);
+      Logger().d(responseDTO.response);
+    }
+
+    return responseDTO;
+  }
+
   Future<void> callSetting() async {
     final response = await dio.get("/app/setting");
     Logger().d(response.data!);
@@ -32,16 +50,16 @@ class UserRepo {
     return responseDTO;
   }
 
-  Future<ResponseDTO> callJoin(JoinReqDTO requestDTO) async {
-    final response = await dio.post("/user/join", data: requestDTO.toJson());
+  Future<ResponseDTO> callJoin(JoinReqDTO reqDTO) async {
+    final response = await dio.post("/user/join", data: reqDTO.toJson());
     Logger().d(response.data!);
 
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
     return responseDTO;
   }
 
-  Future<(ResponseDTO, String)> callLogin(LoginReqDTO loginReqDTO) async {
-    final response = await dio.post("/user/login", data: loginReqDTO.toJson());
+  Future<(ResponseDTO, String)> callLogin(LoginReqDTO reqDTO) async {
+    final response = await dio.post("/user/login", data: reqDTO.toJson());
 
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
 

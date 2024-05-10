@@ -11,6 +11,11 @@ class UserMyPageApplyModalBodyJopDropBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void handleDropdownChange(String? selectedValue) {
+      // 선택된 값을 처리하는 로직
+      print("Selected Value: $selectedValue");
+    }
+
     return Row(
       children: [
         Text(
@@ -19,11 +24,11 @@ class UserMyPageApplyModalBodyJopDropBox extends StatelessWidget {
         ),
         DropdownMenu<String>(
           initialSelection: null,
-          onSelected: (String? value) {},
+          onSelected: handleDropdownChange,
           dropdownMenuEntries: [
             DropdownMenuEntry<String>(
-              value: "",
-              label: "선택", // 힌트 텍스트
+              value: "직장인",
+              label: "", // 힌트 텍스트
             ),
             ...list.map<DropdownMenuEntry<String>>((String value) {
               return DropdownMenuEntry<String>(

@@ -2,9 +2,16 @@ import 'package:final_project_team02/ui/holder/my_page/pages/user/components/app
 import 'package:flutter/material.dart';
 
 class UserMyPageApplyModalBody extends StatelessWidget {
-  final weight = TextEditingController();
-  final height = TextEditingController();
-  final job = TextEditingController();
+  final TextEditingController _height = TextEditingController();
+  final TextEditingController _weight = TextEditingController();
+  final TextEditingController _instagram = TextEditingController();
+  String? _selectedJob;
+  final _formKey = GlobalKey<FormState>();
+
+  void _handleJobChange(String? newJob) {
+    _selectedJob = newJob;
+    print("Job selected: $_selectedJob");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +26,11 @@ class UserMyPageApplyModalBody extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: UserMyPageApplyModalBodyForm(
-            height: height,
-            weight: weight,
-            job: job,
+            formKey: _formKey,
+            pHeight: _height,
+            pWeight: _weight,
+            pInstagram: _instagram,
+            onJobSelected: _handleJobChange,
           ),
         ));
   }

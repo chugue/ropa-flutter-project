@@ -41,7 +41,7 @@ class UserMyPageApplyModalBodyFormTextField extends StatelessWidget {
               if (number == null) {
                 return '숫자만 입력해주세요';
               }
-              // 여기서 추가적인 유효성 검사를 할 수 있습니다. 예: 범위 검사
+              // 여기서 추가적인 유효성 검사를 할 수 있습니다. 예: 범위 검사`
               return null; // 입력 값이 유효할 경우 null을 반환
             },
           ),

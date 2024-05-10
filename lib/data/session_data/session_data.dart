@@ -24,6 +24,10 @@ class SessionData extends SessionUser {
 
   SessionData();
 
+  Future<void> userCreatorApply(UserCreatorApplyReqDTO reqDTO) async {
+    ResponseDTO responseDTO = await UserRepo().callUserCreatorApply(reqDTO);
+  }
+
   Future<void> join(JoinReqDTO joinReqDTO) async {
     ResponseDTO responseDTO = await UserRepo().callJoin(joinReqDTO);
 

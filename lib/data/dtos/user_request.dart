@@ -35,13 +35,13 @@ class LoginReqDTO {
   }
 }
 
-class CreatorApplyReqDTO {
+class UserCreatorApplyReqDTO {
   final String height;
   final String weight;
   final String instagram;
   final String job;
 
-  const CreatorApplyReqDTO({
+  const UserCreatorApplyReqDTO({
     required this.height,
     required this.weight,
     required this.instagram,

@@ -1,11 +1,7 @@
-
-
-
 import 'package:validators/validators.dart';
 
 Function validateNickName() {
   return (String? value) {
-
     if (value!.isEmpty) {
       return "유저네임에 들어갈 수 없습니다.";
     } else if (!isAlphanumeric(value)) {
@@ -34,7 +30,6 @@ Function validatePassword() {
   };
 }
 
-
 Function validateEmail() {
   return (String? value) {
     if (value!.isEmpty) {
@@ -59,7 +54,7 @@ Function validateTitle() {
   };
 }
 
-Function validateContent() {
+String? Function(String? value) validateContent() {
   return (String? value) {
     if (value!.isEmpty) {
       return "내용은 공백이 들어갈 수 없습니다.";
@@ -71,9 +66,8 @@ Function validateContent() {
   };
 }
 
-
-Function validateApplyWeight()  {
-  return(String? value) {
+Function validateApplyWeight() {
+  return (String? value) {
     if (value == null || value.isEmpty) {
       return '값을 입력해주세요';
     }
@@ -87,7 +81,6 @@ Function validateApplyWeight()  {
     return null;
   };
 }
-
 
 //
 // Function validateApplyWeight() {
