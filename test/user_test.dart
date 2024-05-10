@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:logger/logger.dart';
 
 final accessToken =
-    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuyCrOyaqeyekDHsnZgg7Iuk66qFIiwiaWQiOjEsImV4cCI6MTcxNTIzMTc4NCwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSJ9.OwPmgGXUSXFRDNqSWCywuH6tEz6QwF_p2Vy1jNAUaHLfEN75Nei31-kICT29krZqem6UiyJpfHX8P_68GD1idA';
+    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuyCrOyaqeyekDHsnZgg7Iuk66qFIiwiaWQiOjEsImV4cCI6MTcxNTQwNjUzNSwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSJ9.AhzXTCAv5kC3y67OsgAVLarLDWs9aWzGo8cnuAyXg7K2gc-XDmldlH2FyHXCgylk5JnJL1m-wLz-NYAyXC0z6A';
 
 void main() async {
   await callUserProfile_test();
@@ -21,7 +21,7 @@ Future<void> callSetting_test() async {
 
 Future<void> callJoin_test() async {
   JoinReqDTO reqDTO =
-      JoinReqDTO(email: "asd@nate.com", nickName: "asdasd", password: "1234");
+  JoinReqDTO(email: "asd@nate.com", nickName: "asdasd", password: "1234");
   await UserRepo().callJoin(reqDTO);
 }
 
@@ -32,7 +32,7 @@ Future<void> callLogin_test() async {
 
 Future<void> callLogin_test2() async {
   LoginReqDTO reqDTO =
-      LoginReqDTO(email: "user1@example.com", password: "1234");
+  LoginReqDTO(email: "user1@example.com", password: "1234");
   await UserRepo().callLogin(reqDTO);
 }
 

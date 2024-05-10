@@ -72,8 +72,8 @@ class ProfileSetting extends ConsumerWidget {
                 // 이름
                 SizedBox(height: 50),
                 EditInfo(
-                  text: "닉네임",
-                  userInfo: model.userProfile.nickName,
+                  fieldName: "닉네임",
+                  fieldValue: model.userProfile.nickName,
                 ),
                 // 닉네임
                 SizedBox(height: 50),
@@ -81,8 +81,8 @@ class ProfileSetting extends ConsumerWidget {
                 // 휴대폰 번호 변경
                 SizedBox(height: 50),
                 EditInfo(
-                  text: "비밀번호 변경",
-                  userInfo: "****",
+                  fieldName: "비밀번호 변경",
+                  fieldValue: "****",
                 ),
                 SizedBox(height: 10),
                 // 비밀번호 변경

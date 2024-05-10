@@ -25,6 +25,9 @@ class FixedInfo extends StatelessWidget {
             fieldValue,
             style: TextStyle(fontSize: 16, color: Colors.grey),
           ),
+          SizedBox(
+            height: 5.0,
+          ),
           Divider(
             color: Colors.grey.withOpacity(0.3),
             thickness: 1.0,

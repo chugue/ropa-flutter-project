@@ -13,9 +13,6 @@ class UserProfileModel {
   UserProfileModel(
     this.userProfile,
   );
-
-// User user;
-// UserProfileModel(this.user);
 }
 
 // 창고

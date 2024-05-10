@@ -24,7 +24,8 @@ class UserProfile {
       myName: json["myName"],
       nickName: json["nickName"],
       mobile: json["mobile"],
-      photoDTO: PhotoDTO.fromJson(json["photoDTO"]),
+      photoDTO:
+          PhotoDTO.fromJson(json["photoDTO"]) /* ✅list는 DTO.fromJson()으로 */,
     );
   }
 //
