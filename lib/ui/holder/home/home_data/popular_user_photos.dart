@@ -2,14 +2,14 @@ class PopularUserPhotos {
   final int photoId;
   final int creatorId;
   final String name;
-  final String path;
+  final String base64;
   final String sort;
 
   const PopularUserPhotos({
     required this.photoId,
     required this.creatorId,
     required this.name,
-    required this.path,
+    required this.base64,
     required this.sort,
   });
 
@@ -18,7 +18,7 @@ class PopularUserPhotos {
       photoId: json["photoId"],
       creatorId: json["creatorId"],
       name: json["name"],
-      path: json["path"],
+      base64: json["base64"] ?? '',
       sort: json["sort"],
     );
   }

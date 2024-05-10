@@ -5,7 +5,7 @@ void main() async {
 }
 
 Future<void> callLoveCount_test() async {
-  await CodiRepo().callLoveCount(1);
+  await CodiRepo().callSaveLoveCount(1);
 }
 
 final accessToken =

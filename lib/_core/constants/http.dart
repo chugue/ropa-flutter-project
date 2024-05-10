@@ -4,7 +4,7 @@ import 'package:logger/logger.dart';
 
 // 192.168.219.111
 //
-final baseURL = "http://192.168.219.111:8080";
+final baseURL = "http://192.168.0.59:8080";
 
 final dio = Dio(
   BaseOptions(

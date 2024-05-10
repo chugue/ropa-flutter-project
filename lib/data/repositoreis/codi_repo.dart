@@ -8,13 +8,20 @@ import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail
 import 'package:logger/logger.dart';
 
 class CodiRepo {
-  Future<ResponseDTO> callLoveCount(int codiId) async {
+  Future<ResponseDTO> callSaveLoveCount(int codiId) async {
     final response = await dio.post('/app/function/love/${codiId}');
     Logger().d(response.data!);
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
     if (responseDTO.success) {
       responseDTO.response = Codi.fromJson(responseDTO.response);
     }
+    return responseDTO;
+  }
+
+  Future<ResponseDTO> callDeleteLoveCount(int codiId) async {
+    final response = await dio.delete('/app/function/love/${codiId}');
+    Logger().d(response.data!);
+    ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
     return responseDTO;
   }
 

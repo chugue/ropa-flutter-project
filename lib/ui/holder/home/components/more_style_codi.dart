@@ -1,5 +1,4 @@
-import 'dart:convert';
-
+import 'package:final_project_team02/ui/components/custom_base64.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_page.dart';
 import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +31,10 @@ class MoreStyleCodi extends StatelessWidget {
                                 codiId: model!.codiPhotos[index].codiId,
                               )));
                 },
-                child: Image.memory(Base64Decoder().convert(bird)),
+                child: CustomBase64(
+                  model: model,
+                  index: index,
+                ),
               ),
               Positioned(
                 right: 10,
