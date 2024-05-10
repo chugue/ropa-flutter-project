@@ -7,12 +7,14 @@ class UserMyPageApplyModalBodyFormTextField extends StatelessWidget {
   final String hinText;
   final String physical;
   final controller;
+  final validator;
 
   const UserMyPageApplyModalBodyFormTextField({
     required this.title,
     required this.hinText,
     required this.physical,
     required this.controller,
+    required this.validator,
   });
 
   @override

@@ -40,12 +40,14 @@ class UserCreatorApplyReqDTO {
   final String weight;
   final String instagram;
   final String job;
+  final String comment;
 
   const UserCreatorApplyReqDTO({
     required this.height,
     required this.weight,
     required this.instagram,
     required this.job,
+    required this.comment,
   });
 
   Map<String, dynamic> toJson() {
@@ -54,6 +56,7 @@ class UserCreatorApplyReqDTO {
       "weight": this.weight,
       "instagram": this.instagram,
       "job": this.job,
+      "comment": this.comment,
     };
   }
 }

@@ -1,7 +1,7 @@
 import 'package:final_project_team02/_core/uitls/validator_util.dart';
 import 'package:final_project_team02/data/dtos/user_request.dart';
 import 'package:final_project_team02/data/session_data/session_data.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/user_my_page_apply_modal_body_form_apply_button.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/apply_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/user_my_page_apply_modal_body_form_text_field.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/user_my_page_apply_modal_body_form_title.dart';
 import 'package:flutter/material.dart';
@@ -12,21 +12,25 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
   final TextEditingController _height;
   final TextEditingController _weight;
   final TextEditingController _instagram;
+  final TextEditingController _job;
   final GlobalKey<FormState> _formKey;
 
   UserMyPageApplyModalBodyForm({
     required TextEditingController pHeight,
     required TextEditingController pWeight,
     required TextEditingController pInstagram,
+    required TextEditingController pJob,
     required GlobalKey<FormState> formKey,
   })  : _height = pHeight,
         _weight = pWeight,
+        _job = pJob,
         _instagram = pInstagram,
         _formKey = formKey;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final List<String> list = ['직장인', '대학생'];
+    ApplyModel? model = ref.watch(applyProvider);
 
     return TextButton(
       onPressed: () {
@@ -41,9 +45,7 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
             return AnimatedPadding(
               padding: EdgeInsets.only(bottom: keyboardHeight),
               duration: const Duration(milliseconds: 100),
-              // Smooth animation effect
               curve: Curves.decelerate,
-              // Decelerate animation speed
               child: ListView(
                 children: [
                   Container(
@@ -78,6 +80,8 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
                                     hinText: "키를 ",
                                     controller: _height,
                                     physical: "cm",
+                                    validator:
+                                        validateApplyHeight(), // Attach the validator function
                                   ),
                                   SizedBox(height: 20),
                                   UserMyPageApplyModalBodyFormTextField(
@@ -85,6 +89,8 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
                                     hinText: "체중을 ",
                                     controller: _weight,
                                     physical: "kg",
+                                    validator:
+                                        validateApplyWeight(), // Validator previously defined
                                   ),
                                   SizedBox(height: 20),
                                   UserMyPageApplyModalBodyFormTextField(
@@ -92,31 +98,17 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
                                     hinText: "링크를 ",
                                     controller: _instagram,
                                     physical: "",
+                                    validator:
+                                        validateInstagramLink(), // Attach the validator function
                                   ),
                                   SizedBox(height: 20),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "직업: ",
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      DropdownMenu<String>(
-                                        initialSelection: null,
-                                        onSelected: (String? _job) {},
-                                        dropdownMenuEntries: [
-                                          ...list
-                                              .map<DropdownMenuEntry<String>>(
-                                                  (String value) {
-                                            return DropdownMenuEntry<String>(
-                                              value: value,
-                                              label: value,
-                                            );
-                                          }).toList(),
-                                        ],
-                                      ),
-                                    ],
+                                  UserMyPageApplyModalBodyFormTextField(
+                                    title: "직업 ",
+                                    hinText: "직업을 ",
+                                    controller: _job,
+                                    physical: "",
+                                    validator:
+                                        validateJob(), // Attach the validator function
                                   ),
                                   SizedBox(height: 20),
                                   TextFormField(
@@ -148,14 +140,15 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
                                         String weight = _weight.text.trim();
                                         String instagram =
                                             _instagram.text.trim();
-                                        String job = selectedJob.text().trim();
                                         String comment = _comment.text.trim();
+                                        String job = _job.text.trim();
 
                                         print(
                                             "999999999999999999999999999999999999 ${height}, ${weight}, ${comment},${job}");
 
                                         UserCreatorApplyReqDTO reqDTO =
                                             UserCreatorApplyReqDTO(
+                                          comment: comment,
                                           weight: weight + 'kg',
                                           instagram: instagram,
                                           job: job,
@@ -168,12 +161,6 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
                                             ref.read(sessionProvider);
                                         s.UserCreatorApply(reqDTO);
                                       }
-                                      showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                          return UserMyPageApplyModalBodyApplyButton();
-                                        },
-                                      );
                                     },
                                     child: Padding(
                                       padding:

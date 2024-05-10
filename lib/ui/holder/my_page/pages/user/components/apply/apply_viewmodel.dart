@@ -8,7 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class ApplyModel {
   final User user;
 
-  const ApplyModel({
+  ApplyModel({
     required this.user,
   });
 }

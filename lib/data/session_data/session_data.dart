@@ -5,6 +5,7 @@ import 'package:final_project_team02/data/dtos/user_request.dart';
 import 'package:final_project_team02/data/global_data/user.dart';
 import 'package:final_project_team02/data/repositoreis/user_repo.dart';
 import 'package:final_project_team02/main.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/user_my_page_apply_modal_body_form_apply_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -28,6 +29,12 @@ class SessionData extends SessionUser {
     ResponseDTO responseDTO = await UserRepo().callUserCreatorApply(reqDTO);
 
     if (responseDTO.success) {
+      showDialog(
+        context: mContext!,
+        builder: (BuildContext context) {
+          return UserMyPageApplyModalBodyApplyButton();
+        },
+      );
       SessionData sessionData = responseDTO.response;
 
       User(

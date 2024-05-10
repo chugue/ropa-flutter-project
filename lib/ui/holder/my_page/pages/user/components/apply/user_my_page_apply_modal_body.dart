@@ -5,13 +5,8 @@ class UserMyPageApplyModalBody extends StatelessWidget {
   final TextEditingController _height = TextEditingController();
   final TextEditingController _weight = TextEditingController();
   final TextEditingController _instagram = TextEditingController();
-  String? _selectedJob;
+  final TextEditingController _job = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-
-  void _handleJobChange(String? newJob) {
-    _selectedJob = newJob;
-    print("Job selected: $_selectedJob");
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +25,7 @@ class UserMyPageApplyModalBody extends StatelessWidget {
           pHeight: _height,
           pWeight: _weight,
           pInstagram: _instagram,
-          onJobSelected: _handleJobChange,
+          pJob: _job,
         ),
       ),
     );

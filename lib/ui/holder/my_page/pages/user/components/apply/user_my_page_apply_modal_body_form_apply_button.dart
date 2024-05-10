@@ -1,4 +1,4 @@
-import 'package:final_project_team02/ui/holder/home/home_page.dart';
+import 'package:final_project_team02/_core/constants/move.dart';
 import 'package:flutter/material.dart';
 
 class UserMyPageApplyModalBodyApplyButton extends StatelessWidget {
@@ -15,8 +15,8 @@ class UserMyPageApplyModalBodyApplyButton extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomePage()));
+            Navigator.pushNamedAndRemoveUntil(
+                context, Move.mainHoder, (route) => false);
           },
           child: Text("확인"),
         )

@@ -14,7 +14,11 @@ void main() async {
 
 Future<void> callUserCreatorApply_test() async {
   UserCreatorApplyReqDTO reqDTO = UserCreatorApplyReqDTO(
-      height: '123', instagram: 'asd', job: '직장인', weight: '123');
+      height: '123',
+      instagram: 'asd',
+      job: '직장인',
+      weight: '123',
+      comment: 'ffff');
   await UserRepo().callUserCreatorApply(reqDTO);
 }
 
