@@ -16,12 +16,13 @@ Future<void> callUserProfile_test() async {
 }
 
 Future<void> callUserSetting_test() async {
-  await UserRepo().callUserSetting(accessToken);
+  // await UserRepo().callUserSetting(accessToken);
+  await UserRepo().callUserSetting();
 }
 
 Future<void> callJoin_test() async {
   JoinReqDTO reqDTO =
-  JoinReqDTO(email: "asd@nate.com", nickName: "asdasd", password: "1234");
+      JoinReqDTO(email: "asd@nate.com", nickName: "asdasd", password: "1234");
   await UserRepo().callJoin(reqDTO);
 }
 
@@ -32,7 +33,7 @@ Future<void> callLogin_test() async {
 
 Future<void> callLogin_test2() async {
   LoginReqDTO reqDTO =
-  LoginReqDTO(email: "user1@example.com", password: "1234");
+      LoginReqDTO(email: "user1@example.com", password: "1234");
   await UserRepo().callLogin(reqDTO);
 }
 

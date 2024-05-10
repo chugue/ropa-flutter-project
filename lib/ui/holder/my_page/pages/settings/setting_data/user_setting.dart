@@ -3,14 +3,14 @@ class UserSetting {
   String email;
   String myName;
   String nickName;
-  String moile;
+  String mobile;
 
   UserSetting({
     required this.id,
     required this.email,
     required this.myName,
     required this.nickName,
-    required this.moile,
+    required this.mobile,
   });
 
   factory UserSetting.fromJson(Map<String, dynamic> json) {
@@ -19,7 +19,7 @@ class UserSetting {
       email: json["email"],
       myName: json["myName"],
       nickName: json["nickName"],
-      moile: json["moile"],
+      mobile: json["mobile"],
     );
   }
 }

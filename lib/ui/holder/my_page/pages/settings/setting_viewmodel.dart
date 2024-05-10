@@ -16,13 +16,16 @@ class UserSettingModel {
 }
 
 // 뷰 모델
-class UserSettingModelViewModel extends StateNotifier<UserSettingModel> {
+class UserSettingViewModel extends StateNotifier<UserSettingModel?> {
   final mContext = navigatorKey.currentContext;
   final Ref ref;
 
   // 레파지토리 호출
 
-  UserSettingModelViewModel(super.state, this.ref);
+  UserSettingViewModel(
+    super.state,
+    this.ref,
+  );
 
   Future<void> notifyInit() async {
     SessionData sessionData = ref.read(sessionProvider);
@@ -37,7 +40,8 @@ class UserSettingModelViewModel extends StateNotifier<UserSettingModel> {
     } else {
       ScaffoldMessenger.of(mContext!).showSnackBar(
         SnackBar(
-          content: Text("✅✅✅✅ERROR MESSAGE✅✅✅✅ : ${responseDTO.errorMessage}"),
+          content: Text(
+              "✅✅✅✅VIEW MODEL ERROR MESSAGE✅✅✅✅ : ${responseDTO.errorMessage}"),
         ),
       );
     }
@@ -45,9 +49,9 @@ class UserSettingModelViewModel extends StateNotifier<UserSettingModel> {
 }
 
 // 프로바이더 = 공급자 제공자
-final UserSettingModelProvider =
-    StateNotifierProvider<UserSettingModelViewModel, UserSettingModel>(
+final UserSettingProvider =
+    StateNotifierProvider<UserSettingViewModel, UserSettingModel?>(
   (ref) {
-    return UserSettingModelViewModel(null, ref)..notifyInit();
+    return UserSettingViewModel(null, ref)..notifyInit();
   },
 );
