@@ -29,6 +29,7 @@ class CodiBody extends ConsumerWidget {
         slivers: [
           // MainAppBar(),
           SliverToBoxAdapter(child: CodiMainScroll(model: model)),
+
           SliverToBoxAdapter(child: CodiLike(model: model)),
 
           SliverToBoxAdapter(child: CodiCreatedAt()),

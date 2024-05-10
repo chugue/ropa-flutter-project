@@ -1,6 +1,4 @@
 import 'package:final_project_team02/_core/constants/move.dart';
-import 'package:final_project_team02/ui/holder/main_viewmodel.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -44,7 +42,8 @@ class LoginIsCheck extends ConsumerWidget {
             SizedBox(width: 10), // 버튼 사이에 간격을 줍니다.
             InkWell(
               onTap: () {
-                Navigator.pushNamedAndRemoveUntil(context, Move.mainHoder , (_) => false);
+                Navigator.pushNamedAndRemoveUntil(
+                    context, Move.mainHoder, (_) => false);
               },
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),

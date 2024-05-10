@@ -25,42 +25,67 @@ class CodiDetailModel {
 
 class CodiDetailViewModel extends StateNotifier<CodiDetailModel?> {
   Ref ref;
+  SessionData sessionData;
   final mContext = navigatorKey.currentContext;
 
-  CodiDetailViewModel(super.state, this.ref);
+  CodiDetailViewModel(super.state, this.ref, this.sessionData);
 
   Future<ResponseDTO> loveCount(int codiId) async {
-    SessionData sessionData = ref.read(sessionProvider);
+    if (state!.codi.isLoved == false) {
+      ResponseDTO responseDTO = await CodiRepo().callSaveLoveCount(codiId);
+      if (responseDTO.success) {
+        bool isLoved = !state!.codi.isLoved;
+        int loveCount = state!.codi.loveCount! + 1;
 
-    ResponseDTO responseDTO =
-        await CodiRepo().callLoveCount(codiId, sessionData.accessToken!);
+        Codi codi = Codi(
+          codiId: codiId,
+          isLoved: isLoved,
+          description: state!.codi.description,
+          createdAt: state!.codi.createdAt,
+          loveCount: loveCount,
+        );
 
-    if (responseDTO.success) {
-      bool isLoved = !state!.codi.isLoved;
-      int loveCount =
-          isLoved ? state!.codi.loveCount! + 1 : state!.codi.loveCount! - 1;
+        List<ItemPhotos> itemPhotos = state!.itemPhotos;
+        List<MainPhotos> mainPhotos = state!.mainPhotos;
+        List<OtherCodiPhotos> otherCodiPhotos = state!.otherCodiPhotos;
 
-      Codi codi = Codi(
-        codiId: codiId,
-        isLoved: isLoved = true,
-        description: state!.codi.description,
-        createdAt: state!.codi.createdAt,
-        loveCount: loveCount,
-      );
+        responseDTO.response = CodiDetailModel(
+          codi: codi,
+          itemPhotos: itemPhotos,
+          mainPhotos: mainPhotos,
+          otherCodiPhotos: otherCodiPhotos,
+        );
+        state = responseDTO.response;
+      }
+      return responseDTO;
+    } else {
+      ResponseDTO responseDTO = await CodiRepo().callDeleteLoveCount(codiId);
+      if (responseDTO.success) {
+        bool isLoved = !state!.codi.isLoved;
+        int loveCount = state!.codi.loveCount! - 1;
 
-      List<ItemPhotos> itemPhotos = state!.itemPhotos;
-      List<MainPhotos> mainPhotos = state!.mainPhotos;
-      List<OtherCodiPhotos> otherCodiPhotos = state!.otherCodiPhotos;
+        Codi codi = Codi(
+          codiId: codiId,
+          isLoved: isLoved,
+          description: state!.codi.description,
+          createdAt: state!.codi.createdAt,
+          loveCount: loveCount,
+        );
 
-      responseDTO.response = CodiDetailModel(
-        codi: codi,
-        itemPhotos: itemPhotos,
-        mainPhotos: mainPhotos,
-        otherCodiPhotos: otherCodiPhotos,
-      );
+        List<ItemPhotos> itemPhotos = state!.itemPhotos;
+        List<MainPhotos> mainPhotos = state!.mainPhotos;
+        List<OtherCodiPhotos> otherCodiPhotos = state!.otherCodiPhotos;
+
+        responseDTO.response = CodiDetailModel(
+          codi: codi,
+          mainPhotos: mainPhotos,
+          itemPhotos: itemPhotos,
+          otherCodiPhotos: otherCodiPhotos,
+        );
+        state = responseDTO.response;
+      }
+      return responseDTO;
     }
-
-    return responseDTO;
   }
 
   Future<ResponseDTO> notifyInit(int codiId) async {
@@ -76,5 +101,6 @@ class CodiDetailViewModel extends StateNotifier<CodiDetailModel?> {
 final codiDetailProvider =
     StateNotifierProvider.family<CodiDetailViewModel, CodiDetailModel?, int>(
         (ref, codiId) {
-  return CodiDetailViewModel(null, ref)..notifyInit(codiId);
+  SessionData sessionData = ref.read(sessionProvider);
+  return CodiDetailViewModel(null, ref, sessionData)..notifyInit(codiId);
 });

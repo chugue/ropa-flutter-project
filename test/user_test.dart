@@ -8,7 +8,7 @@ final accessToken =
     'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuyCrOyaqeyekDHsnZgg7Iuk66qFIiwiaWQiOjEsImV4cCI6MTcxNTIzMTc4NCwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSJ9.OwPmgGXUSXFRDNqSWCywuH6tEz6QwF_p2Vy1jNAUaHLfEN75Nei31-kICT29krZqem6UiyJpfHX8P_68GD1idA';
 
 void main() async {
-  await callSetting_test();
+  await callUserProfile_test();
 }
 
 Future<void> callUserProfile_test() async {
@@ -33,7 +33,7 @@ Future<void> callLogin_test() async {
 Future<void> callLogin_test2() async {
   LoginReqDTO reqDTO =
       LoginReqDTO(email: "user1@example.com", password: "1234");
-  final response = await UserRepo().callLogin(reqDTO);
+  await UserRepo().callLogin(reqDTO);
 }
 
 Future<void> callProfile_test2() async {

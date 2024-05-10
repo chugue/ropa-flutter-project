@@ -49,7 +49,7 @@ class SessionData extends SessionUser {
       this.isLogin = true;
 
       globalAccessToken = accessToken;
-
+      print("sjfsjfsjsf : ${globalAccessToken}");
       Navigator.pushNamedAndRemoveUntil(
           mContext!, Move.mainHoder, (route) => false);
     } else {

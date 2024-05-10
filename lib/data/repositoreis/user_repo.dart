@@ -15,6 +15,8 @@ class UserRepo {
   }
 
   Future<ResponseDTO> callUserProfile() async {
+    print(globalAccessToken);
+
     final response = await dio.get("/app/profile");
     Logger().d(response.data!);
     print(response.data);

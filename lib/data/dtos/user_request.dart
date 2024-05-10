@@ -34,3 +34,26 @@ class LoginReqDTO {
     };
   }
 }
+
+class CreatorApplyReqDTO {
+  final String height;
+  final String weight;
+  final String instagram;
+  final String job;
+
+  const CreatorApplyReqDTO({
+    required this.height,
+    required this.weight,
+    required this.instagram,
+    required this.job,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      "height": this.height,
+      "weight": this.weight,
+      "instagram": this.instagram,
+      "job": this.job,
+    };
+  }
+}
