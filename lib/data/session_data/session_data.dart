@@ -24,8 +24,24 @@ class SessionData extends SessionUser {
 
   SessionData();
 
-  Future<void> userCreatorApply(UserCreatorApplyReqDTO reqDTO) async {
+  Future<void> UserCreatorApply(UserCreatorApplyReqDTO reqDTO) async {
     ResponseDTO responseDTO = await UserRepo().callUserCreatorApply(reqDTO);
+
+    if (responseDTO.success) {
+      SessionData sessionData = responseDTO.response;
+
+      User(
+          id: user!.id,
+          nickName: user!.nickName,
+          username: user!.username,
+          blueChecked: sessionData.user!.blueChecked,
+          instagram: sessionData.user!.instagram,
+          createdAt: user!.createdAt);
+    } else {
+      ScaffoldMessenger.of(mContext!).showSnackBar(
+        SnackBar(content: Text("크리에이터를 지원 실패 : ${responseDTO.errorMessage}")),
+      );
+    }
   }
 
   Future<void> join(JoinReqDTO joinReqDTO) async {

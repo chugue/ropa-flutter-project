@@ -8,7 +8,7 @@ import 'package:logger/logger.dart';
 
 class UserRepo {
   Future<ResponseDTO> callUserCreatorApply(
-      UserCreatorApplyReqDTO reqDTO, String globalAccessToken) async {
+      UserCreatorApplyReqDTO reqDTO) async {
     final response = await dio.put("/app/creator-apply",
         data: reqDTO.toJson(),
         options: Options(headers: {'Authorization': globalAccessToken}));
@@ -20,7 +20,6 @@ class UserRepo {
       responseDTO.response = User.fromJson(responseDTO.response);
       Logger().d(responseDTO.response);
     }
-
     return responseDTO;
   }
 

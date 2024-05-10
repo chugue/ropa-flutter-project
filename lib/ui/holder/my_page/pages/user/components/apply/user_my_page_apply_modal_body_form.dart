@@ -1,6 +1,6 @@
 import 'package:final_project_team02/_core/uitls/validator_util.dart';
 import 'package:final_project_team02/data/dtos/user_request.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/apply_data/apply_viewmodel.dart';
+import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/user_my_page_apply_modal_body_form_apply_button.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/user_my_page_apply_modal_body_form_job_drop_box.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/user_my_page_apply_modal_body_form_text_field.dart';
@@ -28,7 +28,7 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
         _formKey = formKey;
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return TextButton(
       onPressed: () {
         showModalBottomSheet(
@@ -94,14 +94,10 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
                                   ),
                                   SizedBox(height: 20),
                                   UserMyPageApplyModalBodyJopDropBox(
-                                      title: "직업 ", list: ["작장인", "대학생"]),
-                                  SizedBox(height: 20),
-                                  UserMyPageApplyModalBodyFormTextField(
-                                    title: "링크 ",
-                                    hinText: "링크를 ",
-                                    controller: _instagram,
-                                    physical: "",
+                                    title: "직업",
+                                    list: ["작장인", "대학생"],
                                   ),
+                                  SizedBox(height: 20),
                                   TextFormField(
                                     controller: _comment,
                                     minLines: 3,
@@ -136,23 +132,22 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
                                         String comment = _comment.text.trim();
 
                                         print(
-                                            "${height}, ${weight}, ${comment},${job}");
+                                            "999999999999999999999999999999999999 ${height}, ${weight}, ${comment},${job}");
 
                                         UserCreatorApplyReqDTO reqDTO =
                                             UserCreatorApplyReqDTO(
-                                          weight: weight,
+                                          weight: weight + 'kg',
                                           instagram: instagram,
                                           job: job,
-                                          height: height,
+                                          height: height + 'cm',
                                         );
 
-                                        ApplyModel? applyModel = ref.read(applyProvider);
-
-                                        applyModel.
-
-
+                                        print(
+                                            "00000000000000000000000000000000000${reqDTO.toJson()}00000000000000000000000000000000");
+                                        SessionData s =
+                                            ref.read(sessionProvider);
+                                        s.UserCreatorApply(reqDTO);
                                       }
-
                                       showDialog(
                                         context: context,
                                         builder: (BuildContext context) {
