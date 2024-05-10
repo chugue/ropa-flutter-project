@@ -2,7 +2,6 @@ import 'package:final_project_team02/_core/uitls/validator_util.dart';
 import 'package:final_project_team02/data/dtos/user_request.dart';
 import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/user_my_page_apply_modal_body_form_apply_button.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/user_my_page_apply_modal_body_form_job_drop_box.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/user_my_page_apply_modal_body_form_text_field.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/user_my_page_apply_modal_body_form_title.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +13,8 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
   final TextEditingController _weight;
   final TextEditingController _instagram;
   final GlobalKey<FormState> _formKey;
-  final Function(String?) onJobSelected;
 
   UserMyPageApplyModalBodyForm({
-    required this.onJobSelected,
     required TextEditingController pHeight,
     required TextEditingController pWeight,
     required TextEditingController pInstagram,
@@ -29,6 +26,8 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final List<String> list = ['직장인', '대학생'];
+
     return TextButton(
       onPressed: () {
         showModalBottomSheet(
@@ -41,13 +40,15 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
 
             return AnimatedPadding(
               padding: EdgeInsets.only(bottom: keyboardHeight),
-              duration:
-                  const Duration(milliseconds: 100), // Smooth animation effect
-              curve: Curves.decelerate, // Decelerate animation speed
+              duration: const Duration(milliseconds: 100),
+              // Smooth animation effect
+              curve: Curves.decelerate,
+              // Decelerate animation speed
               child: ListView(
                 children: [
                   Container(
-                    margin: buildEdgeInsets(), // 모달 좌우하단 여백 크기
+                    margin: buildEdgeInsets(),
+                    // 모달 좌우하단 여백 크기
                     decoration: const BoxDecoration(
                         color: Colors.grey, // 모달 배경색
                         borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -93,9 +94,29 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
                                     physical: "",
                                   ),
                                   SizedBox(height: 20),
-                                  UserMyPageApplyModalBodyJopDropBox(
-                                    title: "직업",
-                                    list: ["작장인", "대학생"],
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "직업: ",
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      DropdownMenu<String>(
+                                        initialSelection: null,
+                                        onSelected: (String? _job) {},
+                                        dropdownMenuEntries: [
+                                          ...list
+                                              .map<DropdownMenuEntry<String>>(
+                                                  (String value) {
+                                            return DropdownMenuEntry<String>(
+                                              value: value,
+                                              label: value,
+                                            );
+                                          }).toList(),
+                                        ],
+                                      ),
+                                    ],
                                   ),
                                   SizedBox(height: 20),
                                   TextFormField(
@@ -127,8 +148,7 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
                                         String weight = _weight.text.trim();
                                         String instagram =
                                             _instagram.text.trim();
-                                        String job =
-                                            onJobSelected.toString().trim();
+                                        String job = selectedJob.text().trim();
                                         String comment = _comment.text.trim();
 
                                         print(

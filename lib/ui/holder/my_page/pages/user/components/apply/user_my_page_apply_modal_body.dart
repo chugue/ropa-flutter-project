@@ -16,22 +16,23 @@ class UserMyPageApplyModalBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-        bottom: 0,
-        left: 10,
-        right: 10,
-        child: Container(
-          width: 350,
-          decoration: BoxDecoration(
-            color: Colors.black,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: UserMyPageApplyModalBodyForm(
-            formKey: _formKey,
-            pHeight: _height,
-            pWeight: _weight,
-            pInstagram: _instagram,
-            onJobSelected: _handleJobChange,
-          ),
-        ));
+      bottom: 0,
+      left: 10,
+      right: 10,
+      child: Container(
+        width: 350,
+        decoration: BoxDecoration(
+          color: Colors.black,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: UserMyPageApplyModalBodyForm(
+          formKey: _formKey,
+          pHeight: _height,
+          pWeight: _weight,
+          pInstagram: _instagram,
+          onJobSelected: _handleJobChange,
+        ),
+      ),
+    );
   }
 }

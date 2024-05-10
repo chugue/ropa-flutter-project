@@ -11,28 +11,27 @@ class UserMyPageApplyModalBodyJopDropBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String?
-        selectedValue; // This will need to be managed by a stateful widget or a state management approach if this widget is to be functional.
-
     return Row(
       children: [
         Text(
-          "$title: ",
+          "${title}: ",
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
-        DropdownButton<String>(
-          value: selectedValue,
-          onChanged: (String? newValue) {
-            // This should ideally be handled by setting state in a StatefulWidget or using another state management solution
-
-            selectedValue = newValue;
-          },
-          items: list.map<DropdownMenuItem<String>>((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
+        DropdownMenu<String>(
+          initialSelection: null,
+          onSelected: (String? value) {},
+          dropdownMenuEntries: [
+            DropdownMenuEntry<String>(
+              value: 'value',
+              label: 'value', // 힌트 텍스트
+            ),
+            ...list.map<DropdownMenuEntry<String>>((String value) {
+              return DropdownMenuEntry<String>(
+                value: value,
+                label: value,
+              );
+            }).toList(),
+          ],
         ),
       ],
     );
