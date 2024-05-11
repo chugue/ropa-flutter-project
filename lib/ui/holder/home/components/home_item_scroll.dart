@@ -28,7 +28,6 @@ class ItemScroll extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        print("사진 클릭 됨");
                         Navigator.push(
                           context,
                           MaterialPageRoute(
