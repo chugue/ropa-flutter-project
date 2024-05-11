@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/creator_view_page.dart';
 import 'package:flutter/material.dart';
@@ -32,9 +34,11 @@ class CreatorScroll extends StatelessWidget {
                   );
                 },
                 child: Container(
-                  width: 70,
-                  child: Image.network(
-                    "https://picsum.photos/id/${model!.userPhotos[index].photoId}/600/600",
+                  width: double.infinity, // 셀의 전체 너비 사용
+                  height: double.infinity, // 셀의 전체 높이 사용
+                  child: Image.memory(
+                    Base64Decoder()
+                        .convert(model!.userPhotos[index].base64),
                     fit: BoxFit.cover,
                   ),
                 ),

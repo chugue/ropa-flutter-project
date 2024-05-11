@@ -7,12 +7,14 @@ class UserMyPageApplyModalBodyFormTextField extends StatelessWidget {
   final String hinText;
   final String physical;
   final controller;
+  final validator;
 
   const UserMyPageApplyModalBodyFormTextField({
     required this.title,
     required this.hinText,
     required this.physical,
     required this.controller,
+    required this.validator,
   });
 
   @override
@@ -41,7 +43,7 @@ class UserMyPageApplyModalBodyFormTextField extends StatelessWidget {
               if (number == null) {
                 return '숫자만 입력해주세요';
               }
-              // 여기서 추가적인 유효성 검사를 할 수 있습니다. 예: 범위 검사
+              // 여기서 추가적인 유효성 검사를 할 수 있습니다. 예: 범위 검사`
               return null; // 입력 값이 유효할 경우 null을 반환
             },
           ),

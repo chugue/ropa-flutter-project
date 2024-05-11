@@ -1,3 +1,4 @@
+import 'package:final_project_team02/ui/components/main_app_bar.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/components/codi_content.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/components/codi_create_at.dart';
@@ -27,7 +28,7 @@ class CodiBody extends ConsumerWidget {
     } else {
       return CustomScrollView(
         slivers: [
-          // MainAppBar(),
+          MainAppBar(),
           SliverToBoxAdapter(child: CodiMainScroll(model: model)),
 
           SliverToBoxAdapter(child: CodiLike(model: model)),

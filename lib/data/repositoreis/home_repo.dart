@@ -8,7 +8,6 @@ import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
 class HomeRepo {
   Future<ResponseDTO> callHomeList() async {
     final response = await dio.get('/home-lists');
-    logger.d(response.data!);
 
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
     // Logger().d(responseDTO.response);
