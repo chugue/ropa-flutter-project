@@ -81,7 +81,9 @@ class ItemBody extends ConsumerWidget {
             ),
           ),
         ),
-        SizedBox(height: 30),
+        SliverToBoxAdapter(
+          child: SizedBox(height: 60),
+        ),
         SliverToBoxAdapter(
           child: SizedBox(
             height: MediaQuery.of(context).size.height, // 미디어 쿼리 대신 고정 높이 사용
@@ -96,7 +98,8 @@ class ItemBody extends ConsumerWidget {
               },
             ),
           ),
-        ), // 추가 정보를 위한 SliverList
+        ),
+        // 추가 정보를 위한 SliverList
         // 다른 Sliver 위젯들을 더 추가할 수 있습니다.
       ],
     );
