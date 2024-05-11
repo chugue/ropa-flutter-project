@@ -24,9 +24,7 @@ class _CodiInsertScrollState extends State<CodiInsertScroll> {
                 if (index == 2 - 1) /* ✅-1 지울 것*/ {
                   return GestureDetector(
                     onTap: () {
-                      // TODO : 이미지 업로드 기능 구현
-                      print("🧡💛💚💙💜🤎🖤🤍플러스 눌러짐🧡💛💚💙💜🤎🖤🤍");
-                      setState(() {});
+
                     },
                     child: Container(
                       width: 120,
