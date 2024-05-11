@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 
@@ -40,9 +42,13 @@ class ItemScroll extends StatelessWidget {
                         height: MediaQuery.of(context).size.width * 0.40,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 5.0),
-                          child: Image.network(
-                            "https://picsum.photos/id/${model!.itemsPhotos[index].itemsId}/600/600",
-                            fit: BoxFit.cover,
+                          child: Container(
+                            width: double.infinity, // 셀의 전체 너비 사용
+                            height: double.infinity, // 셀의 전체 높이 사용
+                            child: Image.memory(
+                              Base64Decoder().convert(model!.itemsPhotos[index].base64),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
