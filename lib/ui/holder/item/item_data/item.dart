@@ -3,7 +3,6 @@ class Item{
   final int price;
   final String discountRate;
   final int discountPrice;
-  final bool isMainPhoto;
   final String sort;
   final String brandName;
 
@@ -12,7 +11,6 @@ class Item{
     required this.price,
     required this.discountRate,
     required this.discountPrice,
-    required this.isMainPhoto,
     required this.sort,
     required this.brandName,
   });
@@ -23,8 +21,7 @@ class Item{
       price: json["price"],
       discountRate: json["discountRate"] ?? '',
       discountPrice:json["discountPrice"],
-      isMainPhoto: json["isMainPhoto"],
-      sort: json["sort"] ?? null,
+      sort: json["sort"] ?? '',
       brandName: json["brandName"],);
   }
 
