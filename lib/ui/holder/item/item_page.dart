@@ -4,6 +4,7 @@ import 'components/item_body.dart';
 
 class ItemPage extends StatelessWidget {
   final int itemId;
+
   const ItemPage({
     required this.itemId,
   });
@@ -12,7 +13,7 @@ class ItemPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(), // TODO: Empty AppBar
-      body: ItemBody(),
+      body: ItemBody(itemId: itemId),
     );
   }
 }
