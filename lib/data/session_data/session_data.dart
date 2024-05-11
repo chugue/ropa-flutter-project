@@ -5,9 +5,11 @@ import 'package:final_project_team02/data/dtos/user_request.dart';
 import 'package:final_project_team02/data/global_data/user.dart';
 import 'package:final_project_team02/data/repositoreis/user_repo.dart';
 import 'package:final_project_team02/main.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/apply_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/user_my_page_apply_modal_body_form_apply_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 
 // 싱글톤
 class SessionUser {
@@ -17,6 +19,7 @@ class SessionUser {
   int? selectedUserId;
 
   SessionUser();
+
 }
 
 // 창고
@@ -24,6 +27,13 @@ class SessionData extends SessionUser {
   final mContext = navigatorKey.currentContext;
 
   SessionData();
+
+
+  void logout() {
+    user = null;
+    accessToken = null;
+    isLogin = false;
+  }
 
   Future<void> UserCreatorApply(UserCreatorApplyReqDTO reqDTO) async {
     ResponseDTO responseDTO = await UserRepo().callUserCreatorApply(reqDTO);
@@ -35,15 +45,18 @@ class SessionData extends SessionUser {
           return UserMyPageApplyModalBodyApplyButton();
         },
       );
-      SessionData sessionData = responseDTO.response;
+      User user = responseDTO.response;
 
-      User(
-          id: user!.id,
-          nickName: user!.nickName,
-          username: user!.username,
-          blueChecked: sessionData.user!.blueChecked,
-          instagram: sessionData.user!.instagram,
-          createdAt: user!.createdAt);
+      this.user = User(
+          id: user.id,
+          nickName: user.nickName,
+          username: user.username,
+          blueChecked: user.blueChecked,
+          instagram: user.instagram,
+          createdAt: user.createdAt);
+
+
+
     } else {
       ScaffoldMessenger.of(mContext!).showSnackBar(
         SnackBar(content: Text("크리에이터를 지원 실패 : ${responseDTO.errorMessage}")),
