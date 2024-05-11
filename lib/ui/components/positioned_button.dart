@@ -13,7 +13,7 @@ class PositionedButton extends StatelessWidget {
     return Positioned(
       left: 10,
       right: 10,
-      bottom: 60,
+      bottom: 0,
       child: BottomButton(text: text),
     );
   }

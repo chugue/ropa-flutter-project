@@ -22,8 +22,8 @@ class UserMyPageApplyModalBodyJopDropBox extends StatelessWidget {
           onSelected: (String? value) {},
           dropdownMenuEntries: [
             DropdownMenuEntry<String>(
-              value: "",
-              label: "선택", // 힌트 텍스트
+              value: 'value',
+              label: 'value', // 힌트 텍스트
             ),
             ...list.map<DropdownMenuEntry<String>>((String value) {
               return DropdownMenuEntry<String>(

@@ -2,27 +2,32 @@ import 'package:final_project_team02/ui/holder/my_page/pages/user/components/app
 import 'package:flutter/material.dart';
 
 class UserMyPageApplyModalBody extends StatelessWidget {
-  final weight = TextEditingController();
-  final height = TextEditingController();
-  final job = TextEditingController();
+  final TextEditingController _height = TextEditingController();
+  final TextEditingController _weight = TextEditingController();
+  final TextEditingController _instagram = TextEditingController();
+  final TextEditingController _job = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Positioned(
-        bottom: 0,
-        left: 10,
-        right: 10,
-        child: Container(
-          width: 350,
-          decoration: BoxDecoration(
-            color: Colors.black,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: UserMyPageApplyModalBodyForm(
-            height: height,
-            weight: weight,
-            job: job,
-          ),
-        ));
+      bottom: 0,
+      left: 10,
+      right: 10,
+      child: Container(
+        width: 350,
+        decoration: BoxDecoration(
+          color: Colors.black,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: UserMyPageApplyModalBodyForm(
+          formKey: _formKey,
+          pHeight: _height,
+          pWeight: _weight,
+          pInstagram: _instagram,
+          pJob: _job,
+        ),
+      ),
+    );
   }
 }

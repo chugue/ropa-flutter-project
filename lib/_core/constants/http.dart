@@ -4,7 +4,7 @@ import 'package:logger/logger.dart';
 
 // 192.168.219.111
 //
-final baseURL = "http://192.168.0.59:8080";
+final baseURL = "http://192.168.10.161:8080";
 
 final dio = Dio(
   BaseOptions(
@@ -23,7 +23,7 @@ String? globalAccessToken = null;
 var interceptor = InterceptorsWrapper(
   onRequest: (options, handler) async {
     if (globalAccessToken != null) {
-      options.headers["Authorization"] = "Bearer $globalAccessToken";
+      options.headers["Authorization"] = "$globalAccessToken";
     } else {
       print("나 토큰이 없어 🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️서버 확인해 봤어?🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️");
     }
