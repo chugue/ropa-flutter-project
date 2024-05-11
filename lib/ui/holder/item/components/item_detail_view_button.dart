@@ -1,7 +1,10 @@
+import 'package:final_project_team02/ui/holder/item/item_datail_viewmodel.dart';
 import 'package:flutter/material.dart';
 
 class ItemDetailViewButton extends StatefulWidget {
-  const ItemDetailViewButton({super.key});
+  final ItemDetailListModel? model;
+
+  const ItemDetailViewButton({super.key, this.model});
 
   @override
   _ItemDetailButtonState createState() => _ItemDetailButtonState();
@@ -18,11 +21,7 @@ class _ItemDetailButtonState extends State<ItemDetailViewButton> {
         child: Column(
           children: [
             ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  isDetailShown = !isDetailShown /* ✅클릭 시 !=  */;
-                });
-              },
+              onPressed: () {},
               child: Text(
                 isDetailShown ? "접기" : "상세정보",
                 style: TextStyle(
@@ -39,13 +38,14 @@ class _ItemDetailButtonState extends State<ItemDetailViewButton> {
                 backgroundColor: Colors.white,
               ),
             ),
-            if (isDetailShown) ...[
-              Image.network(
-                "https://static.lookpin.co.kr/20230621151259-7b87/8e57f39c698bb2efca1b7afce03c0fa7.jpg",
-                width: 400,
-                fit: BoxFit.contain,
-              ),
-            ],
+            // Container(
+            //   width: double.infinity, // 셀의 전체 너비 사용
+            //   height: double.infinity, // 셀의 전체 높이 사용
+            //   child: Image.memory(
+            //     Base64Decoder().convert(model!.mainPhotos.mainPhotoBase64),
+            //     fit: BoxFit.cover,
+            //   ),
+            // )
           ],
         ),
       ),

@@ -1,8 +1,10 @@
-class Item{
+import 'package:intl/intl.dart';
+
+class Item {
   final int itemId;
-  final int price;
+  final String price; // Store price as a formatted string
   final String discountRate;
-  final int discountPrice;
+  final String discountPrice;
   final String sort;
   final String brandName;
 
@@ -16,13 +18,15 @@ class Item{
   });
 
   factory Item.fromJson(Map<String, dynamic> json) {
+    final formatter = NumberFormat('#,###'); // Create a formatter
+
     return Item(
       itemId: json["itemId"],
-      price: json["price"],
+      price: formatter.format(json["price"]),
       discountRate: json["discountRate"] ?? '',
-      discountPrice:json["discountPrice"],
+      discountPrice: formatter.format(json["discountPrice"]),
       sort: json["sort"] ?? '',
-      brandName: json["brandName"],);
+      brandName: json["brandName"],
+    );
   }
-
 }
