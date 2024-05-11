@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:final_project_team02/data/global_data/slide_ad.dart';
 import 'package:final_project_team02/ui/holder/home/components/home_ad_scroll.dart';
@@ -9,6 +10,7 @@ import 'package:final_project_team02/ui/holder/home/components/home_main_title_a
 import 'package:final_project_team02/ui/holder/home/components/home_more_style.dart';
 import 'package:final_project_team02/ui/holder/home/components/more_style_codi.dart';
 import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/creator_view_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

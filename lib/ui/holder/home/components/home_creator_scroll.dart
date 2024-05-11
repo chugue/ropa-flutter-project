@@ -14,31 +14,31 @@ class CreatorScroll extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 70,
+      height: 100, // 적절한 높이 지정
       child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: model!.userPhotos.length, // 2
+        scrollDirection: Axis.horizontal, // 가로 스크롤 설정
+        itemCount: model!.userPhotos.length, // 아이템 개수
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 6.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(50),
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+            child: Container(
+              width: 90,
+              height: 50,
               child: InkWell(
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => CreatorViewPage(
-                              creatorId: model!.userPhotos[index].creatorId,
-                            )),
+                      builder: (context) => CreatorViewPage(
+                        creatorId: model!.userPhotos[index].creatorId,
+                      ),
+                    ),
                   );
                 },
-                child: Container(
-                  width: double.infinity, // 셀의 전체 너비 사용
-                  height: double.infinity, // 셀의 전체 높이 사용
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(60),
                   child: Image.memory(
-                    Base64Decoder()
-                        .convert(model!.userPhotos[index].base64),
+                    Base64Decoder().convert(model!.userPhotos[index].base64),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -48,5 +48,6 @@ class CreatorScroll extends StatelessWidget {
         },
       ),
     );
+
   }
 }

@@ -8,9 +8,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
 class HomeModel {
+  final List<PopularUserPhotos> userPhotos;
   final List<PopularCodiPhotos> codiPhotos;
   final List<PopularItemsPhotos> itemsPhotos;
-  final List<PopularUserPhotos> userPhotos;
 
   const HomeModel({
     required this.codiPhotos,
@@ -29,8 +29,6 @@ class HomeViewModel extends StateNotifier<HomeModel?> {
 
     if (responseDTO.success) {
       HomeModel homeModel = responseDTO.response;
-      Logger().i(homeModel.toString());
-      Logger().d(homeModel.toString());
       state = homeModel;
     }
   }
