@@ -64,6 +64,11 @@ class LoginFrom extends ConsumerWidget {
               minimumSize: MaterialStateProperty.all(
                 Size(double.infinity, 50),
               ), // 가로 길이 조정
+              shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                ), // 기본 양쪽 둥글 -> 모서리만 5px둥글게
+              ),
             ),
           ),
           const SizedBox(height: 25.0),
