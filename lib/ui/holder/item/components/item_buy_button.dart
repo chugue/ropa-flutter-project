@@ -15,6 +15,11 @@ class ItemBuyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> optionList = ['1','2','3'];
+    final String optionName = '수량';
+
+
+    double screenWidth = MediaQuery.of(context).size.width * 0.85;
     return InkWell(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -69,6 +74,28 @@ class ItemBuyButton extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
+                      SizedBox(height: 20),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: DropdownMenu<String>(
+                      width: screenWidth,
+                      initialSelection: "${optionName}" /* 📢초기 선택 값 */,
+                      onSelected: (String? value) {} /* 📢콜백 함수 */,
+                      dropdownMenuEntries: [
+                        DropdownMenuEntry<String>(
+                          value: "${optionName}",
+                          label: "${optionName}",
+                        ),
+                        ...optionList.map<DropdownMenuEntry<String>>((String value) {
+                          return DropdownMenuEntry<String>(
+                            value: value,
+                            label: value,
+                          );
+                        }).toList(),
+                        // 📢 리스트의 각 항목을 DropdownMenuEntry<String>로 변환. 목록에 추가
+                      ],
+                    ),
+                  ),
                       SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -151,7 +178,7 @@ class ItemBuyButton extends StatelessWidget {
           /// 사이즈 조절
           constraints: const BoxConstraints(
             maxWidth: double.infinity,
-            maxHeight: 140,
+            maxHeight: 230,
           ),
 
           isScrollControlled: true,

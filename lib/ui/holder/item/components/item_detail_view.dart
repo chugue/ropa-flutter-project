@@ -1,15 +1,10 @@
 import 'dart:convert';
 import 'dart:ui';
-
-import 'package:final_project_team02/ui/holder/buy/buy_page.dart';
-import 'package:final_project_team02/ui/holder/home/components/home_sliver_app_bar.dart';
 import 'package:final_project_team02/ui/holder/item/components/item_buy_button.dart';
-import 'package:final_project_team02/ui/holder/item/components/item_buy_options.dart';
 import 'package:final_project_team02/ui/holder/item/item_datail_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ItemDetailView extends StatelessWidget {
   final int itemId;
