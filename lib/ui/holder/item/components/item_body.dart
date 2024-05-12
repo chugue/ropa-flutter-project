@@ -1,25 +1,49 @@
+import 'dart:convert';
+import 'package:final_project_team02/ui/holder/item/components/item_detail_view.dart';
 import 'package:flutter/material.dart';
+import 'package:final_project_team02/ui/components/main_app_bar.dart';
+import 'package:final_project_team02/ui/holder/item/item_datail_viewmodel.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'item_buy_button.dart';
-import 'item_detail_view_button.dart';
-import 'item_info.dart';
-import 'item_service_info.dart';
+class ItemBody extends ConsumerWidget {
+  const ItemBody({
+    required this.itemId,
+  });
 
-class ItemBody extends StatelessWidget {
-  const ItemBody({super.key});
+  final int itemId;
 
   @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ItemInfo(), // 사진, 브랜드, 가격, 이름
-          ItemDetailViewButton(), // 상세 보기
-          ItemServiceInfo(), // 고객 센터 정보
-          ItemBuyButton(), // 구매하기
-        ],
-      ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    ItemDetailListModel? model = ref.watch(itemDetailListProvider(itemId));
+
+    if (model == null) {
+      return Center(
+        child: CircularProgressIndicator(),
+      );
+    }
+    return NestedScrollView(
+      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+        return <Widget>[
+          MainAppBar(),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.width,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: model!.mainPhotos.length,
+                itemBuilder: (context, index) {
+                  return Image.memory(
+                    Base64Decoder()
+                        .convert(model!.mainPhotos[index].mainPhotoBase64),
+                    fit: BoxFit.cover,
+                  );
+                },
+              ),
+            ),
+          )
+        ];
+      },
+      body: ItemDetailView(model:model,itemId: itemId),
     );
   }
 }
