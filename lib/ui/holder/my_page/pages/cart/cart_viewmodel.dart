@@ -1,4 +1,3 @@
-
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/repositoreis/cart_repo.dart';
 import 'package:final_project_team02/main.dart';
@@ -16,7 +15,7 @@ class CartModel {
     required this.cart,
     required this.cartList,
     required this.isChecked,
-    this.totalCheckedPrice = 0,  // 초기값 설정
+    this.totalCheckedPrice = 0, // 초기값 설정
   });
 }
 
@@ -25,11 +24,46 @@ class CartViewModel extends StateNotifier<CartModel?> {
 
   CartViewModel(super.state);
 
-  Future<void> removeItem(int cartId) async {
-///여기에 통신하고 나서 상태 변경해주시면 됩니다.
+  Future<ResponseDTO> removeItem(int cartId) async {
+    ResponseDTO responseDTO = await CartRepo().removeItem(cartId);
+    if (responseDTO.success) {
+      if (state != null) {
+        List<CartList> updatedCartList = List.from(state!.cartList);
+        updatedCartList.removeWhere((cart) => cart.cartId == cartId);
 
+        // 총 가격 재계산
+        int newTotalCheckedPrice = 0;
+        List<bool> newIsChecked =
+            List<bool>.filled(updatedCartList.length, false);
+        for (int i = 0; i < updatedCartList.length; i++) {
+          if (state!.isChecked[i] && updatedCartList[i].cartId != cartId) {
+            newTotalCheckedPrice +=
+                updatedCartList[i].itemPrice * updatedCartList[i].quantity;
+            newIsChecked[i] = state!.isChecked[i];
+          }
+        }
+        // 체크된 아이템만을 고려한 전체 카트 가격 재계산
+        int newTotalCartPrice = 0;
+        for (int i = 0; i < updatedCartList.length; i++) {
+          if (newIsChecked[i]) {
+            newTotalCartPrice +=
+                updatedCartList[i].itemPrice * updatedCartList[i].quantity;
+          }
+        }
+
+        // 상태 업데이트
+        state = CartModel(
+          cart: state!.cart.copyWith(
+              totalCartPrice:
+                  newTotalCheckedPrice), // 체크된 아이템의 새로운 총 가격으로 Cart 객체 업데이트
+          cartList: updatedCartList,
+          isChecked: newIsChecked,
+          totalCheckedPrice: newTotalCheckedPrice,
+        );
+      }
+    }
+    return responseDTO;
   }
-
 
   void toggleItem(int index) {
     if (state != null) {
@@ -40,7 +74,8 @@ class CartViewModel extends StateNotifier<CartModel?> {
       int newTotalCheckedPrice = 0;
       for (int i = 0; i < newCheckedList.length; i++) {
         if (newCheckedList[i]) {
-          newTotalCheckedPrice += state!.cartList[i].itemPrice * state!.cartList[i].quantity;
+          newTotalCheckedPrice +=
+              state!.cartList[i].itemPrice * state!.cartList[i].quantity;
         }
       }
 
@@ -53,12 +88,12 @@ class CartViewModel extends StateNotifier<CartModel?> {
     }
   }
 
-
   Future<void> notifyInit() async {
     ResponseDTO responseDTO = await CartRepo().callCartList();
-    if(responseDTO.success){
+    if (responseDTO.success) {
       CartModel model = responseDTO.response as CartModel;
-      model.isChecked = List<bool>.filled(model.cartList.length, false); // 초기 체크 상태를 모두 false로 설정
+      model.isChecked = List<bool>.filled(
+          model.cartList.length, false); // 초기 체크 상태를 모두 false로 설정
       state = model;
     }
   }
