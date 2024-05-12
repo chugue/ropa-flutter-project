@@ -66,7 +66,7 @@ class _CodiInsertScrollState extends State<CodiInsertScroll> {
                               ),
                             ),
                           ),
-                        )
+                        ),
                     ],
                   );
                 }

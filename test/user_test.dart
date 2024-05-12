@@ -8,8 +8,8 @@ final accessToken =
     'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuyCrOyaqeyekDHsnZgg7Iuk66qFIiwiaWQiOjEsImV4cCI6MTcxNTQwNjUzNSwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSJ9.AhzXTCAv5kC3y67OsgAVLarLDWs9aWzGo8cnuAyXg7K2gc-XDmldlH2FyHXCgylk5JnJL1m-wLz-NYAyXC0z6A';
 
 void main() async {
-  // await callLogin_test2();
-  await callUserCreatorApply_test();
+  await callLogin_test2();
+  // await callUserCreatorApply_test();
 }
 
 Future<void> callUserCreatorApply_test() async {
