@@ -24,7 +24,7 @@ class CodiBody extends ConsumerWidget {
     CodiDetailModel? model = ref.watch(codiDetailProvider(codiId));
 
     if (model == null) {
-      return const CircularProgressIndicator();
+      return Align(child: const CircularProgressIndicator());
     } else {
       return CustomScrollView(
         slivers: [

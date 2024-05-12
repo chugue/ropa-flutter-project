@@ -1,14 +1,20 @@
+import 'package:final_project_team02/ui/holder/buy/buy_page.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/cart/cart_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/cart/components/cart_page_body_title.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'cart_page_body_account.dart';
-import 'cart_page_body_choice_button.dart';
 import 'cart_page_body_custom_box.dart';
 import 'cart_page_body_item_card.dart';
 
-class CartPageBody extends StatelessWidget {
+class CartPageBody extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,WidgetRef ref) {
+
+    CartModel? model = ref.watch(cartProvider);
+
+    if(model == null) return Align(child: CircularProgressIndicator());
     return Padding(
       padding: const EdgeInsets.only(top: 25),
       child: Container(
@@ -29,20 +35,63 @@ class CartPageBody extends StatelessWidget {
               SizedBox(height: 20),
 
               //상품 개수
-              CartPageCustomBox(text: "일반상품(1)"),
+              CartPageCustomBox(text: "일반상품(${model.cartList.length})"),
               SizedBox(height: 20),
 
               //아이템 카드박스
-              Expanded(child: CartPageBodyItemCard()),
+              Expanded(child: CartPageBodyItemCard(model: model),
+              ),
               SizedBox(height: 20),
 
-              CartPageCustomBox(text: "업체기본배송"),
-              SizedBox(height: 20),
+              // CartPageCustomBox(text: "업체기본배송"),
+              // SizedBox(height: 20),
 
-              CartPageBodyChoiceButton(),
-              SizedBox(height: 20),
+              // CartPageBodyChoiceButton(),
+              // SizedBox(height: 20),
+              // Divider(),
 
-              CartPageBodyAccount(),
+              CartPageBodyAccount(model: model),
+              SizedBox(height: 20),
+              Divider(),
+
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 60,
+                  child: InkWell(
+                    hoverColor: Colors.transparent,
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => BuyPage()));
+                    },
+                    child: Container(
+                      width: 200,
+                      height: 50,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(
+                          "구매하기",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                  ),
+                ),
+              )
+
             ],
           ),
         ),
