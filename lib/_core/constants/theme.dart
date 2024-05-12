@@ -9,11 +9,11 @@ const lightColorScheme = ColorScheme(
   onSecondary: Color(0xFFFFFFFF),
   error: Color(0xFFBA1A1A),
   onError: Color(0xFFFFFFFF),
-  background: Color(0xFFFCFDF6),
+  background: Color(0xFFFFFFFF),
   onBackground: Color(0xFF1A1C18),
   shadow: Color(0xFF000000),
-  outlineVariant: Color(0xFFC2C8BC),
-  surface: Color(0xFFF9FAF3),
+  outlineVariant: Color(0xFFFFFFFF),
+  surface: Color(0xFFFFFFFF),
   onSurface: Color(0xFF1A1C18),
 );
 

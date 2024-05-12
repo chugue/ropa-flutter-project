@@ -1,11 +1,7 @@
-
-
-
 import 'package:validators/validators.dart';
 
 Function validateNickName() {
   return (String? value) {
-
     if (value!.isEmpty) {
       return "유저네임에 들어갈 수 없습니다.";
     } else if (!isAlphanumeric(value)) {
@@ -34,7 +30,6 @@ Function validatePassword() {
   };
 }
 
-
 Function validateEmail() {
   return (String? value) {
     if (value!.isEmpty) {
@@ -59,7 +54,7 @@ Function validateTitle() {
   };
 }
 
-Function validateContent() {
+String? Function(String? value) validateContent() {
   return (String? value) {
     if (value!.isEmpty) {
       return "내용은 공백이 들어갈 수 없습니다.";
@@ -71,11 +66,36 @@ Function validateContent() {
   };
 }
 
-
-Function validateApplyWeight()  {
-  return(String? value) {
+Function validateApplyHeight() {
+  return (String? value) {
     if (value == null || value.isEmpty) {
-      return '값을 입력해주세요';
+      return '숫자을 입력해주세요'; // "Please enter a value"
+    }
+    final number = double.tryParse(value);
+    if (number == null) {
+      return '숫자만 입력해주세요'; // "Please enter a number"
+    }
+    if (number < 50 || number > 300) {
+      return '키는 50cm에서 300cm 사이여야 합니다'; // "Height must be between 50cm and 300cm"
+    }
+    return null;
+  };
+}
+
+Function validateInstagramLink() {
+  return (String? value) {
+    if (value == null || value.isEmpty) {
+      return '링크를 입력해주세요'; // "Please enter a link"
+    }
+    // Optionally, add more complex validation to check if it's a valid URL
+    return null;
+  };
+}
+
+Function validateApplyWeight() {
+  return (String? value) {
+    if (value == null || value.isEmpty) {
+      return '숫자를 입력해주세요';
     }
     final number = double.tryParse(value);
     if (number == null) {
@@ -88,6 +108,18 @@ Function validateApplyWeight()  {
   };
 }
 
+Function validateJob() {
+  return (String? value) {
+    if (value == null || value.isEmpty) {
+      return '직업을 입력해주세요'; // "Please enter a job"
+    }
+    // Check if the value is one of the allowed options
+    if (value != '직장인' && value != '대학생') {
+      return '직업은 직장인 또는 대학생 중 하나여야 합니다'; // "Job must be either 직장인 or 대학생"
+    }
+    return null;
+  };
+}
 
 //
 // Function validateApplyWeight() {

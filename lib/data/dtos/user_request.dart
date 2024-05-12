@@ -35,17 +35,19 @@ class LoginReqDTO {
   }
 }
 
-class CreatorApplyReqDTO {
+class UserCreatorApplyReqDTO {
   final String height;
   final String weight;
   final String instagram;
   final String job;
+  final String comment;
 
-  const CreatorApplyReqDTO({
+  const UserCreatorApplyReqDTO({
     required this.height,
     required this.weight,
     required this.instagram,
     required this.job,
+    required this.comment,
   });
 
   Map<String, dynamic> toJson() {
@@ -54,6 +56,7 @@ class CreatorApplyReqDTO {
       "weight": this.weight,
       "instagram": this.instagram,
       "job": this.job,
+      "comment": this.comment,
     };
   }
 }

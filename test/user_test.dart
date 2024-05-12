@@ -5,10 +5,21 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:logger/logger.dart';
 
 final accessToken =
-    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuyCrOyaqeyekDHsnZgg7Iuk66qFIiwiaWQiOjEsImV4cCI6MTcxNTIzMTc4NCwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSJ9.OwPmgGXUSXFRDNqSWCywuH6tEz6QwF_p2Vy1jNAUaHLfEN75Nei31-kICT29krZqem6UiyJpfHX8P_68GD1idA';
+    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuyCrOyaqeyekDHsnZgg7Iuk66qFIiwiaWQiOjEsImV4cCI6MTcxNTUwNDc5OSwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSJ9.m6JYBUCiVYQyWYLbfZZbrQQfdSIjbIkkUVYbqCACbnD8XQdCH0nf-52xFfaE4UkWrmMVbisJUlsnMxGKICzUag';
 
 void main() async {
-  await callUserProfile_test();
+  await callLogin_test2();
+  // await callUserCreatorApply_test();
+}
+
+Future<void> callUserCreatorApply_test() async {
+  UserCreatorApplyReqDTO reqDTO = UserCreatorApplyReqDTO(
+      height: '123',
+      instagram: 'asd',
+      job: '직장인',
+      weight: '123',
+      comment: 'ffff');
+  await UserRepo().callUserCreatorApply(reqDTO);
 }
 
 Future<void> callUserProfile_test() async {

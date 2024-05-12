@@ -1,14 +1,9 @@
 import 'package:final_project_team02/ui/holder/codi/codi_insert_page/components/codi_insert_page_body.dart';
 import 'package:flutter/material.dart';
 
-class CodiInsertPage extends StatefulWidget /* TODO : tl or stf? */ {
+class CodiInsertPage extends StatelessWidget /* TODO : tl or stf? */ {
   const CodiInsertPage({super.key});
 
-  @override
-  State<CodiInsertPage> createState() => _CodiInsertPageState();
-}
-
-class _CodiInsertPageState extends State<CodiInsertPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

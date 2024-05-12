@@ -3,7 +3,6 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:logger/logger.dart';
 
 // 192.168.219.111
-//
 final baseURL = "http://192.168.10.70:8080";
 
 final dio = Dio(
@@ -23,7 +22,7 @@ String? globalAccessToken = null;
 var interceptor = InterceptorsWrapper(
   onRequest: (options, handler) async {
     if (globalAccessToken != null) {
-      options.headers["Authorization"] = "Bearer $globalAccessToken";
+      options.headers["Authorization"] = "$globalAccessToken";
     } else {
       print("나 토큰이 없어 🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️서버 확인해 봤어?🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️");
     }
