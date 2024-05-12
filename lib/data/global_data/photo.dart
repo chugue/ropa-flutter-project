@@ -1,16 +1,16 @@
 class PhotoDTO {
   final int id;
   final String name;
-  final String path;
+  final String base64;
 
   PhotoDTO({
     required this.id,
     required this.name,
-    required this.path,
+    required this.base64,
   });
 
   PhotoDTO.fromJson(Map<String, dynamic> json)
       : id = json["id"],
         name = json["name"],
-        path = json["path"];
+        base64 = json["base64"];
 }

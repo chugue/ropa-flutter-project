@@ -1,12 +1,12 @@
 import 'package:final_project_team02/data/global_data/photo.dart';
 
 class UserProfile {
-  int userId;
-  String email;
-  String myName;
-  String nickName;
-  String mobile;
-  PhotoDTO photoDTO;
+  final int userId;
+  final String email;
+  final String myName;
+  final String nickName;
+  final String mobile;
+  final PhotoDTO photoDTO;
 
   UserProfile({
     required this.userId,
@@ -24,7 +24,8 @@ class UserProfile {
       myName: json["myName"],
       nickName: json["nickName"],
       mobile: json["mobile"],
-      photoDTO: PhotoDTO.fromJson(json["photoDTO"]),
+      photoDTO:
+          PhotoDTO.fromJson(json["photoDTO"]) /* ✅list는 DTO.fromJson()으로 */,
     );
   }
 //
