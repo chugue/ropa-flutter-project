@@ -3,8 +3,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:logger/logger.dart';
 
 // 192.168.219.111
-//
-final baseURL = "http://192.168.219.107:8080";
+final baseURL = "http://172.30.1.60:8080";
 
 final dio = Dio(
   BaseOptions(
