@@ -1,11 +1,10 @@
 import 'package:final_project_team02/_core/constants/theme.dart';
 import 'package:final_project_team02/_core/uitls/validator_util.dart';
+import 'package:final_project_team02/data/dtos/user_req.dart';
 import 'package:final_project_team02/ui/components/custom_form_field.dart';
 import 'package:final_project_team02/ui/holder/auth/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../../../../data/dtos/user_request.dart';
 import '../../../../../data/session_data/session_data.dart';
 
 class JoinFrom extends ConsumerWidget {

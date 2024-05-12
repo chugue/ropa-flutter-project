@@ -1,5 +1,4 @@
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
-import 'package:final_project_team02/data/dtos/user_request.dart';
 import 'package:final_project_team02/data/global_data/user.dart';
 import 'package:final_project_team02/data/repositoreis/user_repo.dart';
 import 'package:final_project_team02/main.dart';

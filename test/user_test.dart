@@ -1,5 +1,5 @@
 import 'package:final_project_team02/_core/constants/http.dart';
-import 'package:final_project_team02/data/dtos/user_request.dart';
+import 'package:final_project_team02/data/dtos/user_req.dart';
 import 'package:final_project_team02/data/repositoreis/user_repo.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:logger/logger.dart';

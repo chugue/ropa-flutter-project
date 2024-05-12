@@ -1,25 +1,36 @@
 import 'dart:ui';
 
+import 'package:final_project_team02/data/dtos/cart_req.dart';
 import 'package:final_project_team02/ui/holder/buy/buy_page.dart';
 import 'package:final_project_team02/ui/holder/item/components/item_cart_dialog.dart';
+import 'package:final_project_team02/ui/holder/item/item_datail_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/cart/cart_page.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/cart/cart_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/cart/components/cart_page_body.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'item_buy_options.dart';
 
-class ItemBuyButton extends StatelessWidget {
+class ItemBuyButton extends ConsumerWidget {
+  final int itemId;
+
   const ItemBuyButton({
-    super.key,
+    required this.itemId,
   });
 
   @override
-  Widget build(BuildContext context) {
-    final List<String> optionList = ['1','2','3'];
+  Widget build(BuildContext context, WidgetRef ref) {
+    ItemDetailListModel? model = ref.watch(itemDetailListProvider(itemId));
+    final List<String> optionList = ['1', '2', '3'];
     final String optionName = '수량';
 
 
-    double screenWidth = MediaQuery.of(context).size.width * 0.85;
+    // 유효한 선택지인지 확인하고, 아니면 첫 번째 옵션을 기본값으로 설정
+    int? currentItem = model?.selecteItem;
+    bool isValidItem = optionList.contains(currentItem?.toString());
+    int defaultValue = int.parse(optionList.first);
+
     return InkWell(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -67,7 +78,7 @@ class ItemBuyButton extends StatelessWidget {
                     children: [
                       SizedBox(height: 20),
                       Container(
-                        width: 50,
+                        width: 100,
                         height: 2,
                         decoration: BoxDecoration(
                           color: Colors.black,
@@ -75,27 +86,45 @@ class ItemBuyButton extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 20),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8.0),
-                    child: DropdownMenu<String>(
-                      width: screenWidth,
-                      initialSelection: "${optionName}" /* 📢초기 선택 값 */,
-                      onSelected: (String? value) {} /* 📢콜백 함수 */,
-                      dropdownMenuEntries: [
-                        DropdownMenuEntry<String>(
-                          value: "${optionName}",
-                          label: "${optionName}",
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),),
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 8.0),
+                          child: Center(
+                            child: DropdownButton<int>(
+
+                              value:isValidItem ? currentItem : defaultValue,
+                              onChanged: (int? newValue) {
+                                if (newValue != null) {
+                                  ref
+                                      .read(itemDetailListProvider(itemId).notifier)
+                                      .updateSelection(newValue);
+                                }
+                              },
+                              style: TextStyle(
+                                color: Colors.white, // 드롭다운 텍스트 색상
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              dropdownColor: Colors.blueGrey, // 드롭다운 배경 색상 설정
+                              items: optionList
+                                  .map<DropdownMenuItem<int>>((String value) {
+                                return DropdownMenuItem<int>(
+                                  value: int.parse(value), // 문자열을 정수로 변환
+                                  child: Container(
+                                  width: 200,  // Width of each dropdown item
+                                  height: 40,  // Height of each dropdown item
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(value.toString()),
+                                ),
+                                );
+                              }).toList(),
+                            ),
+                          ),
                         ),
-                        ...optionList.map<DropdownMenuEntry<String>>((String value) {
-                          return DropdownMenuEntry<String>(
-                            value: value,
-                            label: value,
-                          );
-                        }).toList(),
-                        // 📢 리스트의 각 항목을 DropdownMenuEntry<String>로 변환. 목록에 추가
-                      ],
-                    ),
-                  ),
+                      ),
                       SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -105,12 +134,9 @@ class ItemBuyButton extends StatelessWidget {
                             onTap: () {
                               Navigator.pop(context);
 
-                              showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return ItemCartDialog();
-                                },
-                              );
+                              CartSaveDTO reqDTO =
+                              CartSaveDTO(itemId: itemId, quantity: 1);
+                              ref.read(cartProvider.notifier).cartSave(reqDTO);
                             },
                             child: Container(
                               width: 150,
@@ -191,5 +217,3 @@ class ItemBuyButton extends StatelessWidget {
     );
   }
 }
-
-

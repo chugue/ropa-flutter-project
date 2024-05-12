@@ -3,19 +3,17 @@ import 'package:intl/intl.dart';
 
 class Cart {
   final int userId;
-    final int totalCartPrice;
+  final int totalCartPrice;
 
-    const Cart({
+  const Cart({
     required this.totalCartPrice,
     required this.userId,
   });
 
-    factory Cart.fromJson(Map<String, dynamic> json) {
-
+  factory Cart.fromJson(Map<String, dynamic> json) {
     return Cart(
       userId: json["userId"],
       totalCartPrice: json["totalCartPrice"],
     );
   }
-
 }

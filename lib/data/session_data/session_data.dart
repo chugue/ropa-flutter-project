@@ -1,7 +1,7 @@
 import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/_core/constants/move.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
-import 'package:final_project_team02/data/dtos/user_request.dart';
+import 'package:final_project_team02/data/dtos/user_req.dart';
 import 'package:final_project_team02/data/global_data/user.dart';
 import 'package:final_project_team02/data/repositoreis/user_repo.dart';
 import 'package:final_project_team02/main.dart';

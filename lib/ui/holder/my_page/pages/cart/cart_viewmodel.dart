@@ -1,12 +1,18 @@
 
+import 'package:final_project_team02/data/dtos/cart_req.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/repositoreis/cart_repo.dart';
+import 'package:final_project_team02/data/repositoreis/item_repo.dart';
 import 'package:final_project_team02/main.dart';
+import 'package:final_project_team02/ui/holder/item/components/item_cart_dialog.dart';
+import 'package:final_project_team02/ui/holder/item/item_data/item.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/cart/cart_data/Cart.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/cart/cart_data/CartList.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CartModel {
+
   final Cart cart;
   final List<CartList> cartList;
   List<bool> isChecked;
@@ -24,6 +30,28 @@ class CartViewModel extends StateNotifier<CartModel?> {
   final mContext = navigatorKey.currentContext;
 
   CartViewModel(super.state);
+
+  Future<void> cartSave(CartSaveDTO reqDTO)async{
+    ResponseDTO responseDTO = await CartRepo().callCartSave(reqDTO);
+    ResponseDTO cartList = await CartRepo().callCartList();
+
+    if(responseDTO.success){
+      showDialog(
+        context: mContext!,
+        builder: (context) {
+          return ItemCartDialog();
+        },
+      );
+      Cart cart = state!.cart;
+      CartList carts = responseDTO.response;
+      List<CartList> prevCartList =state!.cartList;
+      List<CartList> newCartList = [carts, ...prevCartList];
+
+      state = CartModel(cart: cart, cartList: newCartList, isChecked: state!.isChecked, totalCheckedPrice: state!.totalCheckedPrice);
+
+    }
+
+  }
 
   Future<void> removeItem(int cartId) async {
 ///여기에 통신하고 나서 상태 변경해주시면 됩니다.
