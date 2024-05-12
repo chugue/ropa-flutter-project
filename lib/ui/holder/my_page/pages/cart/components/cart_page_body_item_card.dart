@@ -40,13 +40,15 @@ class CartPageBodyItemCard extends ConsumerWidget {
                           onChanged: (bool? newValue) {
                             ref.read(cartProvider.notifier).toggleItem(index);
                           },
-                          shape: CircleBorder(),
+                          shape: RoundedRectangleBorder(
+                              // 사각형 모양에 둥근 모서리 적용
+                              borderRadius: BorderRadius.circular(4)),
                           side: BorderSide(color: Colors.black, width: 2),
-                          checkColor: Colors.transparent,
+                          checkColor: Colors.white,
                           fillColor:
                               MaterialStateProperty.resolveWith((states) {
                             return states.contains(MaterialState.selected)
-                                ? Colors.blue.shade400
+                                ? Colors.black
                                 : Colors.transparent;
                           }),
                         ),
@@ -63,7 +65,9 @@ class CartPageBodyItemCard extends ConsumerWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             //아이템 카드 삭제
-                            CartPageBodyItemCardDelete(cartId: model!.cartList[index].cartId,),
+                            CartPageBodyItemCardDelete(
+                              cartId: model!.cartList[index].cartId,
+                            ),
 
                             //아이템 카드 주문하기
                             CartPageBodyItemCardOrder()
