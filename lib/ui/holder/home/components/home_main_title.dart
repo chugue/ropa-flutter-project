@@ -7,7 +7,7 @@ class MainTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(left: 16, top: 15),
         child: Text(
           "인기 크리에이터",
           style: TextStyle(fontWeight: FontWeight.w900, fontSize: 18.0),
