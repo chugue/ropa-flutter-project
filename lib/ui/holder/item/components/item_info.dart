@@ -69,8 +69,8 @@ class ItemInfo extends StatelessWidget {
             borderRadius: BorderRadius.circular(25),
             child: Image.asset(
               "assets/images/ropa_home_logo.png",
-              width: 50,
-              height: 50,
+              width: 80,
+              height: 80,
             ),
           ),
         ],

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+/* ✅라이트 모드 */
 const lightColorScheme = ColorScheme(
   brightness: Brightness.light,
-  primary: Color(0xFF416FDF),
+  primary: Color(0xFF000000),
+  // 아이콘 색상
   onPrimary: Color(0xFFFFFFFF),
   secondary: Color(0xFF6EAEE7),
   onSecondary: Color(0xFFFFFFFF),
@@ -16,10 +18,10 @@ const lightColorScheme = ColorScheme(
   surface: Color(0xFFF9FAF3),
   onSurface: Color(0xFF1A1C18),
 );
-
+/* ✅다크 모드 */
 const darkColorScheme = ColorScheme(
   brightness: Brightness.dark,
-  primary: Color(0xFF416FDF),
+  primary: Color(0xFF000000),
   onPrimary: Color(0xFFFFFFFF),
   secondary: Color(0xFF6EAEE7),
   onSecondary: Color(0xFFFFFFFF),
@@ -108,10 +110,13 @@ BottomNavigationBarThemeData bottomNavigatorTheme() {
 // 6
 ThemeData theme() {
   return ThemeData(
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: Colors.transparent,
     textTheme: textTheme(),
     appBarTheme: appBarTheme(),
     bottomNavigationBarTheme: bottomNavigatorTheme(),
     primarySwatch: Colors.orange,
+    dialogTheme: DialogTheme(
+      backgroundColor: Colors.transparent,
+    ),
   );
 }

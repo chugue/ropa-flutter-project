@@ -60,6 +60,11 @@ class LoginFrom extends ConsumerWidget {
               }
             },
             child: const Text('로그인'),
+            style: ButtonStyle(
+              minimumSize: MaterialStateProperty.all(
+                Size(double.infinity, 50),
+              ), // 가로 길이 조정
+            ),
           ),
           const SizedBox(height: 25.0),
 

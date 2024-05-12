@@ -5,11 +5,9 @@ import 'package:final_project_team02/data/dtos/user_request.dart';
 import 'package:final_project_team02/data/global_data/user.dart';
 import 'package:final_project_team02/data/repositoreis/user_repo.dart';
 import 'package:final_project_team02/main.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/apply_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/user_my_page_apply_modal_body_form_apply_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logger/logger.dart';
 
 // 싱글톤
 class SessionUser {
@@ -19,7 +17,6 @@ class SessionUser {
   int? selectedUserId;
 
   SessionUser();
-
 }
 
 // 창고
@@ -27,7 +24,6 @@ class SessionData extends SessionUser {
   final mContext = navigatorKey.currentContext;
 
   SessionData();
-
 
   void logout() {
     user = null;
@@ -54,9 +50,6 @@ class SessionData extends SessionUser {
           blueChecked: user.blueChecked,
           instagram: user.instagram,
           createdAt: user.createdAt);
-
-
-
     } else {
       ScaffoldMessenger.of(mContext!).showSnackBar(
         SnackBar(content: Text("크리에이터를 지원 실패 : ${responseDTO.errorMessage}")),
@@ -91,7 +84,7 @@ class SessionData extends SessionUser {
       globalAccessToken = accessToken;
       print("sjfsjfsjsf : ${globalAccessToken}");
       Navigator.pushNamedAndRemoveUntil(
-          mContext!, Move.mainHoder, (route) => false);
+          mContext!, Move.mainHolder, (route) => false);
     } else {
       ScaffoldMessenger.of(mContext!).showSnackBar(
           SnackBar(content: Text("로그인 실패 : ${responseDTO.errorMessage}")));

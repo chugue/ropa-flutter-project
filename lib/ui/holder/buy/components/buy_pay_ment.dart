@@ -52,16 +52,24 @@ class BuyPayMent extends StatelessWidget {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                                "- 카카오톡 앱을 설치한 후, 최초 1회 카드정보를 등록하셔야 사용 가능합니다."),
+                              "- 카카오톡 앱을 설치한 후, 최초 1회 카드정보를 등록하셔야 사용 가능합니다.",
+                              style: TextStyle(color: Colors.grey),
+                            ),
                           ),
                           Container(
                             alignment: Alignment.centerLeft,
-                            child: Text("- 인터넷 익스플로러는 8 이상에서만 결제 가능합니다."),
+                            child: Text(
+                              "- 인터넷 익스플로러는 8 이상에서만 결제 가능합니다.",
+                              style: TextStyle(color: Colors.grey),
+                            ),
                           ),
                           Container(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                  "- 카카오머니로 결제시, 현금영수증 발급은 (주)카카오페이에서 발급가능합니다."))
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              "- 카카오머니로 결제시, 현금영수증 발급은 (주)카카오페이에서 발급가능합니다.",
+                              style: TextStyle(color: Colors.grey),
+                            ),
+                          )
                         ],
                       ),
                     ),
