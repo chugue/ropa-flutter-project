@@ -22,12 +22,11 @@ class ItemRepo {
       List<dynamic> mainPhtos = responseDTO.response['mainPhotos'];
       List<MainPhotos> mainPhotoList =
           mainPhtos.map((e) => MainPhotos.fromJson(e)).toList();
-      Logger().d('${mainPhotoList.length}');
 
       List<dynamic> detailPhtos = responseDTO.response['detailPhotos'];
       List<DetailPhotos> detailPhotoList =
           detailPhtos.map((e) => DetailPhotos.fromJson(e)).toList();
-      Logger().d('${detailPhotoList.length}');
+      Logger().d('😍😍😍😍아이템 디테일 완료 ${detailPhotoList.length}');
 
       ItemDetailListModel itemDetailListModel = ItemDetailListModel(
           detailPhotos: detailPhotoList, mainPhotos: mainPhotoList, item: item);
