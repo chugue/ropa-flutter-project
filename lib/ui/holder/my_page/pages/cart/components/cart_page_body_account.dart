@@ -25,7 +25,7 @@ class CartPageBodyAccount extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "총 상품금액",
+              "총 ",
               style: textTheme().displayLarge,
             ),
             Text("${totalOrderPrice}",

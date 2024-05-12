@@ -24,7 +24,7 @@ class CartPageBodyItemCardDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    String itemPirce = formatCurrency(model.cartList[index].itemPrice);
+    String itemPirce = formatCurrency(model.cartList[index].totalItemPrice);
     int _quantity = 1;
     return Row(
       children: [

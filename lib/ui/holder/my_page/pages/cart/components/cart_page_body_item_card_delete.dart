@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CartPageBodyItemCardDelete extends ConsumerWidget {
+  final int cartId;
+
+
   const CartPageBodyItemCardDelete({
-    super.key,
+    required this.cartId,
   });
 
   @override
@@ -16,7 +19,7 @@ class CartPageBodyItemCardDelete extends ConsumerWidget {
           backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
         ),
         onPressed: () {
-          ref.read(cartProvider.notifier).removeItem();
+          ref.read(cartProvider.notifier).removeItem(cartId);
 
 
 

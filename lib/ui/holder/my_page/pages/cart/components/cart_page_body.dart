@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'cart_page_body_account.dart';
-import 'cart_page_body_choice_button.dart';
 import 'cart_page_body_custom_box.dart';
 import 'cart_page_body_item_card.dart';
 
 class CartPageBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context,WidgetRef ref) {
+
     CartModel? model = ref.watch(cartProvider);
 
     if(model == null) return Align(child: CircularProgressIndicator());

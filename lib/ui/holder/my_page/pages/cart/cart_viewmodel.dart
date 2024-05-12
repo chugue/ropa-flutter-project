@@ -25,8 +25,8 @@ class CartViewModel extends StateNotifier<CartModel?> {
 
   CartViewModel(super.state);
 
-  Future<void> removeItem(int itemId) async {
-
+  Future<void> removeItem(int cartId) async {
+///여기에 통신하고 나서 상태 변경해주시면 됩니다.
 
   }
 
@@ -65,6 +65,6 @@ class CartViewModel extends StateNotifier<CartModel?> {
 }
 
 //flutt
-final cartProvider = StateNotifierProvider.family<CartViewModel, CartModel?,int>((ref,itemId) {
+final cartProvider = StateNotifierProvider<CartViewModel, CartModel?>((ref) {
   return CartViewModel(null)..notifyInit();
 });

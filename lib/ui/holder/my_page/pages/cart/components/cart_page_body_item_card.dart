@@ -63,7 +63,7 @@ class CartPageBodyItemCard extends ConsumerWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             //아이템 카드 삭제
-                            CartPageBodyItemCardDelete(),
+                            CartPageBodyItemCardDelete(cartId: model!.cartList[index].cartId,),
 
                             //아이템 카드 주문하기
                             CartPageBodyItemCardOrder()
