@@ -15,7 +15,6 @@ class UserMyPage extends ConsumerWidget {
       return LoginIsCheck();
     } else {
       if (sessionData.user!.blueChecked == false) {
-        print("😁😁😁😁😁😁😁😁😁😁${sessionData.user!.blueChecked}");
         return Scaffold(
           appBar: CustomAppBar(
             home: Icons.home,
