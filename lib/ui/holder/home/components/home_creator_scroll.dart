@@ -20,7 +20,8 @@ class CreatorScroll extends StatelessWidget {
         itemCount: model!.userPhotos.length, // 아이템 개수
         itemBuilder: (context, index) {
           return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+            padding: const EdgeInsets.only(left: 16, top: 15),
+
             child: Container(
               width: 90,
               height: 50,

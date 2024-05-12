@@ -19,43 +19,7 @@ class ItemDetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding:
-          const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                "[${model!.item.brandName}] ",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                '여기때문에?',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                "${model!.item.discountPrice}원",
-                style: TextStyle(fontSize: 18, color: Colors.red),
-              ),
-              SizedBox(width: 8),
-              Text(
-                "${model!.item.price}원",
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    decoration: TextDecoration.lineThrough),
-              ),
-            ],
-          ),
-        ),
+
         Expanded(
           child: SizedBox(
             height: MediaQuery.of(context).size.height, // 미디어 쿼리 대신 고정 높이 사용
