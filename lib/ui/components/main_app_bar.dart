@@ -1,6 +1,4 @@
 import 'package:final_project_team02/_core/constants/move.dart';
-import 'package:final_project_team02/ui/holder/main_holder.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MainAppBar extends StatelessWidget {
@@ -17,8 +15,7 @@ class MainAppBar extends StatelessWidget {
           GestureDetector(
             onTap: () {
               Navigator.pushNamedAndRemoveUntil(
-                  context,Move.mainHoder, (route) => false);
-
+                  context, Move.mainHolder, (route) => false);
             },
             child: SizedBox(
               child: Image.asset(

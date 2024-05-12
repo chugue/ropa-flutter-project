@@ -1,9 +1,9 @@
 import 'dart:convert';
+
 import 'package:final_project_team02/_core/constants/move.dart';
 import 'package:final_project_team02/ui/holder/item/components/item_detail_view.dart';
-import 'package:flutter/material.dart';
-import 'package:final_project_team02/ui/components/main_app_bar.dart';
 import 'package:final_project_team02/ui/holder/item/item_datail_viewmodel.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ItemBody extends ConsumerWidget {
@@ -33,29 +33,28 @@ class ItemBody extends ConsumerWidget {
             // collapsedHeight: 100,
             // toolbarHeight: 100,
 
-
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: false,
-            title: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top:40),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pushNamedAndRemoveUntil(
-                          context, Move.mainHoder, (route) => false);
-                    },
-                    child: Container(
-                      height:150,
-                      child: Image.asset(
-                        "assets/images/ropa_home_logo.png",
+              title: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 40),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, Move.mainHolder, (route) => false);
+                      },
+                      child: Container(
+                        height: 150,
+                        child: Image.asset(
+                          "assets/images/ropa_home_logo.png",
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
           ),
           SliverToBoxAdapter(
             child: SizedBox(
@@ -75,23 +74,26 @@ class ItemBody extends ConsumerWidget {
           ),
           SliverToBoxAdapter(
             child: Column(
-              children: [Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      "[${model!.item.brandName}] ",
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      '여기때문에?',
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                    ),
-                  ],
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0, vertical: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "[${model!.item.brandName}] ",
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        '여기때문에?',
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Row(
@@ -111,7 +113,8 @@ class ItemBody extends ConsumerWidget {
                       ),
                     ],
                   ),
-                ),],
+                ),
+              ],
             ),
           )
         ];
