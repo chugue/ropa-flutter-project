@@ -15,62 +15,43 @@ class ItemInfo extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context).size.width;
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: 600,
-          height: mediaQuery,
-          child: ListView.builder(
-            itemCount: model!.mainPhotos.length,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return Image.memory(
-                Base64Decoder()
-                    .convert(model!.mainPhotos[index].mainPhotoBase64),
-                fit: BoxFit.cover,
-              );
-            },
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Row(
-            children: [
-              Text(
-                "[${model!.item.brandName}]",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "${model!.item.brandName}",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      children: [Padding(
+        padding:
+        const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Padding(
-              padding:
-                  const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 0) /* 패딩 왼위오밑 */,
-              child: Row(
-                children: [
-                  Text(
-                    "${model!.item.discountPrice}",
-                    style: TextStyle(fontSize: 18, color: Colors.red),
-                  ),
-                  SizedBox(width: 8),
-                  Text(
-                    "${model!.item.price}원",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
+            Text(
+              "[${model!.item.itemName}] ",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              '여기때문에?',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
           ],
         ),
-        // _itemName(model!.item.brandName, model!.item.brandName),
-      ],
+      ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                "${model!.item.discountPrice}원",
+                style: TextStyle(fontSize: 18, color: Colors.red),
+              ),
+              SizedBox(width: 8),
+              Text(
+                "${model!.item.price}원",
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    decoration: TextDecoration.lineThrough),
+              ),
+            ],
+          ),
+        ),],
     );
   }
 

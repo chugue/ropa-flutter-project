@@ -1,5 +1,5 @@
 import 'package:final_project_team02/_core/uitls/validator_util.dart';
-import 'package:final_project_team02/data/dtos/user_request.dart';
+import 'package:final_project_team02/data/dtos/user_req.dart';
 import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/apply_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/components/apply/user_my_page_apply_modal_body_form_text_field.dart';
@@ -143,8 +143,6 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
                                         String comment = _comment.text.trim();
                                         String job = _job.text.trim();
 
-                                        print(
-                                            "999999999999999999999999999999999999 ${height}, ${weight}, ${comment},${job}");
 
                                         UserCreatorApplyReqDTO reqDTO =
                                             UserCreatorApplyReqDTO(
@@ -155,8 +153,6 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
                                           height: height + 'cm',
                                         );
 
-                                        print(
-                                            "00000000000000000000000000000000000${reqDTO.toJson()}00000000000000000000000000000000");
                                         SessionData s =
                                             ref.read(sessionProvider);
                                         s.UserCreatorApply(reqDTO);

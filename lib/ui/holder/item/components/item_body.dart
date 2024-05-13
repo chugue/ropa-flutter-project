@@ -1,7 +1,7 @@
-import 'dart:convert';
-
 import 'package:final_project_team02/_core/constants/move.dart';
 import 'package:final_project_team02/ui/holder/item/components/item_detail_view.dart';
+import 'package:final_project_team02/ui/holder/item/components/item_info.dart';
+import 'package:final_project_team02/ui/holder/item/components/item_main_slide.dart';
 import 'package:final_project_team02/ui/holder/item/item_datail_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -57,66 +57,11 @@ class ItemBody extends ConsumerWidget {
             ),
           ),
           SliverToBoxAdapter(
-            child: SizedBox(
-              height: MediaQuery.of(context).size.width,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: model.mainPhotos.length,
-                itemBuilder: (context, index) {
-                  return Image.memory(
-                    Base64Decoder()
-                        .convert(model.mainPhotos[index].mainPhotoBase64),
-                    fit: BoxFit.cover,
-                  );
-                },
-              ),
-            ),
+            child: ItemMainSlide(model: model),
           ),
           SliverToBoxAdapter(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0, vertical: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        "[${model!.item.brandName}] ",
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        '여기때문에?',
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        "${model!.item.discountPrice}원",
-                        style: TextStyle(fontSize: 18, color: Colors.red),
-                      ),
-                      SizedBox(width: 8),
-                      Text(
-                        "${model!.item.price}원",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.lineThrough),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          )
+            child: ItemInfo(model: model),
+          ),
         ];
       },
       body: ItemDetailView(model: model, itemId: itemId),

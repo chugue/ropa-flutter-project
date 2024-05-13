@@ -35,7 +35,7 @@ class ItemDetailView extends StatelessWidget {
             ),
           ),
         ),
-        ItemBuyButton(),
+        ItemBuyButton(itemId: itemId),
       ],
     );
 

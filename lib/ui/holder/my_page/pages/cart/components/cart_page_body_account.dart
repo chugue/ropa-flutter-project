@@ -7,7 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CartPageBodyAccount extends ConsumerWidget {
-  final CartModel? model;
+  final CartModel model;
 
   const CartPageBodyAccount({
     required this.model,
@@ -16,9 +16,9 @@ class CartPageBodyAccount extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(cartProvider);
-    String orderPrice = formatCurrency(model!.totalCheckedPrice);
+    String orderPrice = formatCurrency(model.totalCheckedPrice);
     // 로직이 총 금액 + 배송비 = 총 결제금액이라, 현재 배송비 0원이면 총금액 + 결제금액 로직 같음.
-    // String totalOrderPrice = formatCurrency(model!.cart.totalCartPrice);
+    String totalOrderPrice = formatCurrency(model.cart.totalCartPrice);
 
     return Column(
       children: [
@@ -26,10 +26,10 @@ class CartPageBodyAccount extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "총 ",
+              "장바구니 금액",
               style: textTheme().displayLarge,
             ),
-            Text("${orderPrice}", style: textTheme().displayLarge),
+            Text("${totalOrderPrice}", style: textTheme().displayLarge),
           ],
         ),
         Row(
@@ -39,6 +39,7 @@ class CartPageBodyAccount extends ConsumerWidget {
             Text("0원", style: textTheme().bodyMedium),
           ],
         ),
+        SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
