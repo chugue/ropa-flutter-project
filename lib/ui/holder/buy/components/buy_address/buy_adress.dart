@@ -1,5 +1,4 @@
 import 'package:expandable/expandable.dart';
-import 'package:final_project_team02/ui/holder/buy/components/buy_address/buy_address_request.dart';
 import 'package:final_project_team02/ui/holder/buy/components/buy_address/buy_address_tab.dart';
 import 'package:final_project_team02/ui/holder/buy/components/custom_main_title.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +31,7 @@ class BuyAddress extends StatelessWidget {
           BuyAddressTab(),
 
           //배송메세지 요청사항
-          BuyMainAddressRequest(),
+          // BuyMainAddressRequest(),
         ],
       ),
     );

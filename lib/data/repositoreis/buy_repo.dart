@@ -28,7 +28,6 @@ class BuyRepo {
           BuyModel(buy: buy, orderInfo: orderInfo, cartInfos: cartInfos);
       responseDTO.response = model;
     }
-
     return responseDTO;
   }
 }

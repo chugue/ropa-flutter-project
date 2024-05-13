@@ -1,3 +1,4 @@
+import 'package:final_project_team02/ui/holder/buy/buy_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/buy/components/buy_address/buy_adress.dart';
 import 'package:final_project_team02/ui/holder/buy/components/buy_info_title.dart';
 import 'package:final_project_team02/ui/holder/buy/components/buy_order.dart';
@@ -5,39 +6,46 @@ import 'package:final_project_team02/ui/holder/buy/components/buy_order_button.d
 import 'package:final_project_team02/ui/holder/buy/components/buy_page_buy_box_divider.dart';
 import 'package:final_project_team02/ui/holder/buy/components/buy_pay_ment.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class BuyBody extends StatelessWidget {
+class BuyBody extends ConsumerWidget {
   final List<int> itemIds;
 
   BuyBody({required this.itemIds});
 
   @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: ListView(
-        shrinkWrap: true,
-        primary: false,
-        children: [
-          //배송지 주소
-          BuyAddress(),
-          BuyPageBodyBoxDivider(),
+  Widget build(BuildContext context, WidgetRef ref) {
+    BuyModel? model = ref.watch(buyProvider);
 
-          //주문상품
-          BuyOrder(),
-          BuyPageBodyBoxDivider(),
+    if (model == null) {
+      return CupertinoActivityIndicator();
+    } else {
+      return SingleChildScrollView(
+        child: ListView(
+          shrinkWrap: true,
+          primary: false,
+          children: [
+            //배송지 주소
+            BuyAddress(),
+            BuyPageBodyBoxDivider(),
 
-          //결제정보
-          BuyInfo(),
-          BuyPageBodyBoxDivider(),
+            //주문상품
+            BuyOrder(model: model),
+            BuyPageBodyBoxDivider(),
 
-          //결제수단
-          BuyPayMent(),
-          BuyPageBodyBoxDivider(),
+            //결제정보
+            BuyInfo(model: model),
+            BuyPageBodyBoxDivider(),
 
-          //결제 하기
-          BuyOrderButton(text: "48,700원 결제하기")
-        ],
-      ),
-    );
+            //결제수단
+            BuyPayMent(),
+            BuyPageBodyBoxDivider(),
+
+            //결제 하기
+            BuyOrderButton(model: model, text: "48,700원 결제하기")
+          ],
+        ),
+      );
+    }
   }
 }

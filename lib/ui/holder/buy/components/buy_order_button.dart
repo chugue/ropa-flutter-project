@@ -1,11 +1,15 @@
 import 'package:final_project_team02/ui/holder/port_one/port_one_page.dart';
 import 'package:flutter/material.dart';
 
+import '../buy_viewmodel.dart';
+
 class BuyOrderButton extends StatelessWidget {
   final String text;
+  BuyModel model;
 
-  const BuyOrderButton({
+  BuyOrderButton({
     required this.text,
+    required this.model,
   });
 
   @override
