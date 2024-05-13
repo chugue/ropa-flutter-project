@@ -1,9 +1,16 @@
 import 'package:final_project_team02/_core/constants/theme.dart';
 import 'package:final_project_team02/ui/holder/my_page/_components/my_page_custom_button.dart';
 import 'package:final_project_team02/ui/holder/my_page/_components/my_page_order_mileage.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/user_viewmodel.dart';
 import 'package:flutter/material.dart';
 
 class CreatorTop extends StatelessWidget {
+  final UserMyPageModel model;
+
+  CreatorTop({
+    required this.model,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -39,8 +46,10 @@ class CreatorTop extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('회원 이름', style: textTheme().displayMedium), // :TODO 04수정
-            Text('180cm • 70kg • 직장인',
+            Text(model.user.nickName,
+                style: textTheme().displayMedium), // :TODO 04수정
+            Text(
+                "${model.user.height!} • ${model.user.weight} • ${model.user.job}",
                 style: textTheme().bodyMedium), // :TODO 04수정
           ],
         ),
