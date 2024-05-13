@@ -1,9 +1,8 @@
 import 'dart:convert';
 
 import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
+import 'package:final_project_team02/ui/holder/item/item_page.dart';
 import 'package:flutter/material.dart';
-
-import '../../item/item_page.dart';
 
 class ItemScroll extends StatelessWidget {
   final HomeModel? model;
@@ -38,16 +37,39 @@ class ItemScroll extends StatelessWidget {
                       },
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.40,
-                        height: MediaQuery.of(context).size.width * 0.40,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 5.0),
-                          child: Container(
-                            width: double.infinity, // 셀의 전체 너비 사용
-                            height: double.infinity, // 셀의 전체 높이 사용
-                            child: Image.memory(
-                              Base64Decoder().convert(model!.itemsPhotos[index].base64),
-                              fit: BoxFit.cover,
-                            ),
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                height:
+                                    MediaQuery.of(context).size.width * 0.40,
+                                child: Image.memory(
+                                  Base64Decoder().convert(
+                                      model!.itemsPhotos[index].base64),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      model!.itemsPhotos[index].adminInfo
+                                          .brandName,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      model!.itemsPhotos[index].name,
+                                      style: TextStyle(fontSize: 12),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),

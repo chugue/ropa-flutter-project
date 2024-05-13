@@ -2,12 +2,12 @@ import 'package:final_project_team02/ui/holder/my_page/pages/profile/profile_pag
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ProfileMenus extends StatelessWidget {
+class SettingMenus extends StatelessWidget {
   final String field;
   final String value;
   final bool isEdit;
 
-  const ProfileMenus({
+  const SettingMenus({
     required this.field,
     required this.value,
     required this.isEdit,
@@ -44,7 +44,7 @@ class ProfileMenus extends StatelessWidget {
                       ),
                     )
                   else
-                    SizedBox(width: 16, height: 16)
+                    SizedBox(width: 48, height: 16)
                   // SizedBox를 너비와 높이를 지정하여 공간을 차지하도록 함
                 ],
               ),

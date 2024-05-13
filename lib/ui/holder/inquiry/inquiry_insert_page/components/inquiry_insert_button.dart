@@ -14,11 +14,11 @@ class InquiryInsertButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.blue,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8), // 모서리를 살짝 둥글게 설정
+          borderRadius: BorderRadius.circular(5), // 모서리를 살짝 둥글게 설정
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Text(
           "문의하기",
           style: TextStyle(

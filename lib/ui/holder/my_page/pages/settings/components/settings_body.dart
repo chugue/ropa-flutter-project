@@ -1,13 +1,19 @@
-import 'package:final_project_team02/ui/holder/my_page/pages/profile/components/profile_menus.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/profile/components/profile_small_title.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/settings/components/profile_menus.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/settings/components/setting_logout_button.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/settings/setting_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'setting_inquiry_menus.dart';
+
 class SettingsBody extends ConsumerWidget {
+  final globalKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     UserSettingModel? model = ref.watch(UserSettingProvider);
+
     print("🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗model");
     print(model);
 
@@ -26,27 +32,27 @@ class SettingsBody extends ConsumerWidget {
           SizedBox(height: 40),
           ProfileSmallTitle(text: "회원 정보 설정"),
           SizedBox(height: 20),
-          ProfileMenus(
+          SettingMenus(
               field: "이메일", value: model.userSetting.email, isEdit: false),
           SizedBox(height: 20),
-          ProfileMenus(
+          SettingMenus(
               field: "이름", value: model.userSetting.myName, isEdit: false),
           SizedBox(height: 20),
-          ProfileMenus(
+          SettingMenus(
               field: "닉네임", value: model.userSetting.nickName, isEdit: true),
           SizedBox(height: 20),
-          ProfileMenus(
+          SettingMenus(
               field: "휴대폰 번호", value: model.userSetting.mobile, isEdit: true),
           SizedBox(height: 20),
-          ProfileMenus(field: "비밀번호", value: "변경하기", isEdit: true),
+          SettingMenus(field: "비밀번호", value: "변경하기", isEdit: true),
           SizedBox(height: 80),
           ProfileSmallTitle(text: "서비스 정보"),
           SizedBox(height: 20),
-          ProfileMenus(field: "문의하기", value: "", isEdit: true),
+          SettingInquiryMenu(field: "문의하기", value: ""),
           SizedBox(height: 20),
-          ProfileMenus(field: "로그아웃", value: "", isEdit: true),
+          LogoutButton(),
           SizedBox(height: 80),
-          ProfileMenus(field: "회원탈퇴", value: "", isEdit: true),
+          // SettingMenus(field: "회원탈퇴", value: "", isEdit: true),
         ],
       );
     }

@@ -25,7 +25,7 @@ class InquiryInsertButton extends StatelessWidget {
           },
           child: Text(
             "1대1 문의하기",
-            style: TextStyle(color: Colors.white, fontSize: 30),
+            style: TextStyle(color: Colors.white, fontSize: 24),
           ),
         ),
       ),

@@ -25,10 +25,15 @@ class SessionData extends SessionUser {
 
   SessionData();
 
-  void logout() {
+  void logout() async {
     user = null;
     accessToken = null;
+    globalAccessToken = null;
     isLogin = false;
+
+    await secureStorage.delete(key: "accessToken");
+    Navigator.pushNamedAndRemoveUntil(
+        mContext!, Move.mainHolder, (route) => false);
   }
 
   Future<void> UserCreatorApply(UserCreatorApplyReqDTO reqDTO) async {

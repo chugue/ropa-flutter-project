@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:dio/dio.dart';
 import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/dtos/user_req.dart';
 import 'package:final_project_team02/data/global_data/user.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/profile/profile_data/user_profile.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/settings/setting_data/user_setting.dart';
 import 'package:logger/logger.dart';
 
 class UserRepo {
@@ -34,7 +34,7 @@ class UserRepo {
     // 🔀PARSING
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
     if (responseDTO.success) {
-      responseDTO.response = UserProfile.fromJson(responseDTO.response);
+      responseDTO.response = UserSetting.fromJson(responseDTO.response);
     }
     Logger().d(responseDTO);
 
