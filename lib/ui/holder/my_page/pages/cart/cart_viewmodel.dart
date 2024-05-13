@@ -56,39 +56,47 @@ class CartViewModel extends StateNotifier<CartModel?> {
   Future<ResponseDTO> removeItem(int cartId) async {
     ResponseDTO responseDTO = await CartRepo().removeItem(cartId);
     if (responseDTO.success) {
-      if (state != null) {
-        List<CartList> updatedCartList = List.from(state!.cartList);
-        updatedCartList.removeWhere((cart) => cart.cartId == cartId);
+      List<CartList> updatedCartList = List.from(state!.cartList);
 
-        // 총 가격 재계산
-        int newTotalCheckedPrice = 0;
-        List<bool> newIsChecked =
-            List<bool>.filled(updatedCartList.length, false);
-        for (int i = 0; i < updatedCartList.length; i++) {
-          if (state!.isChecked[i] && updatedCartList[i].cartId != cartId) {
-            newTotalCheckedPrice +=
-                updatedCartList[i].itemPrice * updatedCartList[i].quantity;
-            newIsChecked[i] = state!.isChecked[i];
-          }
-        }
-        // 체크된 아이템만을 고려한 전체 카트 가격 재계산
-        int newTotalCartPrice = 0;
-        for (int i = 0; i < updatedCartList.length; i++) {
-          if (newIsChecked[i]) {
-            newTotalCartPrice +=
-                updatedCartList[i].itemPrice * updatedCartList[i].quantity;
-          }
-        }
+      updatedCartList.removeWhere((cart) => cart.cartId == cartId);
+
+      CartList carts = responseDTO.response;
+      List<CartList> prevCartList = state!.cartList;
+
+      state = CartModel(
+        cart: state!.cart,
+        cartList: updatedCartList,
+        isChecked: state!.isChecked,
+        totalCheckedPrice: state!.totalCheckedPrice,
+      );
+
+      if (state != null) {
+        // List<CartList> updatedCartList = List.from(state!.cartList);
+        //
+        // updatedCartList.removeWhere((cart) => cart.cartId == cartId);
+        //
+        // // 총 가격 재계산
+        // int newTotalCheckedPrice = 0;
+        // List<bool> newIsChecked =
+        //     List<bool>.filled(updatedCartList.length, false);
+        // for (int i = 0; i < updatedCartList.length; i++) {
+        //   if (state!.isChecked[i] && updatedCartList[i].cartId != cartId) {
+        //     newTotalCheckedPrice +=
+        //         updatedCartList[i].itemPrice * updatedCartList[i].quantity;
+        //     newIsChecked[i] = state!.isChecked[i];
+        //   }
+        // }
+        //
+        // // 체크된 아이템만을 고려한 전체 카트 가격 재계산
+        // int newTotalCartPrice = 0;
+        // for (int i = 0; i < updatedCartList.length; i++) {
+        //   if (newIsChecked[i]) {
+        //     newTotalCartPrice +=
+        //         updatedCartList[i].itemPrice * updatedCartList[i].quantity;
+        //   }
+        // }
 
         // 상태 업데이트
-        state = CartModel(
-          cart: state!.cart.copyWith(
-              totalCartPrice:
-                  newTotalCheckedPrice), // 체크된 아이템의 새로운 총 가격으로 Cart 객체 업데이트
-          cartList: updatedCartList,
-          isChecked: newIsChecked,
-          totalCheckedPrice: newTotalCheckedPrice,
-        );
       }
     }
     return responseDTO;
@@ -123,6 +131,7 @@ class CartViewModel extends StateNotifier<CartModel?> {
       CartModel model = responseDTO.response as CartModel;
       model.isChecked = List<bool>.filled(
           model.cartList.length, false); // 초기 체크 상태를 모두 false로 설정
+
       state = model;
     }
   }
