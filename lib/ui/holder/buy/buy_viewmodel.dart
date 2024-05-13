@@ -1,9 +1,13 @@
+import 'package:final_project_team02/data/dtos/buy_req.dart';
+import 'package:final_project_team02/data/dtos/buy_req.dart';
+import 'package:final_project_team02/data/dtos/buy_req.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/repositoreis/buy_repo.dart';
 import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:final_project_team02/main.dart';
 import 'package:final_project_team02/ui/holder/buy/buy_data/buy.dart';
 import 'package:final_project_team02/ui/holder/buy/buy_data/cart_infos.dart';
+import 'package:final_project_team02/ui/holder/buy/buy_data/option.dart';
 import 'package:final_project_team02/ui/holder/buy/buy_data/order_info.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,12 +16,14 @@ class BuyModel {
   final List<CartInfos> cartInfos;
   final OrderInfo orderInfo;
   int? orderBuy;
+  int? selectedOptionId;
 
   BuyModel({
     required this.buy,
     required this.cartInfos,
     required this.orderInfo,
     this.orderBuy = 0,
+    this.selectedOptionId = 0,
   });
 }
 
@@ -28,6 +34,23 @@ class BuyViewModel extends StateNotifier<BuyModel?> {
 
   BuyViewModel(super.state, this.ref, this.sessionData);
 
+  Future<void> buySave(BuySaveReqDTO reqDTO) async {
+    final response = await BuyRepo().callBuySave(reqDTO);
+  }
+
+  int newSelectedOptionId = 0;
+
+  void selectPayment(int paymentId) {
+    newSelectedOptionId = paymentId;
+    state = BuyModel(
+      buy: state!.buy,
+      cartInfos: state!.cartInfos,
+      orderInfo: state!.orderInfo,
+      orderBuy: state!.orderBuy,
+      selectedOptionId: newSelectedOptionId,
+    );
+  }
+
 // 사용자 입력을 업데이트하는 메서드
   void updateBuyDetails({
     required String name,
@@ -37,17 +60,16 @@ class BuyViewModel extends StateNotifier<BuyModel?> {
     required String email,
   }) {
     if (state != null) {
-      // 새로운 Buy 인스턴스 생성하여 상태 업데이트
       state = BuyModel(
         buy: Buy(
-          name: name,
-          phone: phone,
-          address: address,
-          detailAddress: detailAddress,
-          email: email,
-          orderId: state!.buy.orderId,
-          deliveryRequest: '',
-        ),
+            name: name,
+            phone: phone,
+            address: address,
+            detailAddress: detailAddress,
+            email: email,
+            orderId: state!.buy.orderId,
+            deliveryRequest: state!.buy.deliveryRequest,
+            isBaseAddress: state!.buy.isBaseAddress),
         cartInfos: state!.cartInfos,
         orderInfo: state!.orderInfo,
         orderBuy: state!.orderBuy,
@@ -71,6 +93,61 @@ class BuyViewModel extends StateNotifier<BuyModel?> {
       BuyModel model = responseDTO.response;
       state = model;
       orderBuy(); // 초기화 후 주문 총액 계산
+    }
+  }
+
+  void updateName(String name) {
+    if (state != null) {
+      state = BuyModel(
+        buy: state!.buy.copyWith(name: name),
+        cartInfos: state!.cartInfos,
+        orderInfo: state!.orderInfo,
+        orderBuy: state!.orderBuy,
+      );
+    }
+  }
+
+  void updatePhone(String phone) {
+    if (state != null) {
+      state = BuyModel(
+        buy: state!.buy.copyWith(phone: phone),
+        cartInfos: state!.cartInfos,
+        orderInfo: state!.orderInfo,
+        orderBuy: state!.orderBuy,
+      );
+    }
+  }
+
+  void updateAddress(String address) {
+    if (state != null) {
+      state = BuyModel(
+        buy: state!.buy.copyWith(address: address),
+        cartInfos: state!.cartInfos,
+        orderInfo: state!.orderInfo,
+        orderBuy: state!.orderBuy,
+      );
+    }
+  }
+
+  void updateDetailAddress(String detailAddress) {
+    if (state != null) {
+      state = BuyModel(
+        buy: state!.buy.copyWith(detailAddress: detailAddress),
+        cartInfos: state!.cartInfos,
+        orderInfo: state!.orderInfo,
+        orderBuy: state!.orderBuy,
+      );
+    }
+  }
+
+  void updateEmail(String email) {
+    if (state != null) {
+      state = BuyModel(
+        buy: state!.buy.copyWith(email: email),
+        cartInfos: state!.cartInfos,
+        orderInfo: state!.orderInfo,
+        orderBuy: state!.orderBuy,
+      );
     }
   }
 }

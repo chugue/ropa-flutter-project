@@ -9,17 +9,6 @@ class BuySaveReqDTO {
   final bool isBaseAddress;
   final PurchaseInfo? purchaseInfo;
 
-  const BuySaveReqDTO({
-    required this.name,
-    required this.phone,
-    required this.email,
-    required this.postCode,
-    required this.address,
-    required this.detailAddress,
-    required this.deliveryRequest,
-    required this.isBaseAddress,
-    required this.purchaseInfo,
-  });
 
   Map<String, dynamic> toJson() {
     return {
@@ -34,6 +23,18 @@ class BuySaveReqDTO {
       "purchaseInfo": this.purchaseInfo,
     };
   }
+
+  const BuySaveReqDTO({
+    this.name,
+    this.phone,
+    this.email,
+    this.postCode,
+    this.address,
+    this.detailAddress,
+    this.deliveryRequest,
+    required this.isBaseAddress,
+    this.purchaseInfo,
+  });
 }
 
 class PurchaseInfo {
