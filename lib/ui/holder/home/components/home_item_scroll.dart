@@ -62,10 +62,12 @@ class ItemScroll extends StatelessWidget {
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    Text(
-                                      model!.itemsPhotos[index].name,
-                                      style: TextStyle(fontSize: 12),
-                                    ),
+                                    // Text(
+                                    //   model!.itemsPhotos[index].,
+                                    //   style: TextStyle(fontSize: 12),
+                                    //   maxLines: 1, // 최대 줄 수를 1로 설정
+                                    //   overflow: TextOverflow.ellipsis,
+                                    // ),
                                   ],
                                 ),
                               ),
