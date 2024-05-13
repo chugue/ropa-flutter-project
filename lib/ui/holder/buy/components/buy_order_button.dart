@@ -44,7 +44,7 @@ class BuyOrderButton extends ConsumerWidget {
               purchaseInfo: purchaseInfo,
               postCode: "12345",
             );
-
+            print("😍😍😍😍😍😍😍😍${reqDTO.toString()}");
             //여기에 메소드 넣기
             ref.read(buyProvider.notifier).buySave(reqDTO);
           },

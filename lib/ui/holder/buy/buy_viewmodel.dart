@@ -34,8 +34,9 @@ class BuyViewModel extends StateNotifier<BuyModel?> {
 
   BuyViewModel(super.state, this.ref, this.sessionData);
 
-  Future<void> buySave(BuySaveReqDTO reqDTO) async {
-    final response = await BuyRepo().callBuySave(reqDTO);
+  Future<ResponseDTO> buySave(BuySaveReqDTO reqDTO) async {
+    ResponseDTO responseDTO = await BuyRepo().callBuySave(reqDTO);
+    return responseDTO;
   }
 
   int newSelectedOptionId = 0;
