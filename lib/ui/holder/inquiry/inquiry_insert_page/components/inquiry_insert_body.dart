@@ -3,6 +3,7 @@ import 'package:final_project_team02/ui/holder/inquiry/inquiry_insert_page/compo
 import 'package:final_project_team02/ui/holder/inquiry/inquiry_insert_page/components/inquiry_insert_button.dart';
 import 'package:final_project_team02/ui/holder/inquiry/inquiry_insert_page/components/inquiry_inset_content.dart';
 import 'package:final_project_team02/ui/holder/inquiry/inquiry_insert_page/components/inquiry_inset_title.dart';
+import 'package:final_project_team02/ui/holder/item/components/item_service_info.dart';
 import 'package:flutter/material.dart';
 
 class InquiryInsertBody extends StatelessWidget {
@@ -14,18 +15,22 @@ class InquiryInsertBody extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          InquiryBrandSelect(screenWidth: screenWidth),
-          SizedBox(height: 16),
-          InquiryInsertTitle(),
-          SizedBox(height: 16),
-          InquiryInsertContent(),
-          SizedBox(height: 16),
-          SizedBox(height: 16),
-          InquiryInsertButton(),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            InquiryBrandSelect(screenWidth: screenWidth),
+            SizedBox(height: 16),
+            InquiryInsertTitle(),
+            SizedBox(height: 16),
+            InquiryInsertContent(),
+            SizedBox(height: 16),
+            SizedBox(height: 16),
+            InquiryInsertButton(),
+            SizedBox(height: 90),
+            ItemServiceInfo(),
+          ],
+        ),
       ),
     );
   }

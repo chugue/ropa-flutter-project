@@ -17,7 +17,7 @@ class InquiryInsertContent extends StatelessWidget {
           ),
         ),
         TextField(
-          maxLines: 5,
+          maxLines: 4,
           decoration: InputDecoration(
             hintText: "내용을 적어주세요!",
             border: OutlineInputBorder(),
