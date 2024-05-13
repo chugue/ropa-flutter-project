@@ -16,4 +16,15 @@ class Cart {
       totalCartPrice: json["totalCartPrice"],
     );
   }
+
+  // copyWith 메소드 추가
+  Cart copyWith({
+    int? userId,
+    int? totalCartPrice,
+  }) {
+    return Cart(
+      userId: userId ?? this.userId,
+      totalCartPrice: totalCartPrice ?? this.totalCartPrice,
+    );
+  }
 }

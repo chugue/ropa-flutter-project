@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:dio/dio.dart';
 import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/dtos/user_req.dart';
@@ -23,22 +24,33 @@ class UserRepo {
     return responseDTO;
   }
 
-  Future<void> callSetting() async {
+  Future<ResponseDTO> callUserSetting() async {
     final response = await dio.get("/app/setting");
+    // 🚧🚧🚧🚧Test🚧🚧🚧🚧
+    // final response = await dio.get("/app/setting",
+    //     options: Options(headers: {"Authorization": accessToken}));
     Logger().d(response.data!);
-    //
-    // ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
-    // return responseDTO;
+
+    // 🔀PARSING
+    ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+    if (responseDTO.success) {
+      responseDTO.response = UserProfile.fromJson(responseDTO.response);
+    }
+    Logger().d(responseDTO);
+
+    return responseDTO;
   }
 
   Future<ResponseDTO> callUserProfile() async {
     print(globalAccessToken);
 
     final response = await dio.get("/app/profile");
+    // final response = await dio.get("/app/profile",
+    //     options: Options(headers: {"Authorization": accessToken}));
     Logger().d(response.data!);
     print(response.data);
 
-    // 데이터 파싱
+    // 🔀PARSING
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
     if (responseDTO.success) {
       responseDTO.response = UserProfile.fromJson(responseDTO.response);

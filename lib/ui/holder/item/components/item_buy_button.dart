@@ -16,7 +16,7 @@ class ItemBuyButton extends ConsumerWidget {
   final int itemId;
 
   const ItemBuyButton({
-    required this.itemId,
+    super.key,
   });
 
   @override
@@ -78,7 +78,7 @@ class ItemBuyButton extends ConsumerWidget {
                     children: [
                       SizedBox(height: 20),
                       Container(
-                        width: 100,
+                        width: 50,
                         height: 2,
                         decoration: BoxDecoration(
                           color: Colors.black,

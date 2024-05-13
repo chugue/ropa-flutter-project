@@ -5,14 +5,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class CartPageBodyItemCardDelete extends ConsumerWidget {
   final int cartId;
 
-
   const CartPageBodyItemCardDelete({
     required this.cartId,
   });
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
-
+  Widget build(BuildContext context, WidgetRef ref) {
     return TextButton(
         style: ButtonStyle(
           foregroundColor: MaterialStateProperty.all<Color>(Colors.redAccent),
@@ -20,9 +18,6 @@ class CartPageBodyItemCardDelete extends ConsumerWidget {
         ),
         onPressed: () {
           ref.read(cartProvider.notifier).removeItem(cartId);
-
-
-
         },
         child: Text("삭제"));
   }

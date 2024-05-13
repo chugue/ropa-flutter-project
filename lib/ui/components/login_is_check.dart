@@ -9,17 +9,22 @@ class LoginIsCheck extends ConsumerWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       content: RichText(
         text: TextSpan(
-          style: TextStyle(fontSize: 16, color: Colors.black),
+          style: TextStyle(fontSize: 20, color: Colors.black, height: 2),
           children: <TextSpan>[
-            TextSpan(text: '로그인', style: TextStyle(color: Colors.red)),
+            TextSpan(
+              text: '로그인',
+              style: TextStyle(
+                color: Colors.red,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             TextSpan(text: '이 필요한 서비스입니다.\n'),
             TextSpan(text: '이동 하시겠습니까?'),
           ],
         ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       actions: <Widget>[
-        Divider(),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -30,12 +35,15 @@ class LoginIsCheck extends ConsumerWidget {
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 decoration: BoxDecoration(
-                  color: Colors.blue.withOpacity(0.1),
+                  color: Colors.black.withOpacity(0.7),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 child: Text(
-                  '확인',
-                  style: TextStyle(fontSize: 18, color: Colors.blue),
+                  '로그인',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -43,7 +51,7 @@ class LoginIsCheck extends ConsumerWidget {
             InkWell(
               onTap: () {
                 Navigator.pushNamedAndRemoveUntil(
-                    context, Move.mainHoder, (_) => false);
+                    context, Move.mainHolder, (_) => false);
               },
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),

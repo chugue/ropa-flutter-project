@@ -19,6 +19,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           TextButton(
@@ -31,6 +32,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Icon(home),
           ),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               TextButton(
                 onPressed: () {
@@ -39,9 +41,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 },
                 child: Icon(setting),
               ),
-              CartPage(
-                cartIcon: cart,
-              ),
+              if (cart != null)
+                CartPage(
+                  cartIcon: cart,
+                ),
             ],
           )
         ],

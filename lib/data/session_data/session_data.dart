@@ -17,7 +17,6 @@ class SessionUser {
   int? selectedUserId;
 
   SessionUser();
-
 }
 
 // 창고
@@ -25,7 +24,6 @@ class SessionData extends SessionUser {
   final mContext = navigatorKey.currentContext;
 
   SessionData();
-
 
   void logout() {
     user = null;
@@ -52,9 +50,6 @@ class SessionData extends SessionUser {
           blueChecked: user.blueChecked,
           instagram: user.instagram,
           createdAt: user.createdAt);
-
-
-
     } else {
       ScaffoldMessenger.of(mContext!).showSnackBar(
         SnackBar(content: Text("크리에이터를 지원 실패 : ${responseDTO.errorMessage}")),
@@ -89,7 +84,7 @@ class SessionData extends SessionUser {
       globalAccessToken = accessToken;
       print("sjfsjfsjsf : ${globalAccessToken}");
       Navigator.pushNamedAndRemoveUntil(
-          mContext!, Move.mainHoder, (route) => false);
+          mContext!, Move.mainHolder, (route) => false);
     } else {
       ScaffoldMessenger.of(mContext!).showSnackBar(
           SnackBar(content: Text("로그인 실패 : ${responseDTO.errorMessage}")));
