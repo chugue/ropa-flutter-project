@@ -1,7 +1,7 @@
-import 'dart:convert';
-
 import 'package:final_project_team02/_core/constants/move.dart';
 import 'package:final_project_team02/ui/holder/item/components/item_detail_view.dart';
+import 'package:final_project_team02/ui/holder/item/components/item_info.dart';
+import 'package:final_project_team02/ui/holder/item/components/item_main_slide.dart';
 import 'package:final_project_team02/ui/holder/item/item_datail_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

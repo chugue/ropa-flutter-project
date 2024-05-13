@@ -4,10 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'cart_page_body_item_card_delete.dart';
 import 'cart_page_body_item_card_detail.dart';
-import 'cart_page_body_item_card_order.dart';
 
 class CartPageBodyItemCard extends ConsumerWidget {
-  final CartModel? model;
+  final CartModel model;
 
   const CartPageBodyItemCard({
     required this.model,
@@ -16,12 +15,11 @@ class CartPageBodyItemCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     if (model == null) return Align(child: CircularProgressIndicator());
-
     return Column(
       children: [
         Expanded(
           child: ListView.builder(
-            itemCount: model!.cartList.length,
+            itemCount: model.cartList.length,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 20),
@@ -36,7 +34,7 @@ class CartPageBodyItemCard extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Checkbox(
-                          value: model!.isChecked[index],
+                          value: model.isChecked[index],
                           onChanged: (bool? newValue) {
                             ref.read(cartProvider.notifier).toggleItem(index);
                           },
@@ -62,15 +60,15 @@ class CartPageBodyItemCard extends ConsumerWidget {
                         Text("[옵션 : free ]"),
                         SizedBox(height: 20),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             //아이템 카드 삭제
                             CartPageBodyItemCardDelete(
-                              cartId: model!.cartList[index].cartId,
+                              cartId: model.cartList[index].cartId,
                             ),
 
-                            //아이템 카드 주문하기
-                            CartPageBodyItemCardOrder()
+                            // //아이템 카드 주문하기
+                            // CartPageBodyItemCardOrder()
                           ],
                         )
                       ],
