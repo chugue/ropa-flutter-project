@@ -28,13 +28,10 @@ class ItemBody extends ConsumerWidget {
           SliverAppBar(
             pinned: false,
             floating: true,
-            snap: false,
-            expandedHeight: 200,
-            // collapsedHeight: 100,
-            // toolbarHeight: 100,
-
+            snap: true,
+            expandedHeight: 100,
             flexibleSpace: FlexibleSpaceBar(
-              centerTitle: false,
+              centerTitle: true,
               title: Row(
                 children: [
                   Padding(
@@ -45,9 +42,9 @@ class ItemBody extends ConsumerWidget {
                             context, Move.mainHolder, (route) => false);
                       },
                       child: Container(
-                        height: 150,
                         child: Image.asset(
                           "assets/images/ropa_home_logo.png",
+                          fit: BoxFit.fill,
                         ),
                       ),
                     ),

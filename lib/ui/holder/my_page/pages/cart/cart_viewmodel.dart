@@ -69,35 +69,35 @@ class CartViewModel extends StateNotifier<CartModel?> {
         isChecked: state!.isChecked,
         totalCheckedPrice: state!.totalCheckedPrice,
       );
-
-      if (state != null) {
-        // List<CartList> updatedCartList = List.from(state!.cartList);
-        //
-        // updatedCartList.removeWhere((cart) => cart.cartId == cartId);
-        //
-        // // 총 가격 재계산
-        // int newTotalCheckedPrice = 0;
-        // List<bool> newIsChecked =
-        //     List<bool>.filled(updatedCartList.length, false);
-        // for (int i = 0; i < updatedCartList.length; i++) {
-        //   if (state!.isChecked[i] && updatedCartList[i].cartId != cartId) {
-        //     newTotalCheckedPrice +=
-        //         updatedCartList[i].itemPrice * updatedCartList[i].quantity;
-        //     newIsChecked[i] = state!.isChecked[i];
-        //   }
-        // }
-        //
-        // // 체크된 아이템만을 고려한 전체 카트 가격 재계산
-        // int newTotalCartPrice = 0;
-        // for (int i = 0; i < updatedCartList.length; i++) {
-        //   if (newIsChecked[i]) {
-        //     newTotalCartPrice +=
-        //         updatedCartList[i].itemPrice * updatedCartList[i].quantity;
-        //   }
-        // }
-
-        // 상태 업데이트
-      }
+      //
+      // if (state != null) {
+      //   // List<CartList> updatedCartList = List.from(state!.cartList);
+      //   //
+      //   // updatedCartList.removeWhere((cart) => cart.cartId == cartId);
+      //   //
+      //   // // 총 가격 재계산
+      //   // int newTotalCheckedPrice = 0;
+      //   // List<bool> newIsChecked =
+      //   //     List<bool>.filled(updatedCartList.length, false);
+      //   // for (int i = 0; i < updatedCartList.length; i++) {
+      //   //   if (state!.isChecked[i] && updatedCartList[i].cartId != cartId) {
+      //   //     newTotalCheckedPrice +=
+      //   //         updatedCartList[i].itemPrice * updatedCartList[i].quantity;
+      //   //     newIsChecked[i] = state!.isChecked[i];
+      //   //   }
+      //   // }
+      //   //
+      //   // // 체크된 아이템만을 고려한 전체 카트 가격 재계산
+      //   // int newTotalCartPrice = 0;
+      //   // for (int i = 0; i < updatedCartList.length; i++) {
+      //   //   if (newIsChecked[i]) {
+      //   //     newTotalCartPrice +=
+      //   //         updatedCartList[i].itemPrice * updatedCartList[i].quantity;
+      //   //   }
+      //   // }
+      //
+      //   // 상태 업데이트
+      // }
     }
     return responseDTO;
   }

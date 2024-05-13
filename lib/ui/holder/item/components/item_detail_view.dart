@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:ui';
+
 import 'package:final_project_team02/ui/holder/item/components/item_buy_button.dart';
 import 'package:final_project_team02/ui/holder/item/item_datail_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,7 +19,6 @@ class ItemDetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-
         Expanded(
           child: SizedBox(
             height: MediaQuery.of(context).size.height, // 미디어 쿼리 대신 고정 높이 사용
@@ -38,7 +37,6 @@ class ItemDetailView extends StatelessWidget {
         ItemBuyButton(itemId: itemId),
       ],
     );
-
   }
 }
 //
