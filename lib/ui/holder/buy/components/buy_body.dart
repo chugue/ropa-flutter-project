@@ -7,6 +7,10 @@ import 'package:final_project_team02/ui/holder/buy/components/buy_pay_ment.dart'
 import 'package:flutter/cupertino.dart';
 
 class BuyBody extends StatelessWidget {
+  final List<int> itemIds;
+
+  BuyBody({required this.itemIds});
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

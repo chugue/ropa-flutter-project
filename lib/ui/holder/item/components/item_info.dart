@@ -44,7 +44,7 @@ class ItemInfo extends StatelessWidget {
               ),
               SizedBox(width: 8),
               Text(
-                "${model!.item.discountPrice}원",
+                "${model!.item.finalPrice}원",
                 style: TextStyle(fontSize: 18, color: Colors.red),
               ),
             ],

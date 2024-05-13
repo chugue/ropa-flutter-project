@@ -22,16 +22,16 @@ class CartPageBodyAccount extends ConsumerWidget {
 
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              "장바구니 금액",
-              style: textTheme().displayLarge,
-            ),
-            Text("${totalOrderPrice}", style: textTheme().displayLarge),
-          ],
-        ),
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //   children: [
+        //     Text(
+        //       "장바구니 금액",
+        //       style: textTheme().displayLarge,
+        //     ),
+        //     Text("${totalOrderPrice}", style: textTheme().displayLarge),
+        //   ],
+        // ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

@@ -1,9 +1,6 @@
-import 'package:final_project_team02/data/global_data/admin_info.dart';
-import 'package:intl/intl.dart';
-
 class CartList {
   final int cartId;
-  final int itemsId;
+  final int itemId;
   final int quantity;
   final int itemPrice;
   final int totalItemPrice;
@@ -12,7 +9,7 @@ class CartList {
 
   const CartList({
     required this.cartId,
-    required this.itemsId,
+    required this.itemId,
     required this.quantity,
     required this.itemName,
     required this.itemPhotoBase64,
@@ -23,7 +20,7 @@ class CartList {
   factory CartList.fromJson(Map<String, dynamic> json) {
     return CartList(
       cartId: json["cartId"],
-      itemsId: json["itemId"],
+      itemId: json["itemId"],
       quantity: json["quantity"],
       itemPrice: json["itemPrice"],
       totalItemPrice: json["totalItemPrice"],
@@ -33,18 +30,18 @@ class CartList {
   }
 //
 
-  //
-  // factory CartList.fromJson(Map<String, dynamic> json) {
-  //   final formatter = NumberFormat('#,###'); // Create a formatter
-  //
-  //   return CartList(
-  //     cartId: json["cartId"],
-  //     itemsId: json["itemId"],
-  //     quantity: json["quantity"],
-  //     itemName: json["itemName"],
-  //     itemPhotoBase64: json["itemPhotoBase64"],
-  //     itemPrice: json["itemPrice"],
-  //     totalItemPrice: json["totalItemPrice"],
-  //   );
-  // }
+//
+// factory CartList.fromJson(Map<String, dynamic> json) {
+//   final formatter = NumberFormat('#,###'); // Create a formatter
+//
+//   return CartList(
+//     cartId: json["cartId"],
+//     itemsId: json["itemId"],
+//     quantity: json["quantity"],
+//     itemName: json["itemName"],
+//     itemPhotoBase64: json["itemPhotoBase64"],
+//     itemPrice: json["itemPrice"],
+//     totalItemPrice: json["totalItemPrice"],
+//   );
+// }
 }
