@@ -10,8 +10,12 @@ import 'package:logger/logger.dart';
 Logger logger = Logger();
 
 class BuyRepo {
-  Future<void> callBuySave(BuySaveReqDTO reqDTO) async {
+  Future<ResponseDTO> callBuySave(BuySaveReqDTO reqDTO) async {
     final response = await dio.post('/app/order',data: reqDTO.toJson());
+    logger.d(response.data!);
+    ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+
+    return responseDTO;
   }
 
 

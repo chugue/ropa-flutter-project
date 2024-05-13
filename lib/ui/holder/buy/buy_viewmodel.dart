@@ -1,3 +1,4 @@
+import 'package:final_project_team02/_core/constants/move.dart';
 import 'package:final_project_team02/data/dtos/buy_req.dart';
 import 'package:final_project_team02/data/dtos/buy_req.dart';
 import 'package:final_project_team02/data/dtos/buy_req.dart';
@@ -9,6 +10,7 @@ import 'package:final_project_team02/ui/holder/buy/buy_data/buy.dart';
 import 'package:final_project_team02/ui/holder/buy/buy_data/cart_infos.dart';
 import 'package:final_project_team02/ui/holder/buy/buy_data/option.dart';
 import 'package:final_project_team02/ui/holder/buy/buy_data/order_info.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class BuyModel {
@@ -34,8 +36,17 @@ class BuyViewModel extends StateNotifier<BuyModel?> {
 
   BuyViewModel(super.state, this.ref, this.sessionData);
 
-  Future<void> buySave(BuySaveReqDTO reqDTO) async {
-    final response = await BuyRepo().callBuySave(reqDTO);
+  Future<ResponseDTO> buySave(BuySaveReqDTO reqDTO) async {
+    ResponseDTO responseDTO = await BuyRepo().callBuySave(reqDTO);
+
+    if(responseDTO.success){
+      Navigator.pushNamedAndRemoveUntil(
+          mContext!, Move.mainHolder, (route) => false);
+    }
+
+    return responseDTO;
+
+
   }
 
   int newSelectedOptionId = 0;

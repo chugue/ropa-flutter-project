@@ -42,7 +42,7 @@ class BuyBody extends ConsumerWidget {
             BuyPageBodyBoxDivider(),
 
             //결제 하기
-            BuyOrderButton(model: model, text: "48,700원 결제하기")
+            BuyOrderButton(model: model, text: "결제하기")
           ],
         ),
       );
