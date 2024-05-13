@@ -13,6 +13,7 @@ class BuyAddress extends StatelessWidget {
   Widget build(BuildContext context) {
     ExpandableController expController =
         new ExpandableController(initialExpanded: true);
+
     return ExpandablePanel(
       controller: expController,
       header: Padding(
@@ -29,6 +30,8 @@ class BuyAddress extends StatelessWidget {
       expanded: Column(
         children: [
           BuyAddressTab(),
+
+          //배송메세지 요청사항
           BuyMainAddressRequest(),
         ],
       ),

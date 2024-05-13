@@ -18,6 +18,7 @@ class BuyAddressTabBarView extends StatelessWidget {
             children: [
               //회원정보 동일, 새로운 배송지 (선택)
               BuyAddressTabBarViewRadio(),
+
               BuyAddressTabBarViewInput(),
               SizedBox(height: 10),
               Divider(color: Colors.black12),

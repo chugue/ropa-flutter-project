@@ -85,6 +85,7 @@ class ItemBuyButton extends ConsumerWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
                         ),
+                        //TODO: 중간점검 이후 구현
                         // child: Padding(
                         //   padding: const EdgeInsets.only(bottom: 8.0),
                         //   child: Align(
@@ -156,6 +157,8 @@ class ItemBuyButton extends ConsumerWidget {
                                   border: Border.all()),
                             ),
                           ),
+
+                          //TODO: 구매하기 페이지 이동
                           InkWell(
                             hoverColor: Colors.transparent,
                             onTap: () {

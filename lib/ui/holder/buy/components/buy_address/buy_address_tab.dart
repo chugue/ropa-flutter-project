@@ -12,7 +12,10 @@ class BuyAddressTab extends StatelessWidget {
         length: 2,
         child: Column(
           children: [
+            //탭바 [ 직접입력, 최근배송지]
             BuyAddressTabBar(),
+
+            // 탭바 뷰
             BuyAddressTabBarView(),
           ],
         ),
