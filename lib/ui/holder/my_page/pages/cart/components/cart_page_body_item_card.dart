@@ -52,7 +52,7 @@ class CartPageBodyItemCard extends ConsumerWidget {
                         ),
 
                         //카드 상세
-                        CartPageBodyItemCardDetail(model: model!, index: index),
+                        CartPageBodyItemCardDetail(model: model, index: index),
 
                         Divider(),
                         SizedBox(width: 20),

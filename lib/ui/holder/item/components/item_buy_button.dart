@@ -165,7 +165,8 @@ class ItemBuyButton extends ConsumerWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => BuyPage()));
+                                      builder: (context) =>
+                                          BuyPage(itemIds: [itemId])));
                             },
                             child: Container(
                               width: 150,
