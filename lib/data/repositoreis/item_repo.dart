@@ -4,7 +4,6 @@ import 'package:final_project_team02/ui/holder/item/item_data/detail_photos.dart
 import 'package:final_project_team02/ui/holder/item/item_data/item.dart';
 import 'package:final_project_team02/ui/holder/item/item_data/main_photos.dart';
 import 'package:final_project_team02/ui/holder/item/item_datail_viewmodel.dart';
-import 'package:logger/logger.dart';
 
 import '../dtos/respons_dto.dart';
 
@@ -28,7 +27,10 @@ class ItemRepo {
           detailPhtos.map((e) => DetailPhotos.fromJson(e)).toList();
 
       ItemDetailListModel itemDetailListModel = ItemDetailListModel(
-          detailPhotos: detailPhotoList, mainPhotos: mainPhotoList, item: item);
+        detailPhotos: detailPhotoList,
+        mainPhotos: mainPhotoList,
+        item: item,
+      );
       responseDTO.response = itemDetailListModel;
     }
     return responseDTO;

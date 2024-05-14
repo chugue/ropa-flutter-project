@@ -1,12 +1,16 @@
+import 'package:final_project_team02/data/global_data/user.dart';
+import 'package:final_project_team02/main.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/order/order_data/item_history_list.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../../../../data/global_data/user.dart';
-import '../../../../../main.dart';
 
 class UserMyPageModel {
   final User user;
+  final ItemHistoryList itemHistoryList;
 
-  UserMyPageModel(this.user);
+  const UserMyPageModel({
+    required this.user,
+    required this.itemHistoryList,
+  });
 }
 
 class UserMyPageViewModel extends StateNotifier<UserMyPageModel?> {

@@ -1,14 +1,10 @@
-import 'package:final_project_team02/data/dtos/cart_req.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
-import 'package:final_project_team02/data/repositoreis/cart_repo.dart';
 import 'package:final_project_team02/data/repositoreis/item_repo.dart';
 import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:final_project_team02/main.dart';
 import 'package:final_project_team02/ui/holder/item/item_data/detail_photos.dart';
 import 'package:final_project_team02/ui/holder/item/item_data/item.dart';
 import 'package:final_project_team02/ui/holder/item/item_data/main_photos.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/cart/cart_data/Cart.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/cart/cart_data/CartList.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ItemDetailListModel {
@@ -29,10 +25,8 @@ class ItemDetailListViewModel extends StateNotifier<ItemDetailListModel?> {
   final mContext = navigatorKey.currentContext;
   Ref ref;
   SessionData sessionData;
+
   ItemDetailListViewModel(super.state, this.ref, this.sessionData);
-
-
-
 
   void updateSelection(int selecteItem) {
     if (state != null) {

@@ -1,13 +1,18 @@
+import 'package:final_project_team02/ui/holder/my_page/pages/order/order_history_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'order_history_page_body_exchange_return_tab_view.dart';
 import 'order_history_page_body_order_tab_view.dart';
 import 'order_history_page_body_tab_bar.dart';
 import 'order_history_page_body_title.dart';
 
-class OrderHistoryPageBody extends StatelessWidget {
+class OrderHistoryPageBody extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    OrderHistoryModel? model = ref.watch(orderHistoryProvider);
+    print('⭐⭐⭐⭐⭐⭐${model.toString()}');
+
     return Padding(
       padding: const EdgeInsets.only(top: 25),
       child: Container(
@@ -48,7 +53,9 @@ class OrderHistoryPageBody extends StatelessWidget {
                         Expanded(
                           child: TabBarView(
                             children: [
-                              OrderHistoryPageBodyOrderTabView(),
+                              Expanded(
+                                  child: OrderHistoryPageBodyOrderTabView(
+                                      model: model!)),
                               OrderHistoryPageBodyExchangeReturnTabView()
                             ],
                           ),
