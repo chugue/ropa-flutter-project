@@ -33,9 +33,10 @@ class CodiDetailViewModel extends StateNotifier<CodiDetailModel?> {
   Future<ResponseDTO> loveCount(int codiId) async {
     if (state!.codi.isLoved == false) {
       ResponseDTO responseDTO = await CodiRepo().callSaveLoveCount(codiId);
+
       if (responseDTO.success) {
         bool isLoved = !state!.codi.isLoved;
-        int loveCount = state!.codi.loveCount! + 1;
+        int loveCount = state!.codi.loveCount + 1;
 
         Codi codi = Codi(
           codiId: codiId,

@@ -134,6 +134,7 @@ class ItemBuyButton extends ConsumerWidget {
 
                               CartSaveDTO reqDTO =
                                   CartSaveDTO(itemId: itemId, quantity: 1);
+
                               ref.read(cartProvider.notifier).cartSave(reqDTO);
                             },
                             child: Container(

@@ -1,15 +1,13 @@
 import 'package:final_project_team02/_core/constants/move.dart';
 import 'package:final_project_team02/data/dtos/buy_req.dart';
-import 'package:final_project_team02/data/dtos/buy_req.dart';
-import 'package:final_project_team02/data/dtos/buy_req.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/repositoreis/buy_repo.dart';
 import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:final_project_team02/main.dart';
 import 'package:final_project_team02/ui/holder/buy/buy_data/buy.dart';
 import 'package:final_project_team02/ui/holder/buy/buy_data/cart_infos.dart';
-import 'package:final_project_team02/ui/holder/buy/buy_data/option.dart';
 import 'package:final_project_team02/ui/holder/buy/buy_data/order_info.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/cart/cart_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -39,55 +37,32 @@ class BuyViewModel extends StateNotifier<BuyModel?> {
   Future<ResponseDTO> buySave(BuySaveReqDTO reqDTO) async {
     ResponseDTO responseDTO = await BuyRepo().callBuySave(reqDTO);
 
-    if(responseDTO.success){
+    if (responseDTO.success) {
+      ref.read(cartProvider.notifier).removeSelectedItems();
+
       Navigator.pushNamedAndRemoveUntil(
           mContext!, Move.mainHolder, (route) => false);
     }
 
     return responseDTO;
-
-
   }
 
   int newSelectedOptionId = 0;
+  String newPayMethod = '';
 
-  void selectPayment(int paymentId) {
+  void selectPayment(int paymentId, String payMethod) {
     newSelectedOptionId = paymentId;
+    newPayMethod = payMethod;
     state = BuyModel(
       buy: state!.buy,
       cartInfos: state!.cartInfos,
-      orderInfo: state!.orderInfo,
+      orderInfo: state!.orderInfo.copyWith(payMethod: newPayMethod),
       orderBuy: state!.orderBuy,
       selectedOptionId: newSelectedOptionId,
     );
   }
 
 // 사용자 입력을 업데이트하는 메서드
-  void updateBuyDetails({
-    required String name,
-    required String phone,
-    required String address,
-    required String detailAddress,
-    required String email,
-  }) {
-    if (state != null) {
-      state = BuyModel(
-        buy: Buy(
-            name: name,
-            phone: phone,
-            address: address,
-            detailAddress: detailAddress,
-            email: email,
-            orderId: state!.buy.orderId,
-            deliveryRequest: state!.buy.deliveryRequest,
-            isBaseAddress: state!.buy.isBaseAddress),
-        cartInfos: state!.cartInfos,
-        orderInfo: state!.orderInfo,
-        orderBuy: state!.orderBuy,
-      );
-    }
-  }
-
   void orderBuy() {
     int newOrderBuy = 0;
     for (int i = 0; i < state!.cartInfos.length; i++) {
