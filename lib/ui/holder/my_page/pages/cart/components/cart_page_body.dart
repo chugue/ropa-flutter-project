@@ -60,9 +60,7 @@ class CartPageBody extends ConsumerWidget {
                   child: InkWell(
                     hoverColor: Colors.transparent,
                     onTap: () {
-                      return ref
-                          .read(cartProvider.notifier)
-                          .goToBuyPage(context, model);
+                      return ref.read(cartProvider.notifier).goToBuyPage(model);
                     },
                     child: Container(
                       width: 350,

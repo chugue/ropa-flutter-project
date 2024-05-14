@@ -31,5 +31,26 @@ class Buy {
       isBaseAddress: json["isBaseAddress"],
     );
   }
-//
+
+  Buy copyWith({
+    String? name,
+    String? phone,
+    String? address,
+    String? detailAddress,
+    String? email,
+    int? orderId,
+    String? deliveryRequest,
+    bool? isBaseAddress,
+  }) {
+    return Buy(
+      name: name ?? this.name,
+      phone: phone ?? this.phone,
+      address: address ?? this.address,
+      detailAddress: detailAddress ?? this.detailAddress,
+      email: email ?? this.email,
+      orderId: orderId ?? this.orderId,
+      deliveryRequest: deliveryRequest ?? this.deliveryRequest,
+      isBaseAddress: isBaseAddress ?? this.isBaseAddress,
+    );
+  }
 }
