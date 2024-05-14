@@ -6,14 +6,14 @@ class User {
   final String? instagram;
   final DateTime? createdAt;
 
-  // 😎Creator User
-  int? creatorId;
-  String? photoName;
-  String? base64;
-  String? height;
-  String? weight;
-  String? job;
-  String? introMsg;
+  // // 😎Creator User
+  // int? creatorId;
+  // String? photoName;
+  // String? base64;
+  // String? height;
+  // String? weight;
+  // String? job;
+  // String? introMsg;
 
   User({
     required this.id,
@@ -22,14 +22,14 @@ class User {
     required this.blueChecked,
     this.instagram,
     this.createdAt,
-    // 😎Creator User
-    this.creatorId,
-    this.photoName,
-    this.base64,
-    this.height,
-    this.weight,
-    this.job,
-    this.introMsg,
+    // // 😎Creator User
+    // this.creatorId,
+    // this.photoName,
+    // this.base64,
+    // this.height,
+    // this.weight,
+    // this.job,
+    // this.introMsg,
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
@@ -40,14 +40,14 @@ class User {
       username: json["username"] ?? '',
       instagram: json["instagram"] ?? '',
       createdAt: json["createdAt"] ?? null,
-      // 😎Creator User
-      creatorId: json["creatorId"] ?? null,
-      photoName: json["photoName"] ?? '',
-      base64: json["base64"] ?? '',
-      height: json["height"] ?? '',
-      weight: json["weight"] ?? '',
-      job: json["job"] ?? '',
-      introMsg: json["introMsg"] ?? '',
+      // // 😎Creator User
+      // creatorId: json["creatorId"] ?? null,
+      // photoName: json["photoName"] ?? '',
+      // base64: json["base64"] ?? '',
+      // height: json["height"] ?? '',
+      // weight: json["weight"] ?? '',
+      // job: json["job"] ?? '',
+      // introMsg: json["introMsg"] ?? '',
     );
   }
 }

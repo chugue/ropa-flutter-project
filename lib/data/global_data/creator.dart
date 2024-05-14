@@ -1,13 +1,13 @@
 class Creator {
-  final int creatorId;
-  final bool blueChecked;
-  final String photoName;
-  final String base64;
-  final String nickName;
-  final String height;
-  final String weight;
-  final String job;
-  final String introMsg;
+  int? creatorId;
+  bool? blueChecked;
+  String? photoName;
+  String? base64;
+  String nickName;
+  String? height;
+  String? weight;
+  String? job;
+  String? introMsg;
 
   Creator({
     required this.creatorId,
@@ -23,15 +23,15 @@ class Creator {
 
   factory Creator.fromJson(Map<String, dynamic> json) {
     return Creator(
-      creatorId: int.parse(json["creatorId"]),
+      creatorId: json["creatorId"] ?? null,
       blueChecked: json["blueChecked"],
-      photoName: json["photoName"],
-      base64: json["base64"],
-      nickName: json["nickName"],
-      height: json["height"],
-      weight: json["weight"],
-      job: json["job"],
-      introMsg: json["introMsg"],
+      photoName: json["photoName"] ?? '',
+      base64: json["base64"] ?? '',
+      nickName: json["nickName"] ?? '',
+      height: json["height"] ?? '',
+      weight: json["weight"] ?? '',
+      job: json["job"] ?? '',
+      introMsg: json["introMsg"] ?? '',
     );
   }
 }

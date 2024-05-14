@@ -47,7 +47,7 @@ class CreatorViewTop extends StatelessWidget {
           children: [
             Text(model.user.nickName,
                 style: textTheme().displayMedium), // :TODO 04수정
-            Text("${model.user} • ${model.user.height} • ${model.user.job}",
+            Text("${model.user} • ${model!.user.height} • ${model.user.job}",
                 // "185cm - 80kg - 직장인",
                 style: textTheme().bodyMedium), // :TODO 04수정
           ],

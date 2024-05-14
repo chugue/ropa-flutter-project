@@ -1,5 +1,5 @@
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
-import 'package:final_project_team02/data/global_data/user.dart';
+import 'package:final_project_team02/data/global_data/creator.dart';
 import 'package:final_project_team02/data/repositoreis/user_repo.dart';
 import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:final_project_team02/main.dart';
@@ -9,7 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // MODEL
 class CreatorModel {
-  final User user;
+  final Creator user;
   final List<CodiList> codiList;
   final List<ItemList> itemList;
 
