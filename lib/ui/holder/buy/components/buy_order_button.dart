@@ -1,15 +1,20 @@
-import 'package:final_project_team02/ui/holder/port_one/port_one_page.dart';
+import 'package:final_project_team02/data/dtos/buy_req.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class BuyOrderButton extends StatelessWidget {
+import '../buy_viewmodel.dart';
+
+class BuyOrderButton extends ConsumerWidget {
   final String text;
+  BuyModel model;
 
-  const BuyOrderButton({
+  BuyOrderButton({
     required this.text,
+    required this.model,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: SizedBox(
@@ -17,8 +22,30 @@ class BuyOrderButton extends StatelessWidget {
         height: 50,
         child: ElevatedButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => PaymentTest()));
+            PurchaseInfo purchaseInfo = PurchaseInfo(
+              orderAmount: model.orderInfo.orderAmount,
+              deliveryType: "FREE",
+              deliveryFee: model.orderInfo.deliveryFee,
+              discount: model.orderInfo.discount,
+              purchaseAmount: model.orderInfo.purchaseAmount,
+              payMethod: model.orderInfo.payMethod,
+              savedPayMethod: model.orderInfo.savedPayMethod,
+            );
+
+            BuySaveReqDTO reqDTO = BuySaveReqDTO(
+              name: model.buy.name,
+              phone: model.buy.phone,
+              email: model.buy.email,
+              address: model.buy.address,
+              isBaseAddress: model.buy.isBaseAddress,
+              deliveryRequest: model.buy.deliveryRequest,
+              detailAddress: model.buy.detailAddress,
+              purchaseInfo: purchaseInfo,
+              postCode: "12345",
+            );
+            print("😍😍😍😍😍😍😍😍${reqDTO.toString()}");
+            //여기에 메소드 넣기
+            ref.read(buyProvider.notifier).buySave(reqDTO);
           },
           child: Text(
             text,

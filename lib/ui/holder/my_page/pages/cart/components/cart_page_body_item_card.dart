@@ -64,7 +64,7 @@ class CartPageBodyItemCard extends ConsumerWidget {
                           children: [
                             //아이템 카드 삭제
                             CartPageBodyItemCardDelete(
-                              cartId: model.cartList[index].cartId,
+                              itemId: model.cartList[index].itemId,
                             ),
 
                             // //아이템 카드 주문하기

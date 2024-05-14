@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 class BuyOrderItemCard extends StatelessWidget {
@@ -37,9 +38,13 @@ class BuyOrderItemCard extends StatelessWidget {
                     child: Container(
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(
-                          "${photoPath}",
-                          fit: BoxFit.cover,
+                        child: Container(
+                          width: double.infinity, // 셀의 전체 너비 사용
+                          height: double.infinity, // 셀의 전체 높이 사용
+                          child: Image.memory(
+                            Base64Decoder().convert('${photoPath}'),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
@@ -97,13 +102,13 @@ class BuyOrderItemCard extends StatelessWidget {
                           ],
                         ),
                       ),
-                      IconButton(
-                        onPressed: () {
-                          print("Delete Button Pressed");
-                        },
-                        icon: Icon(CupertinoIcons.xmark_circle),
-                        padding: EdgeInsets.zero,
-                      )
+                      // IconButton(
+                      //   onPressed: () {
+                      //     print("Delete Button Pressed");
+                      //   },
+                      //   icon: Icon(CupertinoIcons.xmark_circle),
+                      //   padding: EdgeInsets.zero,
+                      // )
                     ],
                   ),
                 ),
