@@ -66,7 +66,7 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20))),
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 30),
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Form(
                               key: _formKey,
                               child: Column(
@@ -76,6 +76,7 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
                                   Divider(),
                                   SizedBox(height: 20),
                                   UserMyPageApplyModalBodyFormTextField(
+                                    keyType: TextInputType.number,
                                     title: "키    ",
                                     hinText: "키를 ",
                                     controller: _height,
@@ -85,6 +86,7 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
                                   ),
                                   SizedBox(height: 20),
                                   UserMyPageApplyModalBodyFormTextField(
+                                    keyType: TextInputType.number,
                                     title: "체중 ",
                                     hinText: "체중을 ",
                                     controller: _weight,
@@ -94,8 +96,9 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
                                   ),
                                   SizedBox(height: 20),
                                   UserMyPageApplyModalBodyFormTextField(
-                                    title: "링크 ",
-                                    hinText: "링크를 ",
+                                    keyType: TextInputType.text,
+                                    title: "@인스타   ",
+                                    hinText: "@인스타를 ",
                                     controller: _instagram,
                                     physical: "",
                                     validator:
@@ -103,6 +106,7 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
                                   ),
                                   SizedBox(height: 20),
                                   UserMyPageApplyModalBodyFormTextField(
+                                    keyType: TextInputType.text,
                                     title: "직업 ",
                                     hinText: "직업을 ",
                                     controller: _job,
@@ -143,9 +147,6 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
                                         String comment = _comment.text.trim();
                                         String job = _job.text.trim();
 
-                                        print(
-                                            "999999999999999999999999999999999999 ${height}, ${weight}, ${comment},${job}");
-
                                         UserCreatorApplyReqDTO reqDTO =
                                             UserCreatorApplyReqDTO(
                                           comment: comment,
@@ -155,8 +156,6 @@ class UserMyPageApplyModalBodyForm extends ConsumerWidget {
                                           height: height + 'cm',
                                         );
 
-                                        print(
-                                            "00000000000000000000000000000000000${reqDTO.toJson()}00000000000000000000000000000000");
                                         SessionData s =
                                             ref.read(sessionProvider);
                                         s.UserCreatorApply(reqDTO);

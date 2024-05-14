@@ -5,11 +5,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:logger/logger.dart';
 
 final accessToken =
-    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuyCrOyaqeyekDHsnZgg7Iuk66qFIiwiaWQiOjEsImV4cCI6MTcxNTQwMzMzOSwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSJ9.ZxxBlb8tbsBKfcYBuY4IIqXSxBY1mU7nizO1qK8AYzd7IgiR-5jYPlxzQb-EMrHTtSb24lDYCvMdrO9oXZUcRA';
+    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuyCrOyaqeyekDHsnZgg7Iuk66qFIiwiaWQiOjEsImV4cCI6MTcxNTY3MTk5NCwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSJ9.1RnYFrIsghzIDfSlA1_kTaOnOBhR6jFPFz7JD7wN7AGOP5gDLTsNecGu-JWDL3P0odrV1Zo_7xG_nWn3wryQUw';
 
 void main() async {
-  // await callLogin_test2();
-  await callUserCreatorApply_test();
+  await callLogin_test2();
+  // await callUserCreatorApply_test();
 }
 
 Future<void> callUserCreatorApply_test() async {
@@ -26,8 +26,9 @@ Future<void> callUserProfile_test() async {
   await UserRepo().callUserProfile();
 }
 
-Future<void> callSetting_test() async {
-  await UserRepo().callSetting();
+Future<void> callUserSetting_test() async {
+  // await UserRepo().callUserSetting(accessToken);
+  await UserRepo().callUserSetting();
 }
 
 Future<void> callJoin_test() async {

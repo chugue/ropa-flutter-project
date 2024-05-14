@@ -25,8 +25,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
-      theme: darkMode,
-      initialRoute: Move.mainHoder,
+      theme: lightMode,
+      initialRoute: Move.mainHolder,
       routes: getRouters(),
     );
   }

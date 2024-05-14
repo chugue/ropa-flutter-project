@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'home_auto_ad_slider.dart';
 
 class AdScroll extends StatelessWidget {
-  const AdScroll({
-    super.key,
+  AdScroll({
     required PageController pageController,
   }) : _pageController = pageController;
 

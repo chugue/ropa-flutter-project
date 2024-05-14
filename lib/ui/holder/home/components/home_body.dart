@@ -22,7 +22,9 @@ class HomeBody extends ConsumerWidget {
     HomeModel? model = ref.watch(homeProvider);
 
     if (model == null) {
-      return Center(child: CircularProgressIndicator());
+      return Center(
+        child: CircularProgressIndicator(),
+      );
     } else {
       timer();
       return CustomScrollView(

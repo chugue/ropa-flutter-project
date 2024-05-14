@@ -9,7 +9,7 @@ class CartPageBodyItemCardOrder extends StatelessWidget {
         backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade500),
       ),
       onPressed: () {
-        // 버튼 클릭 시 실행할 코드
+
       },
       child: Text("주문하기"),
     );

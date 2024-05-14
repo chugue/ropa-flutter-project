@@ -8,6 +8,7 @@ class UserMyPageApplyModalBodyFormTextField extends StatelessWidget {
   final String physical;
   final controller;
   final validator;
+  final keyType;
 
   const UserMyPageApplyModalBodyFormTextField({
     required this.title,
@@ -15,6 +16,7 @@ class UserMyPageApplyModalBodyFormTextField extends StatelessWidget {
     required this.physical,
     required this.controller,
     required this.validator,
+    required this.keyType,
   });
 
   @override
@@ -23,7 +25,7 @@ class UserMyPageApplyModalBodyFormTextField extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         SizedBox(
-          width: 50,
+          width: 70,
           child: Text(
             "${title}: ",
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -33,19 +35,10 @@ class UserMyPageApplyModalBodyFormTextField extends StatelessWidget {
           width: 150,
           height: 50,
           child: UserMyPageApplyModalBodyCustomTextField(
+            keyType: keyType,
             hinText: "${hinText} 입력해주세요.",
             controller: controller,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return '값을 입력해주세요';
-              }
-              final number = double.tryParse(value);
-              if (number == null) {
-                return '숫자만 입력해주세요';
-              }
-              // 여기서 추가적인 유효성 검사를 할 수 있습니다. 예: 범위 검사`
-              return null; // 입력 값이 유효할 경우 null을 반환
-            },
+            validator: validator,
           ),
         ),
         Text(

@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 class Move {
-  static String mainHoder = "/mainHoder";
+  static String mainHolder = "/mainHolder";
   static String loginPage = "/login";
   static String homePage = "/home";
   static String joinPage = "/join";
@@ -26,7 +26,7 @@ class Move {
 Map<String, Widget Function(BuildContext)> getRouters() {
   return {
     Move.loginIsCheck: (context) => LoginIsCheck(),
-    Move.mainHoder: (context) => MainHolder(),
+    Move.mainHolder: (context) => MainHolder(),
     Move.homePage: (context) => const HomePage(),
     Move.loginPage: (context) => const LoginPage(),
     Move.joinPage: (context) => const JoinPage(),

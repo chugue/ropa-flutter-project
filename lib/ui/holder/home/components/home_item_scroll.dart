@@ -1,7 +1,8 @@
-import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
-import '../../item/item_page.dart';
+import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
+import 'package:final_project_team02/ui/holder/item/item_page.dart';
+import 'package:flutter/material.dart';
 
 class ItemScroll extends StatelessWidget {
   final HomeModel? model;
@@ -26,7 +27,6 @@ class ItemScroll extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        print("사진 클릭 됨");
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -37,12 +37,39 @@ class ItemScroll extends StatelessWidget {
                       },
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.40,
-                        height: MediaQuery.of(context).size.width * 0.40,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 5.0),
-                          child: Image.network(
-                            "https://picsum.photos/id/${model!.itemsPhotos[index].itemsId}/600/600",
-                            fit: BoxFit.cover,
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                height:
+                                    MediaQuery.of(context).size.width * 0.40,
+                                child: Image.memory(
+                                  Base64Decoder().convert(
+                                      model!.itemsPhotos[index].base64),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      model!.itemsPhotos[index].adminInfo
+                                          .brandName,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    // Text(
+                                    //   model!.itemsPhotos[index].name,
+                                    //   style: TextStyle(fontSize: 12),
+                                    // ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),

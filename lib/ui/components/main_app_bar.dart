@@ -1,5 +1,4 @@
-import 'package:final_project_team02/ui/holder/main_holder.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:final_project_team02/_core/constants/move.dart';
 import 'package:flutter/material.dart';
 
 class MainAppBar extends StatelessWidget {
@@ -15,17 +14,12 @@ class MainAppBar extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              print("로고 클릭 됨");
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MainHolder(),
-                ),
-              );
+              Navigator.pushNamedAndRemoveUntil(
+                  context, Move.mainHolder, (route) => false);
             },
             child: SizedBox(
               child: Image.asset(
-                "assets/images/ropa_logo.png",
+                "assets/images/ropa_home_logo.png",
                 width: 120,
               ),
             ),
@@ -33,14 +27,14 @@ class MainAppBar extends StatelessWidget {
         ],
       ),
       actions: [
-        IconButton(
-          onPressed: () {},
-          icon: Icon(
-            CupertinoIcons.ellipsis,
-            size: 30,
-          ),
-        ),
-        SizedBox(width: 16),
+        // IconButton(
+        //   onPressed: () {},
+        //   icon: Icon(
+        //     CupertinoIcons.ellipsis,
+        //     size: 30,
+        //   ),
+        // ),
+        // SizedBox(width: 16),
       ],
     );
   }
