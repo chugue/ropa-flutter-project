@@ -39,16 +39,23 @@ class CartPageBodyItemCardDetail extends StatelessWidget {
           ),
         ),
         SizedBox(width: 16),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(model.cartList[index].itemName,
-                style: textTheme().displayMedium),
-            Text('배송: [무료] / 기본배송', style: textTheme().displayMedium),
-            SizedBox(width: 16),
-            Text('상품금액: ${itemPirce}', style: textTheme().displayMedium),
-            // CartPageBodyItemCardDetailQuantity(quantity: _quantity)
-          ],
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                child: Text(
+                  model.cartList[index].itemName,
+                  style: textTheme().displayMedium,
+                  maxLines: 2,
+                ),
+              ),
+              Text('배송: [무료] / 기본배송', style: textTheme().displayMedium),
+              SizedBox(width: 16),
+              Text('상품금액: ${itemPirce}', style: textTheme().displayMedium),
+              // CartPageBodyItemCardDetailQuantity(quantity: _quantity)
+            ],
+          ),
         ),
       ],
     );
