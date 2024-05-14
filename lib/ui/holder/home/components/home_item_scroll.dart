@@ -48,7 +48,7 @@ class ItemScroll extends StatelessWidget {
                                 child: Image.memory(
                                   Base64Decoder().convert(
                                       model!.itemsPhotos[index].base64),
-                                  fit: BoxFit.cover,
+                                  fit: BoxFit.contain,
                                 ),
                               ),
                               Padding(
