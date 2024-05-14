@@ -14,7 +14,7 @@ class ItemScroll extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: 238,
       child: PageView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, CodiIndex) {
@@ -30,21 +30,21 @@ class ItemScroll extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ItemPage(
-                                    itemId: model!.itemsPhotos[index].itemsId,
-                                  )),
+                            builder: (context) => ItemPage(
+                              itemId: model!.itemsPhotos[index].itemsId,
+                            ),
+                          ),
                         );
                       },
                       child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.40,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Container(
-                                height:
-                                    MediaQuery.of(context).size.width * 0.40,
+                                width: 200,
+                                height: 200,
                                 child: Image.memory(
                                   Base64Decoder().convert(
                                       model!.itemsPhotos[index].base64),
