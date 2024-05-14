@@ -32,7 +32,7 @@ class UserMyPage extends ConsumerWidget {
             cart: Icons.shopping_basket,
           ),
           backgroundColor: Colors.white,
-          body: CreatorBody(),
+          body: CreatorBody(sessionId: sessionData.user!.id),
         );
       }
     }

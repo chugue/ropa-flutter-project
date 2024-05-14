@@ -1,17 +1,17 @@
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/components/creator_bottom.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/components/creator_top.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/user/user_viewmodel.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CreatorBody extends ConsumerWidget {
-  const CreatorBody({
-    super.key,
-  });
+  final sessionId;
+
+  const CreatorBody({super.key, this.sessionId});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    UserMyPageModel? model = ref.watch(UserMyPageProvider(1));
+    CreatorModel? model = ref.watch(creatorProvider);
     print(model);
 
     if (model == null) {

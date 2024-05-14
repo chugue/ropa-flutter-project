@@ -40,8 +40,7 @@ class ItemScroll extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
+                            children: [
                               Container(
                                 width: 200,
                                 height: 200,
@@ -51,23 +50,19 @@ class ItemScroll extends StatelessWidget {
                                   fit: BoxFit.contain,
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 8.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      model!.itemsPhotos[index].adminInfo
-                                          .brandName,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(
-                                      model!.itemsPhotos[index].name,
-                                      style: TextStyle(fontSize: 12),
-                                    ),
-                                  ],
-                                ),
+                              Column(
+                                children: [
+                                  Text(
+                                    model!
+                                        .itemsPhotos[index].adminInfo.brandName,
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    model!.itemsPhotos[index].name,
+                                    style: TextStyle(fontSize: 12),
+                                  ),
+                                ],
                               ),
                             ],
                           ),

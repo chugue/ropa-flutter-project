@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:logger/logger.dart';
 
 final accessToken =
-    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuyCrOyaqeyekDHsnZgg7Iuk66qFIiwiaWQiOjEsImV4cCI6MTcxNTY3MjM1MiwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSJ9.45BIGZLKIkXfFca_y8wHAj0JZOVV8Lym1VpB4PcbH0G4e5XIoGu9NDKvQlC0PRu-7kqwa6wD_5lXZoNbCAy0Cg';
+    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuyCrOyaqeyekDPsnZgg7Iuk66qFIiwiaWQiOjMsImV4cCI6MTcxNTczODU1NCwiZW1haWwiOiJ1c2VyM0BleGFtcGxlLmNvbSJ9.ahzs_iYbIM8JK-BW6zxnZZa36aw1n_nxBojto84GMPWBf3vs0A5q8tLgiKvYyrMvO70iuq0j7HbFSxqXaxKQTw';
 
 void main() async {
   await callUserMyPage(accessToken);
@@ -13,7 +13,7 @@ void main() async {
 }
 
 Future<void> callUserMyPage(accessToken) async {
-  await UserRepo().callUserMyPage();
+  await UserRepo().callCreatorView();
 }
 
 Future<void> callUserCreatorApply_test() async {

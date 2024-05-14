@@ -47,7 +47,8 @@ class CreatorViewTop extends StatelessWidget {
           children: [
             Text(model.user.nickName,
                 style: textTheme().displayMedium), // :TODO 04수정
-            Text("${model.user!} • ${model.user.weight} • ${model.user.job}",
+            Text("${model.user} • ${model.user.height} • ${model.user.job}",
+                // "185cm - 80kg - 직장인",
                 style: textTheme().bodyMedium), // :TODO 04수정
           ],
         ),
@@ -60,7 +61,7 @@ class CreatorViewTop extends StatelessWidget {
       children: [
         Column(
           children: [
-            Text(model.user.introMsg!, style: textTheme().headlineSmall),
+            Text('어깨 넓은 보통 체형', style: textTheme().headlineSmall),
             Text('어깨 넓은 보통 체형', style: textTheme().headlineSmall),
             Text('어깨 넓은 보통 체형', style: textTheme().headlineSmall),
           ],

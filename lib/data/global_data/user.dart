@@ -1,21 +1,21 @@
 class User {
-  final int id;
+  final int? id;
   final String nickName;
   final String username;
-  final bool blueChecked;
+  final bool? blueChecked;
   final String? instagram;
   final DateTime? createdAt;
 
   // 😎Creator User
-  final int? creatorId;
-  final String? photoName;
-  final String? base64;
-  final String? height;
-  final String? weight;
-  final String? job;
-  final String? introMsg;
+  int? creatorId;
+  String? photoName;
+  String? base64;
+  String? height;
+  String? weight;
+  String? job;
+  String? introMsg;
 
-  const User({
+  User({
     required this.id,
     required this.nickName,
     required this.username,
@@ -34,7 +34,7 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      id: json["id"],
+      id: json["id"] ?? null,
       blueChecked: json["blueChecked"],
       nickName: json["nickName"] ?? '',
       username: json["username"] ?? '',

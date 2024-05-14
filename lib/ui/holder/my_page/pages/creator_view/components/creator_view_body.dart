@@ -14,14 +14,12 @@ class CreatorViewBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CreatorModel? model = ref.watch(CreatorProvider(creatorId));
+    CreatorModel? model = ref.watch(creatorProvider);
+    print("승호");
 
     if (model == null) {
       return Center(
-        child: CircularProgressIndicator(
-          backgroundColor: Colors.white,
-          color: Colors.blue,
-        ),
+        child: CircularProgressIndicator(),
       );
     } else {
       return NestedScrollView(
