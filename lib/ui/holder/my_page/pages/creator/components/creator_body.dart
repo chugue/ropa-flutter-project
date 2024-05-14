@@ -11,9 +11,11 @@ class CreatorBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CreatorModel? model = ref.watch(creatorProvider);
+    CreatorModel? model = ref.watch(creatorProvider(1));
+    print("크리에이터 바디");
+    print(model!.codiList[1].photoName);
     print(model);
-
+    // TODO 모델이 Null이 들어옴.
     if (model == null) {
       return Center(
         child: CircularProgressIndicator(

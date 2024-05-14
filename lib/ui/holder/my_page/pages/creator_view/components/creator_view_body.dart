@@ -14,7 +14,7 @@ class CreatorViewBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CreatorModel? model = ref.watch(creatorProvider);
+    CreatorModel? model = ref.watch(creatorProvider(1));
     print("승호");
 
     if (model == null) {

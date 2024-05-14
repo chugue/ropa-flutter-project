@@ -29,7 +29,7 @@ class HomeBody extends ConsumerWidget {
       timer();
       return CustomScrollView(
         slivers: [
-          //광고 스크롤ㅡ
+          //광고 스크롤
           AdScroll(pageController: _pageController),
           //메인 타이틀
           MainTitle(),

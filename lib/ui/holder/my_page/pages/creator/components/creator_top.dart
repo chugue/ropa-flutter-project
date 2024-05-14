@@ -52,7 +52,8 @@ class CreatorTop extends StatelessWidget {
                 // "Kenneth",
                 style: textTheme().displayMedium), // :TODO 04수정
             Text(
-                "${model!.user.height} • ${model!.user.weight} • ${model!.user.job}",
+                // "${model!.user.height} • ${model!.user.weight} • ${model!.user.job}",
+                "${model!.codiList[1].photoName} • ${model!.user.weight} • ${model!.user.job}",
                 // "185cm - 80kg - 직장인",
                 style: textTheme().bodyMedium), // :TODO 04수정
           ],

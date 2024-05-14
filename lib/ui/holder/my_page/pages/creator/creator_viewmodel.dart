@@ -32,7 +32,7 @@ class CreatorViewModel extends StateNotifier<CreatorModel?> {
     this.sessionData,
   );
 
-  Future<ResponseDTO> notifyInit() async {
+  Future<ResponseDTO> notifyInit(creatorId) async {
     ResponseDTO responseDTO = await UserRepo().callCreatorView();
 
     if (responseDTO.success) {
@@ -44,17 +44,16 @@ class CreatorViewModel extends StateNotifier<CreatorModel?> {
 }
 
 // PROVIDER
-// final creatorProvider =
-//     StateNotifierProvider.family<CreatorViewModel, CreatorModel?, int>(
-//   (ref, creatorId) {
-//     SessionData sessionData = ref.read(sessionProvider);
-//
-//     return CreatorViewModel(null, ref, sessionData)..notifyInit(creatorId);
-//   },
-// );
-final creatorProvider = StateNotifierProvider<CreatorViewModel, CreatorModel?>(
-  (ref) {
+final creatorProvider =
+    StateNotifierProvider.family<CreatorViewModel, CreatorModel?, int>(
+  (ref, creatorId) {
     SessionData sessionData = ref.read(sessionProvider);
-    return CreatorViewModel(null, ref, sessionData)..notifyInit();
+
+    return CreatorViewModel(null, ref, sessionData)..notifyInit(creatorId);
   },
 );
+// final creatorProvider = StateNotifierProvider<CreatorViewModel, CreatorModel?>(
+//   (ref) {
+//     return CreatorViewModel(null, ref,s)..notifyInit();
+//   },
+// );
