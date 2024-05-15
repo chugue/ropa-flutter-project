@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:final_project_team02/ui/components/bottom_button.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/profile/components/profile_edit_info.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/profile/components/profile_fixed_info.dart';
@@ -17,7 +19,7 @@ class ProfileSetting extends ConsumerWidget {
     if (model == null) {
       return Center(
         child: CircularProgressIndicator(
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.white,
           color: Colors.blue,
         ),
       );
@@ -55,7 +57,7 @@ class ProfileSetting extends ConsumerWidget {
                 SizedBox(height: 10),
                 _buildTitle(),
                 // 프로필 제목
-                _buildPhoto(),
+                _buildPhoto(model.userProfile.photoDTO.base64),
                 // 사진, 바꾸기 칼럼
                 SizedBox(height: 10),
                 FixedInfo(
@@ -72,8 +74,8 @@ class ProfileSetting extends ConsumerWidget {
                 // 이름
                 SizedBox(height: 50),
                 EditInfo(
-                  text: "닉네임",
-                  userInfo: model.userProfile.nickName,
+                  fieldName: "닉네임",
+                  fieldValue: model.userProfile.nickName,
                 ),
                 // 닉네임
                 SizedBox(height: 50),
@@ -81,8 +83,8 @@ class ProfileSetting extends ConsumerWidget {
                 // 휴대폰 번호 변경
                 SizedBox(height: 50),
                 EditInfo(
-                  text: "비밀번호 변경",
-                  userInfo: "****",
+                  fieldName: "비밀번호 변경",
+                  fieldValue: "****",
                 ),
                 SizedBox(height: 10),
                 // 비밀번호 변경
@@ -124,13 +126,15 @@ class ProfileSetting extends ConsumerWidget {
   }
 
 // 프로필 사진
-  Widget _buildPhoto() => Container(
+  Widget _buildPhoto(String photo) => Container(
         padding: EdgeInsets.only(top: 20),
         child: Column(
           children: [
             CircleAvatar(
               radius: 50,
-              backgroundImage: AssetImage("assets/images/avatar.jpg"),
+              backgroundImage: photo != null
+                  ? Image.memory(Base64Decoder().convert(photo)).image
+                  : AssetImage("assets/images/avatar.jpg"),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),

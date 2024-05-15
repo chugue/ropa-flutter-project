@@ -5,9 +5,7 @@ import 'package:flutter/material.dart';
 import 'components/settings_body.dart';
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({
-    super.key,
-  });
+  SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {

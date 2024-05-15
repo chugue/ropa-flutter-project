@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       theme: lightMode,
-      initialRoute: Move.mainHoder,
+      initialRoute: Move.mainHolder,
       routes: getRouters(),
     );
   }

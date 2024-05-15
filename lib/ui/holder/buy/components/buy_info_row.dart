@@ -28,13 +28,6 @@ class BuyInfoRow extends StatelessWidget {
                 style: TextStyle(
                     fontWeight: FontWeight.bold, fontSize: 16, color: colors),
               ),
-              Text(
-                "원",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                    color: Colors.black),
-              ),
             ],
           ),
         ),

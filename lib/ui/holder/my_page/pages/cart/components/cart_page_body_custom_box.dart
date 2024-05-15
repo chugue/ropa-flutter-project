@@ -20,9 +20,12 @@ class CartPageCustomBox extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(10),
-          child: Text("${text}",
-              style:
-                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text("${text}",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.black)),
+          ),
         ),
       ),
     );

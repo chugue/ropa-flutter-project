@@ -1,15 +1,16 @@
 import 'package:final_project_team02/_core/constants/move.dart';
 import 'package:final_project_team02/_core/constants/theme.dart';
 import 'package:final_project_team02/_core/uitls/validator_util.dart';
+import 'package:final_project_team02/data/dtos/user_req.dart';
 import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../../data/dtos/user_request.dart';
 import '../../../../components/custom_form_field.dart';
 
 class LoginFrom extends ConsumerWidget {
-  final _email = TextEditingController(text: "user1@example.com");
+  final _email = TextEditingController(
+      text: "user3@example.com"); // user1,2 일반, user3 크리에이터
   final _password = TextEditingController(text: "1234");
   final _formKey = GlobalKey<FormState>();
   bool rememberPassword = true;
@@ -60,6 +61,16 @@ class LoginFrom extends ConsumerWidget {
               }
             },
             child: const Text('로그인'),
+            style: ButtonStyle(
+              minimumSize: MaterialStateProperty.all(
+                Size(double.infinity, 50),
+              ), // 가로 길이 조정
+              shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                ), // 기본 양쪽 둥글 -> 모서리만 5px둥글게
+              ),
+            ),
           ),
           const SizedBox(height: 25.0),
 

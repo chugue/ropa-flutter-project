@@ -19,7 +19,7 @@ class InquiryBrandSelect extends StatelessWidget {
           style: TextStyle(color: Colors.black),
         ),
         DropdownMenu<String>(
-          width: screenWidth * 0.93,
+          width: screenWidth * 0.92,
           initialSelection: "브랜드를 선택해주세요!",
           onSelected: (String? value) {},
           dropdownMenuEntries: [

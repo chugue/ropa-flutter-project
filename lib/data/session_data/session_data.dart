@@ -1,7 +1,7 @@
 import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/_core/constants/move.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
-import 'package:final_project_team02/data/dtos/user_request.dart';
+import 'package:final_project_team02/data/dtos/user_req.dart';
 import 'package:final_project_team02/data/global_data/user.dart';
 import 'package:final_project_team02/data/repositoreis/user_repo.dart';
 import 'package:final_project_team02/main.dart';
@@ -17,7 +17,6 @@ class SessionUser {
   int? selectedUserId;
 
   SessionUser();
-
 }
 
 // 창고
@@ -26,11 +25,15 @@ class SessionData extends SessionUser {
 
   SessionData();
 
-
-  void logout() {
+  void logout() async {
     user = null;
     accessToken = null;
+    globalAccessToken = null;
     isLogin = false;
+
+    await secureStorage.delete(key: "accessToken");
+    Navigator.pushNamedAndRemoveUntil(
+        mContext!, Move.mainHolder, (route) => false);
   }
 
   Future<void> UserCreatorApply(UserCreatorApplyReqDTO reqDTO) async {
@@ -52,9 +55,6 @@ class SessionData extends SessionUser {
           blueChecked: user.blueChecked,
           instagram: user.instagram,
           createdAt: user.createdAt);
-
-
-
     } else {
       ScaffoldMessenger.of(mContext!).showSnackBar(
         SnackBar(content: Text("크리에이터를 지원 실패 : ${responseDTO.errorMessage}")),
@@ -89,7 +89,7 @@ class SessionData extends SessionUser {
       globalAccessToken = accessToken;
       print("sjfsjfsjsf : ${globalAccessToken}");
       Navigator.pushNamedAndRemoveUntil(
-          mContext!, Move.mainHoder, (route) => false);
+          mContext!, Move.mainHolder, (route) => false);
     } else {
       ScaffoldMessenger.of(mContext!).showSnackBar(
           SnackBar(content: Text("로그인 실패 : ${responseDTO.errorMessage}")));

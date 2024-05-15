@@ -11,8 +11,10 @@ class ItemDetailListModel {
   final Item item;
   final List<DetailPhotos> detailPhotos;
   final List<MainPhotos> mainPhotos;
+  final int selecteItem;
 
   const ItemDetailListModel({
+    this.selecteItem = 0,
     required this.item,
     required this.detailPhotos,
     required this.mainPhotos,
@@ -25,6 +27,18 @@ class ItemDetailListViewModel extends StateNotifier<ItemDetailListModel?> {
   SessionData sessionData;
 
   ItemDetailListViewModel(super.state, this.ref, this.sessionData);
+
+  void updateSelection(int selecteItem) {
+    if (state != null) {
+      // Update the state with the new selection
+      state = ItemDetailListModel(
+        item: state!.item,
+        detailPhotos: state!.detailPhotos,
+        mainPhotos: state!.mainPhotos,
+        selecteItem: selecteItem,
+      );
+    }
+  }
 
   Future<void> notifyInit(int itemId) async {
     ResponseDTO responseDTO = await ItemRepo().callItemDetailList(itemId);

@@ -1,12 +1,23 @@
 import 'package:expandable/expandable.dart';
+import 'package:final_project_team02/_core/uitls/format_util.dart';
+import 'package:final_project_team02/ui/holder/buy/buy_viewmodel.dart';
 import 'package:flutter/material.dart';
 
 import 'buy_info_row.dart';
 import 'custom_main_title.dart';
 
 class BuyInfo extends StatelessWidget {
+  BuyModel model;
+
+  BuyInfo({
+    required this.model,
+  });
+
   @override
   Widget build(BuildContext context) {
+    String orderAmount = formatCurrency(model!.orderInfo.orderAmount);
+    String purchaseAmount = formatCurrency(model.orderInfo.purchaseAmount);
+
     ExpandableController expController =
         new ExpandableController(initialExpanded: true);
 
@@ -30,7 +41,10 @@ class BuyInfo extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             child: Column(
               children: [
-                BuyInfoRow(name: "주문상품", price: "48,700", colors: Colors.black),
+                BuyInfoRow(
+                    name: "주문상품",
+                    price: "${orderAmount}",
+                    colors: Colors.black),
                 BuyInfoRow(name: "배송비", price: "+0", colors: Colors.black),
                 BuyInfoRow(name: "할인/부가결제", price: "-0", colors: Colors.red),
               ],
@@ -52,7 +66,7 @@ class BuyInfo extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "48,700원",
+                  "${purchaseAmount}",
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.blueAccent,

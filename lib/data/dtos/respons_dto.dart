@@ -1,18 +1,19 @@
 class ResponseDTO {
   int status;
   bool success;
-  String? errorMessage;
   dynamic response;
+  String? errorMessage;
 
-  ResponseDTO(
-      {required this.success,
-      required this.status,
-      this.errorMessage,
-      this.response});
+  ResponseDTO({
+    required this.success,
+    required this.status,
+    this.response,
+    this.errorMessage,
+  });
 
   ResponseDTO.fromJson(Map<String, dynamic> json)
       : success = json["success"],
         status = json["status"],
-        errorMessage = json["errorMessage"] ?? "",
-        response = json["response"] ?? "";
+        response = json["response"] ?? "",
+        errorMessage = json["errorMessage"] ?? "";
 }

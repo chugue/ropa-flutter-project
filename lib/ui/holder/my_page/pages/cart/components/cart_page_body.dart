@@ -1,4 +1,3 @@
-import 'package:final_project_team02/ui/holder/buy/buy_page.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/cart/cart_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/cart/components/cart_page_body_title.dart';
 import 'package:flutter/material.dart';
@@ -10,11 +9,10 @@ import 'cart_page_body_item_card.dart';
 
 class CartPageBody extends ConsumerWidget {
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
-
+  Widget build(BuildContext context, WidgetRef ref) {
     CartModel? model = ref.watch(cartProvider);
 
-    if(model == null) return Align(child: CircularProgressIndicator());
+    if (model == null) return Align(child: CircularProgressIndicator());
     return Padding(
       padding: const EdgeInsets.only(top: 25),
       child: Container(
@@ -39,7 +37,8 @@ class CartPageBody extends ConsumerWidget {
               SizedBox(height: 20),
 
               //아이템 카드박스
-              Expanded(child: CartPageBodyItemCard(model: model),
+              Expanded(
+                child: CartPageBodyItemCard(model: model),
               ),
               SizedBox(height: 20),
 
@@ -54,22 +53,18 @@ class CartPageBody extends ConsumerWidget {
               SizedBox(height: 20),
               Divider(),
 
-
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(12.0),
                 child: Container(
-                  height: 60,
+                  height: 50,
                   child: InkWell(
                     hoverColor: Colors.transparent,
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => BuyPage()));
+                      return ref.read(cartProvider.notifier).goToBuyPage(model);
                     },
                     child: Container(
-                      width: 200,
-                      height: 50,
+                      width: 350,
+                      height: 40,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
@@ -91,7 +86,6 @@ class CartPageBody extends ConsumerWidget {
                   ),
                 ),
               )
-
             ],
           ),
         ),

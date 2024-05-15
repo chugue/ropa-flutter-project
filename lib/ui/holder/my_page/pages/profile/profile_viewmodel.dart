@@ -13,9 +13,6 @@ class UserProfileModel {
   UserProfileModel(
     this.userProfile,
   );
-
-// User user;
-// UserProfileModel(this.user);
 }
 
 // 창고
@@ -23,7 +20,10 @@ class UserProfileViewModel extends StateNotifier<UserProfileModel?> {
   final mContext = navigatorKey.currentContext;
   final Ref ref;
 
-  UserProfileViewModel(super.state, this.ref);
+  UserProfileViewModel(
+    super.state,
+    this.ref,
+  );
 
   Future<void> notifyInit() async {
     SessionData sessionData = ref.read(sessionProvider);

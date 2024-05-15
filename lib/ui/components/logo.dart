@@ -1,5 +1,4 @@
 import 'package:final_project_team02/_core/constants/move.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Logo extends StatelessWidget {
@@ -16,8 +15,9 @@ class Logo extends StatelessWidget {
     return Center(
       child: InkWell(
         hoverColor: Colors.transparent,
-        onTap: (){
-          Navigator.pushNamedAndRemoveUntil(context,Move.mainHoder, (route) => false);
+        onTap: () {
+          Navigator.pushNamedAndRemoveUntil(
+              context, Move.mainHolder, (route) => false);
         },
         child: Column(
           children: [
