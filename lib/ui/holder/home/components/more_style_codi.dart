@@ -16,8 +16,8 @@ class MoreStyleCodi extends StatelessWidget {
     return SliverGrid(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2, // ✅한 행에 두 개의 항목
-        crossAxisSpacing: 10.0,
-        mainAxisSpacing: 12.0,
+        mainAxisSpacing: 1,
+        crossAxisSpacing: 1,
       ),
       delegate: SliverChildBuilderDelegate(
         (context, index) {

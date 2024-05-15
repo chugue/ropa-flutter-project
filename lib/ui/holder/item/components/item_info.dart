@@ -1,59 +1,53 @@
+import 'package:final_project_team02/ui/holder/item/item_datail_viewmodel.dart';
 import 'package:flutter/material.dart';
 
 class ItemInfo extends StatelessWidget {
-  const ItemInfo({super.key});
+  final ItemDetailListModel? model;
+
+  const ItemInfo({
+    required this.model,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _itemMainImg(context),
-        _itemBrand(),
-        _itemPrice(),
-        _itemName(),
-      ],
-    );
-  }
+    final mediaQuery = MediaQuery.of(context).size.width;
 
-  Padding _itemName() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Text(
-        "반팔티",
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-      ),
-    );
-  }
-
-  Column _itemPrice() {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 0) /* 패딩 왼위오밑 */,
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                "20%",
-                style: TextStyle(fontSize: 18, color: Colors.red),
+                "[${model!.item.brandName}] ",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              SizedBox(width: 8),
               Text(
-                "40,000원",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                '${model!.item.itemName}',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
             ],
           ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Text(
-            "50,000원",
-            style: TextStyle(
-                fontSize: 18,
-                color: Colors.grey,
-                decoration: TextDecoration.lineThrough),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                "${model!.item.price}원",
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    decoration: TextDecoration.lineThrough),
+              ),
+              SizedBox(width: 8),
+              Text(
+                "${model!.item.finalPrice}원",
+                style: TextStyle(fontSize: 18, color: Colors.red),
+              ),
+            ],
           ),
         ),
       ],
@@ -67,26 +61,15 @@ class ItemInfo extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(25),
-            child: Image.asset(
-              "assets/images/ropa_home_logo.png",
-              width: 50,
-              height: 50,
+            child: Container(
+              width: double.infinity, // 셀의 전체 너비 사용
+              height: double.infinity, // 셀의 전체 높이 사용
+              // child: Image.memory(
+              //   Base64Decoder().convert(model!.mainPhotos[index].mainPhotoBase64),
+              //   fit: BoxFit.cover,
+              // ),
             ),
           ),
-        ],
-      ),
-    );
-  }
-
-  SizedBox _itemMainImg(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: MediaQuery.of(context).size.width,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: [
-          Image.asset("assets/images/item/item_01.png"),
-          // TODO: 아이템 더미 만들기.
         ],
       ),
     );

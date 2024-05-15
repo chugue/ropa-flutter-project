@@ -1,49 +1,37 @@
 class Creator {
-  final id;
-  final adImg;
+  int? creatorId;
+  bool? blueChecked;
+  String? photoName;
+  String? base64;
+  String nickName;
+  String? height;
+  String? weight;
+  String? job;
+  String? introMsg;
 
   Creator({
-    required this.id,
-    required this.adImg,
+    required this.creatorId,
+    required this.blueChecked,
+    required this.photoName,
+    required this.base64,
+    required this.nickName,
+    required this.height,
+    required this.weight,
+    required this.job,
+    required this.introMsg,
   });
-}
 
-/* ✅샘플 데이터 */
-List<Creator> creatorList = [
-  Creator(
-    id: 1,
-    adImg: "assets/images/creator/creator01.jpg",
-  ),
-  Creator(
-    id: 2,
-    adImg: "assets/images/creator/creator02.webp",
-  ),
-  Creator(
-    id: 3,
-    adImg: "assets/images/creator/creator03.jpg",
-  ),
-  Creator(
-    id: 4,
-    adImg: "assets/images/creator/creator04.webp",
-  ),
-  Creator(
-    id: 5,
-    adImg: "assets/images/creator/creator05.webp",
-  ),
-  Creator(
-    id: 6,
-    adImg: "assets/images/creator/creator06.jpg",
-  ),
-  Creator(
-    id: 7,
-    adImg: "assets/images/creator/creator07.jpg",
-  ),
-  Creator(
-    id: 8,
-    adImg: "assets/images/creator/creator08.jpg",
-  ),
-  Creator(
-    id: 9,
-    adImg: "assets/images/creator/creator09.jpg",
-  ),
-];
+  factory Creator.fromJson(Map<String, dynamic> json) {
+    return Creator(
+      creatorId: json["creatorId"] ?? null,
+      blueChecked: json["blueChecked"],
+      photoName: json["photoName"] ?? '',
+      base64: json["base64"] ?? '',
+      nickName: json["nickName"] ?? '',
+      height: json["height"] ?? '',
+      weight: json["weight"] ?? '',
+      job: json["job"] ?? '',
+      introMsg: json["introMsg"] ?? '',
+    );
+  }
+}

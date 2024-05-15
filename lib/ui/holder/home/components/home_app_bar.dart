@@ -16,7 +16,7 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
             child: InkWell(
               onTap: () {
                 Navigator.pushNamedAndRemoveUntil(
-                    context, Move.mainHoder, (_) => false);
+                    context, Move.mainHolder, (_) => false);
               },
               child: Image.asset(
                 "assets/images/ropa_home_logo.png",

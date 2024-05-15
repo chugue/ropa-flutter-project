@@ -6,10 +6,11 @@ class UserMyPageApplyModalBodyCustomTextField extends StatelessWidget {
   final obscureText;
   final validator;
   final hinText;
-
+  final keyType;
 
   const UserMyPageApplyModalBodyCustomTextField({
     required this.controller,
+    required this.keyType,
     this.obscureText = false,
     required this.hinText,
     required this.validator,
@@ -20,7 +21,7 @@ class UserMyPageApplyModalBodyCustomTextField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       obscureText: obscureText,
-      keyboardType: TextInputType.number,
+      keyboardType: keyType,
       obscuringCharacter: '*',
       validator: validator,
       decoration: InputDecoration(
@@ -35,8 +36,7 @@ class UserMyPageApplyModalBodyCustomTextField extends StatelessWidget {
         enabledBorder: UnderlineInputBorder(
           borderSide: const BorderSide(color: Colors.black),
         ),
-        errorBorder: UnderlineInputBorder(
-        ),
+        errorBorder: UnderlineInputBorder(),
         focusedErrorBorder: UnderlineInputBorder(
           borderSide: const BorderSide(color: Colors.black),
         ),

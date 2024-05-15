@@ -1,5 +1,4 @@
 import 'package:expandable/expandable.dart';
-import 'package:final_project_team02/ui/holder/buy/components/buy_address/buy_address_request.dart';
 import 'package:final_project_team02/ui/holder/buy/components/buy_address/buy_address_tab.dart';
 import 'package:final_project_team02/ui/holder/buy/components/custom_main_title.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +12,7 @@ class BuyAddress extends StatelessWidget {
   Widget build(BuildContext context) {
     ExpandableController expController =
         new ExpandableController(initialExpanded: true);
+
     return ExpandablePanel(
       controller: expController,
       header: Padding(
@@ -29,7 +29,9 @@ class BuyAddress extends StatelessWidget {
       expanded: Column(
         children: [
           BuyAddressTab(),
-          BuyMainAddressRequest(),
+
+          //배송메세지 요청사항
+          // BuyMainAddressRequest(),
         ],
       ),
     );

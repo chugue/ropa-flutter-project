@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
 class EditInfo extends StatelessWidget {
-  final String text;
-  final String userInfo;
+  final String fieldName;
+  final String fieldValue;
 
   const EditInfo({
-    required this.text,
-    required this.userInfo,
+    required this.fieldName,
+    required this.fieldValue,
   });
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController controller = TextEditingController(text: userInfo);
+    TextEditingController controller = TextEditingController(text: fieldValue);
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "${text}",
+            "${fieldName}",
             style: TextStyle(color: Colors.black54, fontSize: 13),
           ),
           TextField(

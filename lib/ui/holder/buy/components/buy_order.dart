@@ -1,10 +1,18 @@
 import 'package:expandable/expandable.dart';
+import 'package:final_project_team02/_core/uitls/format_util.dart';
+import 'package:final_project_team02/ui/holder/buy/buy_viewmodel.dart';
 import 'package:flutter/material.dart';
 
 import 'buy_order_item_card.dart';
 import 'custom_main_title.dart';
 
 class BuyOrder extends StatelessWidget {
+  BuyModel model;
+
+  BuyOrder({
+    required this.model,
+  });
+
   @override
   Widget build(BuildContext context) {
     ExpandableController expController =
@@ -26,17 +34,19 @@ class BuyOrder extends StatelessWidget {
       expanded: Column(
         children: [
           ListView.builder(
-            itemCount: 3,
+            itemCount: model.cartInfos.length,
             shrinkWrap: true,
             primary: false,
             itemBuilder: (context, index) {
               return BuyOrderItemCard(
-                  itemTitle: 'VL8814 웰라이트 와이드데님',
+                  itemTitle: '${model.cartInfos[index].itemName}',
                   subTitle: 'Black Heavy Brush',
-                  options: '[옵션: L (32)]',
+                  options: ' ',
+                  //1차 시연에서는 사이즈 없음
                   qty: '수량: 1개',
-                  price: "48,700원",
-                  photoPath: "assets/images/ootd/ootd03.webp");
+                  //1차에서 수량은 무조건 1개
+                  price: "${formatCurrency(model.cartInfos[index].price)}",
+                  photoPath: "${model.cartInfos[index].itemPhoto.base64}");
             },
           ),
           Container(

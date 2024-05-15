@@ -16,7 +16,7 @@ class UserMyPageApplyModalBodyApplyButton extends StatelessWidget {
         TextButton(
           onPressed: () {
             Navigator.pushNamedAndRemoveUntil(
-                context, Move.mainHoder, (route) => false);
+                context, Move.mainHolder, (route) => false);
           },
           child: Text("확인"),
         )

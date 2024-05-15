@@ -1,8 +1,8 @@
 class User {
-  final int id;
+  final int? id;
   final String nickName;
   final String username;
-  final bool blueChecked;
+  final bool? blueChecked;
   final String? instagram;
   final DateTime? createdAt;
 
@@ -18,7 +18,7 @@ class User {
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       id: json["id"],
-      blueChecked: json["blueChecked"],
+      blueChecked: json["blueChecked"] ?? '',
       nickName: json["nickName"] ?? '',
       username: json["username"] ?? '',
       instagram: json["instagram"] ?? '',

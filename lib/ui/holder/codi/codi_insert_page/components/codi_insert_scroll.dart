@@ -1,12 +1,6 @@
-import 'dart:convert';
-
-import 'package:final_project_team02/data/global_data/codi.dart';
-import 'package:final_project_team02/ui/holder/codi/codi_insert_page/codi_insert_viewmodel.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:image_picker/image_picker.dart';
 
-class CodiInsertScroll extends ConsumerWidget {
+class CodiInsertScroll extends StatefulWidget {
   const CodiInsertScroll({super.key});
 
   @override

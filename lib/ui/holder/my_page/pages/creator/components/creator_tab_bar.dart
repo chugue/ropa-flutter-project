@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CreatorTabBar extends StatelessWidget {
   const CreatorTabBar({
@@ -10,8 +11,13 @@ class CreatorTabBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabBar(
       tabs: [
-        Tab(icon: Icon(CupertinoIcons.circle_grid_3x3_fill)),
-        Tab(icon: Icon(Icons.meeting_room_rounded)),
+        Tab(
+          icon: Icon(
+            CupertinoIcons.square_grid_2x2_fill,
+            size: 32,
+          ),
+        ),
+        Tab(icon: Icon(FontAwesomeIcons.shirt)),
       ],
       indicator: BoxDecoration(
         border: Border(
@@ -20,6 +26,7 @@ class CreatorTabBar extends StatelessWidget {
           ),
         ),
       ),
+      indicatorSize: TabBarIndicatorSize.tab, // 아래 줄의 가로 길이를 탭의 가로 길이에 맞춤
     );
   }
 }

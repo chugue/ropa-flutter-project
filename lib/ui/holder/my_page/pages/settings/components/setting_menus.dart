@@ -1,11 +1,17 @@
+import 'package:final_project_team02/ui/holder/my_page/pages/profile/profile_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ProfileMenus extends StatelessWidget {
+class SettingMenus extends StatelessWidget {
   final String field;
   final String value;
+  final bool isEdit;
 
-  const ProfileMenus({required this.field, required this.value});
+  const SettingMenus({
+    required this.field,
+    required this.value,
+    required this.isEdit,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +30,22 @@ class ProfileMenus extends StatelessWidget {
                       color: Colors.black26,
                     ),
                   ),
-                  Icon(
-                    CupertinoIcons.chevron_right,
-                    color: Colors.black87,
-                    size: 16,
-                  ),
+                  if (isEdit == true)
+                    IconButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => ProfileSetting(),
+                        ));
+                      },
+                      icon: Icon(
+                        CupertinoIcons.chevron_right,
+                        color: Colors.black,
+                        size: 16,
+                      ),
+                    )
+                  else
+                    SizedBox(width: 48, height: 16)
+                  // SizedBox를 너비와 높이를 지정하여 공간을 차지하도록 함
                 ],
               ),
             ),
