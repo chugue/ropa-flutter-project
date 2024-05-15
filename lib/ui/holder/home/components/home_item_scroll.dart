@@ -62,10 +62,10 @@ class ItemScroll extends StatelessWidget {
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    Text(
-                                      model!.itemsPhotos[index].name,
-                                      style: TextStyle(fontSize: 12),
-                                    ),
+                                    // Text(
+                                    //   model!.itemsPhotos[index].name,
+                                    //   style: TextStyle(fontSize: 12),
+                                    // ),
                                   ],
                                 ),
                               ),

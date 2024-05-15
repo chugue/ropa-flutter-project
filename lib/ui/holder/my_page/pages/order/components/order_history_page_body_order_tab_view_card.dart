@@ -1,36 +1,22 @@
+import 'dart:convert';
+
 import 'package:final_project_team02/_core/constants/theme.dart';
+import 'package:final_project_team02/_core/uitls/format_util.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/order/order_history_viewmodel.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class OrderHistoryPageBodyOrderTabViewCard extends StatelessWidget {
-  final String itemName;
-  final String itemBrand;
-  final int itemPrice;
-  final String itemOptions;
-  final String deliveryCharge;
-  final String deliveryStatus;
-  final String orderDate;
-  final int itemQty;
+  final OrderHistoryModel model;
 
-  OrderHistoryPageBodyOrderTabViewCard({
-    required this.itemName,
-    required this.itemBrand,
-    required this.itemPrice,
-    required this.itemOptions,
-    required this.deliveryCharge,
-    required this.deliveryStatus,
-    required this.orderDate,
-    required this.itemQty,
+  const OrderHistoryPageBodyOrderTabViewCard({
+    required this.model,
   });
 
   @override
   Widget build(BuildContext context) {
-    final NumberFormat formatter = NumberFormat('#,###');
-    String itemPriceFormatter = formatter.format(itemPrice);
-
     return Expanded(
       child: ListView.builder(
-        itemCount: 1, // 리스트에 표시할 항목의 개수
+        itemCount: model.itemHistoryList.length, // 리스트에 표시할 항목의 개수
         itemBuilder: (BuildContext context, int index) {
           return Container(
             decoration: BoxDecoration(
@@ -45,7 +31,7 @@ class OrderHistoryPageBodyOrderTabViewCard extends StatelessWidget {
                 children: [
                   Padding(
                       padding: const EdgeInsets.only(left: 5),
-                      child: Text("${deliveryStatus}",
+                      child: Text("${model.itemHistoryList[index].itemName}",
                           style: TextStyle(
                               fontSize: 16.0,
                               color: Colors.black,
@@ -58,9 +44,9 @@ class OrderHistoryPageBodyOrderTabViewCard extends StatelessWidget {
                         height: 100,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
-                          child: Image.network(
-                            'https://picsum.photos/200/100',
-                            // :TODO 04 사진수정
+                          child: Image.memory(
+                            Base64Decoder().convert(
+                                model.itemHistoryList[index].itemBase64),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -70,9 +56,9 @@ class OrderHistoryPageBodyOrderTabViewCard extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("${orderDate} 결제"),
+                            Text("결제"),
                             Text(
-                              "${deliveryCharge} 배송",
+                              "${model.itemHistoryList[index].deliveryStatus}",
                               style:
                                   TextStyle(color: Colors.grey, fontSize: 12),
                             ),
@@ -80,7 +66,7 @@ class OrderHistoryPageBodyOrderTabViewCard extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "${itemBrand}",
+                                  "${model.itemHistoryList[index].itemName}",
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
@@ -88,7 +74,7 @@ class OrderHistoryPageBodyOrderTabViewCard extends StatelessWidget {
                                   softWrap: true,
                                 ),
                                 Text(
-                                  "${itemName}",
+                                  "${formatCurrency(model.itemHistoryList[index].itemPrice)}",
                                   style: textTheme().displaySmall,
                                   softWrap: true,
                                 ),
@@ -115,7 +101,8 @@ class OrderHistoryPageBodyOrderTabViewCard extends StatelessWidget {
                                 style: TextStyle(color: Colors.grey)),
                           ),
                           SizedBox(width: 10),
-                          Text("${itemOptions}"),
+                          Text(
+                              "${model.itemHistoryList[index].itemCategoryMain}"),
                         ],
                       ),
                       SizedBox(height: 5),
@@ -130,12 +117,14 @@ class OrderHistoryPageBodyOrderTabViewCard extends StatelessWidget {
                                 style: TextStyle(color: Colors.grey)),
                           ),
                           SizedBox(width: 10),
-                          Text("${itemQty}개"),
+                          Text("${model.itemHistoryList[index].itemCount}개"),
                         ],
                       ),
                       SizedBox(height: 5),
-                      Text(itemPriceFormatter + "원",
+                      Text(
+                          '${formatCurrency(model.itemHistoryList[index].itemTotalPrice)}',
                           style: textTheme().bodyLarge),
+                      SizedBox(width: 10),
                     ],
                   ),
                 ],

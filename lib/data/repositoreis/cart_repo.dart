@@ -15,10 +15,7 @@ class CartRepo {
     //입력된 로우를 리스트에 상태변경
     if (responseDTO.success) {
       responseDTO.response = CartList.fromJson(responseDTO.response);
-
-      ///여기서 아이템 로우를 받고
     }
-
     return responseDTO;
   }
 
