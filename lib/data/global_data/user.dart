@@ -1,8 +1,8 @@
 class User {
-  final int id;
+  final int? id;
   final String nickName;
   final String username;
-  final bool blueChecked;
+  final bool? blueChecked;
   final String? instagram;
   final DateTime? createdAt;
 

@@ -5,14 +5,11 @@ import 'package:flutter/material.dart';
 import 'components/settings_body.dart';
 
 class SettingsPage extends StatelessWidget {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
-
   SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
       appBar: CustomAppBar(
         home: Icons.home,
         setting: Icons.settings,
