@@ -1,6 +1,7 @@
 import 'package:final_project_team02/data/dtos/cart_req.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/repositoreis/cart_repo.dart';
+import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:final_project_team02/main.dart';
 import 'package:final_project_team02/ui/holder/buy/buy_page.dart';
 import 'package:final_project_team02/ui/holder/item/components/item_cart_dialog.dart';
@@ -26,7 +27,7 @@ class CartModel {
 class CartViewModel extends StateNotifier<CartModel?> {
   final mContext = navigatorKey.currentContext;
 
-  CartViewModel(super.state);
+  CartViewModel(super.state, SessionData sessionData);
 
   void removeSelectedItems() async {
     if (state != null) {
@@ -106,19 +107,15 @@ class CartViewModel extends StateNotifier<CartModel?> {
     }
   }
 
-  Future<ResponseDTO> removeItem(int itemId) async {
-    ResponseDTO responseDTO = await CartRepo().removeItem(itemId);
+  Future<ResponseDTO> removeItem(int cartId) async {
+    ResponseDTO responseDTO = await CartRepo().removeItem(cartId);
 
     if (responseDTO.success) {
       if (state != null) {
-        // Cart cart = state!.cart;
-        // CartList carts = responseDTO.response;
-        // List<CartList> prevCartList = state!.cartList;
-        // List<CartList> newCartList = [carts, ...prevCartList];
+        List<CartList> prevCartList = state!.cartList;
 
-        List<CartList> updatedCartList = List.from(state!.cartList);
-
-        updatedCartList.removeWhere((cart) => cart.itemId == itemId);
+        List<CartList> updatedCartList =
+            prevCartList.where((p) => p.cartId != cartId).toList();
 
         // 총 가격 재계산
         int newTotalCheckedPrice = 0;
@@ -127,7 +124,7 @@ class CartViewModel extends StateNotifier<CartModel?> {
             List<bool>.filled(updatedCartList.length, false);
 
         for (int i = 0; i < updatedCartList.length; i++) {
-          if (state!.isChecked[i] && updatedCartList[i].itemId == itemId) {
+          if (state!.isChecked[i] && updatedCartList[i].cartId == cartId) {
             newTotalCheckedPrice +=
                 updatedCartList[i].itemPrice * updatedCartList[i].quantity;
             newIsChecked[i] = state!.isChecked[i];
@@ -136,6 +133,7 @@ class CartViewModel extends StateNotifier<CartModel?> {
 
         // 체크된 아이템만을 고려한 전체 카트 가격 재계산
         int newTotalCartPrice = 0;
+
         for (int i = 0; i < updatedCartList.length; i++) {
           if (newIsChecked[i]) {
             newTotalCartPrice +=
@@ -177,13 +175,12 @@ class CartViewModel extends StateNotifier<CartModel?> {
     }
   }
 
-  Future<void> notifyInit() async {
+  Future<void> notifyInit(SessionData sessionData) async {
     ResponseDTO responseDTO = await CartRepo().callCartList();
-    if (responseDTO.success) {
-      CartModel model = responseDTO.response as CartModel;
-      model.isChecked = List<bool>.filled(
-          model.cartList.length, false); // 초기 체크 상태를 모두 false로 설정
 
+    if (responseDTO.success) {
+      CartModel model = responseDTO.response;
+      model.isChecked = List<bool>.filled(model.cartList.length, false);
       state = model;
     }
   }
@@ -191,5 +188,6 @@ class CartViewModel extends StateNotifier<CartModel?> {
 
 //flutt
 final cartProvider = StateNotifierProvider<CartViewModel, CartModel?>((ref) {
-  return CartViewModel(null)..notifyInit();
+  SessionData sessionData = SessionData();
+  return CartViewModel(null, sessionData)..notifyInit(sessionData);
 });

@@ -16,8 +16,7 @@ class UserMyPageBody extends ConsumerWidget {
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
         return [
           SliverToBoxAdapter(
-            //프로필 설정 버튼까지
-            child: UserMyPageBodyTop("회원나이"),
+            child: UserMyPageBodyTop("아직!!!!"),
           ),
         ];
       },

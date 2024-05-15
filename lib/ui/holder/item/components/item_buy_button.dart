@@ -85,43 +85,42 @@ class ItemBuyButton extends ConsumerWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        //TODO: 중간점검 이후 구현
-                        // child: Padding(
-                        //   padding: const EdgeInsets.only(bottom: 8.0),
-                        //   child: Align(
-                        //     child: DropdownButton<int>(
-                        //       hint: Text("수량"),
-                        //       value: isValidItem ? currentItem : null,
-                        //       onChanged: (int? newValue) {
-                        //         if (newValue != null) {
-                        //           ref
-                        //               .read(itemDetailListProvider(itemId)
-                        //                   .notifier)
-                        //               .updateSelection(newValue);
-                        //         }
-                        //       },
-                        //       style: TextStyle(
-                        //         color: Colors.black, // 드롭다운 텍스트 색상
-                        //         fontSize: 16,
-                        //         fontWeight: FontWeight.bold,
-                        //       ),
-                        //       dropdownColor: Colors.white,
-                        //       // 드롭다운 배경 색상 설정
-                        //       items: optionList
-                        //           .map<DropdownMenuItem<int>>((String value) {
-                        //         return DropdownMenuItem<int>(
-                        //           value: int.parse(value), // 문자열을 정수로 변환
-                        //           child: Container(
-                        //             width: 200, // Width of each dropdown item
-                        //             height: 40, // Height of each dropdown item
-                        //             alignment: Alignment.centerLeft,
-                        //             child: Text(value.toString()),
-                        //           ),
-                        //         );
-                        //       }).toList(),
-                        //     ),
-                        //   ),
-                        // ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 8.0),
+                          child: Align(
+                            child: DropdownButton<int>(
+                              hint: Text("수량"),
+                              value: isValidItem ? currentItem : null,
+                              onChanged: (int? newValue) {
+                                if (newValue != null) {
+                                  ref
+                                      .read(itemDetailListProvider(itemId)
+                                          .notifier)
+                                      .updateSelection(newValue);
+                                }
+                              },
+                              style: TextStyle(
+                                color: Colors.black, // 드롭다운 텍스트 색상
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              dropdownColor: Colors.white,
+                              // 드롭다운 배경 색상 설정
+                              items: optionList
+                                  .map<DropdownMenuItem<int>>((String value) {
+                                return DropdownMenuItem<int>(
+                                  value: int.parse(value), // 문자열을 정수로 변환
+                                  child: Container(
+                                    width: 200, // Width of each dropdown item
+                                    height: 40, // Height of each dropdown item
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(value.toString()),
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ),
                       ),
                       SizedBox(height: 20),
                       Row(
@@ -134,7 +133,6 @@ class ItemBuyButton extends ConsumerWidget {
 
                               CartSaveDTO reqDTO =
                                   CartSaveDTO(itemId: itemId, quantity: 1);
-
                               ref.read(cartProvider.notifier).cartSave(reqDTO);
                             },
                             child: Container(
