@@ -52,7 +52,7 @@ class CartPageBodyItemCard extends ConsumerWidget {
                         ),
 
                         //카드 상세
-                        CartPageBodyItemCardDetail(model: model!, index: index),
+                        CartPageBodyItemCardDetail(model: model, index: index),
 
                         Divider(),
                         SizedBox(width: 20),
@@ -64,7 +64,7 @@ class CartPageBodyItemCard extends ConsumerWidget {
                           children: [
                             //아이템 카드 삭제
                             CartPageBodyItemCardDelete(
-                              cartId: model.cartList[index].cartId,
+                              itemId: model.cartList[index].itemId,
                             ),
 
                             // //아이템 카드 주문하기

@@ -1,19 +1,19 @@
 import 'package:intl/intl.dart';
 
-class Item{
+class Item {
   final int itemId;
-  final String price; // Store price as a formatted string
+  final String price;
   final String brandName;
-  final String itemName; // Store price as a formatted string
-  final double? discountRate;
-  final String discountPrice;
+  final String itemName;
+  final int? discountPrice;
+  final String finalPrice;
 
   const Item({
     required this.itemId,
     required this.itemName,
     required this.price,
-    this.discountRate,
-    required this.discountPrice,
+    this.discountPrice,
+    required this.finalPrice,
     required this.brandName,
   });
 
@@ -23,10 +23,9 @@ class Item{
       itemId: json["itemId"],
       itemName: json["itemName"] ?? '',
       brandName: json["brandName"] ?? '',
-      discountRate: json["discountRate"] != null ? double.tryParse(json["discountRate"].toString()) : null, // Safely parse to double, handle null
-
+      discountPrice: json["discountRate"] ?? null,
       price: formatter.format(json["price"]),
-      discountPrice: formatter.format(json["discountPrice"]),
+      finalPrice: formatter.format(json["finalPrice"]),
     );
   }
 }

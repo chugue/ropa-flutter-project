@@ -1,4 +1,3 @@
-import 'package:final_project_team02/ui/holder/buy/buy_page.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/cart/cart_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/cart/components/cart_page_body_title.dart';
 import 'package:flutter/material.dart';
@@ -61,8 +60,7 @@ class CartPageBody extends ConsumerWidget {
                   child: InkWell(
                     hoverColor: Colors.transparent,
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => BuyPage()));
+                      return ref.read(cartProvider.notifier).goToBuyPage(model);
                     },
                     child: Container(
                       width: 350,

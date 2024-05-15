@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:logger/logger.dart';
 
 final accessToken =
-    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuyCrOyaqeyekDPsnZgg7Iuk66qFIiwiaWQiOjMsImV4cCI6MTcxNTczODU1NCwiZW1haWwiOiJ1c2VyM0BleGFtcGxlLmNvbSJ9.ahzs_iYbIM8JK-BW6zxnZZa36aw1n_nxBojto84GMPWBf3vs0A5q8tLgiKvYyrMvO70iuq0j7HbFSxqXaxKQTw';
+    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuyCrOyaqeyekDHsnZgg7Iuk66qFIiwiaWQiOjEsImV4cCI6MTcxNTY3MTk5NCwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSJ9.1RnYFrIsghzIDfSlA1_kTaOnOBhR6jFPFz7JD7wN7AGOP5gDLTsNecGu-JWDL3P0odrV1Zo_7xG_nWn3wryQUw';
 
 void main() async {
   await callUserMyPage(accessToken);

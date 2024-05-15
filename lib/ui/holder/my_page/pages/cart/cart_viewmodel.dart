@@ -2,6 +2,7 @@ import 'package:final_project_team02/data/dtos/cart_req.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/repositoreis/cart_repo.dart';
 import 'package:final_project_team02/main.dart';
+import 'package:final_project_team02/ui/holder/buy/buy_page.dart';
 import 'package:final_project_team02/ui/holder/item/components/item_cart_dialog.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/cart/cart_data/Cart.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/cart/cart_data/CartList.dart';
@@ -26,6 +27,58 @@ class CartViewModel extends StateNotifier<CartModel?> {
   final mContext = navigatorKey.currentContext;
 
   CartViewModel(super.state);
+
+  void removeSelectedItems() async {
+    if (state != null) {
+      List<int> selectedIds = [];
+      for (int i = 0; i < state!.isChecked.length; i++) {
+        if (state!.isChecked[i]) {
+          selectedIds.add(state!.cartList[i].cartId);
+        }
+      }
+
+      for (int id in selectedIds) {
+        print("${selectedIds}");
+        await removeItem(id);
+      }
+    }
+  }
+
+  void deleteCart(int cartId) {
+    CartModel model = state!;
+    List<CartList> prevCarts = model.cartList;
+
+    List<CartList> newCartList =
+        prevCarts.where((p) => p.cartId != cartId).toList();
+
+    state = CartModel(
+        cart: state!.cart,
+        cartList: newCartList,
+        isChecked: state!.isChecked,
+        totalCheckedPrice: state!.totalCheckedPrice);
+  }
+
+  //장바구니에서 buyPage로 갈떄 선택된 항목만 가져간다.
+  void goToBuyPage(CartModel model) {
+    List<int> checkedItemIds = [];
+    for (int i = 0; i < model.cartList.length; i++) {
+      if (model.isChecked[i]) {
+        checkedItemIds.add(model.cartList[i].itemId);
+      }
+    }
+
+    if (checkedItemIds.isNotEmpty) {
+      Navigator.push(
+        mContext!,
+        MaterialPageRoute(
+          builder: (context) => BuyPage(itemIds: checkedItemIds),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(mContext!)
+          .showSnackBar(SnackBar(content: Text("선택된 항목이 없습니다!")));
+    }
+  }
 
   Future<void> cartSave(CartSaveDTO reqDTO) async {
     ResponseDTO responseDTO = await CartRepo().callCartSave(reqDTO);
@@ -53,51 +106,50 @@ class CartViewModel extends StateNotifier<CartModel?> {
     }
   }
 
-  Future<ResponseDTO> removeItem(int cartId) async {
-    ResponseDTO responseDTO = await CartRepo().removeItem(cartId);
+  Future<ResponseDTO> removeItem(int itemId) async {
+    ResponseDTO responseDTO = await CartRepo().removeItem(itemId);
+
     if (responseDTO.success) {
-      List<CartList> updatedCartList = List.from(state!.cartList);
+      if (state != null) {
+        // Cart cart = state!.cart;
+        // CartList carts = responseDTO.response;
+        // List<CartList> prevCartList = state!.cartList;
+        // List<CartList> newCartList = [carts, ...prevCartList];
 
-      updatedCartList.removeWhere((cart) => cart.cartId == cartId);
+        List<CartList> updatedCartList = List.from(state!.cartList);
 
-      CartList carts = responseDTO.response;
-      List<CartList> prevCartList = state!.cartList;
+        updatedCartList.removeWhere((cart) => cart.itemId == itemId);
 
-      state = CartModel(
-        cart: state!.cart,
-        cartList: updatedCartList,
-        isChecked: state!.isChecked,
-        totalCheckedPrice: state!.totalCheckedPrice,
-      );
-      //
-      // if (state != null) {
-      //   // List<CartList> updatedCartList = List.from(state!.cartList);
-      //   //
-      //   // updatedCartList.removeWhere((cart) => cart.cartId == cartId);
-      //   //
-      //   // // 총 가격 재계산
-      //   // int newTotalCheckedPrice = 0;
-      //   // List<bool> newIsChecked =
-      //   //     List<bool>.filled(updatedCartList.length, false);
-      //   // for (int i = 0; i < updatedCartList.length; i++) {
-      //   //   if (state!.isChecked[i] && updatedCartList[i].cartId != cartId) {
-      //   //     newTotalCheckedPrice +=
-      //   //         updatedCartList[i].itemPrice * updatedCartList[i].quantity;
-      //   //     newIsChecked[i] = state!.isChecked[i];
-      //   //   }
-      //   // }
-      //   //
-      //   // // 체크된 아이템만을 고려한 전체 카트 가격 재계산
-      //   // int newTotalCartPrice = 0;
-      //   // for (int i = 0; i < updatedCartList.length; i++) {
-      //   //   if (newIsChecked[i]) {
-      //   //     newTotalCartPrice +=
-      //   //         updatedCartList[i].itemPrice * updatedCartList[i].quantity;
-      //   //   }
-      //   // }
-      //
-      //   // 상태 업데이트
-      // }
+        // 총 가격 재계산
+        int newTotalCheckedPrice = 0;
+
+        List<bool> newIsChecked =
+            List<bool>.filled(updatedCartList.length, false);
+
+        for (int i = 0; i < updatedCartList.length; i++) {
+          if (state!.isChecked[i] && updatedCartList[i].itemId == itemId) {
+            newTotalCheckedPrice +=
+                updatedCartList[i].itemPrice * updatedCartList[i].quantity;
+            newIsChecked[i] = state!.isChecked[i];
+          }
+        }
+
+        // 체크된 아이템만을 고려한 전체 카트 가격 재계산
+        int newTotalCartPrice = 0;
+        for (int i = 0; i < updatedCartList.length; i++) {
+          if (newIsChecked[i]) {
+            newTotalCartPrice +=
+                updatedCartList[i].itemPrice * updatedCartList[i].quantity;
+          }
+        }
+        // 상태 업데이트
+        state = CartModel(
+          cart: state!.cart,
+          cartList: updatedCartList,
+          isChecked: state!.isChecked,
+          totalCheckedPrice: newTotalCartPrice,
+        );
+      }
     }
     return responseDTO;
   }
