@@ -1,8 +1,8 @@
 import 'package:final_project_team02/ui/holder/codi/codi_item_insert_page/codi_item_insert_page.dart';
 import 'package:flutter/material.dart';
 
-class ItemInsert extends StatelessWidget {
-  const ItemInsert({super.key, required this.category});
+class CodiItemInsert extends StatelessWidget {
+  const CodiItemInsert({super.key, required this.category});
 
   final category;
 

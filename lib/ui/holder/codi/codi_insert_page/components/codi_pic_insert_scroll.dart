@@ -8,8 +8,8 @@ import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 
 
-class CodiInsertScroll extends ConsumerWidget {
-  const CodiInsertScroll({super.key});
+class CodiPicInsertScroll extends ConsumerWidget {
+  const CodiPicInsertScroll({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
