@@ -23,7 +23,7 @@ class OrderHistoryPageBodyOrderTabView extends StatelessWidget {
         OrderHistoryPageBodyOrderTabViewCard(
           model: model,
         ),
-        SizedBox(height: 60),
+        SizedBox(height: 30),
         Divider(),
         CustomInquiryButton(),
         SizedBox(height: 20)
