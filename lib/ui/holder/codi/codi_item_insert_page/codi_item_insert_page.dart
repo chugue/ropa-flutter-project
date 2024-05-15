@@ -90,7 +90,7 @@ class ItemInsertBody extends StatelessWidget {
                         width: screenWidth * 0.48,
                         height: screenWidth * 0.48,
                         child: Image.network(
-                            "https://picsum.photos/id/${index + 1}/1000/1000",
+                            'https://picsum.photos/id/${index + 1}/1000/1000',
                             fit: BoxFit.cover),
                       ),
                       SizedBox(height: 8),
