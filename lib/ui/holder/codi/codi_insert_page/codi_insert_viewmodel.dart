@@ -1,57 +1,50 @@
-
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:final_project_team02/data/session_data/session_data.dart';
-import 'package:final_project_team02/main.dart';
+import 'dart:io'; // dart:io 패키지의 File 클래스를 사용하기 위해 추가
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:logger/logger.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+
 
 class CodiInsertModel {
-  List<String> imagesBase64; // List to store images as Base64 strings
-  List<XFile> imageFiles;
+  final List<XFile> images;
+  final String prevImg;
 
   CodiInsertModel({
-    required this.imagesBase64,
-    // required this.XFile,
-    required this.imageFiles,
+    required this.prevImg,
+    required this.images,
   });
-// List to store XFile references
 
-
-
+  CodiInsertModel copyWith({
+    List<XFile>? images,
+    String? prevImg,
+  }) {
+    return CodiInsertModel(
+      images: images ?? this.images,
+      prevImg: prevImg ?? this.prevImg,
+    );
+  }
 }
 
-class CodiInsertViewModel extends StateNotifier<CodiInsertModel?> {
-  // Ref ref;
-  // SessionData sessionData;
-  final mContext = navigatorKey.currentContext;
+class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
   final ImagePicker picker = ImagePicker();
+  final cacheManager = DefaultCacheManager();
 
-  CodiInsertViewModel(super.state); //ImagePicker 초기화
+  CodiInsertViewModel() : super(CodiInsertModel(prevImg: '', images: []));
 
   Future<void> pickAndAddImage() async {
     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-    Logger().d("❤️❤️❤️❤️❤️❤️❤️${image}");
-
     if (image != null) {
       String base64String = await convertToBase64(image);
-      Logger().d("❤️❤️❤️❤️❤️❤️❤️${base64String}");
-
-
-      if (state! != null) {
-        this.state = CodiInsertModel(
-            imagesBase64: List.from(state!.imagesBase64)..add(base64String),
-            imageFiles: List.from(state!.imageFiles)..add(image)
-        );
-      } else {
-        print("State is null, initializing new state");
-        state = CodiInsertModel(imagesBase64: [base64String], imageFiles: [image]);
-      }
-      print("object");
-      Logger().d("❤️❤️❤️❤️❤️❤️❤️${state!.imagesBase64}, ${state!.imageFiles}");
+      await cacheManager.putFile(
+        image.path,
+        await image.readAsBytes(),
+        fileExtension: 'jpg',
+      );
+      state = state.copyWith(images: [...state.images, image], prevImg: base64String);
     }
   }
 
@@ -60,36 +53,16 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel?> {
     return compute(base64Encode, imageBytes);
   }
 
-  Future<void> handleImage() async {
-    final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-
-    if (image != null) {
-      String base64String = await convertToBase64(image);
-
-    }
+  void setMainImg(String pushImages) {
+    state = state.copyWith(prevImg: pushImages);
   }
 
-  // void getImage(XFile  imageSource) async {
-  //   if (imageSource != null) {
-  //     state!._image = imageSource;
-  //     Logger().d("😁😁😁😁😁😁😁😁${state!._image}");
-  //     String pushImage = await convertToBase64(imageSource);
-  //     print("$pushImage");
-  //
-  //   }
-  // }
-
-  // void setMainImg(List<String> pushImages) {
-  //   // Since pushImages is directly a List<String>, you can assign it directly to the state.
-  //   // There's no need for a map operation unless you're transforming the data.
-  //   state = CodiInsertModel(prevImg: List.from(pushImages)); // Creating a copy of the list for immutability
-  // }
+  void removeImage(int index) {
+    List<XFile> updatedImages = List.from(state.images)..removeAt(index);
+    state = state.copyWith(images: updatedImages);
+  }
 }
 
-final codidInsertProvider =
-StateNotifierProvider<CodiInsertViewModel, CodiInsertModel?>(
-        (ref) {
-      SessionData sessionData = ref.read(sessionProvider);
-      return CodiInsertViewModel(null)..pickAndAddImage();
-    });
+final codiInsertProvider = StateNotifierProvider<CodiInsertViewModel, CodiInsertModel>(
+      (ref) => CodiInsertViewModel(),
+);

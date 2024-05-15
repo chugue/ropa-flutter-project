@@ -12,8 +12,6 @@ class ItemInsert extends StatelessWidget {
       padding: const EdgeInsets.only(top: 8.0, right: 16.0),
       child: GestureDetector(
         onTap: () {
-          // 상품추가 메서드 추가
-          print("${category} 상품 추가 선택됨");
           Navigator.push(
             context,
             MaterialPageRoute(

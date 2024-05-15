@@ -12,11 +12,11 @@ class ItemInsertScroll extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          ItemInsert(category: "Outer"),
+          // ItemInsert(category: "Outer"),
           ItemInsert(category: "Top"),
           ItemInsert(category: "Bottom"),
-          ItemInsert(category: "Shoes"),
-          ItemInsert(category: "Acc"),
+          // ItemInsert(category: "Shoes"),
+          // ItemInsert(category: "Acc"),
         ],
       ),
     );
