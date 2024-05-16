@@ -10,7 +10,22 @@ import 'package:final_project_team02/ui/holder/codi/codi_item_insert_page/codi_i
 import 'package:logger/logger.dart';
 
 class CodiRepo {
-  Future<ResponseDTO> callItemInsert(String category) async {
+  Future<ResponseDTO> callSetItemInsert(String category) async {
+    final response = await dio.post('/app/codi-register');
+
+    ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+    logger.d(responseDTO.response);
+
+    if (responseDTO.success) {
+      List<dynamic> brand = responseDTO.response;
+      List<Brand> brandList = brand.map((e) => Brand.fromJson(e)).toList();
+
+      responseDTO.response = CodiItemInsertModel(brandList: brandList);
+    }
+    return responseDTO;
+  }
+
+  Future<ResponseDTO> callGetItemInsert(String? category) async {
     final response =
         await dio.get('/app/codi-register/add-item-page/${category}');
 

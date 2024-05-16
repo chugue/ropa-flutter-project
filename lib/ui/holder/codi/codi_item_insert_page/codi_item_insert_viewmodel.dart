@@ -9,10 +9,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class CodiItemInsertModel {
   final List<Brand> brandList;
   final String comment;
+  final String photoBase64;
 
   const CodiItemInsertModel({
     required this.brandList,
     this.comment = '',
+    this.photoBase64 = '',
   });
 
   CodiItemInsertModel copyWith({
@@ -31,8 +33,8 @@ class CodiItemInsertViewModel extends StateNotifier<CodiItemInsertModel?> {
 
   CodiItemInsertViewModel(super.state);
 
-  Future<void> callItemInsert(String category) async {
-    ResponseDTO responseDTO = await CodiRepo().callItemInsert(category);
+  Future<void> callItemInsert(String? category) async {
+    ResponseDTO responseDTO = await CodiRepo().callGetItemInsert(category!);
     if (responseDTO.success) {
       state = responseDTO.response;
 
@@ -62,6 +64,6 @@ class CodiItemInsertViewModel extends StateNotifier<CodiItemInsertModel?> {
 }
 
 final codiItemInsertProvider = StateNotifierProvider.family<
-    CodiItemInsertViewModel, CodiItemInsertModel?, String>((ref, category) {
+    CodiItemInsertViewModel, CodiItemInsertModel?, String?>((ref, category) {
   return CodiItemInsertViewModel(null)..callItemInsert(category);
 });

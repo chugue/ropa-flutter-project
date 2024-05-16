@@ -10,7 +10,7 @@ class ItemInsertPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CodiItemInsertModel? model = ref.watch(codiItemInsertProvider);
+    CodiItemInsertModel? model = ref.watch(codiItemInsertProvider(null));
 
     if (model == null) {
       return Center(

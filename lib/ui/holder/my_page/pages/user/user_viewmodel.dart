@@ -22,8 +22,6 @@ class UserMyPageViewModel extends StateNotifier<UserMyPageModel?> {
   final mContext = navigatorKey.currentContext;
   Ref ref;
 
-  // SessionData sessionData;
-
   UserMyPageViewModel(
     super.state,
     this.ref,
