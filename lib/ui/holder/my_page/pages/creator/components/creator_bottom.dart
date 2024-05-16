@@ -1,11 +1,6 @@
-import 'package:final_project_team02/_core/constants/move.dart';
-import 'package:final_project_team02/ui/components/bottom_button.dart';
-import 'package:final_project_team02/ui/components/positioned_button.dart';
-import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_page.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_insert_page/codi_insert_page.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/components/creator_tab_bar.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/components/creator_tab_view_closet.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -13,8 +8,6 @@ import 'package:intl/intl.dart';
 class CreatorBottom extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // ref.watch()
-
     return Column(
       children: [
         SizedBox(height: 20),
@@ -64,7 +57,11 @@ class CreatorBottom extends ConsumerWidget {
                               height: 50,
                               child: ElevatedButton(
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => CodiInsertPage(),));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => CodiInsertPage(),
+                                      ));
                                 },
                                 child: Text(
                                   '코디 등록하기',

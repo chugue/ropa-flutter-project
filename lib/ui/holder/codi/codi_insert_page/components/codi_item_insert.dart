@@ -1,23 +1,21 @@
-import 'package:final_project_team02/ui/holder/codi/codi_item_insert_page/codi_item_insert_page.dart';
+import 'package:final_project_team02/ui/holder/codi/codi_item_insert_page/codi_item_insert_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CodiItemInsert extends StatelessWidget {
+class CodiItemInsert extends ConsumerWidget {
   const CodiItemInsert({super.key, required this.category});
 
   final category;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, right: 16.0),
       child: GestureDetector(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ItemInsertPage(category: category),
-            ),
-          );
+          ref
+              .read(codiItemInsertProvider(category).notifier)
+              .callItemInsert(category);
         },
         child: Column(
           children: [

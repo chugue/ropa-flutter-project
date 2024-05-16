@@ -1,4 +1,4 @@
-import 'package:final_project_team02/ui/holder/codi/codi_insert_page/components/codi_insert_item_insert.dart';
+import 'package:final_project_team02/ui/holder/codi/codi_insert_page/components/codi_item_insert.dart';
 import 'package:flutter/cupertino.dart';
 
 class CodiPicItemInsertScroll extends StatelessWidget {

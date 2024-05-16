@@ -5,14 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CodiLike extends ConsumerWidget {
-  final CodiDetailModel model;
+  final int codiId;
 
   const CodiLike({
-    required this.model,
+    required this.codiId,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    CodiDetailModel? model = ref.watch(codiDetailProvider(codiId));
     SessionData sessionData = ref.watch(sessionProvider);
 
     return Padding(
@@ -34,7 +35,7 @@ class CodiLike extends ConsumerWidget {
                 }
               },
               icon: Icon(Icons.favorite,
-                  color: model.codi.isLoved ? Colors.red : Colors.grey),
+                  color: model!.codi.isLoved ? Colors.red : Colors.grey),
             ),
             Text("${model.codi.loveCount}"),
           ],

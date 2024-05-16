@@ -1,12 +1,15 @@
+import 'dart:convert';
 
-
-
-
+import 'package:final_project_team02/ui/holder/codi/codi_item_insert_page/codi_item_insert_viewmodel.dart';
 import 'package:flutter/material.dart';
 
 class CodiItemBrandTabView extends StatelessWidget {
+  final CodiItemInsertModel model;
+  final int selectedIndex;
+
   const CodiItemBrandTabView({
-    super.key,
+    required this.model,
+    required this.selectedIndex,
   });
 
   @override
@@ -19,50 +22,47 @@ class CodiItemBrandTabView extends StatelessWidget {
         crossAxisCount: 2,
         mainAxisSpacing: 0,
       ),
-      itemCount: 42,
+      itemCount: model.brandList[selectedIndex].itemInfo.length,
       itemBuilder: (context, index) {
-        return Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: AspectRatio(
-                  aspectRatio: 4,
-                  child: ClipRRect(
-                    child: Image.network(
-                      // "https://picsum.photos/400/400",
-                        "https://picsum.photos/id/${index + 1}/600/600",
-                        fit: BoxFit.cover),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("옷제목",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold)),
-                    Text(
-                      "옷설명",
-                      style: TextStyle(
-                        overflow: TextOverflow.ellipsis,
+        return Column(
+          children: [
+            Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: AspectRatio(
+                      aspectRatio: 4,
+                      child: ClipRRect(
+                        child: Image.memory(
+                          const Base64Decoder().convert(model
+                              .brandList[selectedIndex].itemInfo[index].base64),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                    //numberFormat 사용하면되
-                    Text(
-                      "가격 : 10,000원",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                            model.brandList[selectedIndex].itemInfo[index]
+                                .itemName,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold)),
+                        //numberFormat 사용하면되
+                        SizedBox(height: 15),
+                      ],
                     ),
-                    SizedBox(height: 15),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         );
       },
     );

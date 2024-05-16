@@ -5,10 +5,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:logger/logger.dart';
 
 final accessToken =
-    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuyCrOyaqeyekDHsnZgg7Iuk66qFIiwiaWQiOjEsImV4cCI6MTcxNTY3MTk5NCwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSJ9.1RnYFrIsghzIDfSlA1_kTaOnOBhR6jFPFz7JD7wN7AGOP5gDLTsNecGu-JWDL3P0odrV1Zo_7xG_nWn3wryQUw';
+    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuuzgOyasOyEnSIsImlkIjozLCJleHAiOjE3MTU5MTQ3MTgsImVtYWlsIjoiYnVud3VzZW9rQGV4YW1wbGUuY29tIn0.1YrvkNaE5KG_6HkaGoTOrOMn4F8LGtgmxIhxBQsOxq9dcXHHGGeppmty3aebWLsJdMHjuSnDu90tarCFK_eodw';
 
 void main() async {
-  await callUserMyPage(accessToken);
+  // await callUserMyPage(accessToken);
+  await callLogin_test2();
   // await callUserCreatorApply_test();
 }
 
@@ -48,7 +49,7 @@ Future<void> callLogin_test() async {
 
 Future<void> callLogin_test2() async {
   LoginReqDTO reqDTO =
-      LoginReqDTO(email: "user1@example.com", password: "1234");
+      LoginReqDTO(email: "bunwuseok@example.com", password: "1234");
   await UserRepo().callLogin(reqDTO);
 }
 

@@ -1,13 +1,9 @@
 import 'dart:convert';
-import 'dart:typed_data';
-
-import 'dart:io'; // dart:io 패키지의 File 클래스를 사용하기 위해 추가
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-
 
 class CodiInsertModel {
   final List<XFile> images;
@@ -44,7 +40,8 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
         await image.readAsBytes(),
         fileExtension: 'jpg',
       );
-      state = state.copyWith(images: [...state.images, image], prevImg: base64String);
+      state = state
+          .copyWith(images: [...state.images, image], prevImg: base64String);
     }
   }
 
@@ -63,6 +60,7 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
   }
 }
 
-final codiInsertProvider = StateNotifierProvider<CodiInsertViewModel, CodiInsertModel>(
-      (ref) => CodiInsertViewModel(),
+final codiInsertProvider =
+    StateNotifierProvider<CodiInsertViewModel, CodiInsertModel>(
+  (ref) => CodiInsertViewModel(),
 );

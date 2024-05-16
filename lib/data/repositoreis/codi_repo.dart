@@ -5,9 +5,27 @@ import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail_data/main_photos.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail_data/other_codi_photos.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail_viewmodel.dart';
+import 'package:final_project_team02/ui/holder/codi/codi_item_insert_page/codi_item_data/brand.dart';
+import 'package:final_project_team02/ui/holder/codi/codi_item_insert_page/codi_item_insert_viewmodel.dart';
 import 'package:logger/logger.dart';
 
 class CodiRepo {
+  Future<ResponseDTO> callItemInsert(String category) async {
+    final response =
+        await dio.get('/app/codi-register/add-item-page/${category}');
+
+    ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+    logger.d(responseDTO.response);
+
+    if (responseDTO.success) {
+      List<dynamic> brand = responseDTO.response;
+      List<Brand> brandList = brand.map((e) => Brand.fromJson(e)).toList();
+
+      responseDTO.response = CodiItemInsertModel(brandList: brandList);
+    }
+    return responseDTO;
+  }
+
   Future<ResponseDTO> callSaveLoveCount(int codiId) async {
     final response = await dio.post('/app/function/love/${codiId}');
 
