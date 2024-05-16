@@ -16,8 +16,8 @@ class ItemInfo extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 "[${model!.item.brandName}] ",
@@ -25,7 +25,7 @@ class ItemInfo extends StatelessWidget {
               ),
               Text(
                 '${model!.item.itemName}',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 24),
               ),
             ],
           ),

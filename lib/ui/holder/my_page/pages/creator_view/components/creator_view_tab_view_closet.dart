@@ -1,17 +1,18 @@
 import 'dart:convert';
 
-import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
+import 'package:final_project_team02/_core/uitls/format_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CreatorViewTabViewCloset extends ConsumerWidget {
+class CreatorViewTabViewCloset extends StatelessWidget {
+  final model;
+
   const CreatorViewTabViewCloset({
     super.key,
+    required this.model,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    CreatorModel? model = ref.watch(creatorProvider(1));
+  Widget build(BuildContext context) {
     return GridView.builder(
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
@@ -39,7 +40,7 @@ class CreatorViewTabViewCloset extends ConsumerWidget {
                           // Image.network(
                           //     "https://picsum.photos/id/${index + 1}/600/600",
                           Image.memory(
-                              base64Decode(model!.itemList[itemIndex].base64),
+                              base64Decode(model.itemList[itemIndex].base64),
                               fit: BoxFit.contain),
                     ),
                   ),
@@ -50,19 +51,23 @@ class CreatorViewTabViewCloset extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(model!.itemList[itemIndex].name,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold)),
-                    Text(model!.itemList[itemIndex].description,
-                        style: TextStyle(
-                          fontSize: 14,
-                          overflow: TextOverflow.ellipsis,
-                        )),
-                    //numberFormat 사용하면되
                     Text(
-                      "${model!.itemList[itemIndex].price} 원",
+                      model.itemList[itemIndex].name.length > 20
+                          ? model.itemList[itemIndex].name.substring(0, 20) +
+                              "..."
+                          : model.itemList[itemIndex].name,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    // Text(model.itemList[itemIndex].description,
+                    //     style: TextStyle(
+                    //       fontSize: 14,
+                    //       overflow: TextOverflow.ellipsis,
+                    //     )),
+                    Text(
+                      "${formatCurrency(model.itemList[itemIndex].price)}",
                       style: TextStyle(
                         fontSize: 12,
                       ),

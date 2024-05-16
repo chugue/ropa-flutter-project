@@ -14,8 +14,8 @@ class CreatorViewBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CreatorModel? model = ref.watch(creatorProvider(1));
-    print("승호");
+    CreatorModel? model = ref.watch(creatorProvider(creatorId));
+    print("크리에이터 뷰 바디");
 
     if (model == null) {
       return Center(
@@ -31,7 +31,7 @@ class CreatorViewBody extends ConsumerWidget {
             ),
           ];
         },
-        body: CreatorViewBottom(),
+        body: CreatorViewBottom(model: model),
       );
     }
   }
