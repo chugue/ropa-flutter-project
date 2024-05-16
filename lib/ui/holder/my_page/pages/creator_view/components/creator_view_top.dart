@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:final_project_team02/_core/constants/theme.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
@@ -35,8 +37,10 @@ class CreatorViewTop extends StatelessWidget {
           height: 65,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(32.5),
-            child: Image.network(
-              'https://picsum.photos/200/100', // :TODO 04 사진수정
+            child: Image.memory(
+              base64Decode(model.user.base64),
+              // Image.network(
+              // 'https://picsum.photos/200/100', // :TODO 04 사진수정
               fit: BoxFit.cover,
             ),
           ),
@@ -47,8 +51,8 @@ class CreatorViewTop extends StatelessWidget {
           children: [
             Text(model.user.nickName,
                 style: textTheme().displayMedium), // :TODO 04수정
-            Text("${model.user} • ${model!.user.height} • ${model.user.job}",
-                // "185cm - 80kg - 직장인",
+            Text(
+                "${model.user.height} • ${model.user.weight} • ${model.user.job}",
                 style: textTheme().bodyMedium), // :TODO 04수정
           ],
         ),
@@ -61,9 +65,11 @@ class CreatorViewTop extends StatelessWidget {
       children: [
         Column(
           children: [
-            Text('어깨 넓은 보통 체형', style: textTheme().headlineSmall),
-            Text('어깨 넓은 보통 체형', style: textTheme().headlineSmall),
-            Text('어깨 넓은 보통 체형', style: textTheme().headlineSmall),
+            // Text('어깨 넓은 보통 체형', style: textTheme().headlineSmall),
+            Text(
+              model.user.introMsg,
+              style: textTheme().headlineSmall,
+            )
           ],
         ),
       ],

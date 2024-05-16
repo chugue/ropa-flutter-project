@@ -33,7 +33,7 @@ class CreatorViewModel extends StateNotifier<CreatorModel?> {
   );
 
   Future<ResponseDTO> notifyInit(creatorId) async {
-    ResponseDTO responseDTO = await UserRepo().callCreatorView();
+    ResponseDTO responseDTO = await UserRepo().callCreatorView(creatorId);
 
     if (responseDTO.success) {
       CreatorModel creatorModel = responseDTO.response;
