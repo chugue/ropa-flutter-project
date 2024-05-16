@@ -10,9 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class UserSettingModel {
   UserSetting userSetting;
 
-  UserSettingModel(
-    this.userSetting,
-  );
+  UserSettingModel(this.userSetting);
 }
 
 class UserSettingViewModel extends StateNotifier<UserSettingModel?> {
@@ -46,7 +44,7 @@ class UserSettingViewModel extends StateNotifier<UserSettingModel?> {
 }
 
 // 프로바이더 = 공급자 제공자
-final UserSettingProvider =
+final userSettingProvider =
     StateNotifierProvider<UserSettingViewModel, UserSettingModel?>(
   (ref) {
     return UserSettingViewModel(null, ref)..notifyInit();

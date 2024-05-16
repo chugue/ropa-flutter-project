@@ -4,7 +4,6 @@ import 'package:final_project_team02/_core/constants/theme.dart';
 import 'package:final_project_team02/ui/holder/my_page/_components/my_page_custom_button.dart';
 import 'package:final_project_team02/ui/holder/my_page/_components/my_page_order_mileage.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/user/components/user_my_page_body_header.dart';
 import 'package:flutter/material.dart';
 
 class CreatorTop extends StatelessWidget {
@@ -38,7 +37,7 @@ class CreatorTop extends StatelessWidget {
           MyPageOrderMileage(orderId: 10, mileageId: 200),
 
           // ✅ 문의하기 버튼
-          InquiryButton()
+          // InquiryButton()
         ],
       ),
     );
