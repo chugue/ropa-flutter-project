@@ -8,7 +8,7 @@ void main() async {
 }
 
 Future<void> callItemInsert_test() async {
-  await CodiRepo().callGetItemInsert('top', accessToken);
+  await CodiRepo().callGetItemInsert('top');
 }
 
 Future<void> callLoveCount_test() async {
