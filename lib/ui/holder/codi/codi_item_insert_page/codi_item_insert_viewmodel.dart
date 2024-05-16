@@ -34,7 +34,8 @@ class CodiItemInsertViewModel extends StateNotifier<CodiItemInsertModel?> {
   CodiItemInsertViewModel(super.state);
 
   Future<void> callItemInsert(String? category) async {
-    ResponseDTO responseDTO = await CodiRepo().callGetItemInsert(category!);
+    ResponseDTO responseDTO =
+        await CodiRepo().callGetItemInsert(category!, 'top');
     if (responseDTO.success) {
       state = responseDTO.response;
 

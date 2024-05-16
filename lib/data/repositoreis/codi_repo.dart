@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/global_data/codi.dart';
@@ -25,17 +26,16 @@ class CodiRepo {
     return responseDTO;
   }
 
-  Future<ResponseDTO> callGetItemInsert(String? category) async {
-    final response =
-        await dio.get('/app/codi-register/add-item-page/${category}');
-
+  Future<ResponseDTO> callGetItemInsert(String? category, String Token) async {
+    final response = await dio.get('/app/codi-register/add-item/${category}',
+        options: Options(headers: {'Authorization': Token}));
+    logger.d(response.data);
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
-    logger.d(responseDTO.response);
+    // logger.d(responseDTO.response);
 
     if (responseDTO.success) {
       List<dynamic> brand = responseDTO.response;
       List<Brand> brandList = brand.map((e) => Brand.fromJson(e)).toList();
-
       responseDTO.response = CodiItemInsertModel(brandList: brandList);
     }
     return responseDTO;

@@ -25,13 +25,15 @@ class SessionData extends SessionUser {
 
   SessionData();
 
-  void logout() async {
+  void logout(WidgetRef ref) async {
     user = null;
-    accessToken = null;
-    globalAccessToken = null;
     isLogin = false;
 
     await secureStorage.delete(key: "accessToken");
+    await secureStorage.delete(key: "globalAccessToken");
+
+    ref.read(sessionProvider.notifier).state = SessionData();
+
     Navigator.pushNamedAndRemoveUntil(
         mContext!, Move.mainHolder, (route) => false);
   }
@@ -76,7 +78,6 @@ class SessionData extends SessionUser {
   }
 
   Future<void> login(LoginReqDTO loginReqDTO) async {
-    print("loginReqDTO : ${loginReqDTO.toJson()}");
     var (responseDTO, accessToken) = await UserRepo().callLogin(loginReqDTO);
 
     if (responseDTO.success) {
@@ -87,7 +88,7 @@ class SessionData extends SessionUser {
       this.isLogin = true;
 
       globalAccessToken = accessToken;
-      print("sjfsjfsjsf : ${globalAccessToken}");
+
       Navigator.pushNamedAndRemoveUntil(
           mContext!, Move.mainHolder, (route) => false);
     } else {

@@ -17,7 +17,7 @@ class LogoutButton extends ConsumerWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      ref.read(sessionProvider).logout();
+                      ref.read(sessionProvider).logout(ref);
                     },
                     icon: const Icon(
                       CupertinoIcons.chevron_right,

@@ -2,11 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/dtos/user_req.dart';
-import 'package:final_project_team02/data/global_data/creator.dart';
-import 'package:final_project_team02/data/dtos/user_req.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/creator_data/creator.dart';
 import 'package:final_project_team02/data/global_data/user.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/creator_data/creator.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/profile/profile_data/user_profile.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/settings/setting_data/user_setting.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/codi_list.dart';
@@ -15,14 +13,12 @@ import 'package:logger/logger.dart';
 
 class UserRepo {
   Future<ResponseDTO> callCreatorView(int creatorId) async {
-       final response = await dio.get("/app/creator-view/${creatorId}");
-    Logger().d(response.data!);
+    final response = await dio.get("/app/creator-view/${creatorId}");
 
     // 🔀PARSING
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
     if (responseDTO.success) {
-      Creator user = Creator.fromJson(responseDTO.response);
-      Logger().d(user);
+      Creator user = Creator.fromJson(responseDTO.response["userDTO"]);
 
       List<dynamic> codi = responseDTO.response["codiList"];
       List<CodiList> codiList = codi.map((e) => CodiList.fromJson(e)).toList();
@@ -30,16 +26,15 @@ class UserRepo {
 
       List<dynamic> item = responseDTO.response["itemList"];
       List<ItemList> itemList = item.map((e) => ItemList.fromJson(e)).toList();
-      Logger().d(itemList);
 
       CreatorModel model = CreatorModel(
         user: user,
         codiList: codiList,
         itemList: itemList,
       );
+
       responseDTO.response = model;
     }
-
     Logger().d(responseDTO);
 
     return responseDTO;
@@ -63,37 +58,22 @@ class UserRepo {
 
   Future<ResponseDTO> callUserSetting() async {
     final response = await dio.get("/app/setting");
-    // 🚧🚧🚧🚧Test🚧🚧🚧🚧
-    // final response = await dio.get("/app/setting",
-    //     options: Options(headers: {"Authorization": accessToken}));
-    Logger().d(response.data!);
 
-    // 🔀PARSING
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
     if (responseDTO.success) {
       responseDTO.response = UserSetting.fromJson(responseDTO.response);
     }
-    Logger().d(responseDTO);
-
     return responseDTO;
   }
 
   Future<ResponseDTO> callUserProfile() async {
-    print(globalAccessToken);
-
     final response = await dio.get("/app/profile");
-    // final response = await dio.get("/app/profile",
-    //     options: Options(headers: {"Authorization": accessToken}));
     Logger().d(response.data!);
-    print(response.data);
-
     // 🔀PARSING
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
     if (responseDTO.success) {
       responseDTO.response = UserProfile.fromJson(responseDTO.response);
-      Logger().d(responseDTO.response);
     }
-    Logger().d(responseDTO);
 
     return responseDTO;
   }
@@ -111,12 +91,10 @@ class UserRepo {
 
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
 
-    Logger().d(response.data!);
-    Logger().d(response.headers["Authorization"]!.first);
-
     if (responseDTO.success) {
       responseDTO.response = User.fromJson(responseDTO.response);
       final accessToken = response.headers["Authorization"]!.first;
+      logger.d('${response.headers["Authorization"]!.first}');
 
       return (responseDTO, accessToken);
     } else {
