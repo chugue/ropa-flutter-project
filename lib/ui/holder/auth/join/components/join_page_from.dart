@@ -9,9 +9,9 @@ import '../../../../../data/session_data/session_data.dart';
 
 class JoinFrom extends ConsumerWidget {
   final _formKey = GlobalKey<FormState>();
-  final _email = TextEditingController();
-  final _password = TextEditingController();
-  final _nickName = TextEditingController();
+  final _email = TextEditingController(text: "ssar@nate.com");
+  final _password = TextEditingController(text: "1234");
+  final _nickName = TextEditingController(text: "ssar");
 
   bool agreePersonalData = true;
 

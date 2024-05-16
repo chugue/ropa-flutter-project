@@ -2,10 +2,10 @@ import 'package:final_project_team02/ui/holder/my_page/pages/user/components/app
 import 'package:flutter/material.dart';
 
 class UserMyPageApplyModalBody extends StatelessWidget {
-  final TextEditingController _height = TextEditingController();
-  final TextEditingController _weight = TextEditingController();
-  final TextEditingController _instagram = TextEditingController();
-  final TextEditingController _job = TextEditingController();
+  final TextEditingController _height = TextEditingController(text: "181");
+  final TextEditingController _weight = TextEditingController(text: "81");
+  final TextEditingController _instagram = TextEditingController(text: "1618118");
+  final TextEditingController _job = TextEditingController(text: "대학생");
   final _formKey = GlobalKey<FormState>();
 
   @override
