@@ -9,7 +9,6 @@ class BuySaveReqDTO {
   final bool isBaseAddress;
   final PurchaseInfo? purchaseInfo;
 
-
   Map<String, dynamic> toJson() {
     return {
       "name": this.name,

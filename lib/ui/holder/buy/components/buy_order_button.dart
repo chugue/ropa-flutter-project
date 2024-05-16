@@ -22,6 +22,7 @@ class BuyOrderButton extends ConsumerWidget {
         height: 50,
         child: ElevatedButton(
           onPressed: () {
+
             PurchaseInfo purchaseInfo = PurchaseInfo(
               orderAmount: model.orderInfo.orderAmount,
               deliveryType: "FREE",

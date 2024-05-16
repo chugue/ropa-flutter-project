@@ -6,10 +6,14 @@ import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../data/dtos/user_req.dart';
 import '../../../../components/custom_form_field.dart';
+// 크리에이터 계정 : bunwuseok
+// 게스트 계정  : junghein
 
 class LoginFrom extends ConsumerWidget {
-  final _email = TextEditingController(text: "user1@example.com");
+  final _email = TextEditingController(
+      text: "bunwuseok@example.com"); // user1,2 일반, user3 크리에이터
   final _password = TextEditingController(text: "1234");
   final _formKey = GlobalKey<FormState>();
   bool rememberPassword = true;

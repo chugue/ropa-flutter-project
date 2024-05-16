@@ -1,8 +1,8 @@
 import 'package:final_project_team02/ui/holder/codi/codi_item_insert_page/codi_item_insert_page.dart';
 import 'package:flutter/material.dart';
 
-class ItemInsert extends StatelessWidget {
-  const ItemInsert({super.key, required this.category});
+class CodiItemInsert extends StatelessWidget {
+  const CodiItemInsert({super.key, required this.category});
 
   final category;
 
@@ -12,8 +12,6 @@ class ItemInsert extends StatelessWidget {
       padding: const EdgeInsets.only(top: 8.0, right: 16.0),
       child: GestureDetector(
         onTap: () {
-          // 상품추가 메서드 추가
-          print("${category} 상품 추가 선택됨");
           Navigator.push(
             context,
             MaterialPageRoute(

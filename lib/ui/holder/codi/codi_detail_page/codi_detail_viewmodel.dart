@@ -46,24 +46,19 @@ class CodiDetailViewModel extends StateNotifier<CodiDetailModel?> {
           loveCount: loveCount,
         );
 
-        List<ItemPhotos> itemPhotos = state!.itemPhotos;
-        List<MainPhotos> mainPhotos = state!.mainPhotos;
-        List<OtherCodiPhotos> otherCodiPhotos = state!.otherCodiPhotos;
-
-        responseDTO.response = CodiDetailModel(
+        state = CodiDetailModel(
           codi: codi,
-          itemPhotos: itemPhotos,
-          mainPhotos: mainPhotos,
-          otherCodiPhotos: otherCodiPhotos,
+          itemPhotos: state!.itemPhotos,
+          mainPhotos: state!.mainPhotos,
+          otherCodiPhotos: state!.otherCodiPhotos,
         );
-        state = responseDTO.response;
       }
       return responseDTO;
     } else {
       ResponseDTO responseDTO = await CodiRepo().callDeleteLoveCount(codiId);
       if (responseDTO.success) {
         bool isLoved = !state!.codi.isLoved;
-        int loveCount = state!.codi.loveCount! - 1;
+        int loveCount = state!.codi.loveCount - 1;
 
         Codi codi = Codi(
           codiId: codiId,
@@ -73,17 +68,12 @@ class CodiDetailViewModel extends StateNotifier<CodiDetailModel?> {
           loveCount: loveCount,
         );
 
-        List<ItemPhotos> itemPhotos = state!.itemPhotos;
-        List<MainPhotos> mainPhotos = state!.mainPhotos;
-        List<OtherCodiPhotos> otherCodiPhotos = state!.otherCodiPhotos;
-
-        responseDTO.response = CodiDetailModel(
+        state = CodiDetailModel(
           codi: codi,
-          mainPhotos: mainPhotos,
-          itemPhotos: itemPhotos,
-          otherCodiPhotos: otherCodiPhotos,
+          mainPhotos: state!.mainPhotos,
+          itemPhotos: state!.itemPhotos,
+          otherCodiPhotos: state!.otherCodiPhotos,
         );
-        state = responseDTO.response;
       }
       return responseDTO;
     }

@@ -1,8 +1,8 @@
 import 'package:final_project_team02/ui/holder/codi/codi_insert_page/components/codi_insert_item_insert.dart';
 import 'package:flutter/cupertino.dart';
 
-class ItemInsertScroll extends StatelessWidget {
-  const ItemInsertScroll({
+class CodiPicItemInsertScroll extends StatelessWidget {
+  const CodiPicItemInsertScroll({
     super.key,
   });
 
@@ -12,11 +12,11 @@ class ItemInsertScroll extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          ItemInsert(category: "Outer"),
-          ItemInsert(category: "Top"),
-          ItemInsert(category: "Bottom"),
-          ItemInsert(category: "Shoes"),
-          ItemInsert(category: "Acc"),
+          // ItemInsert(category: "Outer"),
+          CodiItemInsert(category: "Top"),
+          CodiItemInsert(category: "Bottom"),
+          // ItemInsert(category: "Shoes"),
+          // ItemInsert(category: "Acc"),
         ],
       ),
     );

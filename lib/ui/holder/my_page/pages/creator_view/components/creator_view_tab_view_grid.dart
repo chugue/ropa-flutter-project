@@ -1,12 +1,18 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
-class CreatorViewTabViewGird extends StatelessWidget {
+import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+class CreatorViewTabViewGird extends ConsumerWidget {
   const CreatorViewTabViewGird({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    CreatorModel? model = ref.watch(creatorProvider(1));
+
     return GridView.builder(
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
@@ -15,8 +21,8 @@ class CreatorViewTabViewGird extends StatelessWidget {
         crossAxisCount: 2,
         mainAxisSpacing: 2,
       ),
-      itemCount: 42,
-      itemBuilder: (context, index) {
+      itemCount: model!.codiList.length,
+      itemBuilder: (context, codiIndex) {
         return Stack(
           children: [
             InkWell(
@@ -26,8 +32,8 @@ class CreatorViewTabViewGird extends StatelessWidget {
               },
               child: AspectRatio(
                 aspectRatio: 1,
-                child: Image.network(
-                    "https://picsum.photos/id/${index + 1}/1000/1000",
+                child: Image.memory(
+                    base64Decode(model!.codiList[codiIndex].base64),
                     fit: BoxFit.cover),
               ),
             ),

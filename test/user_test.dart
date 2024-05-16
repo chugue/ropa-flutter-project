@@ -8,8 +8,12 @@ final accessToken =
     'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuyCrOyaqeyekDHsnZgg7Iuk66qFIiwiaWQiOjEsImV4cCI6MTcxNTY3MTk5NCwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSJ9.1RnYFrIsghzIDfSlA1_kTaOnOBhR6jFPFz7JD7wN7AGOP5gDLTsNecGu-JWDL3P0odrV1Zo_7xG_nWn3wryQUw';
 
 void main() async {
-  await callLogin_test2();
+  await callUserMyPage(accessToken);
   // await callUserCreatorApply_test();
+}
+
+Future<void> callUserMyPage(accessToken) async {
+  await UserRepo().callCreatorView();
 }
 
 Future<void> callUserCreatorApply_test() async {
