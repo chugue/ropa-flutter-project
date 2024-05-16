@@ -5,15 +5,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'user_my_page_body_bottom.dart';
 
 class UserMyPageBody extends ConsumerWidget {
-  const UserMyPageBody({super.key});
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // UserMyPageModel? model = ref.watch(userMyPageProvider);
     UserMyPageModel? model = ref.watch(userMyPageProvider);
 
-    print("😀😀😀😀😀😀😀😀😀😀😀");
+    print("😀😀😀😀😀😀UserMyPageModel있냐?😀😀😀😀😀");
     print(model);
+    print("😀😀😀😀😀😀UserMyPageModel있냐?😀😀😀😀😀");
 
     if (model == null) {
       return Center(

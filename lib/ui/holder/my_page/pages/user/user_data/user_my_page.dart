@@ -1,9 +1,9 @@
 class UserMyPage {
-  int userId;
-  String photoName;
-  String base64;
-  String nickName;
-  int orderCount;
+  final int? userId;
+  final String photoName;
+  final String base64;
+  final String nickName;
+  final int orderCount;
 
   UserMyPage({
     required this.userId,
@@ -15,16 +15,16 @@ class UserMyPage {
 
   factory UserMyPage.fromJson(Map<String, dynamic> json) {
     return UserMyPage(
-      userId: json["userId"],
-      photoName: json["photoName"],
-      base64: json["base64"],
-      nickName: json["nickName"],
-      orderCount: json["orderCount"],
-      // userId: json["userId"] ?? null,
-      // photoName: json["photoName"] ?? '',
-      // base64: json["base64"] ?? '',
-      // nickName: json["nickName"] ?? '',
-      // orderCount: json["orderCount"] ?? null,
+      // userId: json["userId"],
+      // photoName: json["photoName"],
+      // base64: json["base64"],
+      // nickName: json["nickName"],
+      // orderCount: json["orderCount"],
+      userId: json["userId"] ?? null,
+      photoName: json["photoName"] ?? '',
+      base64: json["base64"] ?? '',
+      nickName: json["nickName"] ?? '',
+      orderCount: json["orderCount"] ?? null,
     );
   }
 }

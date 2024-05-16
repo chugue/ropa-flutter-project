@@ -25,14 +25,9 @@ class UserRepo {
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
     if (responseDTO.success) {
       responseDTO.response = UserMyPage.fromJson(responseDTO.response);
-      Logger().d("🧡💛💚💙💜🤎🖤🤍💔❣💕${responseDTO.response}");
+      Logger().d("🧡💛💚💙💜🤎🖤🤍💔❣💕${responseDTO.response.data!}");
     }
 
-    if (responseDTO.success) {
-      responseDTO.response = User.fromJson(responseDTO.response);
-      Logger().d(responseDTO.response);
-    }
-    return responseDTO;
     return responseDTO;
   }
 
