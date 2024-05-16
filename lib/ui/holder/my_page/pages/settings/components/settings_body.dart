@@ -1,6 +1,6 @@
 import 'package:final_project_team02/ui/holder/my_page/pages/profile/components/profile_small_title.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/settings/components/profile_menus.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/settings/components/setting_logout_button.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/settings/components/setting_menus.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/settings/setting_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,14 +8,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'setting_inquiry_menus.dart';
 
 class SettingsBody extends ConsumerWidget {
-  final globalKey = GlobalKey<ScaffoldState>();
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     UserSettingModel? model = ref.watch(UserSettingProvider);
-
-    print("🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗model");
-    print(model);
 
     if (model == null) {
       return Center(

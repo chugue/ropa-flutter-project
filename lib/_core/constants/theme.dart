@@ -4,14 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 /* ✅라이트 모드 */
 const lightColorScheme = ColorScheme(
   brightness: Brightness.light,
-  primary: Color(0xFF000000),
   // 아이콘 색상
+  primary: Color(0xFF000000),
   onPrimary: Color(0xFFFFFFFF),
   secondary: Color(0xFF6EAEE7),
   onSecondary: Color(0xFFFFFFFF),
   error: Color(0xFFBA1A1A),
   onError: Color(0xFFFFFFFF),
-  background: Color(0xFFFFFFFF),
+  background: Color(0xFFFDFDFD),
   onBackground: Color(0xFF1A1C18),
   shadow: Color(0xFF000000),
   outlineVariant: Color(0xFFFFFFFF),

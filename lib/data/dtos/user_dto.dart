@@ -1,15 +1,15 @@
-class Creator {
-  int? creatorId;
-  bool? blueChecked;
-  String? photoName;
-  String? base64;
-  String nickName;
-  String? height;
-  String? weight;
-  String? job;
-  String? introMsg;
+class UserDTO {
+  final int creatorId;
+  final bool blueChecked;
+  final String photoName;
+  final String base64;
+  final String nickName;
+  final String height;
+  final String weight;
+  final String job;
+  final String introMsg;
 
-  Creator({
+  UserDTO({
     required this.creatorId,
     required this.blueChecked,
     required this.photoName,
@@ -21,8 +21,8 @@ class Creator {
     required this.introMsg,
   });
 
-  factory Creator.fromJson(Map<String, dynamic> json) {
-    return Creator(
+  factory UserDTO.fromJson(Map<String, dynamic> json) {
+    return UserDTO(
       creatorId: json["creatorId"] ?? null,
       blueChecked: json["blueChecked"],
       photoName: json["photoName"] ?? '',
