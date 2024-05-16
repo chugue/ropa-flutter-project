@@ -10,10 +10,6 @@ class CodiInsertPage extends ConsumerWidget /* TODO : tl or stf? */ {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    SessionData sessionData = ref.watch(sessionProvider);
-    CodiItemInsertModel? codiItemInsertModel =
-        ref.watch(codiItemInsertProvider(null));
-    CodiInsertModel? codiInsertModel = ref.watch(codiInsertProvider);
     return Scaffold(
       appBar: AppBar(
         actions: [

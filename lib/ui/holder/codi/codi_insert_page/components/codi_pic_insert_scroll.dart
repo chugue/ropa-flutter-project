@@ -15,6 +15,7 @@ class CodiPicInsertScroll extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     CodiInsertModel? model = ref.watch(codiInsertProvider);
 
+
     return Container(
       height: 120,
       child: PageView.builder(
@@ -74,7 +75,7 @@ class CodiPicInsertScroll extends ConsumerWidget {
                           },
                           child: Icon(
                             Icons.delete,
-                            color: Colors.red,
+                            color: Colors.white,
                           ),
                         ),
                       ),

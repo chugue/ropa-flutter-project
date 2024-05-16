@@ -1,5 +1,9 @@
+import 'dart:io';
+
+import 'package:final_project_team02/ui/holder/codi/codi_insert_page/codi_insert_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_item_insert_page/codi_item_insert_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CodiItemInsert extends ConsumerWidget {
@@ -9,6 +13,7 @@ class CodiItemInsert extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, right: 16.0),
       child: GestureDetector(

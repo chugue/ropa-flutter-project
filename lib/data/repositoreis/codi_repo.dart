@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/global_data/codi.dart';
@@ -19,7 +20,7 @@ class CodiRepo {
     if (responseDTO.success) {
       List<dynamic> brand = responseDTO.response;
       List<Brand> brandList = brand.map((e) => Brand.fromJson(e)).toList();
-
+      logger.d("😍😍😍😍😍😍😍😍😍😍${brandList}");
       responseDTO.response = CodiItemInsertModel(brandList: brandList);
     }
     return responseDTO;
@@ -27,12 +28,14 @@ class CodiRepo {
 
   Future<ResponseDTO> callGetItemInsert(String? category) async {
     final response = await dio.get('/app/codi-register/add-item/${category}');
-
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
 
     if (responseDTO.success) {
+
       List<dynamic> brand = responseDTO.response;
+
       List<Brand> brandList = brand.map((e) => Brand.fromJson(e)).toList();
+
       responseDTO.response = CodiItemInsertModel(brandList: brandList);
     }
     return responseDTO;
