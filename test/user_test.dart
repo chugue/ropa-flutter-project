@@ -13,7 +13,7 @@ void main() async {
 }
 
 Future<void> callUserMyPage(accessToken) async {
-  await UserRepo().callCreatorView();
+  // await UserRepo().callCreatorView();
 }
 
 Future<void> callUserCreatorApply_test() async {

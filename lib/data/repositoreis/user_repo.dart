@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/dtos/user_req.dart';
-import 'package:final_project_team02/data/global_data/creator.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/creator_data/creator.dart';
 import 'package:final_project_team02/data/global_data/user.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/profile/profile_data/user_profile.dart';
@@ -18,7 +18,7 @@ class UserRepo {
     //     options: Options(headers: {"Authorization": accessToken}));
     // Logger().d(response.data!);
 
-    final response = await dio.get("/app/creator-view/1");
+    final response = await dio.get("/app/creator-view/${creatorId}");
     Logger().d(response.data!);
 
     // 🔀PARSING

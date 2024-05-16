@@ -2,16 +2,12 @@ import 'dart:convert';
 
 import 'package:final_project_team02/_core/constants/theme.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class CreatorViewTop extends StatelessWidget {
   final CreatorModel model;
 
-  CreatorViewTop({
-    required this.model,
-  });
+  CreatorViewTop({required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +45,19 @@ class CreatorViewTop extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(model.user.nickName,
-                style: textTheme().displayMedium), // :TODO 04수정
+            Row(
+              children: [
+                Text(model.user.nickName,
+                    // "Kenneth",
+                    style:
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                SizedBox(width: 10),
+                Icon(
+                  Icons.verified,
+                  color: Colors.blueAccent,
+                ),
+              ],
+            ),
             Text(
                 "${model.user.height} • ${model.user.weight} • ${model.user.job}",
                 style: textTheme().bodyMedium), // :TODO 04수정

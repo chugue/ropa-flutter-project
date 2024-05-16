@@ -18,7 +18,7 @@ class MyPageCustomButton extends StatelessWidget {
             context, MaterialPageRoute(builder: (context) => ProfileSetting()));
       },
       child: Container(
-        width: 400,
+        width: double.infinity,
         height: 30,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
