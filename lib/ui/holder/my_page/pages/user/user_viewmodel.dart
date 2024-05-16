@@ -40,7 +40,7 @@ class UserMyPageViewModel extends StateNotifier<UserMyPageModel?> {
 }
 
 // PROVIDER
-final UserMyPageProvider =
+final userMyPageProvider =
     StateNotifierProvider.family<UserMyPageViewModel, UserMyPageModel?, int>(
         (ref, userId) {
   return UserMyPageViewModel(null, ref)..notifyInit();

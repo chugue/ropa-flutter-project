@@ -1,5 +1,5 @@
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
-import 'package:final_project_team02/data/global_data/creator.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/creator_data/creator.dart';
 import 'package:final_project_team02/data/repositoreis/user_repo.dart';
 import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:final_project_team02/main.dart';
@@ -26,14 +26,12 @@ class CreatorViewModel extends StateNotifier<CreatorModel?> {
   Ref ref;
   SessionData sessionData;
 
-  CreatorViewModel(
-    super.state,
-    this.ref,
-    this.sessionData,
-  );
+  CreatorViewModel(super.state,
+      this.ref,
+      this.sessionData,);
 
   Future<ResponseDTO> notifyInit(creatorId) async {
-    ResponseDTO responseDTO = await UserRepo().callCreatorView();
+    ResponseDTO responseDTO = await UserRepo().callCreatorView(creatorId);
 
     if (responseDTO.success) {
       CreatorModel creatorModel = responseDTO.response;
@@ -45,11 +43,12 @@ class CreatorViewModel extends StateNotifier<CreatorModel?> {
 
 // PROVIDER
 final creatorProvider =
-    StateNotifierProvider.family<CreatorViewModel, CreatorModel?, int>(
-  (ref, creatorId) {
+StateNotifierProvider.family<CreatorViewModel, CreatorModel?, int>(
+      (ref, creatorId) {
     SessionData sessionData = ref.read(sessionProvider);
 
-    return CreatorViewModel(null, ref, sessionData)..notifyInit(creatorId);
+    return CreatorViewModel(null, ref, sessionData)
+      ..notifyInit(creatorId);
   },
 );
 // final creatorProvider = StateNotifierProvider<CreatorViewModel, CreatorModel?>(

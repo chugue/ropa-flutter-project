@@ -6,9 +6,13 @@ import 'user_my_page_body_bottom.dart';
 import 'user_my_page_body_header.dart';
 
 class UserMyPageBody extends ConsumerWidget {
+  final sessionUserId;
+
+  const UserMyPageBody({super.key, this.sessionUserId});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    UserMyPageModel? model = ref.watch(UserMyPageProvider(2));
+    UserMyPageModel? model = ref.watch(userMyPageProvider(sessionUserId));
     print("😀😀😀😀😀😀😀😀😀😀😀");
     print(model);
 
@@ -16,7 +20,7 @@ class UserMyPageBody extends ConsumerWidget {
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
         return [
           SliverToBoxAdapter(
-            child: UserMyPageBodyTop("아직!!!!"),
+            child: UserMyPageBodyTop(model: model),
           ),
         ];
       },

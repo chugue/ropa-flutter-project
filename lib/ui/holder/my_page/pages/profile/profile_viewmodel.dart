@@ -49,7 +49,7 @@ class UserProfileViewModel extends StateNotifier<UserProfileModel?> {
 
 // 창고 관리자
 
-final UserProfileProvider =
+final userProfileProvider =
     StateNotifierProvider<UserProfileViewModel, UserProfileModel?>(
   (ref) {
     return UserProfileViewModel(null, ref)..notifyInit(); /* 초기 상태 null */

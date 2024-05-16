@@ -1,14 +1,15 @@
 import 'package:final_project_team02/_core/constants/theme.dart';
 import 'package:final_project_team02/ui/holder/inquiry/inquiry_page/inquiry_page.dart';
 import 'package:final_project_team02/ui/holder/my_page/_components/my_page_custom_button.dart';
-import 'package:final_project_team02/ui/holder/my_page/_components/my_page_order_mileage.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/user/user_viewmodel.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/components/my_page_order_inquiry.dart';
 import 'package:flutter/material.dart';
 
 class UserMyPageBodyTop extends StatelessWidget {
-  String nickName;
+  final model;
 
-  UserMyPageBodyTop(this.nickName);
+  UserMyPageBodyTop({
+    required this.model,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,18 +18,19 @@ class UserMyPageBodyTop extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(height: 30),
-          _buildCreatorPic(),
+          // ✅ 사용자 닉네임
+          _buildUserPic(),
           SizedBox(height: 20),
+
           MyPageCustomButton(title: "프로필 설정"),
           SizedBox(height: 20),
-          MyPageOrderMileage(orderId: 10, mileageId: 200),
-          InquiryButton(),
+          MyPageOrderInquiry(orderId: 10),
         ],
       ),
     );
   }
 
-  Widget _buildCreatorPic() {
+  Widget _buildUserPic() {
     return Row(
       children: [
         SizedBox(
@@ -38,6 +40,7 @@ class UserMyPageBodyTop extends StatelessWidget {
             borderRadius: BorderRadius.circular(32.5),
             child: Image.network(
               'https://picsum.photos/200/100', // :TODO 04 사진수정
+              // Image.memory(base64Decode(model),
               fit: BoxFit.cover,
             ),
           ),
@@ -46,7 +49,7 @@ class UserMyPageBodyTop extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(nickName, style: textTheme().displayMedium), // :TODO 04수정
+            Text("아직!!", style: textTheme().displayMedium), // :TODO 04수정
           ],
         ),
       ],
