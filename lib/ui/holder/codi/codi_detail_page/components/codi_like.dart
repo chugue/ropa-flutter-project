@@ -6,15 +6,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CodiLike extends ConsumerWidget {
   final int codiId;
+  final CodiDetailModel model;
 
   const CodiLike({
+    required this.model,
     required this.codiId,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CodiDetailModel? model = ref.watch(codiDetailProvider(codiId));
     SessionData sessionData = ref.watch(sessionProvider);
+    print("CodiLike 😊😊😊😊😊${model}");
 
     return Padding(
       padding: const EdgeInsets.only(left: 8.0),
@@ -35,7 +37,7 @@ class CodiLike extends ConsumerWidget {
                 }
               },
               icon: Icon(Icons.favorite,
-                  color: model!.codi.isLoved ? Colors.red : Colors.grey),
+                  color: model.codi.isLoved ? Colors.red : Colors.grey),
             ),
             Text("${model.codi.loveCount}"),
           ],

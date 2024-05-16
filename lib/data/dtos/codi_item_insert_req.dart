@@ -24,10 +24,10 @@ class CodiItemInsertReqDTO {
 }
 
 class CodiPhotos {
-  final String photoName;
-  final String photoBase64;
+  final String? photoName;
+  final String? photoBase64;
   final bool isMainPhoto;
-  final String type;
+  final String? type;
 
   const CodiPhotos({
     required this.photoName,

@@ -1,12 +1,9 @@
-
 import 'dart:io'; // dart:io 패키지의 File 클래스를 사용하기 위해 추가
 
 import 'package:final_project_team02/ui/holder/codi/codi_insert_page/codi_insert_viewmodel.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CodiPicInsertScroll extends ConsumerWidget {
   const CodiPicInsertScroll({super.key});
@@ -29,7 +26,8 @@ class CodiPicInsertScroll extends ConsumerWidget {
                 if (index == model.images.length) {
                   return GestureDetector(
                     onTap: () async {
-                      await ref.read(codiInsertProvider.notifier)
+                      await ref
+                          .read(codiInsertProvider.notifier)
                           .pickAndAddImage();
                     },
                     child: Container(
@@ -51,13 +49,13 @@ class CodiPicInsertScroll extends ConsumerWidget {
                         width: 120,
                         height: 120,
                         child: FutureBuilder<File>(
-                          future: DefaultCacheManager().getSingleFile(
-                              model.images[index].path),
+                          future: DefaultCacheManager()
+                              .getSingleFile(model.images[index].path),
                           builder: (context, snapshot) {
                             if (snapshot.connectionState ==
                                 ConnectionState.done) {
-                              return Image.file(
-                                  snapshot.data!, fit: BoxFit.cover);
+                              return Image.file(snapshot.data!,
+                                  fit: BoxFit.cover);
                             } else {
                               return Center(child: CircularProgressIndicator());
                             }
@@ -69,12 +67,13 @@ class CodiPicInsertScroll extends ConsumerWidget {
                         right: 10,
                         child: GestureDetector(
                           onTap: () {
-                            ref.read(codiInsertProvider.notifier).removeImage(
-                                index);
+                            ref
+                                .read(codiInsertProvider.notifier)
+                                .removeImage(index);
                           },
                           child: Icon(
                             Icons.delete,
-                            color: Colors.red,
+                            color: Colors.white,
                           ),
                         ),
                       ),
@@ -166,4 +165,3 @@ class CodiPicInsertScroll extends ConsumerWidget {
 // //     );
 // //   }
 // // }
-

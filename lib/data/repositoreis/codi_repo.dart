@@ -19,7 +19,7 @@ class CodiRepo {
     if (responseDTO.success) {
       List<dynamic> brand = responseDTO.response;
       List<Brand> brandList = brand.map((e) => Brand.fromJson(e)).toList();
-
+      logger.d("😍😍😍😍😍😍😍😍😍😍${brandList}");
       responseDTO.response = CodiItemInsertModel(brandList: brandList);
     }
     return responseDTO;
@@ -27,7 +27,6 @@ class CodiRepo {
 
   Future<ResponseDTO> callGetItemInsert(String? category) async {
     final response = await dio.get('/app/codi-register/add-item/${category}');
-
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
 
     if (responseDTO.success) {

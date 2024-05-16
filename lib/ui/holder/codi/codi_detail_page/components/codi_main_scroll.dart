@@ -13,6 +13,7 @@ class CodiMainScroll extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    print("CodiMainScroll 😊😊😊😊😊${model}");
     return SizedBox(
       height: 500,
       child: PageView.builder(
@@ -28,8 +29,7 @@ class CodiMainScroll extends ConsumerWidget {
                   width: double.infinity, // 셀의 전체 너비 사용
                   height: double.infinity, // 셀의 전체 높이 사용
                   child: Image.memory(
-                    Base64Decoder()
-                        .convert(model!.mainPhotos[index].base64),
+                    Base64Decoder().convert(model!.mainPhotos[index].base64),
                     fit: BoxFit.cover,
                   ),
                 );
