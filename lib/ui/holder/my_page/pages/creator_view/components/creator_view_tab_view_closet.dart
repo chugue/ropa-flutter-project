@@ -1,17 +1,17 @@
 import 'dart:convert';
 
-import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CreatorViewTabViewCloset extends ConsumerWidget {
+class CreatorViewTabViewCloset extends StatelessWidget {
+  final model;
+
   const CreatorViewTabViewCloset({
     super.key,
+    required this.model,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    CreatorModel? model = ref.watch(creatorProvider(1));
+  Widget build(BuildContext context) {
     return GridView.builder(
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,

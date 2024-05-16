@@ -7,7 +7,7 @@ import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_vie
 import 'package:flutter/material.dart';
 
 class CreatorTop extends StatelessWidget {
-  final CreatorModel? model;
+  final CreatorModel model;
 
   CreatorTop({
     required this.model,
@@ -48,12 +48,12 @@ class CreatorTop extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(model!.user.nickName,
+            Text(model.user.nickName,
                 // "Kenneth",
                 style: textTheme().displayMedium), // :TODO 04수정
             Text(
                 // "${model!.user.height} • ${model!.user.weight} • ${model!.user.job}",
-                "${model!.codiList[1].photoName} • ${model!.user.weight} • ${model!.user.job}",
+                "${model.user.height} • ${model.user.weight} • ${model.user.job}",
                 // "185cm - 80kg - 직장인",
                 style: textTheme().bodyMedium), // :TODO 04수정
           ],

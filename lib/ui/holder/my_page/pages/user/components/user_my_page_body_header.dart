@@ -2,16 +2,16 @@ import 'package:final_project_team02/_core/constants/theme.dart';
 import 'package:final_project_team02/ui/holder/inquiry/inquiry_page/inquiry_page.dart';
 import 'package:final_project_team02/ui/holder/my_page/_components/my_page_custom_button.dart';
 import 'package:final_project_team02/ui/holder/my_page/_components/my_page_order_mileage.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/user/user_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class UserMyPageBodyTop extends StatelessWidget {
+class UserMyPageBodyTop extends ConsumerWidget {
   String nickName;
 
   UserMyPageBodyTop(this.nickName);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(

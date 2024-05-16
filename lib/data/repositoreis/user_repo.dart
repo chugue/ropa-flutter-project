@@ -18,7 +18,7 @@ class UserRepo {
     //     options: Options(headers: {"Authorization": accessToken}));
     // Logger().d(response.data!);
 
-    final response = await dio.get("/app/creator-view/${creatorId}");
+    final response = await dio.get("/app/creator-view/1");
     Logger().d(response.data!);
 
     // 🔀PARSING
