@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:logger/logger.dart';
 
 final accessToken =
-    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuyCrOyaqeyekDHsnZgg7Iuk66qFIiwiaWQiOjEsImV4cCI6MTcxNTY3MTk5NCwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSJ9.1RnYFrIsghzIDfSlA1_kTaOnOBhR6jFPFz7JD7wN7AGOP5gDLTsNecGu-JWDL3P0odrV1Zo_7xG_nWn3wryQUw';
+    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6ZmFsc2UsIm5hbWUiOiLsoJXtlbTsnbgiLCJpZCI6MSwiZXhwIjoxNzE1OTE4MzgxLCJlbWFpbCI6Imp1bmdoZWluQGV4YW1wbGUuY29tIn0.D6ow3dxfMQ3Aysqx8qHGj30e3okock8Df_fF-ynBmq5pd5YpmeYvZVDeyhaSOSbnRXmf3xqE9BxUQMqsHzmQHA';
 
 void main() async {
   await callLogin_test2();
@@ -44,7 +44,7 @@ Future<void> callLogin_test() async {
 
 Future<void> callLogin_test2() async {
   LoginReqDTO reqDTO =
-      LoginReqDTO(email: "user1@example.com", password: "1234");
+      LoginReqDTO(email: "junghein@example.com", password: "1234");
   await UserRepo().callLogin(reqDTO);
 }
 

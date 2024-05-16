@@ -48,9 +48,8 @@ class HomeBody extends ConsumerWidget {
   }
 
   Timer timer() {
-    return _timer = Timer.periodic(
-      Duration(seconds: 4),
-      (timer) {
+    return _timer = Timer.periodic(Duration(seconds: 4), (Timer timer) {
+      if (_pageController.positions.isNotEmpty) {
         int nextPage = (_pageController.page?.toInt() ?? 0) + 1;
         if (nextPage == slideAdList.length) {
           nextPage = 0; // ✅마지막 이미지가 끝나면 첫 이미지로
@@ -60,7 +59,7 @@ class HomeBody extends ConsumerWidget {
           duration: Duration(seconds: 1),
           curve: Curves.easeInOut,
         );
-      },
-    );
+      }
+    });
   }
 }
