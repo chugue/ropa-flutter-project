@@ -9,9 +9,8 @@ import 'package:final_project_team02/ui/holder/my_page/pages/profile/profile_dat
 import 'package:final_project_team02/ui/holder/my_page/pages/settings/setting_data/user_setting.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/codi_list.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/item_list.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/user_my_page.dart';
 import 'package:logger/logger.dart';
-
-import '../../ui/holder/my_page/pages/user/user_data/user_my_page.dart';
 
 class UserRepo {
   Future<ResponseDTO> callUserMyPage() async {
@@ -25,10 +24,15 @@ class UserRepo {
     // 🔀PARSING
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
     if (responseDTO.success) {
-      UserMyPage userMyPage = UserMyPage.fromJson(responseDTO.response);
-      Logger().d("🧡💛💚💙💜🤎🖤🤍💔❣💕${userMyPage}");
+      responseDTO.response = UserMyPage.fromJson(responseDTO.response);
+      Logger().d("🧡💛💚💙💜🤎🖤🤍💔❣💕${responseDTO.response}");
     }
 
+    if (responseDTO.success) {
+      responseDTO.response = User.fromJson(responseDTO.response);
+      Logger().d(responseDTO.response);
+    }
+    return responseDTO;
     return responseDTO;
   }
 
