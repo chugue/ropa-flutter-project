@@ -1,12 +1,19 @@
 import 'dart:convert';
 
+import 'package:final_project_team02/data/dtos/codi_req.dart';
+import 'package:final_project_team02/data/dtos/respons_dto.dart';
+import 'package:final_project_team02/data/repositoreis/codi_repo.dart';
+import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:final_project_team02/main.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/codi_list.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as path;
+
 
 class CodiInsertModel {
   final List<XFile> images;
@@ -89,11 +96,13 @@ class CodiInsertModel {
 }
 
 class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
+  Ref ref;
   final ImagePicker picker = ImagePicker();
   final cacheManager = DefaultCacheManager();
   final mContext = navigatorKey.currentContext;
+  SessionData sessionData;
 
-  CodiInsertViewModel()
+  CodiInsertViewModel(this.ref, this.sessionData)
       : super(CodiInsertModel(
           prevImg: '',
           images: [],
@@ -101,6 +110,18 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
           topImageBase64: null,
           bottomImageBase64: null,
         ));
+
+  Future<void> codiSave(CodiInsertReqDTO reaDTO) async {
+    ResponseDTO responseDTO = await CodiRepo().callSetItemInsert(reaDTO);
+
+    if(responseDTO.success) {
+      // 새로운 코디를 등록한 후 상태 업데이트
+      CodiList newCodi = CodiList.fromJson(responseDTO.response);
+      ref.read(creatorProvider(sessionData.user!.id!).notifier).addNewCodi(newCodi);
+
+    }
+  }
+
 
   void updateComment(String comment) {
     if (state != null) {
@@ -173,8 +194,7 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
     state = state.copyWith(images: updatedImages);
   }
 }
-
-final codiInsertProvider =
-    StateNotifierProvider<CodiInsertViewModel, CodiInsertModel>(
-  (ref) => CodiInsertViewModel(),
-);
+final codiInsertProvider = StateNotifierProvider<CodiInsertViewModel, CodiInsertModel>((ref) {
+SessionData sessionData = ref.watch(sessionProvider);
+  return CodiInsertViewModel(ref, sessionData);
+});

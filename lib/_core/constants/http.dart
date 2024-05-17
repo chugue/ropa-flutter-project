@@ -24,7 +24,7 @@ var interceptor = InterceptorsWrapper(
     if (globalAccessToken != null) {
       options.headers["Authorization"] = "$globalAccessToken";
     } else {
-      print("나 토큰이 없어 🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️서버 확인해 봤어?🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️");
+      print("나 토큰이 없습니다.");
     }
 
     return handler.next(options);

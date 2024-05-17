@@ -10,23 +10,17 @@ import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail
 import 'package:final_project_team02/ui/holder/codi/codi_item_insert_page/codi_item_data/brand.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_item_insert_page/codi_item_insert_viewmodel.dart';
 
+// options: Options(headers: {'Authorization': '${ }'})
 class CodiRepo {
-  Future<ResponseDTO> callSetItemInsert(
-      CodiInsertReqDTO reqDTO, String Token) async {
-    final response = await dio.post('/app/codi-register',
-        data: reqDTO.toJson(),
-        options: Options(headers: {'Authorization': Token}));
-    logger.d(response.data);
+  Future<ResponseDTO> callSetItemInsert(CodiInsertReqDTO reqDTO) async {
+    final response = await dio.post(
+      '/app/codi-register',
+      data: reqDTO.toJson(),
+    );
 
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
-    // logger.d(responseDTO.response);
 
-    if (responseDTO.success) {
-      List<dynamic> brand = responseDTO.response;
-      List<Brand> brandList = brand.map((e) => Brand.fromJson(e)).toList();
-      logger.d("😍😍😍😍😍😍😍😍😍😍${brandList}");
-      responseDTO.response = CodiItemInsertModel(brandList: brandList);
-    }
+    if (responseDTO.success) {}
     return responseDTO;
   }
 
@@ -36,9 +30,7 @@ class CodiRepo {
 
     if (responseDTO.success) {
       List<dynamic> brand = responseDTO.response;
-
       List<Brand> brandList = brand.map((e) => Brand.fromJson(e)).toList();
-
       responseDTO.response = CodiItemInsertModel(brandList: brandList);
     }
     return responseDTO;

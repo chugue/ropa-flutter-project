@@ -1,12 +1,14 @@
 class CodiInsertReqDTO {
   final int userId;
   final String? description;
+  final String? title;
   final List<CodiPhots> codiPhotos;
   final List<Items> items;
 
   const CodiInsertReqDTO({
     required this.userId,
     required this.description,
+    required this.title,
     required this.codiPhotos,
     required this.items,
   });
@@ -15,6 +17,7 @@ class CodiInsertReqDTO {
     return {
       "userId": this.userId,
       "description": this.description,
+      "title": this.title,
       "codiPhotos": codiPhotos.map((photo) => photo.toJson()).toList(),
       "items": items.map((item) => item.toJson()).toList(),
     };

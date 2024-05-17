@@ -49,12 +49,13 @@ class CodiInsertPage extends ConsumerWidget {
 
                 CodiInsertReqDTO reqDTO = CodiInsertReqDTO(
                   userId: sessionData.user!.id!,
+                  title:' 코디 1 ',
                   description: model.comment, // Set your description here
                   codiPhotos: codiPhotos,
                   items: items,
                 );
-
-                print(reqDTO.toJson());
+                
+                ref.read(codiInsertProvider.notifier).codiSave(reqDTO);
               },
               child: Text(
                 "완료",

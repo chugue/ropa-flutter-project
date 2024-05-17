@@ -18,6 +18,18 @@ class CreatorModel {
     required this.codiList,
     required this.itemList,
   });
+
+  CreatorModel copyWith({
+    Creator? user,
+    List<CodiList>? codiList,
+    List<ItemList>? itemList,
+  }) {
+    return CreatorModel(
+      user: user ?? this.user,
+      codiList: codiList ?? this.codiList,
+      itemList: itemList ?? this.itemList,
+    );
+  }
 }
 
 // VIEW MODEL
@@ -38,6 +50,13 @@ class CreatorViewModel extends StateNotifier<CreatorModel?> {
       state = creatorModel;
     }
     return responseDTO;
+  }
+
+  void addNewCodi(CodiList newCodi) {
+    if (state != null) {
+      List<CodiList> updatedCodiList = List.from(state!.codiList)..add(newCodi);
+      state = state!.copyWith(codiList: updatedCodiList);
+    }
   }
 }
 
