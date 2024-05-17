@@ -6,6 +6,12 @@ import 'creator_view_tab_view_closet.dart';
 import 'creator_view_tab_view_grid.dart';
 
 class CreatorViewBottom extends StatelessWidget {
+  final model;
+
+  CreatorViewBottom({
+    required this.model,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -21,10 +27,10 @@ class CreatorViewBottom extends StatelessWidget {
                 Expanded(
                   child: TabBarView(
                     children: [
-                      //탭바 그리드
-                      CreatorViewTabViewGird(),
-                      //탭바 옷장
-                      CreatorViewTabViewCloset(),
+                      // Creator 코디 목록
+                      CreatorViewTabViewGird(model: model),
+                      // Creator 아이템 목록
+                      CreatorViewTabViewCloset(model: model),
                     ],
                   ),
                 ),

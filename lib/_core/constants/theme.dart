@@ -67,7 +67,10 @@ ThemeData darkMode = ThemeData(
 // 2
 TextTheme textTheme() {
   return TextTheme(
-    displayLarge: GoogleFonts.notoSans(fontSize: 18.0, color: Colors.black),
+    displayLarge: GoogleFonts.notoSans(
+      fontSize: 18.0,
+      color: Colors.black,
+    ),
     displayMedium: GoogleFonts.notoSans(fontSize: 16.0, color: Colors.black),
     bodyLarge: GoogleFonts.notoSans(
         fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.bold),

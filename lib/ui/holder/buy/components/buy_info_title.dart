@@ -15,7 +15,7 @@ class BuyInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String orderAmount = formatCurrency(model!.orderInfo.orderAmount);
+    String orderAmount = formatCurrency(model.orderInfo.orderAmount);
     String purchaseAmount = formatCurrency(model.orderInfo.purchaseAmount);
 
     ExpandableController expController =

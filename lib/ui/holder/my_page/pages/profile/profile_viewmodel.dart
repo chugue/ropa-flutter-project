@@ -27,10 +27,8 @@ class UserProfileViewModel extends StateNotifier<UserProfileModel?> {
 
   Future<void> notifyInit() async {
     SessionData sessionData = ref.read(sessionProvider);
-    String jwt = sessionData.accessToken!;
 
     print(sessionData.accessToken);
-    print(jwt);
 
     ResponseDTO responseDTO = await UserRepo().callUserProfile();
 
@@ -40,7 +38,7 @@ class UserProfileViewModel extends StateNotifier<UserProfileModel?> {
     } else {
       ScaffoldMessenger.of(mContext!).showSnackBar(
         SnackBar(
-          content: Text("✅✅✅✅✅✅✅프로필 정보 보기 실패 : ${responseDTO.errorMessage}"),
+          content: Text("⛔⛔⛔⛔⛔⛔⛔프로필 정보 보기 실패 : ${responseDTO.errorMessage}"),
         ),
       );
     }
@@ -49,7 +47,7 @@ class UserProfileViewModel extends StateNotifier<UserProfileModel?> {
 
 // 창고 관리자
 
-final UserProfileProvider =
+final userProfileProvider =
     StateNotifierProvider<UserProfileViewModel, UserProfileModel?>(
   (ref) {
     return UserProfileViewModel(null, ref)..notifyInit(); /* 초기 상태 null */

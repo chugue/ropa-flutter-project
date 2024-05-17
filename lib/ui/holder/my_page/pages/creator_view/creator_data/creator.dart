@@ -1,13 +1,13 @@
 class Creator {
-  int? creatorId;
-  bool? blueChecked;
-  String? photoName;
-  String? base64;
-  String nickName;
-  String? height;
-  String? weight;
-  String? job;
-  String? introMsg;
+  final int? creatorId;
+  final bool blueChecked;
+  final String photoName;
+  final String base64;
+  final String nickName;
+  final String height;
+  final String weight;
+  final String job;
+  final String introMsg;
 
   Creator({
     required this.creatorId,
