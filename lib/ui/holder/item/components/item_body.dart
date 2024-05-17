@@ -18,7 +18,7 @@ class ItemBody extends ConsumerWidget {
     ItemDetailListModel? model = ref.watch(itemDetailListProvider(itemId));
 
     if (model == null) {
-      return Center(
+      return const Center(
         child: CircularProgressIndicator(),
       );
     }
@@ -53,9 +53,12 @@ class ItemBody extends ConsumerWidget {
               ),
             ),
           ),
+          // ✅ item 메인 사진 슬라이더
           SliverToBoxAdapter(
             child: ItemMainSlide(model: model),
           ),
+
+          // ✅ item 정보 (브랜드, 이름, 가격)
           SliverToBoxAdapter(
             child: ItemInfo(model: model),
           ),
