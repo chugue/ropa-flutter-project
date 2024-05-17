@@ -1,14 +1,14 @@
 class UserMyPage {
   final int? userId;
   final String photoName;
-  final String base64;
+  final String photoPath;
   final String nickName;
   final int orderCount;
 
   UserMyPage({
     required this.userId,
     required this.photoName,
-    required this.base64,
+    required this.photoPath,
     required this.nickName,
     required this.orderCount,
   });
@@ -17,7 +17,7 @@ class UserMyPage {
     return UserMyPage(
       userId: json["userId"] ?? null,
       photoName: json["photoName"] ?? '',
-      base64: json["base64"] ?? '',
+      photoPath: json["photoPath"] ?? '',
       nickName: json["nickName"] ?? '',
       orderCount: json["orderCount"] ?? null,
     );

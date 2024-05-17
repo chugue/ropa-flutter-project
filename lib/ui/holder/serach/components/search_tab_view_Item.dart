@@ -1,12 +1,13 @@
-import 'dart:convert';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:final_project_team02/ui/holder/serach/search_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
+import 'package:shimmer/shimmer.dart';
+
+import '../../../../_core/constants/http.dart';
 
 class SearchTabViewItem extends ConsumerWidget {
-
-
   SearchTabViewItem();
 
   @override
@@ -15,7 +16,7 @@ class SearchTabViewItem extends ConsumerWidget {
 
     if (model == null) {
       return Center(child: CircularProgressIndicator());
-    }else{
+    } else {
       return GridView.builder(
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
@@ -26,6 +27,9 @@ class SearchTabViewItem extends ConsumerWidget {
         ),
         itemCount: model.itemPhotos.length,
         itemBuilder: (context, index) {
+          Logger().d('$baseURL/${model.itemPhotos[index].photoPath}');
+          Logger().d(model.itemPhotos[index].photoPath);
+
           return Container(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,9 +43,19 @@ class SearchTabViewItem extends ConsumerWidget {
                     child: AspectRatio(
                       aspectRatio: 4,
                       child: ClipRRect(
-                        child: Image.memory(
-                          Base64Decoder()
-                              .convert(model.itemPhotos[index].base64),
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: CachedNetworkImage(
+                          imageUrl:
+                              '$baseURL${model.itemPhotos[index].photoPath}',
+                          placeholder: (context, url) => Shimmer.fromColors(
+                            baseColor: Colors.grey[300]!,
+                            highlightColor: Colors.grey[100]!,
+                            child: Container(
+                              color: Colors.white,
+                            ),
+                          ),
+                          errorWidget: (context, url, error) =>
+                              Icon(Icons.error),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -64,7 +78,6 @@ class SearchTabViewItem extends ConsumerWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      //numberFormat 사용하면되
                       Text(
                         "가격 : 10,000원",
                         style: TextStyle(fontWeight: FontWeight.bold),
@@ -79,6 +92,5 @@ class SearchTabViewItem extends ConsumerWidget {
         },
       );
     }
-
   }
 }

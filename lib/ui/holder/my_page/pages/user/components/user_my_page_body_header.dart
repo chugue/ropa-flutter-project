@@ -1,9 +1,11 @@
-import 'dart:convert';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:final_project_team02/ui/holder/my_page/_components/my_page_custom_button.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/components/my_page_order_inquiry.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/user_my_pageviewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
+
+import '../../../../../../_core/constants/http.dart';
 
 class UserMyPageBodyTop extends StatelessWidget {
   final UserMyPageModel model;
@@ -43,10 +45,16 @@ class UserMyPageBodyTop extends StatelessWidget {
           height: 65,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(32.5),
-            child:
-                // Image.network('https://picsum.photos/200/100',
-                Image.memory(
-              base64Decode(model.userMyPage.base64),
+            child: CachedNetworkImage(
+              imageUrl: '$baseURL${model.userMyPage.photoPath}',
+              placeholder: (context, url) => Shimmer.fromColors(
+                baseColor: Colors.grey[300]!,
+                highlightColor: Colors.grey[100]!,
+                child: Container(
+                  color: Colors.white,
+                ),
+              ),
+              errorWidget: (context, url, error) => Icon(Icons.error),
               fit: BoxFit.cover,
             ),
           ),

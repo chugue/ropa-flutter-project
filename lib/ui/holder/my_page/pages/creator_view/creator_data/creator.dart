@@ -2,7 +2,7 @@ class Creator {
   final int? creatorId;
   final bool blueChecked;
   final String photoName;
-  final String base64;
+  final String photoPath;
   final String nickName;
   final String height;
   final String weight;
@@ -13,7 +13,7 @@ class Creator {
     required this.creatorId,
     required this.blueChecked,
     required this.photoName,
-    required this.base64,
+    required this.photoPath,
     required this.nickName,
     required this.height,
     required this.weight,
@@ -26,7 +26,7 @@ class Creator {
       creatorId: json["creatorId"] ?? null,
       blueChecked: json["blueChecked"],
       photoName: json["photoName"] ?? '',
-      base64: json["base64"] ?? '',
+      photoPath: json["photoPath"] ?? '',
       nickName: json["nickName"] ?? '',
       height: json["height"] ?? '',
       weight: json["weight"] ?? '',

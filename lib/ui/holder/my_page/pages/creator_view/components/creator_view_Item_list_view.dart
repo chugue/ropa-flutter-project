@@ -1,7 +1,9 @@
-import 'dart:convert';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:final_project_team02/_core/uitls/format_util.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
+
+import '../../../../../../_core/constants/http.dart';
 
 class ItemListView extends StatelessWidget {
   const ItemListView({
@@ -36,12 +38,19 @@ class ItemListView extends StatelessWidget {
                   child: AspectRatio(
                     aspectRatio: 2 / 1,
                     child: ClipRRect(
-                      child:
-                          // Image.network(
-                          //     "https://picsum.photos/id/${index + 1}/600/600",
-                          Image.memory(
-                              base64Decode(model.itemList[itemIndex].base64),
-                              fit: BoxFit.contain),
+                      child: CachedNetworkImage(
+                        imageUrl:
+                            '$baseURL${model.itemList[itemIndex].photoPath}',
+                        placeholder: (context, url) => Shimmer.fromColors(
+                          baseColor: Colors.grey[300]!,
+                          highlightColor: Colors.grey[100]!,
+                          child: Container(
+                            color: Colors.white,
+                          ),
+                        ),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),

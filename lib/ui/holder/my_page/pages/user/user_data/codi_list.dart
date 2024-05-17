@@ -2,14 +2,14 @@ class CodiList {
   int codiId;
   int codiPhotoId;
   String photoName;
-  String base64;
+  String photoPath;
   String codiPhoto;
 
   CodiList({
     required this.codiId,
     required this.codiPhotoId,
     required this.photoName,
-    required this.base64,
+    required this.photoPath,
     required this.codiPhoto,
   });
 
@@ -18,7 +18,7 @@ class CodiList {
       codiId: json["codiId"],
       codiPhotoId: json["codiPhotoId"],
       photoName: json["photoName"],
-      base64: json["base64"],
+      photoPath: json["photoPath"],
       codiPhoto: json["codiPhoto"],
     );
   }

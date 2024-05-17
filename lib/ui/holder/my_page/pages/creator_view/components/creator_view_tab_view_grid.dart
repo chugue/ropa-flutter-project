@@ -1,7 +1,8 @@
-import 'dart:convert';
-
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CreatorViewTabViewGird extends StatelessWidget {
   final CreatorModel model;
@@ -32,9 +33,18 @@ class CreatorViewTabViewGird extends StatelessWidget {
               },
               child: AspectRatio(
                 aspectRatio: 1,
-                child: Image.memory(
-                    base64Decode(model!.codiList[codiIndex].base64),
-                    fit: BoxFit.cover),
+                child: CachedNetworkImage(
+                  imageUrl: '$baseURL${model!.codiList[codiIndex].photoPath}',
+                  placeholder: (context, url) => Shimmer.fromColors(
+                    baseColor: Colors.grey[300]!,
+                    highlightColor: Colors.grey[100]!,
+                    child: Container(
+                      color: Colors.white,
+                    ),
+                  ),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             Positioned(

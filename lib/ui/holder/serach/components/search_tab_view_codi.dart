@@ -1,12 +1,12 @@
-import 'dart:convert';
-
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/ui/holder/serach/search_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/web.dart';
+import 'package:shimmer/shimmer.dart';
 
 class SearchTabViewCodi extends ConsumerWidget {
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     SearchModel? model = ref.watch(searchProvider);
@@ -23,13 +23,11 @@ class SearchTabViewCodi extends ConsumerWidget {
       }
     });
 
-
     // Logger().d(model);
 
     if (model == null) {
       return Center(child: CircularProgressIndicator());
     } else {
-
       return GridView.builder(
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
@@ -40,7 +38,6 @@ class SearchTabViewCodi extends ConsumerWidget {
         ),
         itemCount: model.codiPhotos.length,
         itemBuilder: (context, index) {
-
           return Stack(
             children: [
               InkWell(
@@ -50,9 +47,16 @@ class SearchTabViewCodi extends ConsumerWidget {
                 },
                 child: AspectRatio(
                   aspectRatio: 1,
-                  child: Image.memory(
-                    Base64Decoder()
-                        .convert(model.codiPhotos[index].codiBase64),
+                  child: CachedNetworkImage(
+                    imageUrl: '$baseURL${model.codiPhotos[index].photoPath}',
+                    placeholder: (context, url) => Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Container(
+                        color: Colors.white,
+                      ),
+                    ),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
                     fit: BoxFit.cover,
                   ),
                 ),
