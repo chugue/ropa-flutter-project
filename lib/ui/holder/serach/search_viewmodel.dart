@@ -2,14 +2,10 @@ import 'package:final_project_team02/data/session_data/session_data.dart'; // �
 import 'package:final_project_team02/main.dart'; // 메인 파일을 임포트하여 navigatorKey를 사용
 import 'package:final_project_team02/ui/holder/serach/search_data/codi_photo.dart'; // 코디 사진 데이터를 포함하는 클래스 임포트
 import 'package:final_project_team02/ui/holder/serach/search_data/item_photo.dart'; // 아이템 사진 데이터를 포함하는 클래스 임포트
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart'; // Flutter의 기본 위젯 라이브러리 임포트
 import 'package:flutter_riverpod/flutter_riverpod.dart'; // Riverpod 상태 관리 라이브러리 임포트
-import 'package:logger/logger.dart';
 
 import '../../../data/repositoreis/search_repo.dart'; // 검색 데이터 요청을 처리하는 리포지토리 클래스 임포트
-
-
 
 // SearchModel 클래스 정의
 class SearchModel {
@@ -42,8 +38,9 @@ class SearchViewmodel extends StateNotifier<SearchModel?> {
   Future<void> notifyInit() async {
     try {
       // SearchRepo를 사용하여 데이터 가져오기
-      final searchData = await searchRepo.callSearchData(); // API 호출을 통해 데이터를 가져옴
-      Logger().d(searchData);
+      final searchData =
+          await searchRepo.callSearchData(); // API 호출을 통해 데이터를 가져옴
+      // Logger().d(searchData);
       state = searchData; // 가져온 데이터를 state에 설정하여 상태 업데이트
     } catch (e) {
       // 예외 처리
@@ -59,7 +56,7 @@ class SearchViewmodel extends StateNotifier<SearchModel?> {
 
 // StateNotifierProvider 정의: SearchViewmodel 인스턴스를 제공
 final searchProvider =
-StateNotifierProvider<SearchViewmodel, SearchModel?>((ref) {
+    StateNotifierProvider<SearchViewmodel, SearchModel?>((ref) {
   SessionData sessionData = SessionData(); // 새로운 세션 데이터 인스턴스를 생성
   final viewModel = SearchViewmodel(sessionData);
   viewModel.notifyInit(); // SearchViewmodel 인스턴스를 생성하고 notifyInit 메소드를 호출하여 초기화

@@ -1,27 +1,19 @@
-import 'dart:convert';
-
-import 'package:final_project_team02/data/global_data/user.dart';
-
 class CodiInsertReqDTO {
- final int userId;
- final String title;
- final String description;
- final List<CodiPhots> codiPhotos;
- final List<Items> items;
+  final int userId;
+  final String? description;
+  final List<CodiPhots> codiPhotos;
+  final List<Items> items;
 
-
- const CodiInsertReqDTO({
+  const CodiInsertReqDTO({
     required this.userId,
-    required this.title,
     required this.description,
     required this.codiPhotos,
     required this.items,
   });
 
- Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson() {
     return {
       "userId": this.userId,
-      "title": this.title,
       "description": this.description,
       "codiPhotos": codiPhotos.map((photo) => photo.toJson()).toList(),
       "items": items.map((item) => item.toJson()).toList(),
@@ -30,9 +22,9 @@ class CodiInsertReqDTO {
 }
 
 class CodiPhots {
-  final String photoName;
-  final String photoBase64;
-  final String type;
+  final String? photoName;
+  final String? photoBase64;
+  final String? type;
   final bool isMainPhoto;
 
   const CodiPhots({
@@ -52,10 +44,9 @@ class CodiPhots {
   }
 }
 
-
 class Items {
-  final int brandId;
-  final int itemsId;
+  final int? brandId;
+  final int? itemsId;
 
   const Items({
     required this.brandId,
@@ -63,8 +54,9 @@ class Items {
   });
 
   Map<String, dynamic> toJson() {
-    return {"brandId": this.brandId, "itemsId": this.itemsId,};
+    return {
+      "brandId": this.brandId,
+      "itemsId": this.itemsId,
+    };
   }
-
-
 }

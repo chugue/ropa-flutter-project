@@ -3,7 +3,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:logger/logger.dart';
 
 // 192.168.219.111
-final baseURL = "http://192.168.0.101:8080";
+final baseURL = "http://192.168.219.114:8080";
 
 final dio = Dio(
   BaseOptions(
@@ -27,11 +27,10 @@ var interceptor = InterceptorsWrapper(
       print("나 토큰이 없어 🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️서버 확인해 봤어?🤷‍♂️🤷‍♂️🤷‍♂️🤷‍♂️");
     }
 
-    logger.d("리퀘스트 헤더: ${options.headers}"); // 이 위치로 변경
     return handler.next(options);
   },
   onResponse: (response, handler) async {
-    logger.d(response.headers["Authorization"]);
+    // logger.d(response.headers["Authorization"]);
 
     return handler.next(response);
   },

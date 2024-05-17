@@ -20,11 +20,14 @@ class CodiInsetPageBody extends StatelessWidget {
           children: [
             CodiInsertTitle(),
             SizedBox(height: 20.0),
+
             CodiPicInsertScroll(),
             SizedBox(height: 50),
+
             CodiInsertSubTitle(subTitle: "착용 아이템"),
             CodiPicItemInsertScroll(),
             SizedBox(height: 50),
+
             CodiInsertSubTitle(subTitle: "스타일링 코멘트"),
             StylingComment(),
           ],
@@ -33,3 +36,4 @@ class CodiInsetPageBody extends StatelessWidget {
     );
   }
 }
+

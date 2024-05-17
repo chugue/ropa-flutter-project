@@ -29,11 +29,16 @@ class CodiItemBrandTabView extends ConsumerWidget {
       itemCount: model.brandList[selectedIndex].itemInfo.length,
       itemBuilder: (context, index) {
         final item = model.brandList[selectedIndex].itemInfo[index];
+        final brand = model.brandList[selectedIndex];
         return GestureDetector(
           onTap: () {
             print('Tapped on item: $item'); // Debug print
             ref.read(codiInsertProvider.notifier).pickAndAddImageFromBase64(
-                item.base64, item.itemName, item.itemId, category);
+                item.base64,
+                item.itemName,
+                item.itemId,
+                brand.brandId,
+                category);
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

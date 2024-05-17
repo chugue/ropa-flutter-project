@@ -5,20 +5,15 @@ import 'package:final_project_team02/ui/holder/buy/buy_data/buy.dart';
 import 'package:final_project_team02/ui/holder/buy/buy_data/cart_infos.dart';
 import 'package:final_project_team02/ui/holder/buy/buy_data/order_info.dart';
 import 'package:final_project_team02/ui/holder/buy/buy_viewmodel.dart';
-import 'package:logger/logger.dart';
-
-Logger logger = Logger();
 
 class BuyRepo {
   Future<ResponseDTO> callBuySave(BuySaveReqDTO reqDTO) async {
-    final response = await dio.post('/app/order',data: reqDTO.toJson());
+    final response = await dio.post('/app/order', data: reqDTO.toJson());
     logger.d(response.data!);
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
 
     return responseDTO;
   }
-
-
 
   Future<ResponseDTO> callBuyDetail() async {
     final response = await dio.get('/app/order-page');

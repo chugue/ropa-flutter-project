@@ -9,7 +9,6 @@ import 'package:final_project_team02/ui/holder/my_page/pages/profile/profile_dat
 import 'package:final_project_team02/ui/holder/my_page/pages/settings/setting_data/user_setting.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/codi_list.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/item_list.dart';
-import 'package:logger/logger.dart';
 
 class UserRepo {
   Future<ResponseDTO> callCreatorView(int creatorId) async {
@@ -22,7 +21,7 @@ class UserRepo {
 
       List<dynamic> codi = responseDTO.response["codiList"];
       List<CodiList> codiList = codi.map((e) => CodiList.fromJson(e)).toList();
-      Logger().d(codiList);
+      // Logger().d(codiList);
 
       List<dynamic> item = responseDTO.response["itemList"];
       List<ItemList> itemList = item.map((e) => ItemList.fromJson(e)).toList();
@@ -35,7 +34,6 @@ class UserRepo {
 
       responseDTO.response = model;
     }
-    Logger().d(responseDTO);
 
     return responseDTO;
   }
@@ -45,13 +43,13 @@ class UserRepo {
     final response = await dio.put("/app/creator-apply",
         data: reqDTO.toJson(),
         options: Options(headers: {'Authorization': globalAccessToken}));
-    Logger().d(response.data!);
+    // Logger().d(response.data!);
 
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
 
     if (responseDTO.success) {
       responseDTO.response = User.fromJson(responseDTO.response);
-      Logger().d(responseDTO.response);
+      // Logger().d(responseDTO.response);
     }
     return responseDTO;
   }
@@ -68,7 +66,7 @@ class UserRepo {
 
   Future<ResponseDTO> callUserProfile() async {
     final response = await dio.get("/app/profile");
-    Logger().d(response.data!);
+    // Logger().d(response.data!);
     // 🔀PARSING
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
     if (responseDTO.success) {
@@ -80,7 +78,7 @@ class UserRepo {
 
   Future<ResponseDTO> callJoin(JoinReqDTO reqDTO) async {
     final response = await dio.post("/user/join", data: reqDTO.toJson());
-    Logger().d(response.data!);
+    // Logger().d(response.data!);
 
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
     return responseDTO;

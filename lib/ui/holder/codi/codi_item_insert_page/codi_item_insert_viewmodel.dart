@@ -9,26 +9,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CodiItemInsertModel {
   final List<Brand> brandList;
-  final String comment;
   final String photoBase64;
   final List<ItemInfo> selectedItems;
 
   const CodiItemInsertModel({
     required this.brandList,
-    this.comment = '',
     this.photoBase64 = '',
     this.selectedItems = const [],
   });
 
   CodiItemInsertModel copyWith({
     List<Brand>? brandList,
-    String? comment,
     String? photoBase64,
     List<ItemInfo>? selectedItems,
   }) {
     return CodiItemInsertModel(
       brandList: brandList ?? this.brandList,
-      comment: comment ?? this.comment,
       photoBase64: photoBase64 ?? this.photoBase64,
       selectedItems: selectedItems ?? this.selectedItems,
     );
@@ -53,12 +49,6 @@ class CodiItemInsertViewModel extends StateNotifier<CodiItemInsertModel?> {
           builder: (context) => ItemInsertPage(category: category),
         ),
       );
-    }
-  }
-
-  void updateComment(String comment) {
-    if (state != null) {
-      state = state!.copyWith(comment: comment);
     }
   }
 

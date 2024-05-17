@@ -9,60 +9,78 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as path;
 
 class CodiInsertModel {
-  final int brandId;
   final List<XFile> images;
   final String prevImg;
+
   final String? fileName; // 파일이름
   final String? fileExtension; // 확장자
   final bool? isMainPhoto;
 
+  final int? topItemId;
+  final int? topBrandId;
   final String? topImageBase64;
   final int? topImageId;
   final String? topItemName;
 
+  final int? bottomItemId;
+  final int? bottomBrandId;
   final String? bottomImageBase64;
   final int? bottomImageId;
   final String? bottomItemName;
 
+  final String comment;
+
   const CodiInsertModel({
-    required this.brandId,
+    this.comment = '',
     required this.images,
-    required this.isMainPhoto,
     required this.prevImg,
-    this.fileName = '',
-    this.fileExtension = '',
+    this.fileName,
+    this.fileExtension,
+    this.isMainPhoto,
+    this.topItemId,
+    this.topBrandId,
     this.topImageBase64,
     this.topImageId,
     this.topItemName,
+    this.bottomItemId,
+    this.bottomBrandId,
     this.bottomImageBase64,
     this.bottomImageId,
     this.bottomItemName,
   });
 
   CodiInsertModel copyWith({
-    int? brandId,
     List<XFile>? images,
     String? prevImg,
     String? fileName,
     String? fileExtension,
     bool? isMainPhoto,
+    int? topItemId,
+    int? topBrandId,
     String? topImageBase64,
     int? topImageId,
     String? topItemName,
+    int? bottomItemId,
+    int? bottomBrandId,
     String? bottomImageBase64,
     int? bottomImageId,
+    String? comment,
     String? bottomItemName,
   }) {
     return CodiInsertModel(
-      brandId: brandId ?? this.brandId,
+      comment: comment ?? this.comment,
       images: images ?? this.images,
       prevImg: prevImg ?? this.prevImg,
       fileName: fileName ?? this.fileName,
       fileExtension: fileExtension ?? this.fileExtension,
       isMainPhoto: isMainPhoto ?? this.isMainPhoto,
+      topItemId: topItemId ?? this.topItemId,
+      topBrandId: topBrandId ?? this.topBrandId,
       topImageBase64: topImageBase64 ?? this.topImageBase64,
       topImageId: topImageId ?? this.topImageId,
       topItemName: topItemName ?? this.topItemName,
+      bottomItemId: bottomItemId ?? this.bottomItemId,
+      bottomBrandId: bottomBrandId ?? this.bottomBrandId,
       bottomImageBase64: bottomImageBase64 ?? this.bottomImageBase64,
       bottomImageId: bottomImageId ?? this.bottomImageId,
       bottomItemName: bottomItemName ?? this.bottomItemName,
@@ -77,13 +95,18 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
 
   CodiInsertViewModel()
       : super(CodiInsertModel(
-          brandId: 0,
           prevImg: '',
           images: [],
           isMainPhoto: false,
           topImageBase64: null,
           bottomImageBase64: null,
         ));
+
+  void updateComment(String comment) {
+    if (state != null) {
+      state = state!.copyWith(comment: comment);
+    }
+  }
 
   Future<void> pickAndAddImage() async {
     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
@@ -113,10 +136,12 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
     }
   }
 
-  Future<void> pickAndAddImageFromBase64(
-      String itemBase64, String itemName, int itemId, String category) async {
+  Future<void> pickAndAddImageFromBase64(String itemBase64, String itemName,
+      int itemId, int brandId, String category) async {
     if (category == 'top') {
       state = state.copyWith(
+        topBrandId: brandId,
+        topItemId: itemId,
         topImageBase64: itemBase64,
         topItemName: itemName,
         topImageId: itemId,
@@ -124,6 +149,8 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
       Navigator.pop(navigatorKey.currentContext!);
     } else if (category == 'bottom') {
       state = state.copyWith(
+        bottomBrandId: brandId,
+        bottomItemId: itemId,
         bottomImageBase64: itemBase64,
         bottomItemName: itemName,
         bottomImageId: itemId,

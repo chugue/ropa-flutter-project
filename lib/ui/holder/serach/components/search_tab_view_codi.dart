@@ -6,13 +6,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/web.dart';
 
 class SearchTabViewCodi extends ConsumerWidget {
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     SearchModel? model = ref.watch(searchProvider);
 
-    // 로깅을 통해 상태를 확인
-    Logger().d(model);
+    // Logger().d(model);
 
     // 상태 변화 모니터링 및 초기화
     ref.listen<SearchModel?>(searchProvider, (previous, next) {
@@ -23,13 +21,11 @@ class SearchTabViewCodi extends ConsumerWidget {
       }
     });
 
-
     // Logger().d(model);
 
     if (model == null) {
       return Center(child: CircularProgressIndicator());
     } else {
-
       return GridView.builder(
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
@@ -40,7 +36,6 @@ class SearchTabViewCodi extends ConsumerWidget {
         ),
         itemCount: model.codiPhotos.length,
         itemBuilder: (context, index) {
-
           return Stack(
             children: [
               InkWell(
@@ -51,8 +46,7 @@ class SearchTabViewCodi extends ConsumerWidget {
                 child: AspectRatio(
                   aspectRatio: 1,
                   child: Image.memory(
-                    Base64Decoder()
-                        .convert(model.codiPhotos[index].codiBase64),
+                    Base64Decoder().convert(model.codiPhotos[index].codiBase64),
                     fit: BoxFit.cover,
                   ),
                 ),
