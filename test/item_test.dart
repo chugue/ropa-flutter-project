@@ -1,4 +1,3 @@
-import 'package:final_project_team02/data/repositoreis/inquiries_repo.dart';
 import 'package:final_project_team02/data/repositoreis/item_repo.dart';
 
 void main() async {
@@ -10,8 +9,4 @@ final accessToken =
 
 Future<void> callItemDetailList_test() async {
   await ItemRepo().callItemDetailList(1);
-}
-
-Future<void> callInquiriesList2_test() async {
-  await InquiriesRepo().callInquiriesListv2();
 }
