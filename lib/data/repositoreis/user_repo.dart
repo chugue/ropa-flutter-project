@@ -17,15 +17,17 @@ class UserRepo {
     // // 🚧🚧🚧🚧Test🚧🚧🚧🚧
     // final response = await dio.get("/app/user-my-page",
     //     options: Options(headers: {"Authorization": accessToken}));
-
     final response = await dio.get("/app/user-my-page");
+
     Logger().d(response.data!);
 
     // 🔀PARSING
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
     if (responseDTO.success) {
       responseDTO.response = UserMyPage.fromJson(responseDTO.response);
-      Logger().d("🧡💛💚💙💜🤎🖤🤍💔❣💕${responseDTO.response.data!}");
+      Logger().d("🧡💛💚💙💜🤎🖤🤍💔❣💕");
+      Logger().d("🧡💛💚💙💜🤎🖤🤍💔❣💕${responseDTO.response.base64}");
+      Logger().d("🧡💛💚💙💜🤎🖤🤍💔❣💕");
     }
 
     return responseDTO;

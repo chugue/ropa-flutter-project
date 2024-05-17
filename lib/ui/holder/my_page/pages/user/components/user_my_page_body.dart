@@ -1,3 +1,4 @@
+import 'package:final_project_team02/ui/holder/my_page/pages/user/components/user_my_page_body_header.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/user_my_pageviewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,8 +23,7 @@ class UserMyPageBody extends ConsumerWidget {
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             SliverToBoxAdapter(
-              // child: UserMyPageBodyTop(model: model),
-              child: Text("Tt"),
+              child: UserMyPageBodyTop(model: model),
             ),
           ];
         },

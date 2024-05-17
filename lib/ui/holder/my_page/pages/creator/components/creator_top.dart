@@ -22,7 +22,7 @@ class CreatorTop extends StatelessWidget {
           SizedBox(height: 30),
 
           // ✅ 사용자 정보 창
-          _buildCreatorPic(),
+          _buildCreatorInfo(),
           SizedBox(height: 20),
 
           // ✅ 사용자 코맨트
@@ -43,23 +43,7 @@ class CreatorTop extends StatelessWidget {
     );
   }
 
-  Row _buildCreatorComment() {
-    return Row(
-      children: [
-        Column(
-          children: [
-            // Text('어깨 넓은 보통 체형', style: textTheme().headlineSmall),
-            Text(
-              model.user.introMsg,
-              style: textTheme().headlineSmall,
-            )
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget _buildCreatorPic() {
+  Widget _buildCreatorInfo() {
     return Row(
       children: [
         // ✅ 사용자 사진
@@ -94,10 +78,23 @@ class CreatorTop extends StatelessWidget {
               ],
             ),
             Text(
-                // "${model!.user.height} • ${model!.user.weight} • ${model!.user.job}",
                 "${model.user.height} • ${model.user.weight} • ${model.user.job}",
-                // "185cm - 80kg - 직장인",
                 style: textTheme().bodyMedium),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Row _buildCreatorComment() {
+    return Row(
+      children: [
+        Column(
+          children: [
+            Text(
+              model.user.introMsg,
+              style: textTheme().headlineSmall,
+            )
           ],
         ),
       ],

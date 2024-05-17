@@ -25,8 +25,9 @@ class UserMyPageViewModel extends StateNotifier<UserMyPageModel?> {
     ResponseDTO responseDTO = await UserRepo().callUserMyPage();
 
     if (responseDTO.success) {
-      UserMyPageModel userMyPageModel = responseDTO.response;
-      state = userMyPageModel;
+      // UserMyPageModel userMyPageModel = responseDTO.response;
+      // state = userMyPageModel;
+      state = UserMyPageModel(responseDTO.response);
     }
   }
 }
