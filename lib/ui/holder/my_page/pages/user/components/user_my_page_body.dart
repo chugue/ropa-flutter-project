@@ -10,10 +10,6 @@ class UserMyPageBody extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     UserMyPageModel? model = ref.watch(userMyPageProvider);
 
-    print("😀😀😀😀😀😀UserMyPageModel있냐?😀😀😀😀😀");
-    print(model);
-    print("😀😀😀😀😀😀UserMyPageModel있냐?😀😀😀😀😀");
-
     if (model == null) {
       return Center(
         child: CircularProgressIndicator(),

@@ -1,16 +1,19 @@
+import 'package:final_project_team02/ui/holder/my_page/pages/user/user_my_pageviewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'components/order_history_page_body.dart';
 
-class OrderHistoryPage extends StatelessWidget {
+class OrderHistoryPage extends ConsumerWidget {
   const OrderHistoryPage({
-    required this.orderId,
+    required this.orderCount,
   });
 
-  final int orderId;
+  final int orderCount;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    UserMyPageModel? model = ref.watch(userMyPageProvider);
     return Expanded(
       child: InkWell(
         onTap: () {
@@ -52,7 +55,7 @@ class OrderHistoryPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("주문조회", style: TextStyle(color: Colors.black26, fontSize: 25)),
-            Text("${orderId}",
+            Text("${orderCount}",
                 style: TextStyle(color: Colors.black, fontSize: 20)),
           ],
         ),

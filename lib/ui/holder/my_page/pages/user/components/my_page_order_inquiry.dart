@@ -2,10 +2,10 @@ import 'package:final_project_team02/ui/holder/my_page/pages/order/order_history
 import 'package:flutter/material.dart';
 
 class MyPageOrderInquiry extends StatelessWidget {
-  final int orderId;
+  final int orderCount;
 
   const MyPageOrderInquiry({
-    required this.orderId,
+    required this.orderCount,
   });
 
   @override
@@ -18,8 +18,12 @@ class MyPageOrderInquiry extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          OrderHistoryPage(orderId: orderId),
+          // ✅ 주문조회
+          OrderHistoryPage(orderCount: orderCount),
+
           Container(width: 2, height: 50, color: Colors.white),
+
+          // ✅ 문의하기
           Expanded(
             child: InkWell(
               onTap: () {},

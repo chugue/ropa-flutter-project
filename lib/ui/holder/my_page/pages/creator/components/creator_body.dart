@@ -26,10 +26,7 @@ class CreatorBody extends ConsumerWidget {
       return NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
-            SliverToBoxAdapter(
-              //프로필 설정 버튼까지
-              child: CreatorTop(model: model),
-            ),
+            SliverToBoxAdapter(child: CreatorTop(model: model)),
           ];
         },
         body: CreatorBottom(model: model),

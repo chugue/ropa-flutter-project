@@ -15,11 +15,6 @@ class UserMyPage {
 
   factory UserMyPage.fromJson(Map<String, dynamic> json) {
     return UserMyPage(
-      // userId: json["userId"],
-      // photoName: json["photoName"],
-      // base64: json["base64"],
-      // nickName: json["nickName"],
-      // orderCount: json["orderCount"],
       userId: json["userId"] ?? null,
       photoName: json["photoName"] ?? '',
       base64: json["base64"] ?? '',

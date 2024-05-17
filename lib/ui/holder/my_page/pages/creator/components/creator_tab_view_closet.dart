@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// TODO : 사용하지 않는 클래스?
 class CreatorTabViewCloset extends StatelessWidget {
   const CreatorTabViewCloset({
     super.key,
