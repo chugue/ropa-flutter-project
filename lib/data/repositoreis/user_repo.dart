@@ -2,16 +2,37 @@ import 'package:dio/dio.dart';
 import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/dtos/user_req.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/creator_data/creator.dart';
 import 'package:final_project_team02/data/global_data/user.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/creator_data/creator.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/profile/profile_data/user_profile.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/settings/setting_data/user_setting.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/codi_list.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/item_list.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/user_my_page.dart';
 import 'package:logger/logger.dart';
 
 class UserRepo {
+  Future<ResponseDTO> callUserMyPage() async {
+    // // 🚧🚧🚧🚧Test🚧🚧🚧🚧
+    // final response = await dio.get("/app/user-my-page",
+    //     options: Options(headers: {"Authorization": accessToken}));
+    final response = await dio.get("/app/user-my-page");
+
+    Logger().d(response.data!);
+
+    // 🔀PARSING
+    ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+    if (responseDTO.success) {
+      responseDTO.response = UserMyPage.fromJson(responseDTO.response);
+      Logger().d("🧡💛💚💙💜🤎🖤🤍💔❣💕");
+      Logger().d("🧡💛💚💙💜🤎🖤🤍💔❣💕${responseDTO.response.base64}");
+      Logger().d("🧡💛💚💙💜🤎🖤🤍💔❣💕");
+    }
+
+    return responseDTO;
+  }
+
   Future<ResponseDTO> callCreatorView(int creatorId) async {
     // 🚧🚧🚧🚧Test🚧🚧🚧🚧
     // final response = await dio.get("/app/creator-view/1",

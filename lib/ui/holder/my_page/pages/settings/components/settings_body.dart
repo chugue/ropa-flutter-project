@@ -10,7 +10,7 @@ import 'setting_inquiry_menus.dart';
 class SettingsBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    UserSettingModel? model = ref.watch(UserSettingProvider);
+    UserSettingModel? model = ref.watch(userSettingProvider);
 
     if (model == null) {
       return Center(

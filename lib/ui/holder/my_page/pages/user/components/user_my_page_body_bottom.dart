@@ -24,9 +24,9 @@ class UserMyPageBodyBottom extends StatelessWidget {
                     Expanded(
                       child: TabBarView(
                         children: [
-                          //탭바 그리드
+                          // 탭바 그리드
                           UserTabGird(),
-                          //탭바 옷장
+                          // 탭바 옷장
                           UserTabCloset(),
                         ],
                       ),
