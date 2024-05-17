@@ -11,8 +11,8 @@ class CodiPhoto {
 
   factory CodiPhoto.fromJson(Map<String, dynamic> json) {
     return CodiPhoto(
-      photoId: int.parse(json["photoId"]),
-      codiId: int.parse(json["codiId"]),
+      photoId: json["photoId"],
+      codiId: json["codiId"],
       codiBase64: json["codiBase64"],
     );
   }

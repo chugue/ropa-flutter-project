@@ -13,7 +13,7 @@ class ProfileSetting extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    UserProfileModel? model = ref.watch(UserProfileProvider);
+    UserProfileModel? model = ref.watch(userProfileProvider);
     print(model);
 
     if (model == null) {

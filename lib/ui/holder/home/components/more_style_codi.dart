@@ -21,6 +21,10 @@ class MoreStyleCodi extends StatelessWidget {
       ),
       delegate: SliverChildBuilderDelegate(
         (context, index) {
+          // Check if index is within the bounds
+          if (index >= model!.codiPhotos.length) {
+            return const SizedBox.shrink();
+          }
           return Stack(
             children: [
               InkWell(

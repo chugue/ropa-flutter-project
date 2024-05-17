@@ -27,13 +27,13 @@ class ItemBuyButton extends ConsumerWidget {
 
     return InkWell(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16.0),
         child: Container(
-          width: 250,
+          width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
               color: Colors.black,
-              borderRadius: BorderRadius.circular(50),
+              borderRadius: BorderRadius.circular(5),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.2),
@@ -136,7 +136,7 @@ class ItemBuyButton extends ConsumerWidget {
                               ref.read(cartProvider.notifier).cartSave(reqDTO);
                             },
                             child: Container(
-                              width: 150,
+                              width: MediaQuery.of(context).size.width * 0.4,
                               child: Padding(
                                 padding: const EdgeInsets.all(16.0),
                                 child: Text(
@@ -168,7 +168,7 @@ class ItemBuyButton extends ConsumerWidget {
                                           BuyPage(itemIds: [itemId])));
                             },
                             child: Container(
-                              width: 150,
+                              width: MediaQuery.of(context).size.width * 0.4,
                               child: Padding(
                                 padding: const EdgeInsets.all(16.0),
                                 child: Text(

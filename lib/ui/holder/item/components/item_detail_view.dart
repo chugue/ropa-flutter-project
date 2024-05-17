@@ -34,6 +34,8 @@ class ItemDetailView extends StatelessWidget {
             ),
           ),
         ),
+
+        // ✅ "구매하기" 버튼
         ItemBuyButton(itemId: itemId),
       ],
     );

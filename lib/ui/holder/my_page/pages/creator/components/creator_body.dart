@@ -5,17 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CreatorBody extends ConsumerWidget {
-  final sessionId;
+  final sessionUserId;
 
-  const CreatorBody({super.key, this.sessionId});
+  const CreatorBody({super.key, this.sessionUserId});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CreatorModel? model = ref.watch(creatorProvider(1));
+    CreatorModel? model = ref.watch(creatorProvider(sessionUserId));
+
     print("크리에이터 바디");
-    print(model!.codiList[1].photoName);
-    print(model);
-    // TODO 모델이 Null이 들어옴.
+
     if (model == null) {
       return Center(
         child: CircularProgressIndicator(
@@ -27,13 +26,10 @@ class CreatorBody extends ConsumerWidget {
       return NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
-            SliverToBoxAdapter(
-              //프로필 설정 버튼까지
-              child: CreatorTop(model: model),
-            ),
+            SliverToBoxAdapter(child: CreatorTop(model: model)),
           ];
         },
-        body: CreatorBottom(),
+        body: CreatorBottom(model: model),
       );
     }
   }

@@ -23,10 +23,13 @@ class ItemMainSlide extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: model.mainPhotos.length,
         itemBuilder: (context, index) {
-          return Image.memory(
-            Base64Decoder()
-                .convert(model.mainPhotos[index].mainPhotoBase64),
-            fit: BoxFit.cover,
+          return Container(
+           width: MediaQuery.of(context).size.width,
+            child: Image.memory(
+              Base64Decoder()
+                  .convert(model.mainPhotos[index].mainPhotoBase64),
+              fit: BoxFit.cover,
+            ),
           );
         },
       ),
