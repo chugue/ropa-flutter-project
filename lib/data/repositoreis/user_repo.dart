@@ -18,7 +18,6 @@ class UserRepo {
     // final response = await dio.get("/app/user-my-page",
     //     options: Options(headers: {"Authorization": accessToken}));
     final response = await dio.get("/app/user-my-page");
-
     Logger().d(response.data!);
 
     // 🔀PARSING
@@ -26,7 +25,7 @@ class UserRepo {
     if (responseDTO.success) {
       responseDTO.response = UserMyPage.fromJson(responseDTO.response);
       Logger().d("🧡💛💚💙💜🤎🖤🤍💔❣💕");
-      Logger().d("🧡💛💚💙💜🤎🖤🤍💔❣💕${responseDTO.response.base64}");
+      Logger().d(responseDTO.response);
       Logger().d("🧡💛💚💙💜🤎🖤🤍💔❣💕");
     }
 
@@ -35,11 +34,13 @@ class UserRepo {
 
   Future<ResponseDTO> callCreatorView(int creatorId) async {
     // 🚧🚧🚧🚧Test🚧🚧🚧🚧
-    // final response = await dio.get("/app/creator-view/1",
+    // final response = await dio.get("/app/creator-view/${creatorId}",
     //     options: Options(headers: {"Authorization": accessToken}));
     // Logger().d(response.data!);
 
-    final response = await dio.get("/app/creator-view/${creatorId}");
+    final response = await dio.get(
+      "/app/creator-view/${creatorId}",
+    );
     Logger().d(response.data!);
 
     // 🔀PARSING

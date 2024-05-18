@@ -27,8 +27,7 @@ class SearchTabViewItem extends ConsumerWidget {
         ),
         itemCount: model.itemPhotos.length,
         itemBuilder: (context, index) {
-          Logger().d('$baseURL/${model.itemPhotos[index].photoPath}');
-          Logger().d(model.itemPhotos[index].photoPath);
+          Logger().d('$baseURL${model.itemPhotos[index].photoPath}');
 
           return Container(
             child: Column(
