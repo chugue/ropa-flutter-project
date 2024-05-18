@@ -1,4 +1,6 @@
 import 'package:final_project_team02/_core/constants/move.dart';
+import 'package:final_project_team02/data/session_data/session_data.dart';
+import 'package:final_project_team02/ui/components/login_is_check.dart';
 import 'package:final_project_team02/ui/holder/item/components/item_detail_view.dart';
 import 'package:final_project_team02/ui/holder/item/components/item_info.dart';
 import 'package:final_project_team02/ui/holder/item/components/item_main_slide.dart';
@@ -16,12 +18,10 @@ class ItemBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ItemDetailListModel? model = ref.watch(itemDetailListProvider(itemId));
+    SessionData sessionData = ref.watch(sessionProvider);
 
-    if (model == null) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
-    }
+    if (sessionData.user?.id == null) return Center(child: LoginIsCheck());
+    if (model == null) return Center(child: CircularProgressIndicator());
     return NestedScrollView(
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
         return <Widget>[

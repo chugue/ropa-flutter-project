@@ -20,7 +20,6 @@ class UserRepo {
     if (responseDTO.success) {
       responseDTO.response = UserMyPage.fromJson(responseDTO.response);
     }
-
     return responseDTO;
   }
 

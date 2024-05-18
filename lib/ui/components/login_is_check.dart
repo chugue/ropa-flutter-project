@@ -5,6 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class LoginIsCheck extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
+
     return AlertDialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       content: RichText(

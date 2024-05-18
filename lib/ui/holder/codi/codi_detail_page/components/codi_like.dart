@@ -16,7 +16,6 @@ class CodiLike extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     SessionData sessionData = ref.watch(sessionProvider);
-    print("CodiLike 😊😊😊😊😊${model}");
 
     return Padding(
       padding: const EdgeInsets.only(left: 8.0),
