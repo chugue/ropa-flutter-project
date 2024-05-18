@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:final_project_team02/_core/uitls/format_util.dart';
+import 'package:final_project_team02/ui/holder/item/item_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -32,8 +33,13 @@ class ItemListView extends StatelessWidget {
               Expanded(
                 child: InkWell(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SizedBox()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            ItemPage(itemId: model.itemList[itemIndex].itemId),
+                      ),
+                    );
                   },
                   child: AspectRatio(
                     aspectRatio: 2 / 1,

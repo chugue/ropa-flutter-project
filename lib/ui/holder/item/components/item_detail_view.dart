@@ -25,6 +25,8 @@ class ItemDetailView extends StatelessWidget {
             child: ListView.builder(
               itemCount: model!.detailPhotos.length,
               itemBuilder: (context, index) {
+                logger.d('$baseURL${model!.detailPhotos[index].photoPath}');
+
                 return CachedNetworkImage(
                   imageUrl: '$baseURL${model!.detailPhotos[index].photoPath}',
                   placeholder: (context, url) => Shimmer.fromColors(
