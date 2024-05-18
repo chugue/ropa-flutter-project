@@ -10,13 +10,27 @@ import 'package:final_project_team02/ui/holder/my_page/pages/profile/profile_dat
 import 'package:final_project_team02/ui/holder/my_page/pages/settings/setting_data/user_setting.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/codi_list.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/item_list.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/user_my_page.dart';
 
 class UserRepo {
+
+  Future<ResponseDTO> callUserMyPage() async {
+    final response = await dio.get("/app/user-my-page");
+    ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+    if (responseDTO.success) {
+      responseDTO.response = UserMyPage.fromJson(responseDTO.response);
+    }
+
+    return responseDTO;
+  }
+
+
   Future<ResponseDTO> callCreatorView(int creatorId) async {
     final response = await dio.get("/app/creator-view/${creatorId}");
 
     // 🔀PARSING
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+
     if (responseDTO.success) {
       Creator user = Creator.fromJson(responseDTO.response["userDTO"]);
 
