@@ -22,7 +22,6 @@ class CodiItemInsert extends ConsumerWidget {
       imageBase64 = model.bottomImageBase64;
     }
 
-    print('Image Base64: $imageBase64'); // Debug print
 
     if (imageBase64 == null) {
       return Padding(

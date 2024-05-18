@@ -25,7 +25,8 @@ class CodiRepo {
   }
 
   Future<ResponseDTO> callGetItemInsert(String? category) async {
-    final response = await dio.get('/app/codi-register/add-item/${category}');
+    final response = await dio.get('/app/codi-register/add-item/${category}',options: Options(headers: {'Authorization': '${globalAccessToken}'}));
+    logger.d(response.data);
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
 
     if (responseDTO.success) {

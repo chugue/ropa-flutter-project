@@ -19,13 +19,13 @@ class CodiItemBrandTabBar extends StatelessWidget
         tabs: [
           Tab(
               child:
-                  Image.memory(base64Decode('${model.brandList[0].base64}'))),
+                  Image.memory(base64Decode('${model.brandList[0].photoPath}'))),
           Tab(
               child:
-                  Image.memory(base64Decode('${model.brandList[1].base64}'))),
+                  Image.memory(base64Decode('${model.brandList[1].photoPath}'))),
           Tab(
               child:
-                  Image.memory(base64Decode('${model.brandList[2].base64}'))),
+                  Image.memory(base64Decode('${model.brandList[2].photoPath}'))),
         ],
       ),
     );
