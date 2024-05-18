@@ -1,19 +1,19 @@
 class CodiPhoto {
   final int photoId;
   final int codiId;
-  final String codiBase64;
+  final String photoPath;
 
   CodiPhoto({
     required this.photoId,
     required this.codiId,
-    required this.codiBase64,
+    required this.photoPath,
   });
 
   factory CodiPhoto.fromJson(Map<String, dynamic> json) {
     return CodiPhoto(
       photoId: json["photoId"],
       codiId: json["codiId"],
-      codiBase64: json["codiBase64"],
+      photoPath: json["photoPath"],
     );
   }
 }

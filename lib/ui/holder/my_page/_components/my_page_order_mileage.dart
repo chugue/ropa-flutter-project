@@ -2,11 +2,11 @@ import 'package:final_project_team02/ui/holder/my_page/pages/order/order_history
 import 'package:flutter/material.dart';
 
 class MyPageOrderMileage extends StatelessWidget {
-  final int orderId;
+  final int orderCount;
   final int mileageId;
 
   const MyPageOrderMileage({
-    required this.orderId,
+    required this.orderCount,
     required this.mileageId,
   });
 
@@ -20,7 +20,7 @@ class MyPageOrderMileage extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          OrderHistoryPage(orderId: orderId),
+          OrderHistoryPage(orderCount: orderCount),
           Container(width: 2, height: 50, color: Colors.white),
           Expanded(
             child: InkWell(

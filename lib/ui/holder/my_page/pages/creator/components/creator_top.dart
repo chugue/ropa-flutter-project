@@ -1,11 +1,13 @@
-import 'dart:convert';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:final_project_team02/_core/constants/theme.dart';
 import 'package:final_project_team02/ui/holder/my_page/_components/my_page_custom_button.dart';
 import 'package:final_project_team02/ui/holder/my_page/_components/my_page_order_mileage.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/creator/components/creator_inquiry_button.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/user/components/user_my_page_body_header.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
+
+import '../../../../../../_core/constants/http.dart';
 
 class CreatorTop extends StatelessWidget {
   final CreatorModel model;
@@ -23,7 +25,7 @@ class CreatorTop extends StatelessWidget {
           SizedBox(height: 30),
 
           // ✅ 사용자 정보 창
-          _buildCreatorPic(),
+          _buildCreatorInfo(),
           SizedBox(height: 20),
 
           // ✅ 사용자 코맨트
@@ -35,7 +37,7 @@ class CreatorTop extends StatelessWidget {
           SizedBox(height: 20),
 
           // ✅ 주문, 마일리지
-          MyPageOrderMileage(orderId: 10, mileageId: 200),
+          MyPageOrderMileage(orderCount: model.itemList.length, mileageId: 200),
 
           // ✅ 문의하기 버튼
           InquiryButton()
@@ -44,23 +46,7 @@ class CreatorTop extends StatelessWidget {
     );
   }
 
-  Row _buildCreatorComment() {
-    return Row(
-      children: [
-        Column(
-          children: [
-            // Text('어깨 넓은 보통 체형', style: textTheme().headlineSmall),
-            Text(
-              model.user.introMsg,
-              style: textTheme().headlineSmall,
-            )
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget _buildCreatorPic() {
+  Widget _buildCreatorInfo() {
     return Row(
       children: [
         // ✅ 사용자 사진
@@ -69,8 +55,16 @@ class CreatorTop extends StatelessWidget {
           height: 65,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(32.5),
-            child: Image.memory(
-              Base64Decoder().convert(model.user.base64),
+            child: CachedNetworkImage(
+              imageUrl: '$baseURL${model.user.photoPath}',
+              placeholder: (context, url) => Shimmer.fromColors(
+                baseColor: Colors.grey[300]!,
+                highlightColor: Colors.grey[100]!,
+                child: Container(
+                  color: Colors.white,
+                ),
+              ),
+              errorWidget: (context, url, error) => Icon(Icons.error),
               fit: BoxFit.cover,
             ),
           ),
@@ -95,10 +89,23 @@ class CreatorTop extends StatelessWidget {
               ],
             ),
             Text(
-                // "${model!.user.height} • ${model!.user.weight} • ${model!.user.job}",
                 "${model.user.height} • ${model.user.weight} • ${model.user.job}",
-                // "185cm - 80kg - 직장인",
                 style: textTheme().bodyMedium),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Row _buildCreatorComment() {
+    return Row(
+      children: [
+        Column(
+          children: [
+            Text(
+              model.user.introMsg,
+              style: textTheme().headlineSmall,
+            )
           ],
         ),
       ],

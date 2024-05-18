@@ -27,6 +27,7 @@ var interceptor = InterceptorsWrapper(
       print("나 토큰이 없습니다.");
     }
 
+    logger.d("리퀘스트 헤더: ${options.headers}"); // 이 위치로 변경
     return handler.next(options);
   },
   onResponse: (response, handler) async {

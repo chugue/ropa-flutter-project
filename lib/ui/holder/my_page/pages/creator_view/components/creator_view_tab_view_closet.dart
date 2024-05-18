@@ -1,6 +1,4 @@
-import 'dart:convert';
-
-import 'package:final_project_team02/_core/uitls/format_util.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/components/creator_view_Item_list_view.dart';
 import 'package:flutter/material.dart';
 
 class CreatorViewTabViewCloset extends StatelessWidget {
@@ -13,73 +11,46 @@ class CreatorViewTabViewCloset extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      physics: NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisSpacing: 1,
-        crossAxisCount: 2,
-        mainAxisSpacing: 0,
-      ),
-      itemCount: model!.itemList.length,
-      itemBuilder: (context, itemIndex) {
-        return Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SizedBox()));
-                  },
-                  child: AspectRatio(
-                    aspectRatio: 2 / 1,
-                    child: ClipRRect(
-                      child:
-                          // Image.network(
-                          //     "https://picsum.photos/id/${index + 1}/600/600",
-                          Image.memory(
-                              base64Decode(model.itemList[itemIndex].base64),
-                              fit: BoxFit.contain),
-                    ),
+    return model.itemList.isEmpty
+        // ✅ itemList가 비었을 때 메세지
+        ? _emptyItemList()
+
+        // ✅ itemList 뿌리기
+        : ItemListView(model: model);
+  }
+
+  Center _emptyItemList() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 60,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Icon(
+                  Icons.checkroom_outlined,
+                  color: Colors.grey,
+                  size: 30,
+                ),
+                Positioned(
+                  top: 8,
+                  child: Container(
+                    width: 60,
+                    height: 1.5,
+                    color: Colors.grey,
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      model.itemList[itemIndex].name.length > 20
-                          ? model.itemList[itemIndex].name.substring(0, 20) +
-                              "..."
-                          : model.itemList[itemIndex].name,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    // Text(model.itemList[itemIndex].description,
-                    //     style: TextStyle(
-                    //       fontSize: 14,
-                    //       overflow: TextOverflow.ellipsis,
-                    //     )),
-                    Text(
-                      "${formatCurrency(model.itemList[itemIndex].price)}",
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-                    SizedBox(height: 15),
-                  ],
-                ),
-              )
-            ],
+              ],
+            ),
           ),
-        );
-      },
+          Text(
+            "옷장이 비었습니다.",
+            style: TextStyle(color: Colors.grey),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1,10 +1,10 @@
-import 'dart:convert';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:final_project_team02/ui/holder/item/components/item_buy_button.dart';
 import 'package:final_project_team02/ui/holder/item/item_datail_viewmodel.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:shimmer/shimmer.dart';
+
+import '../../../../_core/constants/http.dart';
 
 class ItemDetailView extends StatelessWidget {
   final int itemId;
@@ -25,15 +25,26 @@ class ItemDetailView extends StatelessWidget {
             child: ListView.builder(
               itemCount: model!.detailPhotos.length,
               itemBuilder: (context, index) {
-                return Image.memory(
-                  Base64Decoder()
-                      .convert(model!.detailPhotos[index].subPhotoBase64),
-                  fit: BoxFit.fill,
+                logger.d('$baseURL${model!.detailPhotos[index].photoPath}');
+
+                return CachedNetworkImage(
+                  imageUrl: '$baseURL${model!.detailPhotos[index].photoPath}',
+                  placeholder: (context, url) => Shimmer.fromColors(
+                    baseColor: Colors.grey[300]!,
+                    highlightColor: Colors.grey[100]!,
+                    child: Container(
+                      color: Colors.white,
+                    ),
+                  ),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  fit: BoxFit.cover,
                 );
               },
             ),
           ),
         ),
+
+        // ✅ "구매하기" 버튼
         ItemBuyButton(itemId: itemId),
       ],
     );

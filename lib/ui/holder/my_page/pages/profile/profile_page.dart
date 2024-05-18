@@ -1,5 +1,4 @@
-import 'dart:convert';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:final_project_team02/ui/components/bottom_button.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/profile/components/profile_edit_info.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/profile/components/profile_fixed_info.dart';
@@ -7,6 +6,9 @@ import 'package:final_project_team02/ui/holder/my_page/pages/profile/profile_vie
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shimmer/shimmer.dart';
+
+import '../../../../../_core/constants/http.dart';
 
 class ProfileSetting extends ConsumerWidget {
   const ProfileSetting({super.key});
@@ -57,7 +59,7 @@ class ProfileSetting extends ConsumerWidget {
                 SizedBox(height: 10),
                 _buildTitle(),
                 // 프로필 제목
-                _buildPhoto(model.userProfile.photoDTO.base64),
+                _buildPhoto(model.userProfile.photoDTO.photoPath),
                 // 사진, 바꾸기 칼럼
                 SizedBox(height: 10),
                 FixedInfo(
@@ -126,15 +128,31 @@ class ProfileSetting extends ConsumerWidget {
   }
 
 // 프로필 사진
-  Widget _buildPhoto(String photo) => Container(
+  Widget _buildPhoto(String? photoPath) => Container(
         padding: EdgeInsets.only(top: 20),
         child: Column(
           children: [
             CircleAvatar(
               radius: 50,
-              backgroundImage: photo != null
-                  ? Image.memory(Base64Decoder().convert(photo)).image
-                  : AssetImage("assets/images/avatar.jpg"),
+              backgroundImage: photoPath != null
+                  ? CachedNetworkImageProvider(
+                      '$baseURL${photoPath}',
+                    )
+                  : AssetImage("assets/images/avatar.jpg") as ImageProvider,
+              child: photoPath == null
+                  ? Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                    )
+                  : null,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),

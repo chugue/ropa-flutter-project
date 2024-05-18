@@ -1,8 +1,10 @@
-import 'dart:convert';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/item/item_page.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
+
+import '../../../../_core/constants/http.dart';
 
 class ItemScroll extends StatelessWidget {
   final HomeModel? model;
@@ -44,10 +46,20 @@ class ItemScroll extends StatelessWidget {
                               Container(
                                 width: 200,
                                 height: 200,
-                                child: Image.memory(
-                                  Base64Decoder().convert(
-                                      model!.itemsPhotos[index].base64),
-                                  fit: BoxFit.contain,
+                                child: CachedNetworkImage(
+                                  imageUrl:
+                                      '$baseURL${model!.itemsPhotos[index].photoPath}',
+                                  placeholder: (context, url) =>
+                                      Shimmer.fromColors(
+                                    baseColor: Colors.grey[300]!,
+                                    highlightColor: Colors.grey[100]!,
+                                    child: Container(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  errorWidget: (context, url, error) =>
+                                      Icon(Icons.error),
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                               Column(

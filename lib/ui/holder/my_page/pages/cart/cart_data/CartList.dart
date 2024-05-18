@@ -5,14 +5,14 @@ class CartList {
   final int itemPrice;
   final int totalItemPrice;
   final String itemName;
-  final String itemPhotoBase64;
+  final String photoPath;
 
   const CartList({
     required this.cartId,
     required this.itemId,
     required this.quantity,
     required this.itemName,
-    required this.itemPhotoBase64,
+    required this.photoPath,
     required this.itemPrice,
     required this.totalItemPrice,
   });
@@ -25,7 +25,7 @@ class CartList {
       itemPrice: json["itemPrice"],
       totalItemPrice: json["totalItemPrice"],
       itemName: json["itemName"],
-      itemPhotoBase64: json["itemPhotoBase64"],
+      photoPath: json["photoPath"],
     );
   }
 //

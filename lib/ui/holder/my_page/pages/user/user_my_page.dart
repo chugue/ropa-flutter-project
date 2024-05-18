@@ -24,7 +24,7 @@ class UserMyPage extends ConsumerWidget {
             cart: Icons.shopping_basket,
           ),
           backgroundColor: Colors.white,
-          body: UserMyPageBody(sessionUserId: sessionData.user?.id),
+          body: UserMyPageBody(),
         );
       } else {
         return Scaffold(
