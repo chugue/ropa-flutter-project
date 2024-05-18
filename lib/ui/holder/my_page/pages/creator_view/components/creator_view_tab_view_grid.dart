@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:final_project_team02/_core/constants/http.dart';
+import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_page.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
@@ -28,8 +29,14 @@ class CreatorViewTabViewGird extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SizedBox()));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CodiPage(
+                      codiId: model!.codiList[codiIndex].codiId,
+                    ),
+                  ),
+                );
               },
               child: AspectRatio(
                 aspectRatio: 1,
