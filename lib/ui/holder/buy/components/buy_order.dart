@@ -46,7 +46,7 @@ class BuyOrder extends StatelessWidget {
                   qty: '수량: 1개',
                   //1차에서 수량은 무조건 1개
                   price: "${formatCurrency(model.cartInfos[index].price)}",
-                  photoPath: "${model.cartInfos[index].itemPhoto.base64}");
+                  photoPath: "${model.cartInfos[index].itemPhoto.photoPath}");
             },
           ),
           Container(

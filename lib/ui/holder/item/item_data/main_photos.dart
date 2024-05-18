@@ -1,13 +1,13 @@
-class MainPhotos{
+class MainPhotos {
   final int photoId;
   final String mainPhotoName;
-  final String mainPhotoBase64;
+  final String photoPath;
   final String sort;
 
   const MainPhotos({
     required this.photoId,
     required this.mainPhotoName,
-    required this.mainPhotoBase64,
+    required this.photoPath,
     required this.sort,
   });
 
@@ -15,7 +15,7 @@ class MainPhotos{
     return MainPhotos(
       photoId: json["photoId"],
       mainPhotoName: json["mainPhotoName"],
-      mainPhotoBase64: json["mainPhotoBase64"],
+      photoPath: json["photoPath"],
       sort: json["sort"],
     );
   }

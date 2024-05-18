@@ -1,8 +1,9 @@
-import 'dart:convert';
-
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/_core/constants/theme.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CreatorViewTop extends StatelessWidget {
   final CreatorModel model;
@@ -33,10 +34,16 @@ class CreatorViewTop extends StatelessWidget {
           height: 65,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(32.5),
-            child: Image.memory(
-              base64Decode(model.user.base64),
-              // Image.network(
-              // 'https://picsum.photos/200/100', // :TODO 04 사진수정
+            child: CachedNetworkImage(
+              imageUrl: '$baseURL${model.user.photoPath}',
+              placeholder: (context, url) => Shimmer.fromColors(
+                baseColor: Colors.grey[300]!,
+                highlightColor: Colors.grey[100]!,
+                child: Container(
+                  color: Colors.white,
+                ),
+              ),
+              errorWidget: (context, url, error) => Icon(Icons.error),
               fit: BoxFit.cover,
             ),
           ),

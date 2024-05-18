@@ -6,7 +6,7 @@ class ItemHistoryList {
   final int itemTotalPrice;
   final String itemName;
   final String itemPhotoName;
-  final String itemBase64;
+  final String photoPath;
   final String itemCategoryMain;
   final String deliveryStatus;
 
@@ -18,7 +18,7 @@ class ItemHistoryList {
     required this.itemTotalPrice,
     required this.itemName,
     required this.itemPhotoName,
-    required this.itemBase64,
+    required this.photoPath,
     required this.itemCategoryMain,
     required this.deliveryStatus,
   });
@@ -32,7 +32,7 @@ class ItemHistoryList {
       itemTotalPrice: json["itemTotalPrice"],
       itemName: json["itemName"],
       itemPhotoName: json["itemPhotoName"],
-      itemBase64: json["itemBase64"],
+      photoPath: json["photoPath"],
       itemCategoryMain: json["itemCategoryMain"],
       deliveryStatus: json["deliveryStatus"],
     );

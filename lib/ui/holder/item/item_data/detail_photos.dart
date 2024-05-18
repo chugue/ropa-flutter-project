@@ -1,14 +1,14 @@
-class DetailPhotos{
+class DetailPhotos {
   final int itemPhotoId;
   final String subPhotoName;
-  final String subPhotoBase64;
+  final String photoPath;
   final bool isMainPhoto;
   final String sort;
 
   const DetailPhotos({
     required this.itemPhotoId,
     required this.subPhotoName,
-    required this.subPhotoBase64,
+    required this.photoPath,
     required this.isMainPhoto,
     required this.sort,
   });
@@ -17,10 +17,9 @@ class DetailPhotos{
     return DetailPhotos(
       itemPhotoId: json["itemPhotoId"],
       subPhotoName: json["subPhotoName"],
-      subPhotoBase64: json["subPhotoBase64"],
+      photoPath: json["photoPath"],
       isMainPhoto: json["isMainPhoto"],
       sort: json["sort"],
     );
   }
-
 }

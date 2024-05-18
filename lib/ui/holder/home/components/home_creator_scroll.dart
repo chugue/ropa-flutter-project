@@ -1,8 +1,10 @@
-import 'dart:convert';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/creator_view_page.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
+
+import '../../../../_core/constants/http.dart';
 
 class CreatorScroll extends StatelessWidget {
   final HomeModel? model;
@@ -21,7 +23,6 @@ class CreatorScroll extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(left: 16, top: 15),
-
             child: Container(
               width: 90,
               height: 50,
@@ -37,18 +38,24 @@ class CreatorScroll extends StatelessWidget {
                   );
                 },
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(60),
-                  child: Image.memory(
-                    Base64Decoder().convert(model!.userPhotos[index].base64),
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                    borderRadius: BorderRadius.circular(60),
+                    child: CachedNetworkImage(
+                      imageUrl: '$baseURL${model!.userPhotos[index].photoPath}',
+                      placeholder: (context, url) => Shimmer.fromColors(
+                        baseColor: Colors.grey[300]!,
+                        highlightColor: Colors.grey[100]!,
+                        child: Container(
+                          color: Colors.white,
+                        ),
+                      ),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                      fit: BoxFit.cover,
+                    )),
               ),
             ),
           );
         },
       ),
     );
-
   }
 }

@@ -2,7 +2,7 @@ class PopularCodiPhotos {
   final int photoId;
   final int codiId;
   final String name;
-  final String base64;
+  final String photoPath;
   final String sort;
   final bool isMainPhoto;
 
@@ -10,7 +10,7 @@ class PopularCodiPhotos {
     required this.photoId,
     required this.codiId,
     required this.name,
-    required this.base64,
+    required this.photoPath,
     required this.sort,
     required this.isMainPhoto,
   });
@@ -20,7 +20,7 @@ class PopularCodiPhotos {
       photoId: json["photoId"],
       codiId: json["codiId"],
       name: json["name"],
-      base64: json["base64"] ?? '',
+      photoPath: json["photoPath"] ?? '',
       sort: json["sort"],
       isMainPhoto: json["isMainPhoto"],
     );

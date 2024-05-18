@@ -1,6 +1,8 @@
-import 'dart:convert';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
+
+import '../../../../_core/constants/http.dart';
 
 class BuyOrderItemCard extends StatelessWidget {
   String itemTitle;
@@ -41,8 +43,17 @@ class BuyOrderItemCard extends StatelessWidget {
                         child: Container(
                           width: double.infinity, // 셀의 전체 너비 사용
                           height: double.infinity, // 셀의 전체 높이 사용
-                          child: Image.memory(
-                            Base64Decoder().convert('${photoPath}'),
+                          child: CachedNetworkImage(
+                            imageUrl: '${baseURL}${photoPath}',
+                            placeholder: (context, url) => Shimmer.fromColors(
+                              baseColor: Colors.grey[300]!,
+                              highlightColor: Colors.grey[100]!,
+                              child: Container(
+                                color: Colors.white,
+                              ),
+                            ),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
                             fit: BoxFit.cover,
                           ),
                         ),

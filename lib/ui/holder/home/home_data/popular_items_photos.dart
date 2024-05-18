@@ -4,7 +4,7 @@ class PopularItemsPhotos {
   final int photoId;
   final int itemsId;
   final String name;
-  final String base64;
+  final String photoPath;
   final String sort;
   final AdminInfo adminInfo;
 
@@ -12,7 +12,7 @@ class PopularItemsPhotos {
     required this.photoId,
     required this.itemsId,
     required this.name,
-    required this.base64,
+    required this.photoPath,
     required this.sort,
     required this.adminInfo,
   });
@@ -22,7 +22,7 @@ class PopularItemsPhotos {
       photoId: json["photoId"],
       itemsId: json["itemsId"],
       name: json["name"],
-      base64: json["base64"] ?? '',
+      photoPath: json["photoPath"] ?? '',
       sort: json["sort"],
       adminInfo: AdminInfo.fromJson(json["adminInfo"]),
     );

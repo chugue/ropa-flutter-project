@@ -4,7 +4,7 @@ class ItemPhoto {
   final String itemDescription;
   final int itemPrice;
   final int photoId;
-  final String photoPath;
+  final String base64;
 
   const ItemPhoto({
     required this.itemsId,
@@ -12,17 +12,17 @@ class ItemPhoto {
     required this.itemDescription,
     required this.itemPrice,
     required this.photoId,
-    required this.photoPath,
+    required this.base64,
   });
 
   factory ItemPhoto.fromJson(Map<String, dynamic> json) {
     return ItemPhoto(
-      itemsId: json["itemsId"],
+      itemsId: int.parse(json["itemsId"]),
       itemName: json["itemName"],
       itemDescription: json["itemDescription"],
-      itemPrice: json["itemPrice"],
-      photoId: json["photoId"],
-      photoPath: json["photoPath"],
+      itemPrice: int.parse(json["itemPrice"]),
+      photoId: int.parse(json["photoId"]),
+      base64: json["base64"],
     );
   }
 //

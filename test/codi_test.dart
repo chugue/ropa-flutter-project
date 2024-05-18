@@ -1,7 +1,7 @@
 import 'package:final_project_team02/data/repositoreis/codi_repo.dart';
 
 void main() async {
-  await callLoveCount_test();
+  await callCodiDetail_test();
 }
 
 Future<void> callLoveCount_test() async {
