@@ -5,15 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CodiLike extends ConsumerWidget {
+  final int codiId;
   final CodiDetailModel model;
 
   const CodiLike({
     required this.model,
+    required this.codiId,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     SessionData sessionData = ref.watch(sessionProvider);
+    print("CodiLike 😊😊😊😊😊${model}");
 
     return Padding(
       padding: const EdgeInsets.only(left: 8.0),

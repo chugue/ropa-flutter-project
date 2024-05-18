@@ -8,9 +8,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../components/custom_form_field.dart';
 
+// 크리에이터 계정 : bunwuseok
+// 게스트 계정  : junghein
+
 class LoginFrom extends ConsumerWidget {
   final _email = TextEditingController(
-      text: "junghein@example.com"); // user1,2 일반, user3 크리에이터
+      text: "bunwuseok@example.com"); // bunwuseok,junghein
   final _password = TextEditingController(text: "1234");
   final _formKey = GlobalKey<FormState>();
   bool rememberPassword = true;

@@ -12,18 +12,19 @@ class Item {
     required this.itemId,
     required this.itemName,
     required this.price,
-    this.discountPrice,
+    required this.discountPrice,
     required this.finalPrice,
     required this.brandName,
   });
 
   factory Item.fromJson(Map<String, dynamic> json) {
-    final formatter = NumberFormat('#,###'); // Create a formatter
+    final formatter = NumberFormat('#,###');
+
     return Item(
       itemId: json["itemId"],
       itemName: json["itemName"] ?? '',
       brandName: json["brandName"] ?? '',
-      discountPrice: json["discountRate"] ?? null,
+      discountPrice: json["discountPrice"],
       price: formatter.format(json["price"]),
       finalPrice: formatter.format(json["finalPrice"]),
     );

@@ -19,6 +19,18 @@ class CreatorModel {
     required this.codiList,
     required this.itemList,
   });
+
+  CreatorModel copyWith({
+    Creator? user,
+    List<CodiList>? codiList,
+    List<ItemList>? itemList,
+  }) {
+    return CreatorModel(
+      user: user ?? this.user,
+      codiList: codiList ?? this.codiList,
+      itemList: itemList ?? this.itemList,
+    );
+  }
 }
 
 // VIEW MODEL 클래스 정의: 상태 관리 및 비즈니스 로직 처리
@@ -45,6 +57,13 @@ class CreatorViewModel extends StateNotifier<CreatorModel?> {
       state = creatorModel; // 상태를 새로운 CreatorModel로 설정
     }
     return responseDTO; // 응답 DTO 반환
+  }
+
+  void addNewCodi(CodiList newCodi) {
+    if (state != null) {
+      List<CodiList> updatedCodiList = List.from(state!.codiList)..add(newCodi);
+      state = state!.copyWith(codiList: updatedCodiList);
+    }
   }
 }
 

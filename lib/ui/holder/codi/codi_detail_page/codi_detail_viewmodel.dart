@@ -21,6 +21,20 @@ class CodiDetailModel {
     required this.mainPhotos,
     required this.otherCodiPhotos,
   });
+
+  CodiDetailModel copyWith({
+    Codi? codi,
+    List<ItemPhotos>? itemPhotos,
+    List<MainPhotos>? mainPhotos,
+    List<OtherCodiPhotos>? otherCodiPhotos,
+  }) {
+    return CodiDetailModel(
+      codi: codi ?? this.codi,
+      itemPhotos: itemPhotos ?? this.itemPhotos,
+      mainPhotos: mainPhotos ?? this.mainPhotos,
+      otherCodiPhotos: otherCodiPhotos ?? this.otherCodiPhotos,
+    );
+  }
 }
 
 class CodiDetailViewModel extends StateNotifier<CodiDetailModel?> {
@@ -35,44 +49,22 @@ class CodiDetailViewModel extends StateNotifier<CodiDetailModel?> {
       ResponseDTO responseDTO = await CodiRepo().callSaveLoveCount(codiId);
 
       if (responseDTO.success) {
-        bool isLoved = !state!.codi.isLoved;
-        int loveCount = state!.codi.loveCount + 1;
-
-        Codi codi = Codi(
-          codiId: codiId,
-          isLoved: isLoved,
-          description: state!.codi.description,
-          createdAt: state!.codi.createdAt,
-          loveCount: loveCount,
-        );
-
-        state = CodiDetailModel(
-          codi: codi,
-          itemPhotos: state!.itemPhotos,
-          mainPhotos: state!.mainPhotos,
-          otherCodiPhotos: state!.otherCodiPhotos,
+        state = state!.copyWith(
+          codi: state!.codi.copyWith(
+            isLoved: true,
+            loveCount: state!.codi.loveCount + 1,
+          ),
         );
       }
       return responseDTO;
     } else {
       ResponseDTO responseDTO = await CodiRepo().callDeleteLoveCount(codiId);
       if (responseDTO.success) {
-        bool isLoved = !state!.codi.isLoved;
-        int loveCount = state!.codi.loveCount - 1;
-
-        Codi codi = Codi(
-          codiId: codiId,
-          isLoved: isLoved,
-          description: state!.codi.description,
-          createdAt: state!.codi.createdAt,
-          loveCount: loveCount,
-        );
-
-        state = CodiDetailModel(
-          codi: codi,
-          mainPhotos: state!.mainPhotos,
-          itemPhotos: state!.itemPhotos,
-          otherCodiPhotos: state!.otherCodiPhotos,
+        state = state!.copyWith(
+          codi: state!.codi.copyWith(
+            isLoved: false,
+            loveCount: state!.codi.loveCount - 1,
+          ),
         );
       }
       return responseDTO;

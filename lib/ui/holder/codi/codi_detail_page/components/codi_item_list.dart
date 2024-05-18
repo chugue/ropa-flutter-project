@@ -3,7 +3,6 @@ import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail
 import 'package:final_project_team02/ui/holder/item/item_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-
 import '../../../../../_core/constants/http.dart';
 
 class ItemList extends StatelessWidget {

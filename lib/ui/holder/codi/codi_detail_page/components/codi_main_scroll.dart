@@ -15,6 +15,7 @@ class CodiMainScroll extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    print("CodiMainScroll 😊😊😊😊😊${model}");
     return SizedBox(
       height: 500,
       child: PageView.builder(

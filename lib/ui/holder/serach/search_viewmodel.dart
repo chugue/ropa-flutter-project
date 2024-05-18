@@ -4,7 +4,6 @@ import 'package:final_project_team02/ui/holder/serach/search_data/codi_photo.dar
 import 'package:final_project_team02/ui/holder/serach/search_data/item_photo.dart'; // 아이템 사진 데이터를 포함하는 클래스 임포트
 import 'package:flutter/material.dart'; // Flutter의 기본 위젯 라이브러리 임포트
 import 'package:flutter_riverpod/flutter_riverpod.dart'; // Riverpod 상태 관리 라이브러리 임포트
-import 'package:logger/logger.dart';
 
 import '../../../data/repositoreis/search_repo.dart'; // 검색 데이터 요청을 처리하는 리포지토리 클래스 임포트
 
@@ -41,7 +40,7 @@ class SearchViewmodel extends StateNotifier<SearchModel?> {
       // SearchRepo를 사용하여 데이터 가져오기
       final searchData =
           await searchRepo.callSearchData(); // API 호출을 통해 데이터를 가져옴
-      Logger().d(searchData);
+      // Logger().d(searchData);
       state = searchData; // 가져온 데이터를 state에 설정하여 상태 업데이트
     } catch (e) {
       // 예외 처리

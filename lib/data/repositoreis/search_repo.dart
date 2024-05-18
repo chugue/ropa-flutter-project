@@ -20,7 +20,7 @@ class SearchRepo {
         final itemPhotos = (responseDTO.response['itemPhotos'] as List)
             .map((e) => ItemPhoto.fromJson(e))
             .toList();
-        logger.d(itemPhotos);
+        // logger.d(itemPhotos);
 
         return responseDTO.response =
             SearchModel(codiPhotos: codiPhotos, itemPhotos: itemPhotos);

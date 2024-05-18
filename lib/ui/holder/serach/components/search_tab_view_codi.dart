@@ -11,8 +11,7 @@ class SearchTabViewCodi extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     SearchModel? model = ref.watch(searchProvider);
 
-    // 로깅을 통해 상태를 확인
-    Logger().d(model);
+    // Logger().d(model);
 
     // 상태 변화 모니터링 및 초기화
     ref.listen<SearchModel?>(searchProvider, (previous, next) {
