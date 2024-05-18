@@ -55,7 +55,7 @@ class CodiRepo {
   }
 
   Future<ResponseDTO> callCodiDetail(int codiId) async {
-    final response = await dio.get('/codi-pages/${codiId}');
+    final response = await dio.get('/app/codi-pages/${codiId}');
 
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
     if (responseDTO.success) {

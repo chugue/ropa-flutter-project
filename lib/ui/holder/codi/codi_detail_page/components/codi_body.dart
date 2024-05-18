@@ -1,3 +1,5 @@
+import 'package:final_project_team02/data/session_data/session_data.dart';
+import 'package:final_project_team02/ui/components/login_is_check.dart';
 import 'package:final_project_team02/ui/components/main_app_bar.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/components/codi_content.dart';
@@ -22,31 +24,31 @@ class CodiBody extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // watch  (상태 관리)
     CodiDetailModel? model = ref.watch(codiDetailProvider(codiId));
+    SessionData session = ref.watch(sessionProvider);
 
-    if (model == null) {
-      return Align(child: const CircularProgressIndicator());
-    } else {
+    if (model == null) return Align(child: const CircularProgressIndicator());
+    if (session.user?.id == null) return Align(child: LoginIsCheck());
       return CustomScrollView(
-        slivers: [
-          MainAppBar(),
-          SliverToBoxAdapter(child: CodiMainScroll(model: model)),
-          SliverToBoxAdapter(
-            child: Consumer(
-              builder: (context, ref, _) {
-                CodiDetailModel? likeModel =
-                    ref.watch(codiDetailProvider(codiId));
-                return CodiLike(model: likeModel!, codiId: codiId);
-              },
-            ),
+      slivers: [
+        MainAppBar(),
+        SliverToBoxAdapter(child: CodiMainScroll(model: model)),
+        SliverToBoxAdapter(
+          child: Consumer(
+            builder: (context, ref, _) {
+              CodiDetailModel? likeModel =
+              ref.watch(codiDetailProvider(codiId));
+              return CodiLike(model: likeModel!, codiId: codiId);
+            },
           ),
-          SliverToBoxAdapter(child: CodiCreatedAt()),
-          SliverToBoxAdapter(child: CodiContent(model: model)),
-          CodiTitle(title: "아이템 목록"),
-          SliverToBoxAdapter(child: ItemList(model: model)),
-          CodiTitle(title: "코디 목록"),
-          CodiList(model: model),
-        ],
-      );
-    }
+        ),
+        SliverToBoxAdapter(child: CodiCreatedAt()),
+        SliverToBoxAdapter(child: CodiContent(model: model)),
+        CodiTitle(title: "아이템 목록"),
+        SliverToBoxAdapter(child: ItemList(model: model)),
+        CodiTitle(title: "코디 목록"),
+        CodiList(model: model),
+      ],
+    );
+
   }
 }

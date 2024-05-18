@@ -3,17 +3,20 @@ import 'dart:async';
 import 'package:final_project_team02/ui/holder/serach/components/search_tab_bar.dart';
 import 'package:final_project_team02/ui/holder/serach/components/search_tab_view_Item.dart';
 import 'package:final_project_team02/ui/holder/serach/components/search_tab_view_codi.dart';
+import 'package:final_project_team02/ui/holder/serach/search_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SearchBody extends StatelessWidget {
+class SearchBody extends ConsumerWidget {
   const SearchBody({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,WidgetRef ref) {
+    SearchModel? model = ref.watch(searchProvider);
 
-
+    if(model == null)return Center(child: CircularProgressIndicator());
     return DefaultTabController(
       length: 2,
       child: NestedScrollView(
