@@ -10,8 +10,6 @@ class UserMyPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     SessionData sessionData = ref.watch(sessionProvider);
-    print("😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍유저 세션 아이디 확인");
-    print(sessionData.user?.id);
 
     if (sessionData.user?.id == null) {
       return LoginIsCheck();

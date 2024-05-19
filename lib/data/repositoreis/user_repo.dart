@@ -27,6 +27,7 @@ class UserRepo {
 
   Future<ResponseDTO> callUserMyPage() async {
     final response = await dio.get("/app/user-my-page");
+    logger.d("🤣🤣🤣🤣🤣🤣${response.data}");
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
     if (responseDTO.success) {
       responseDTO.response = UserMyPage.fromJson(responseDTO.response);
@@ -39,6 +40,8 @@ class UserRepo {
   Future<ResponseDTO> callCreatorView(int creatorId) async {
     final response = await dio.get("/app/creator-view/${creatorId}");
 
+    logger.d(response.data);
+    logger.d('🤣🤣🤣🤣🤣🤣');
     // 🔀PARSING
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
 

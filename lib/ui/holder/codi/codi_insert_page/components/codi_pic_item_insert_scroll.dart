@@ -12,8 +12,8 @@ class CodiPicItemInsertScroll extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          CodiItemInsert(category: "top"),
-          CodiItemInsert(category: "bottom"),
+          Container(child: CodiItemInsert(category: "top")),
+          Container(child: CodiItemInsert(category: "bottom")),
           // ItemInsert(category: "Outer"),
           // ItemInsert(category: "Shoes"),
           // ItemInsert(category: "Acc"),
