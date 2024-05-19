@@ -1,9 +1,12 @@
 import 'dart:convert';
 
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_insert_page/codi_insert_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_item_insert_page/codi_item_insert_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CodiItemInsert extends ConsumerWidget {
   const CodiItemInsert({super.key, required this.category});
@@ -14,16 +17,16 @@ class CodiItemInsert extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     CodiInsertModel model = ref.watch(codiInsertProvider);
 
-    String? imageBase64;
+    String? photoPath;;
 
     if (category == 'top') {
-      imageBase64 = model.topImageBase64;
+      photoPath = model.topPhotoPath;
     } else if (category == 'bottom') {
-      imageBase64 = model.bottomImageBase64;
+      photoPath = model.bottomPhotoPath;
     }
 
 
-    if (imageBase64 == null) {
+    if (photoPath == null) {
       return Padding(
         padding: const EdgeInsets.only(top: 8.0, right: 16.0),
         child: GestureDetector(
@@ -62,8 +65,18 @@ class CodiItemInsert extends ConsumerWidget {
             margin: EdgeInsets.only(right: 16),
             width: 80,
             height: 80,
-            child: Image.memory(
-              base64Decode(imageBase64),
+            child: CachedNetworkImage(
+              imageUrl:
+              '$baseURL${photoPath}',
+              placeholder: (context, url) => Shimmer.fromColors(
+                baseColor: Colors.grey[300]!,
+                highlightColor: Colors.grey[100]!,
+                child: Container(
+                  color: Colors.white,
+                ),
+              ),
+              errorWidget: (context, url, error) =>
+                  Icon(Icons.error),
               fit: BoxFit.cover,
             ),
           ),

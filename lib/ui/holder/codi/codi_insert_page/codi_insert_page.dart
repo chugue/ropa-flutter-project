@@ -24,32 +24,32 @@ class CodiInsertPage extends ConsumerWidget {
                 List<Items> items = [];
                 List<CodiPhots> codiPhotos = [];
 
-                if (model.topImageBase64 != null) {
+                if (model.topPhotoPath != null) {
                   items.add(Items(
                       brandId: model.topBrandId, itemsId: model.topImageId));
                   codiPhotos.add(CodiPhots(
-                    photoName: model.topItemName ?? 'topImage',
-                    photoBase64: model.topImageBase64!,
+                    photoName: model.fileName,
+                    photoBase64: model.prevImg,
                     type: "CODI",
                     isMainPhoto: model.isMainPhoto ?? false,
                   ));
                 }
 
-                if (model.bottomImageBase64 != null) {
+                if (model.bottomPhotoPath != null) {
                   items.add(Items(
                       brandId: model.bottomBrandId,
                       itemsId: model.bottomImageId));
                   codiPhotos.add(CodiPhots(
-                    photoName: model.bottomItemName ?? 'bottomImage',
-                    photoBase64: model.bottomImageBase64!,
+                    photoName: model.fileName,
+                    photoBase64: model.prevImg,
                     type: "CODI",
                     isMainPhoto: model.isMainPhoto ?? false,
                   ));
                 }
-
+                print('😒😒😒${model.comment}');
                 CodiInsertReqDTO reqDTO = CodiInsertReqDTO(
+                  title: null,
                   userId: sessionData.user!.id!,
-                  title:' 코디 1 ',
                   description: model.comment, // Set your description here
                   codiPhotos: codiPhotos,
                   items: items,

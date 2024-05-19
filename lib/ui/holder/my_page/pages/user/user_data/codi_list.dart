@@ -1,6 +1,6 @@
 class CodiList {
   int codiId;
-  int codiPhotoId;
+  int? codiPhotoId;
   String photoName;
   String photoPath;
   String codiPhoto;
@@ -16,8 +16,8 @@ class CodiList {
   factory CodiList.fromJson(Map<String, dynamic> json) {
     return CodiList(
       codiId: json["codiId"],
-      codiPhotoId: json["codiPhotoId"],
-      photoName: json["photoName"],
+      codiPhotoId: json["codiPhotoId"] ?? null,
+      photoName: json["photoName"] ?? '',
       photoPath: json["photoPath"],
       codiPhoto: json["codiPhoto"],
     );

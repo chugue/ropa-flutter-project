@@ -35,7 +35,6 @@ class CodiItemBrandTabView extends ConsumerWidget {
         final brand = model.brandList[selectedIndex];
         return GestureDetector(
           onTap: () {
-            print('Tapped on item: $item'); // Debug print
             ref.read(codiInsertProvider.notifier).pickAndAddImageFromBase64(
                 item.photoPath,
                 item.itemName,
@@ -52,7 +51,7 @@ class CodiItemBrandTabView extends ConsumerWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: CachedNetworkImage(
-                      imageUrl: '${baseURL}${model.brandList[index].photoPath}',
+                      imageUrl: '${baseURL}${item.photoPath}',
                       placeholder: (context, url) => Shimmer.fromColors(
                         baseColor: Colors.grey[300]!,
                         highlightColor: Colors.grey[100]!,
