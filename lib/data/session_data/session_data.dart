@@ -38,6 +38,31 @@ class SessionData extends SessionUser {
         mContext!, Move.mainHolder, (route) => false);
   }
 
+  Future<void> autoLogin() async {
+    // secureStorage는 앱삭제시에 사라짐
+    String? accessToken = await secureStorage.read(key: "accessToken");
+
+    if (accessToken == null) {
+      Navigator.of(mContext!).pushNamed(Move.loginPage);
+    } else {
+      ResponseDTO responseDTO =
+      await UserRepo().callAutoLogin(accessToken);
+
+      if (responseDTO.success) {
+        super.user = responseDTO.response;
+        super.accessToken = accessToken;
+        globalAccessToken = accessToken;
+        super.isLogin = true;
+        Navigator.popAndPushNamed(mContext!, Move.mainHolder);
+      } else {
+        ScaffoldMessenger.of(mContext!).showSnackBar(
+            SnackBar(content: Text("자동 로그인 실패 : ${responseDTO.errorMessage}")));
+        Navigator.popAndPushNamed(mContext!, Move.loginPage);
+      }
+    }
+  }
+
+
   Future<void> UserCreatorApply(UserCreatorApplyReqDTO reqDTO) async {
     ResponseDTO responseDTO = await UserRepo().callUserCreatorApply(reqDTO);
 

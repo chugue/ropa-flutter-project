@@ -14,6 +14,21 @@ import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/user
 
 class UserRepo {
 
+  Future<ResponseDTO> callAutoLogin(String accessToken) async {
+    Response response = await dio.post("/auto/login",
+        options: Options(headers: {"Authorization": "$accessToken"}));
+
+    ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+
+    if (responseDTO.success) {
+      responseDTO.response = User.fromJson(responseDTO.response);
+      return responseDTO;
+    }
+
+    return responseDTO;
+  }
+
+
   Future<ResponseDTO> callUserMyPage() async {
     final response = await dio.get("/app/user-my-page");
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
@@ -56,8 +71,7 @@ class UserRepo {
   Future<ResponseDTO> callUserCreatorApply(
       UserCreatorApplyReqDTO reqDTO) async {
     final response = await dio.put("/app/creator-apply",
-        data: reqDTO.toJson(),
-        options: Options(headers: {'Authorization': globalAccessToken}));
+        data: reqDTO.toJson());
     // Logger().d(response.data!);
 
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
