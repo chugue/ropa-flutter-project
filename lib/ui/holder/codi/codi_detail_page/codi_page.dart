@@ -9,6 +9,10 @@ class CodiPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('${codiId}');
+    print('🤣🤣🤣🤣🤣🤣${codiId}');
+    print('${codiId}');
+
     return Scaffold(
       body: CodiBody(
         codiId: codiId,

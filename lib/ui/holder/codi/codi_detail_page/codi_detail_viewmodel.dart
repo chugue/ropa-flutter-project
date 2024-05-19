@@ -72,9 +72,13 @@ class CodiDetailViewModel extends StateNotifier<CodiDetailModel?> {
   }
 
   Future<ResponseDTO> notifyInit(int codiId) async {
+    print(codiId);
+    print(codiId);
+    print(codiId);
     ResponseDTO responseDTO = await CodiRepo().callCodiDetail(codiId);
     if (responseDTO.success) {
-      state = responseDTO.response;
+      CodiDetailModel model = responseDTO.response;
+      state = model;
       Logger().d(responseDTO.response);
     }
     return responseDTO;

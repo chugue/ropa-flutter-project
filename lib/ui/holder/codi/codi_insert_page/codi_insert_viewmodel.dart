@@ -6,6 +6,8 @@ import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/repositoreis/codi_repo.dart';
 import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:final_project_team02/main.dart';
+import 'package:final_project_team02/ui/holder/home/home_data/popular_codi_photos.dart';
+import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/codi_list.dart';
 import 'package:flutter/foundation.dart';
@@ -117,18 +119,46 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
 
     if (responseDTO.success) {
 
+      PopularCodiPhotos codiPhotos = PopularCodiPhotos.fromJson(responseDTO.response);
+      ref.read(homeProvider.notifier).addNewCodiPhotos(codiPhotos);
+
+
       CodiList newCodi = CodiList.fromJson(responseDTO.response);
-      logger.d(newCodi.toString());
+
       ref
           .read(creatorProvider(sessionData.user!.id!).notifier)
           .addNewCodi(newCodi);
       Navigator.pop(mContext!);
     }
   }
+  Future<void> pickAndAddImageFromBase64(String photoPath, String itemName,
+      int itemId, int brandId, String category) async {
+
+    if (category == 'top') {
+      state = state.copyWith(
+        topBrandId: brandId,
+        topItemId: itemId,
+        topPhotoPath: photoPath,
+        topItemName: itemName,
+        topImageId: itemId,
+      );
+      Navigator.pop(navigatorKey.currentContext!);
+    } else if (category == 'bottom') {
+      state = state.copyWith(
+        bottomBrandId: brandId,
+        bottomItemId: itemId,
+        bottomPhotoPath: photoPath,
+        bottomItemName: itemName,
+        bottomImageId: itemId,
+      );
+
+
+      Navigator.pop(navigatorKey.currentContext!);
+    }
+  }
 
   void updateComment(String comment) {
     if (state != null) {
-      print("😍😍😍😍😍😍 ${comment}");
       state = state.copyWith(comment: comment);
     }
   }
@@ -161,30 +191,7 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
     }
   }
 
-  Future<void> pickAndAddImageFromBase64(String photoPath, String itemName,
-      int itemId, int brandId, String category) async {
-    print("▶️▶️${photoPath}, ${itemName}, ${itemId}, ${brandId}, ${category}");
 
-    if (category == 'top') {
-      state = state.copyWith(
-        topBrandId: brandId,
-        topItemId: itemId,
-        topPhotoPath: photoPath,
-        topItemName: itemName,
-        topImageId: itemId,
-      );
-      Navigator.pop(navigatorKey.currentContext!);
-    } else if (category == 'bottom') {
-      state = state.copyWith(
-        bottomBrandId: brandId,
-        bottomItemId: itemId,
-        bottomPhotoPath: photoPath,
-        bottomItemName: itemName,
-        bottomImageId: itemId,
-      );
-      Navigator.pop(navigatorKey.currentContext!);
-    }
-  }
 
   Future<String> convertToBase64(XFile image) async {
     Uint8List imageBytes = await image.readAsBytes();
@@ -202,7 +209,7 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
 }
 
 final codiInsertProvider =
-    StateNotifierProvider<CodiInsertViewModel, CodiInsertModel>((ref) {
+AutoDisposeStateNotifierProvider<CodiInsertViewModel, CodiInsertModel>((ref) {
   SessionData sessionData = ref.watch(sessionProvider);
   return CodiInsertViewModel(ref, sessionData);
 });

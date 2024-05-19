@@ -4,7 +4,7 @@ class PopularCodiPhotos {
   final String name;
   final String photoPath;
   final String sort;
-  final bool isMainPhoto;
+  final bool? isMainPhoto;
 
   const PopularCodiPhotos({
     required this.photoId,
@@ -19,9 +19,9 @@ class PopularCodiPhotos {
     return PopularCodiPhotos(
       photoId: json["photoId"],
       codiId: json["codiId"],
-      name: json["name"],
+      name: json["name"] ?? '',
       photoPath: json["photoPath"] ?? '',
-      sort: json["sort"],
+      sort: json["sort"] ?? '',
       isMainPhoto: json["isMainPhoto"],
     );
   }

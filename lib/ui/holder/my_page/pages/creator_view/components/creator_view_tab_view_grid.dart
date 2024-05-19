@@ -23,7 +23,7 @@ class CreatorViewTabViewGird extends StatelessWidget {
         crossAxisCount: 2,
         mainAxisSpacing: 2,
       ),
-      itemCount: model!.codiList.length,
+      itemCount: model.codiList.length,
       itemBuilder: (context, codiIndex) {
         return Stack(
           children: [
@@ -33,7 +33,7 @@ class CreatorViewTabViewGird extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => CodiPage(
-                      codiId: model!.codiList[codiIndex].codiId,
+                      codiId: model.codiList[codiIndex].codiId,
                     ),
                   ),
                 );
@@ -41,7 +41,7 @@ class CreatorViewTabViewGird extends StatelessWidget {
               child: AspectRatio(
                 aspectRatio: 1,
                 child: CachedNetworkImage(
-                  imageUrl: '$baseURL${model!.codiList[codiIndex].photoPath}',
+                  imageUrl: '$baseURL${model.codiList[codiIndex].photoPath}',
                   placeholder: (context, url) => Shimmer.fromColors(
                     baseColor: Colors.grey[300]!,
                     highlightColor: Colors.grey[100]!,

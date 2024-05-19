@@ -18,6 +18,18 @@ class HomeModel {
     required this.itemsPhotos,
     required this.userPhotos,
   });
+
+  HomeModel copyWith({
+    List<PopularUserPhotos>? userPhotos,
+    List<PopularCodiPhotos>? codiPhotos,
+    List<PopularItemsPhotos>? itemsPhotos,
+  }) {
+    return HomeModel(
+      userPhotos: userPhotos ?? this.userPhotos,
+      codiPhotos: codiPhotos ?? this.codiPhotos,
+      itemsPhotos: itemsPhotos ?? this.itemsPhotos,
+    );
+  }
 }
 
 // HomeViewModel 클래스는 StateNotifier를 상속받아 상태 관리를 수행합니다.
@@ -26,6 +38,14 @@ class HomeViewModel extends StateNotifier<HomeModel?> {
 
   // 생성자에서 초기 상태를 super를 통해 설정합니다.
   HomeViewModel(super.state);
+
+  void addNewCodiPhotos(PopularCodiPhotos codiPhotos) {
+    if (state != null) {
+      List<PopularCodiPhotos> updatedCodiPhotos = [codiPhotos, ...state!.codiPhotos];
+
+      state = state!.copyWith(codiPhotos: updatedCodiPhotos);
+    }
+  }
 
   // notifyInit는 비동기 함수로, 홈 화면 데이터를 초기화합니다.
   Future<void> notifyInit() async {
