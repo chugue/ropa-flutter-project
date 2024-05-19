@@ -1,9 +1,12 @@
 import 'dart:convert';
 
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_insert_page/codi_insert_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_item_insert_page/codi_item_insert_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CodiItemBrandTabView extends ConsumerWidget {
   final CodiItemInsertModel model;
@@ -32,9 +35,8 @@ class CodiItemBrandTabView extends ConsumerWidget {
         final brand = model.brandList[selectedIndex];
         return GestureDetector(
           onTap: () {
-            print('Tapped on item: $item'); // Debug print
             ref.read(codiInsertProvider.notifier).pickAndAddImageFromBase64(
-                item.base64,
+                item.photoPath,
                 item.itemName,
                 item.itemId,
                 brand.brandId,
@@ -48,8 +50,16 @@ class CodiItemBrandTabView extends ConsumerWidget {
                   aspectRatio: 4 / 3,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
-                    child: Image.memory(
-                      base64Decode(item.base64.split(',').last),
+                    child: CachedNetworkImage(
+                      imageUrl: '${baseURL}${item.photoPath}',
+                      placeholder: (context, url) => Shimmer.fromColors(
+                        baseColor: Colors.grey[300]!,
+                        highlightColor: Colors.grey[100]!,
+                        child: Container(
+                          color: Colors.white,
+                        ),
+                      ),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
                       fit: BoxFit.cover,
                     ),
                   ),

@@ -5,7 +5,11 @@ final accessToken =
     'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuuzgOyasOyEnSIsImlkIjozLCJleHAiOjE3MTYwMzgxNjUsImVtYWlsIjoiYnVud3VzZW9rQGV4YW1wbGUuY29tIn0.YHCPp7vbSxlgfGhlovKVpp4y3WbsgVk2h9QncXYkUDOF-W6-AoDj_78TSaEkbJXgFjExliT6433Ef8x0HUQoEQ';
 
 void main() async {
-  await callSetItemInsert_test();
+  await callGetItemInsert_test();
+}
+
+Future<void> callGetItemInsert_test() async {
+  await CodiRepo().callGetItemInsert('top');
 }
 
 Future<void> callSetItemInsert_test() async {
@@ -54,9 +58,7 @@ Future<void> callSetItemInsert_test() async {
   );
   await CodiRepo().callSetItemInsert(dummyCodiInsertReqDTO);
 }
-Future<void> callGetItemInsert_test() async {
-  await CodiRepo().callGetItemInsert('top');
-}
+
 
 Future<void> callLoveCount_test() async {
   await CodiRepo().callSaveLoveCount(1);

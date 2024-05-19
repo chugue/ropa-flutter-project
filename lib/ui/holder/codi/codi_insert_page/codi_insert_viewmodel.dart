@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/data/dtos/codi_req.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/repositoreis/codi_repo.dart';
@@ -14,7 +15,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as path;
 
-
 class CodiInsertModel {
   final List<XFile> images;
   final String prevImg;
@@ -25,20 +25,19 @@ class CodiInsertModel {
 
   final int? topItemId;
   final int? topBrandId;
-  final String? topImageBase64;
+  final String? topPhotoPath;
   final int? topImageId;
   final String? topItemName;
 
   final int? bottomItemId;
   final int? bottomBrandId;
-  final String? bottomImageBase64;
+  final String? bottomPhotoPath;
   final int? bottomImageId;
   final String? bottomItemName;
 
   final String comment;
 
   const CodiInsertModel({
-    this.comment = '',
     required this.images,
     required this.prevImg,
     this.fileName,
@@ -46,14 +45,15 @@ class CodiInsertModel {
     this.isMainPhoto,
     this.topItemId,
     this.topBrandId,
-    this.topImageBase64,
+    this.topPhotoPath,
     this.topImageId,
     this.topItemName,
     this.bottomItemId,
     this.bottomBrandId,
-    this.bottomImageBase64,
+    this.bottomPhotoPath,
     this.bottomImageId,
     this.bottomItemName,
+    required this.comment,
   });
 
   CodiInsertModel copyWith({
@@ -64,18 +64,17 @@ class CodiInsertModel {
     bool? isMainPhoto,
     int? topItemId,
     int? topBrandId,
-    String? topImageBase64,
+    String? topPhotoPath,
     int? topImageId,
     String? topItemName,
     int? bottomItemId,
     int? bottomBrandId,
-    String? bottomImageBase64,
+    String? bottomPhotoPath,
     int? bottomImageId,
-    String? comment,
     String? bottomItemName,
+    String? comment,
   }) {
     return CodiInsertModel(
-      comment: comment ?? this.comment,
       images: images ?? this.images,
       prevImg: prevImg ?? this.prevImg,
       fileName: fileName ?? this.fileName,
@@ -83,14 +82,15 @@ class CodiInsertModel {
       isMainPhoto: isMainPhoto ?? this.isMainPhoto,
       topItemId: topItemId ?? this.topItemId,
       topBrandId: topBrandId ?? this.topBrandId,
-      topImageBase64: topImageBase64 ?? this.topImageBase64,
+      topPhotoPath: topPhotoPath ?? this.topPhotoPath,
       topImageId: topImageId ?? this.topImageId,
       topItemName: topItemName ?? this.topItemName,
       bottomItemId: bottomItemId ?? this.bottomItemId,
       bottomBrandId: bottomBrandId ?? this.bottomBrandId,
-      bottomImageBase64: bottomImageBase64 ?? this.bottomImageBase64,
+      bottomPhotoPath: bottomPhotoPath ?? this.bottomPhotoPath,
       bottomImageId: bottomImageId ?? this.bottomImageId,
       bottomItemName: bottomItemName ?? this.bottomItemName,
+      comment: comment ?? this.comment,
     );
   }
 }
@@ -104,28 +104,32 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
 
   CodiInsertViewModel(this.ref, this.sessionData)
       : super(CodiInsertModel(
-          prevImg: '',
-          images: [],
-          isMainPhoto: false,
-          topImageBase64: null,
-          bottomImageBase64: null,
-        ));
+            prevImg: '',
+            images: [],
+            isMainPhoto: false,
+            topPhotoPath: null,
+            bottomPhotoPath: null,
+            comment: ''));
 
-  Future<void> codiSave(CodiInsertReqDTO reaDTO) async {
-    ResponseDTO responseDTO = await CodiRepo().callSetItemInsert(reaDTO);
+  Future<void> codiSave(CodiInsertReqDTO reqDTO) async {
+    print('${reqDTO.toJson()}');
+    ResponseDTO responseDTO = await CodiRepo().callSetItemInsert(reqDTO);
 
-    if(responseDTO.success) {
-      // 새로운 코디를 등록한 후 상태 업데이트
+    if (responseDTO.success) {
+
       CodiList newCodi = CodiList.fromJson(responseDTO.response);
-      ref.read(creatorProvider(sessionData.user!.id!).notifier).addNewCodi(newCodi);
-
+      logger.d(newCodi.toString());
+      ref
+          .read(creatorProvider(sessionData.user!.id!).notifier)
+          .addNewCodi(newCodi);
+      Navigator.pop(mContext!);
     }
   }
 
-
   void updateComment(String comment) {
     if (state != null) {
-      state = state!.copyWith(comment: comment);
+      print("😍😍😍😍😍😍 ${comment}");
+      state = state.copyWith(comment: comment);
     }
   }
 
@@ -157,13 +161,15 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
     }
   }
 
-  Future<void> pickAndAddImageFromBase64(String itemBase64, String itemName,
+  Future<void> pickAndAddImageFromBase64(String photoPath, String itemName,
       int itemId, int brandId, String category) async {
+    print("▶️▶️${photoPath}, ${itemName}, ${itemId}, ${brandId}, ${category}");
+
     if (category == 'top') {
       state = state.copyWith(
         topBrandId: brandId,
         topItemId: itemId,
-        topImageBase64: itemBase64,
+        topPhotoPath: photoPath,
         topItemName: itemName,
         topImageId: itemId,
       );
@@ -172,7 +178,7 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
       state = state.copyWith(
         bottomBrandId: brandId,
         bottomItemId: itemId,
-        bottomImageBase64: itemBase64,
+        bottomPhotoPath: photoPath,
         bottomItemName: itemName,
         bottomImageId: itemId,
       );
@@ -194,7 +200,9 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
     state = state.copyWith(images: updatedImages);
   }
 }
-final codiInsertProvider = StateNotifierProvider<CodiInsertViewModel, CodiInsertModel>((ref) {
-SessionData sessionData = ref.watch(sessionProvider);
+
+final codiInsertProvider =
+    StateNotifierProvider<CodiInsertViewModel, CodiInsertModel>((ref) {
+  SessionData sessionData = ref.watch(sessionProvider);
   return CodiInsertViewModel(ref, sessionData);
 });
