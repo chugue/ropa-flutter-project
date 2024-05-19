@@ -13,7 +13,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class SessionUser {
   User? user;
   bool isLogin = false;
-  String? accessToken;
   int? selectedUserId;
 
   SessionUser();
@@ -25,12 +24,35 @@ class SessionData extends SessionUser {
 
   SessionData();
 
+  Future<void> autoLogin() async {
+    // secureStorage는 앱삭제시에 사라짐
+    String? accessToken = await secureStorage.read(key: "accessToken");
+    if (accessToken == null) {
+      Navigator.of(mContext!).pushNamed(Move.loginPage);
+    } else {
+      ResponseDTO responseDTO =
+      await UserRepo().callAutoLogin(accessToken);
+      if (responseDTO.success) {
+        this.user = responseDTO.response;
+        globalAccessToken = accessToken;
+        this.isLogin = true;
+        Navigator.popAndPushNamed(mContext!, Move.mainHolder);
+
+      } else {
+        ScaffoldMessenger.of(mContext!).showSnackBar(
+            SnackBar(content: Text("자동 로그인 실패 : ${responseDTO.errorMessage}")));
+        Navigator.popAndPushNamed(mContext!, Move.loginPage);
+      }
+    }
+  }
+
+
   void logout(WidgetRef ref) async {
     user = null;
     isLogin = false;
+    globalAccessToken = null;
 
     await secureStorage.delete(key: "accessToken");
-    await secureStorage.delete(key: "globalAccessToken");
 
     ref.read(sessionProvider.notifier).state = SessionData();
 
@@ -84,9 +106,7 @@ class SessionData extends SessionUser {
       await secureStorage.write(key: "accessToken", value: accessToken);
 
       this.user = responseDTO.response;
-      this.accessToken = accessToken;
       this.isLogin = true;
-
       globalAccessToken = accessToken;
 
       Navigator.pushNamedAndRemoveUntil(

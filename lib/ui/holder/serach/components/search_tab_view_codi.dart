@@ -15,13 +15,13 @@ class SearchTabViewCodi extends ConsumerWidget {
 
     // Logger().d(model);
 
-    // 상태 변화 모니터링 및 초기화
-    ref.listen<SearchModel?>(searchProvider, (previous, next) {
-      if (previous == null && next != null) {
-      } else if (next == null) {
-        ref.read(searchProvider.notifier).notifyInit();
-      }
-    });
+    // // 상태 변화 모니터링 및 초기화
+    // ref.listen<SearchModel?>(searchProvider, (previous, next) {
+    //   if (previous == null && next != null) {
+    //   } else if (next == null) {
+    //     ref.read(searchProvider.notifier).notifyInit();
+    //   }
+    // });
 
     // Logger().d(model);
 

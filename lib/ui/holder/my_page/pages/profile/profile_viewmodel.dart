@@ -26,13 +26,8 @@ class UserProfileViewModel extends StateNotifier<UserProfileModel?> {
   );
 
   Future<void> notifyInit() async {
-    SessionData sessionData = ref.read(sessionProvider);
-
-    print(sessionData.accessToken);
-
     ResponseDTO responseDTO = await UserRepo().callUserProfile();
 
-    print("✅✅✅✅✅✅✅뷰모델 : ${responseDTO.success}");
     if (responseDTO.success) {
       state = UserProfileModel(responseDTO.response);
     } else {
