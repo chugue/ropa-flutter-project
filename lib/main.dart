@@ -1,5 +1,6 @@
 import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/_core/constants/move.dart';
+import 'package:final_project_team02/ui/holder/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -23,10 +24,11 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      home: SplashPage(),
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       theme: lightMode,
-      initialRoute: Move.mainHolder,
+      // initialRoute: Move.mainHolder,
       routes: getRouters(),
     );
   }
