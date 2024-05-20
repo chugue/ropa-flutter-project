@@ -1,11 +1,11 @@
-class CodiList {
+class CreatorViewCodiList {
   int codiId;
   int? codiPhotoId;
   String photoName;
   String photoPath;
   String codiPhoto;
 
-  CodiList({
+  CreatorViewCodiList({
     required this.codiId,
     required this.codiPhotoId,
     required this.photoName,
@@ -13,8 +13,8 @@ class CodiList {
     required this.codiPhoto,
   });
 
-  factory CodiList.fromJson(Map<String, dynamic> json) {
-    return CodiList(
+  factory CreatorViewCodiList.fromJson(Map<String, dynamic> json) {
+    return CreatorViewCodiList(
       codiId: json["codiId"],
       codiPhotoId: json["codiPhotoId"] ?? null,
       photoName: json["photoName"] ?? '',

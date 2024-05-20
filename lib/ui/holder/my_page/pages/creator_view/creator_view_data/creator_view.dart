@@ -1,4 +1,5 @@
-class Creator {
+// "/app/creator-view/1" 의 userDTO를 담음
+class CreatorView {
   final int? creatorId;
   final bool blueChecked;
   final String photoName;
@@ -9,7 +10,7 @@ class Creator {
   final String job;
   final String introMsg;
 
-  Creator({
+  CreatorView({
     required this.creatorId,
     required this.blueChecked,
     required this.photoName,
@@ -21,8 +22,8 @@ class Creator {
     required this.introMsg,
   });
 
-  factory Creator.fromJson(Map<String, dynamic> json) {
-    return Creator(
+  factory CreatorView.fromJson(Map<String, dynamic> json) {
+    return CreatorView(
       creatorId: json["creatorId"] ?? null,
       blueChecked: json["blueChecked"],
       photoName: json["photoName"] ?? '',

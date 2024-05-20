@@ -1,4 +1,4 @@
-import 'package:final_project_team02/data/global_data/photo.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/photo.dart';
 
 class UserProfile {
   final int userId;

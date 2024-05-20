@@ -30,14 +30,12 @@ class SessionData extends SessionUser {
     if (accessToken == null) {
       Navigator.of(mContext!).pushNamed(Move.loginPage);
     } else {
-      ResponseDTO responseDTO =
-      await UserRepo().callAutoLogin(accessToken);
+      ResponseDTO responseDTO = await UserRepo().callAutoLogin(accessToken);
       if (responseDTO.success) {
         this.user = responseDTO.response;
         globalAccessToken = accessToken;
         this.isLogin = true;
         Navigator.popAndPushNamed(mContext!, Move.mainHolder);
-
       } else {
         ScaffoldMessenger.of(mContext!).showSnackBar(
             SnackBar(content: Text("자동 로그인 실패 : ${responseDTO.errorMessage}")));
@@ -46,15 +44,14 @@ class SessionData extends SessionUser {
     }
   }
 
-
   void logout(WidgetRef ref) async {
-    user = null;
-    isLogin = false;
+    this.user = null;
+    this.isLogin = false;
     globalAccessToken = null;
 
     await secureStorage.delete(key: "accessToken");
 
-    ref.read(sessionProvider.notifier).state = SessionData();
+    // ref.read(sessionProvider.notifier).state = SessionData();
 
     Navigator.pushNamedAndRemoveUntil(
         mContext!, Move.mainHolder, (route) => false);

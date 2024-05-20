@@ -16,8 +16,7 @@ final dio = Dio(
 const secureStorage = FlutterSecureStorage();
 var logger = Logger();
 
-String? globalAccessToken =
-    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuuzgOyasOyEnSIsImlkIjozLCJleHAiOjE3MTYyNzc1MjcsImVtYWlsIjoiYnVud3VzZW9rQGV4YW1wbGUuY29tIn0.-5WYii0Pqqwecy0N4U2KYomY5tGzYAd9BbUUdsRiWiFo6fJOSBFyTDnBT5yWmDHZ9N7n7HuupijWedeKLojIJQ';
+String? globalAccessToken = null;
 
 // 인터셉터 생성
 var interceptor = InterceptorsWrapper(

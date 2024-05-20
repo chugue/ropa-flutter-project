@@ -191,7 +191,30 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
     }
   }
 
+  Future<void> pickAndAddImageFromBase64(String photoPath, String itemName,
+      int itemId, int brandId, String category) async {
+    print("▶️▶️${photoPath}, ${itemName}, ${itemId}, ${brandId}, ${category}");
 
+    if (category == 'top') {
+      state = state.copyWith(
+        topBrandId: brandId,
+        topItemId: itemId,
+        topPhotoPath: photoPath,
+        topItemName: itemName,
+        topImageId: itemId,
+      );
+      Navigator.pop(navigatorKey.currentContext!);
+    } else if (category == 'bottom') {
+      state = state.copyWith(
+        bottomBrandId: brandId,
+        bottomItemId: itemId,
+        bottomPhotoPath: photoPath,
+        bottomItemName: itemName,
+        bottomImageId: itemId,
+      );
+      Navigator.pop(navigatorKey.currentContext!);
+    }
+  }
 
   Future<String> convertToBase64(XFile image) async {
     Uint8List imageBytes = await image.readAsBytes();

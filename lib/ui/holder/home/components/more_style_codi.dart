@@ -65,7 +65,7 @@ class MoreStyleCodi extends StatelessWidget {
             ],
           );
         },
-        childCount: 8,
+        childCount: model!.codiPhotos.length,
       ),
     );
   }

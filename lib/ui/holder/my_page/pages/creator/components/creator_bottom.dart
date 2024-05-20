@@ -1,8 +1,8 @@
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/components/creator_codi_insert_button.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/components/creator_tab_bar.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/creator/components/creator_tab_view_gird.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/components/creator_view_tab_view_closet.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/components/creator_view_tab_view_grid.dart';
 import 'package:flutter/material.dart';
 
 class CreatorBottom extends StatelessWidget {
@@ -37,7 +37,7 @@ class CreatorBottom extends StatelessWidget {
                               ? _codiInsertMsg()
 
                               // ✅ 코디 목록 보기
-                              : CreatorViewTabViewGird(model: model),
+                              : CreatorTabViewGird(model: model),
 
                           // ✅ 코디 등록 버튼
                           CodiInsertButton(),

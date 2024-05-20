@@ -1,4 +1,4 @@
-class ItemList {
+class CreatorItemList {
   int itemId;
   String name;
   String description;
@@ -8,7 +8,7 @@ class ItemList {
   String photoPath;
   String itemPhoto;
 
-  ItemList({
+  CreatorItemList({
     required this.itemId,
     required this.name,
     required this.description,
@@ -19,8 +19,8 @@ class ItemList {
     required this.itemPhoto,
   });
 
-  factory ItemList.fromJson(Map<String, dynamic> json) {
-    return ItemList(
+  factory CreatorItemList.fromJson(Map<String, dynamic> json) {
+    return CreatorItemList(
       itemId: json["itemId"],
       name: json["name"],
       description: json["description"],
