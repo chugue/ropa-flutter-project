@@ -118,10 +118,9 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
     ResponseDTO responseDTO = await CodiRepo().callSetItemInsert(reqDTO);
 
     if (responseDTO.success) {
-
-      PopularCodiPhotos codiPhotos = PopularCodiPhotos.fromJson(responseDTO.response);
+      PopularCodiPhotos codiPhotos =
+          PopularCodiPhotos.fromJson(responseDTO.response);
       ref.read(homeProvider.notifier).addNewCodiPhotos(codiPhotos);
-
 
       CodiList newCodi = CodiList.fromJson(responseDTO.response);
 
@@ -131,9 +130,9 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
       Navigator.pop(mContext!);
     }
   }
+
   Future<void> pickAndAddImageFromBase64(String photoPath, String itemName,
       int itemId, int brandId, String category) async {
-
     if (category == 'top') {
       state = state.copyWith(
         topBrandId: brandId,
@@ -151,7 +150,6 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
         bottomItemName: itemName,
         bottomImageId: itemId,
       );
-
 
       Navigator.pop(navigatorKey.currentContext!);
     }
@@ -232,7 +230,8 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
 }
 
 final codiInsertProvider =
-AutoDisposeStateNotifierProvider<CodiInsertViewModel, CodiInsertModel>((ref) {
+    AutoDisposeStateNotifierProvider<CodiInsertViewModel, CodiInsertModel>(
+        (ref) {
   SessionData sessionData = ref.watch(sessionProvider);
   return CodiInsertViewModel(ref, sessionData);
 });

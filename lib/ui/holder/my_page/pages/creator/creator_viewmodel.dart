@@ -56,7 +56,6 @@ class CreatorViewModel extends StateNotifier<CreatorModel?> {
     return responseDTO;
   }
 
-
   void addNewCodi(CodiList newCodi) {
     if (state != null) {
       List<CodiList> updatedCodiList = [newCodi, ...state!.codiList];
