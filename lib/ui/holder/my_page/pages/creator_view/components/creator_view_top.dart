@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/_core/constants/theme.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/creator_view_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CreatorViewTop extends StatelessWidget {
-  final CreatorModel model;
+  final CreatorVModel model;
 
   CreatorViewTop({required this.model});
 
