@@ -118,9 +118,7 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
     if (responseDTO.success) {
       CreatorCodiList newCodi = CreatorCodiList.fromJson(responseDTO.response);
       logger.d(newCodi.toString());
-      ref
-          .read(creatorProvider(sessionData.user!.id!).notifier)
-          .addNewCodi(newCodi);
+      ref.read(creatorProvider.notifier).addNewCodi(newCodi);
       Navigator.pop(mContext!);
     }
   }
