@@ -37,7 +37,9 @@ class CreatorTop extends StatelessWidget {
           SizedBox(height: 20),
 
           // ✅ 주문, 마일리지
-          MyPageOrderMileage(orderCount: model.itemList.length, mileageId: 200),
+          MyPageOrderMileage(
+              orderCount: model.user.orderCount ?? 0,
+              mileageId: model.user.mileage!),
 
           // ✅ 문의하기 버튼
           InquiryButton()
