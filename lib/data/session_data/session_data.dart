@@ -46,6 +46,9 @@ class SessionData extends SessionUser {
 
   void logout(WidgetRef ref) async {
     this.user = null;
+    logger.d(this.user);
+    logger.d(this.user);
+    logger.d(this.user);
     this.isLogin = false;
     globalAccessToken = null;
 
@@ -105,6 +108,10 @@ class SessionData extends SessionUser {
       this.user = responseDTO.response;
       this.isLogin = true;
       globalAccessToken = accessToken;
+
+      logger.d(this.user.toString());
+      logger.d(this.user.toString());
+      logger.d('😍😍😍😍😍😍😍😍😍😍');
 
       Navigator.pushNamedAndRemoveUntil(
           mContext!, Move.mainHolder, (route) => false);
