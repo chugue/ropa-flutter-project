@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/dtos/user_req.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/creator_data/creator.dart';
 import 'package:final_project_team02/data/global_data/user.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/creator_data/creator.dart';
@@ -13,6 +12,17 @@ import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/item
 import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/user_my_page.dart';
 
 class UserRepo {
+  Future<ResponseDTO> callUserProfileUpdate(
+      int userId, UserProfileUpdateDTO reqDTO) async {
+    Response response = await dio.put("/user/profile/${userId}",
+        data: reqDTO.toJson(),
+        options: Options(headers: {"Authorization": "$globalAccessToken"}));
+    ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+    if (responseDTO.success) {
+      responseDTO.response = User.fromJson(responseDTO.response);
+    }
+    return responseDTO;
+  }
 
   Future<ResponseDTO> callAutoLogin(String accessToken) async {
     Response response = await dio.post("/app/auto/login",
@@ -24,7 +34,6 @@ class UserRepo {
     return responseDTO;
   }
 
-
   Future<ResponseDTO> callUserMyPage() async {
     final response = await dio.get("/app/user-my-page");
     logger.d("🤣🤣🤣🤣🤣🤣${response.data}");
@@ -35,7 +44,6 @@ class UserRepo {
 
     return responseDTO;
   }
-
 
   Future<ResponseDTO> callCreatorView(int creatorId) async {
     final response = await dio.get("/app/creator-view/${creatorId}");
@@ -101,7 +109,6 @@ class UserRepo {
     if (responseDTO.success) {
       responseDTO.response = UserProfile.fromJson(responseDTO.response);
     }
-
     return responseDTO;
   }
 
@@ -115,7 +122,9 @@ class UserRepo {
 
   Future<(ResponseDTO, String)> callLogin(LoginReqDTO reqDTO) async {
     final response = await dio.post("/user/login", data: reqDTO.toJson());
-
+    logger.d(response.data);
+    logger.d(response.data);
+    logger.d(response.data);
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
 
     if (responseDTO.success) {

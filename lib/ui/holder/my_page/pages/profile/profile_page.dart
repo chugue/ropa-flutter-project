@@ -1,9 +1,11 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:final_project_team02/ui/components/bottom_button.dart';
+import 'package:final_project_team02/ui/holder/home/components/home_app_bar.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/profile/components/profile_button.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/profile/components/profile_edit_info.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/profile/components/profile_fixed_info.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/profile/profile_viewmodel.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shimmer/shimmer.dart';
@@ -16,7 +18,6 @@ class ProfileSetting extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     UserProfileModel? model = ref.watch(userProfileProvider);
-    print(model);
 
     if (model == null) {
       return Center(
@@ -29,38 +30,17 @@ class ProfileSetting extends ConsumerWidget {
       return Stack(
         children: [
           Scaffold(
-            appBar: AppBar(
-              elevation: 0,
-              leading: IconButton(
-                icon: Icon(CupertinoIcons.chevron_left),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-              actions: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Text(
-                      "변경하기(수정 후)",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue,
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
+            appBar: HomeAppbar(),
             body: ListView(
               padding: EdgeInsets.symmetric(horizontal: 20),
               children: [
                 SizedBox(height: 10),
                 _buildTitle(),
                 // 프로필 제목
-                _buildPhoto(model.userProfile.photoDTO.photoPath),
-                // 사진, 바꾸기 칼럼
+                model.images == null
+                    ? _buildPhoto(model.userProfile.photoDTO.photoPath, ref)
+                    : // 사진, 바꾸기 칼럼
+                    _buildUpdatePhoto(model, ref),
                 SizedBox(height: 10),
                 FixedInfo(
                   fieldName: "이메일",
@@ -78,20 +58,30 @@ class ProfileSetting extends ConsumerWidget {
                 EditInfo(
                   fieldName: "닉네임",
                   fieldValue: model.userProfile.nickName,
+                  onChanged: (fieldName, value) => ref
+                      .read(userProfileProvider.notifier)
+                      .updateValue(fieldName, value),
                 ),
-                // 닉네임
-                SizedBox(height: 50),
-                _buildMobileChange(model.userProfile.mobile),
-                // 휴대폰 번호 변경
                 SizedBox(height: 50),
                 EditInfo(
-                  fieldName: "비밀번호 변경",
+                  fieldName: "핸드폰 번호",
+                  fieldValue: "model.userProfile.mobile",
+                  onChanged: (fieldName, value) => ref
+                      .read(userProfileProvider.notifier)
+                      .updateValue(fieldName, value),
+                ),
+                // _buildMobileChange(),
+                SizedBox(height: 50),
+                EditInfo(
+                  fieldName: "비밀번호",
                   fieldValue: "****",
+                  onChanged: (fieldName, value) => ref
+                      .read(userProfileProvider.notifier)
+                      .updateValue(fieldName, value),
                 ),
                 SizedBox(height: 10),
-                // 비밀번호 변경
                 SizedBox(height: 50),
-                BottomButton(text: "변경하기"),
+                ProfileButton(model: model, text: "변경하기"),
                 SizedBox(height: 30),
               ],
             ),
@@ -101,34 +91,36 @@ class ProfileSetting extends ConsumerWidget {
     }
   }
 
-// 비밀번호 변경하기 옆에 버튼을 만들어야 될지 고민 //TODO
-  Widget _buildMobileChange(userMobile) {
-    TextEditingController controller = TextEditingController(text: userMobile);
+  Widget _buildUpdatePhoto(UserProfileModel model, WidgetRef ref) {
     return Container(
+      padding: EdgeInsets.only(top: 20),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "휴대폰 번호 변경",
-            style: TextStyle(color: Colors.black87, fontSize: 13),
+          CircleAvatar(
+            radius: 50,
+            backgroundImage: FileImage(File(model.images!.path)),
           ),
-          TextField(
-            controller: controller,
-            decoration: InputDecoration(
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black12),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: InkWell(
+              onTap: () async {
+                await ref.read(userProfileProvider.notifier).pickAndAddImage();
+              },
+              child: Text(
+                "프로필 사진 바꾸기",
+                style: TextStyle(
+                  color: Colors.blue,
                 ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black12),
-                )),
+              ),
+            ),
           ),
         ],
       ),
     );
   }
 
-// 프로필 사진
-  Widget _buildPhoto(String? photoPath) => Container(
+  // 프로필 사진
+  Widget _buildPhoto(String? photoPath, WidgetRef ref) => Container(
         padding: EdgeInsets.only(top: 20),
         child: Column(
           children: [
@@ -156,16 +148,49 @@ class ProfileSetting extends ConsumerWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Text(
-                "프로필 사진 바꾸기",
-                style: TextStyle(
-                  color: Colors.blue,
+              child: InkWell(
+                onTap: () async {
+                  await ref
+                      .read(userProfileProvider.notifier)
+                      .pickAndAddImage();
+                },
+                child: Text(
+                  "프로필 사진 바꾸기",
+                  style: TextStyle(
+                    color: Colors.blue,
+                  ),
                 ),
               ),
             ),
           ],
         ),
       );
+
+// 비밀번호 변경하기 옆에 버튼을 만들어야 될지 고민 //TODO
+  Widget _buildMobileChange(userMobile) {
+    TextEditingController controller = TextEditingController(text: userMobile);
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "휴대폰 번호 변경",
+            style: TextStyle(color: Colors.black87, fontSize: 13),
+          ),
+          TextField(
+            controller: controller,
+            decoration: InputDecoration(
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black12),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black12),
+                )),
+          ),
+        ],
+      ),
+    );
+  }
 
 // 페이지 이름
   Widget _buildTitle() => Container(

@@ -60,3 +60,46 @@ class UserCreatorApplyReqDTO {
     };
   }
 }
+
+class UserProfileUpdateDTO {
+  final String? myName;
+  final String? nickName;
+  final String? mobile;
+  final String? password;
+  final Photo photo;
+
+  UserProfileUpdateDTO({
+    required this.myName,
+    required this.nickName,
+    required this.mobile,
+    required this.password,
+    required this.photo,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      "myName": this.myName,
+      "nickName": this.nickName,
+      "mobile": this.mobile,
+      "password": this.password,
+      "photo": this.photo.toJson(),
+    };
+  }
+}
+
+class Photo {
+  final String? name;
+  final String? base64;
+
+  Photo({
+    required this.name,
+    required this.base64,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      "name": this.name,
+      "base64": this.base64,
+    };
+  }
+}
