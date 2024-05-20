@@ -1,24 +1,24 @@
-class UserCodiList {
+class CreatorCodiList {
   int codiId;
   int codiPhotoId;
   String photoName;
-  String base64;
+  String photoPath;
   String codiPhoto;
 
-  UserCodiList({
+  CreatorCodiList({
     required this.codiId,
     required this.codiPhotoId,
     required this.photoName,
-    required this.base64,
+    required this.photoPath,
     required this.codiPhoto,
   });
 
-  factory UserCodiList.fromJson(Map<String, dynamic> json) {
-    return UserCodiList(
+  factory CreatorCodiList.fromJson(Map<String, dynamic> json) {
+    return CreatorCodiList(
       codiId: json["codiId"],
-      codiPhotoId: json["codiPhotoId"],
+      codiPhotoId: json["codiPhotoId"] ?? null,
       photoName: json["photoName"],
-      base64: json["base64"],
+      photoPath: json["photoPath"],
       codiPhoto: json["codiPhoto"],
     );
   }

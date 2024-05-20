@@ -6,8 +6,8 @@ import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/repositoreis/codi_repo.dart';
 import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:final_project_team02/main.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_data/creator_codi_list.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/codi_list.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
@@ -116,8 +116,7 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
     ResponseDTO responseDTO = await CodiRepo().callSetItemInsert(reqDTO);
 
     if (responseDTO.success) {
-
-      CodiList newCodi = CodiList.fromJson(responseDTO.response);
+      CreatorCodiList newCodi = CreatorCodiList.fromJson(responseDTO.response);
       logger.d(newCodi.toString());
       ref
           .read(creatorProvider(sessionData.user!.id!).notifier)
