@@ -12,7 +12,7 @@ class CreatorBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     CreatorModel? model = ref.watch(creatorProvider(sessionUserId));
-
+    print(model);
     print("크리에이터 바디");
 
     if (model == null) {

@@ -49,7 +49,7 @@ class CreatorViewModel extends StateNotifier<CreatorModel?> {
   // 초기화 메소드: 주어진 creatorId에 대해 크리에이터 정보를 초기화
   Future<ResponseDTO> notifyInit(creatorId) async {
     // UserRepo를 사용하여 크리에이터 뷰 데이터를 가져옴
-    ResponseDTO responseDTO = await UserRepo().callCreatorView(creatorId);
+    ResponseDTO responseDTO = await UserRepo().callCreatorMyPage();
 
     // 응답이 성공적일 경우 상태 업데이트
     if (responseDTO.success) {

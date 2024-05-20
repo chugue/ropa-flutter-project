@@ -8,6 +8,8 @@ class Creator {
   final String weight;
   final String job;
   final String introMsg;
+  final int? orderCount;
+  final int? mileage;
 
   Creator({
     required this.creatorId,
@@ -19,6 +21,8 @@ class Creator {
     required this.weight,
     required this.job,
     required this.introMsg,
+    required this.orderCount,
+    required this.mileage,
   });
 
   factory Creator.fromJson(Map<String, dynamic> json) {
@@ -32,6 +36,8 @@ class Creator {
       weight: json["weight"] ?? '',
       job: json["job"] ?? '',
       introMsg: json["introMsg"] ?? '',
+      orderCount: json["orderCount"] ?? null,
+      mileage: json["mileage"] ?? null,
     );
   }
 }

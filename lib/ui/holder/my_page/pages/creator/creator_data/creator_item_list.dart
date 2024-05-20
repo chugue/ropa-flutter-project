@@ -5,7 +5,7 @@ class CreatorItemList {
   int price;
   int itemPhotoId;
   String itemPhotoName;
-  String base64;
+  String photoPath;
   String itemPhoto;
 
   CreatorItemList({
@@ -15,7 +15,7 @@ class CreatorItemList {
     required this.price,
     required this.itemPhotoId,
     required this.itemPhotoName,
-    required this.base64,
+    required this.photoPath,
     required this.itemPhoto,
   });
 
@@ -27,7 +27,7 @@ class CreatorItemList {
       price: json["price"],
       itemPhotoId: json["itemPhotoId"],
       itemPhotoName: json["itemPhotoName"],
-      base64: json["base64"],
+      photoPath: json["photoPath"],
       itemPhoto: json["itemPhoto"],
     );
   }
