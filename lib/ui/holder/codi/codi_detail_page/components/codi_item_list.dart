@@ -36,7 +36,7 @@ class ItemList extends StatelessWidget {
                           MaterialPageRoute(
                               builder: (context) => ItemPage(
                                     itemId: model!.itemPhotos[index].itemsId,
-                                    codiId: codiId,
+                                    codiId: codiId ?? 0,
                                   )),
                         );
                       },

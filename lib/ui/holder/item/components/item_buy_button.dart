@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ItemBuyButton extends ConsumerWidget {
-  final int codiId;
+  final int? codiId;
   final int itemId;
 
   const ItemBuyButton({

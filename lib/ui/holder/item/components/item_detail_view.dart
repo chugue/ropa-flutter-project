@@ -9,7 +9,7 @@ import '../../../../_core/constants/http.dart';
 class ItemDetailView extends StatelessWidget {
   final int itemId;
   final ItemDetailListModel? model;
-  final int codiId;
+  final int? codiId;
 
   ItemDetailView({
     required this.itemId,

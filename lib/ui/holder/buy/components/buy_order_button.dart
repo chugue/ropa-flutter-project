@@ -6,7 +6,7 @@ import '../buy_viewmodel.dart';
 
 class BuyOrderButton extends ConsumerWidget {
   final String text;
-  final int codiId;
+  final int? codiId;
   BuyModel model;
 
   BuyOrderButton({

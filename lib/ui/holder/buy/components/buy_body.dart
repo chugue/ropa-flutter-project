@@ -10,7 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class BuyBody extends ConsumerWidget {
   final List<int> itemIds;
-  final int codiId;
+  final int? codiId;
 
   const BuyBody({
     required this.itemIds,

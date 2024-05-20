@@ -14,7 +14,7 @@ class ItemBody extends ConsumerWidget {
     required this.codiId,
   });
 
-  final int codiId;
+  final int? codiId;
   final int itemId;
 
   @override

@@ -34,7 +34,7 @@ class ItemScroll extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (context) => ItemPage(
                               itemId: model.itemsPhotos[index].itemsId,
-                              codiId: model.codiPhotos[index].codiId,
+                              codiId: null,
                             ),
                           ),
                         );

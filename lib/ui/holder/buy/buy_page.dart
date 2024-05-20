@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class BuyPage extends StatelessWidget {
   final List<int> itemIds;
-  final int codiId;
+  final int? codiId;
 
   const BuyPage({
     required this.itemIds,

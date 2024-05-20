@@ -1,7 +1,7 @@
 class CartSaveDTO {
   final int itemId;
   final int quantity;
-  final int codiId;
+  final int? codiId;
 
   const CartSaveDTO({
     required this.itemId,

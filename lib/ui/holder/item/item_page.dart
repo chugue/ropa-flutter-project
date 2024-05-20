@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class ItemPage extends StatelessWidget {
   final int itemId;
-  final int codiId;
+  final int? codiId;
 
   const ItemPage({
     required this.itemId,
