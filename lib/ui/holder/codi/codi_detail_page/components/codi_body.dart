@@ -22,13 +22,15 @@ class CodiBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ref.read(buyProvider.notifier).selectedCodiId(codiId);
     // watch  (상태 관리)
     CodiDetailModel? model = ref.watch(codiDetailProvider(codiId));
     SessionData session = ref.watch(sessionProvider);
 
     if (model == null) return Align(child: const CircularProgressIndicator());
     if (session.user?.id == null) return Align(child: LoginIsCheck());
-      return CustomScrollView(
+
+    return CustomScrollView(
       slivers: [
         MainAppBar(),
         SliverToBoxAdapter(child: CodiMainScroll(model: model)),
@@ -36,7 +38,7 @@ class CodiBody extends ConsumerWidget {
           child: Consumer(
             builder: (context, ref, _) {
               CodiDetailModel? likeModel =
-              ref.watch(codiDetailProvider(codiId));
+                  ref.watch(codiDetailProvider(codiId));
               return CodiLike(model: likeModel!, codiId: codiId);
             },
           ),
@@ -44,11 +46,14 @@ class CodiBody extends ConsumerWidget {
         SliverToBoxAdapter(child: CodiCreatedAt()),
         SliverToBoxAdapter(child: CodiContent(model: model)),
         CodiTitle(title: "아이템 목록"),
-        SliverToBoxAdapter(child: ItemList(model: model)),
+        SliverToBoxAdapter(
+            child: ItemList(
+          model: model,
+          codiId: codiId,
+        )),
         CodiTitle(title: "코디 목록"),
         CodiList(model: model),
       ],
     );
-
   }
 }

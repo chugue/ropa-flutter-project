@@ -9,10 +9,12 @@ import '../../../../_core/constants/http.dart';
 class ItemDetailView extends StatelessWidget {
   final int itemId;
   final ItemDetailListModel? model;
+  final int codiId;
 
   ItemDetailView({
     required this.itemId,
     required this.model,
+    required this.codiId,
   });
 
   @override
@@ -25,8 +27,6 @@ class ItemDetailView extends StatelessWidget {
             child: ListView.builder(
               itemCount: model!.detailPhotos.length,
               itemBuilder: (context, index) {
-                logger.d('$baseURL${model!.detailPhotos[index].photoPath}');
-
                 return CachedNetworkImage(
                   imageUrl: '$baseURL${model!.detailPhotos[index].photoPath}',
                   placeholder: (context, url) => Shimmer.fromColors(
@@ -45,7 +45,7 @@ class ItemDetailView extends StatelessWidget {
         ),
 
         // ✅ "구매하기" 버튼
-        ItemBuyButton(itemId: itemId),
+        ItemBuyButton(itemId: itemId, codiId: codiId),
       ],
     );
   }

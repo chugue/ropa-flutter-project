@@ -3,13 +3,17 @@ import 'package:flutter/material.dart';
 
 class BuyPage extends StatelessWidget {
   final List<int> itemIds;
+  final int codiId;
 
-  BuyPage({required this.itemIds});
+  const BuyPage({
+    required this.itemIds,
+    required this.codiId,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BuyBody(itemIds: itemIds),
+      body: BuyBody(itemIds: itemIds, codiId: codiId),
     );
   }
 }

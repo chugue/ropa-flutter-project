@@ -6,6 +6,7 @@ class BuySaveReqDTO {
   final String? address;
   final String? detailAddress;
   final String? deliveryRequest;
+  final int? selectedCodiId;
   final bool isBaseAddress;
   final PurchaseInfo? purchaseInfo;
 
@@ -18,6 +19,7 @@ class BuySaveReqDTO {
       "address": this.address,
       "detailAddress": this.detailAddress,
       "deliveryRequest": this.deliveryRequest,
+      "selectedCodiId": this.selectedCodiId,
       "isBaseAddress": this.isBaseAddress,
       "purchaseInfo": this.purchaseInfo,
     };
@@ -31,6 +33,7 @@ class BuySaveReqDTO {
     this.address,
     this.detailAddress,
     this.deliveryRequest,
+    this.selectedCodiId,
     required this.isBaseAddress,
     this.purchaseInfo,
   });

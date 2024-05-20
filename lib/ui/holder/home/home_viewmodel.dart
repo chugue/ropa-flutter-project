@@ -41,8 +41,10 @@ class HomeViewModel extends StateNotifier<HomeModel?> {
 
   void addNewCodiPhotos(PopularCodiPhotos codiPhotos) {
     if (state != null) {
-      List<PopularCodiPhotos> updatedCodiPhotos = [codiPhotos, ...state!.codiPhotos];
-
+      List<PopularCodiPhotos> updatedCodiPhotos = [
+        codiPhotos,
+        ...state!.codiPhotos
+      ];
       state = state!.copyWith(codiPhotos: updatedCodiPhotos);
     }
   }

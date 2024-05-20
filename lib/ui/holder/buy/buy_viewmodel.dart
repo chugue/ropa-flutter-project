@@ -17,6 +17,7 @@ class BuyModel {
   final OrderInfo orderInfo;
   int? orderBuy;
   int? selectedOptionId;
+  int? selectedCodiId;
 
   BuyModel({
     required this.buy,
@@ -24,7 +25,26 @@ class BuyModel {
     required this.orderInfo,
     this.orderBuy = 0,
     this.selectedOptionId = 0,
+    this.selectedCodiId = 0,
   });
+
+  BuyModel copyWith({
+    Buy? buy,
+    List<CartInfos>? cartInfos,
+    OrderInfo? orderInfo,
+    int? orderBuy,
+    int? selectedOptionId,
+    int? selectedCodiId,
+  }) {
+    return BuyModel(
+      buy: buy ?? this.buy,
+      cartInfos: cartInfos ?? this.cartInfos,
+      orderInfo: orderInfo ?? this.orderInfo,
+      orderBuy: orderBuy ?? this.orderBuy,
+      selectedOptionId: selectedOptionId ?? this.selectedOptionId,
+      selectedCodiId: selectedCodiId ?? this.selectedCodiId,
+    );
+  }
 }
 
 class BuyViewModel extends StateNotifier<BuyModel?> {
@@ -134,6 +154,16 @@ class BuyViewModel extends StateNotifier<BuyModel?> {
         orderInfo: state!.orderInfo,
         orderBuy: state!.orderBuy,
       );
+    }
+  }
+
+  void selectedCodiId(int codiId) {
+    if (state != null) {
+      print(codiId);
+      print(codiId);
+      print(codiId);
+      print(codiId);
+      state = state!.copyWith(selectedCodiId: codiId);
     }
   }
 }

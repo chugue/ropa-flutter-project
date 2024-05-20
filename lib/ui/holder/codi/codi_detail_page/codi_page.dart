@@ -3,16 +3,13 @@ import 'package:flutter/material.dart';
 
 class CodiPage extends StatelessWidget {
   final int codiId;
+
   const CodiPage({
     required this.codiId,
   });
 
   @override
   Widget build(BuildContext context) {
-    print('${codiId}');
-    print('🤣🤣🤣🤣🤣🤣${codiId}');
-    print('${codiId}');
-
     return Scaffold(
       body: CodiBody(
         codiId: codiId,

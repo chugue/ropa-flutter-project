@@ -6,11 +6,13 @@ import '../buy_viewmodel.dart';
 
 class BuyOrderButton extends ConsumerWidget {
   final String text;
+  final int codiId;
   BuyModel model;
 
   BuyOrderButton({
     required this.text,
     required this.model,
+    required this.codiId,
   });
 
   @override
@@ -22,7 +24,6 @@ class BuyOrderButton extends ConsumerWidget {
         height: 50,
         child: ElevatedButton(
           onPressed: () {
-
             PurchaseInfo purchaseInfo = PurchaseInfo(
               orderAmount: model.orderInfo.orderAmount,
               deliveryType: "FREE",
@@ -34,6 +35,7 @@ class BuyOrderButton extends ConsumerWidget {
             );
 
             BuySaveReqDTO reqDTO = BuySaveReqDTO(
+              selectedCodiId: codiId,
               name: model.buy.name,
               phone: model.buy.phone,
               email: model.buy.email,

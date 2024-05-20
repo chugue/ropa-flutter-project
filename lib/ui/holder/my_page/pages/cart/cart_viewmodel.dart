@@ -1,3 +1,4 @@
+import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/data/dtos/cart_req.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/repositoreis/cart_repo.dart';
@@ -15,13 +16,31 @@ class CartModel {
   final List<CartList> cartList;
   List<bool> isChecked;
   int totalCheckedPrice; // 체크된 상품들의 총 가격
+  int? seletedCodiId;
 
   CartModel({
     required this.cart,
+    this.seletedCodiId = 0,
     required this.cartList,
     required this.isChecked,
     this.totalCheckedPrice = 0, // 초기값 설정
   });
+
+  CartModel copyWith({
+    Cart? cart,
+    List<CartList>? cartList,
+    List<bool>? isChecked,
+    int? totalCheckedPrice,
+    int? seletedCodiId,
+  }) {
+    return CartModel(
+      cart: cart ?? this.cart,
+      cartList: cartList ?? this.cartList,
+      isChecked: isChecked ?? this.isChecked,
+      totalCheckedPrice: totalCheckedPrice ?? this.totalCheckedPrice,
+      seletedCodiId: seletedCodiId ?? this.seletedCodiId,
+    );
+  }
 }
 
 class CartViewModel extends StateNotifier<CartModel?> {
@@ -39,7 +58,6 @@ class CartViewModel extends StateNotifier<CartModel?> {
       }
 
       for (int id in selectedIds) {
-        print("${selectedIds}");
         await removeItem(id);
       }
     }
@@ -61,6 +79,9 @@ class CartViewModel extends StateNotifier<CartModel?> {
 
   //장바구니에서 buyPage로 갈떄 선택된 항목만 가져간다.
   void goToBuyPage(CartModel model) {
+    if (state != null) {
+      state = state!.copyWith(seletedCodiId: model.seletedCodiId);
+    }
     List<int> checkedItemIds = [];
     for (int i = 0; i < model.cartList.length; i++) {
       if (model.isChecked[i]) {
@@ -72,7 +93,10 @@ class CartViewModel extends StateNotifier<CartModel?> {
       Navigator.push(
         mContext!,
         MaterialPageRoute(
-          builder: (context) => BuyPage(itemIds: checkedItemIds),
+          builder: (context) => BuyPage(
+            itemIds: checkedItemIds,
+            codiId: state!.seletedCodiId!,
+          ),
         ),
       );
     } else {
@@ -82,9 +106,18 @@ class CartViewModel extends StateNotifier<CartModel?> {
   }
 
   Future<void> cartSave(CartSaveDTO reqDTO) async {
+    logger.d(reqDTO.toJson());
+    logger.d(reqDTO.toJson());
+    logger.d(reqDTO.toJson());
+    logger.d(reqDTO.toJson());
+
     ResponseDTO responseDTO = await CartRepo().callCartSave(reqDTO);
 
     if (responseDTO.success) {
+      if (state != null) {
+        state = state!.copyWith(seletedCodiId: reqDTO.codiId);
+      }
+
       showDialog(
         context: mContext!,
         builder: (context) {

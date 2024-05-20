@@ -9,8 +9,6 @@ import 'package:shimmer/shimmer.dart';
 import '../../../../_core/constants/http.dart';
 
 class SearchTabViewItem extends ConsumerWidget {
-  SearchTabViewItem();
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     SearchModel? model = ref.watch(searchProvider);
@@ -34,8 +32,13 @@ class SearchTabViewItem extends ConsumerWidget {
               Expanded(
                 child: InkWell(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ItemPage(itemId: model.itemPhotos[index].itemsId)));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ItemPage(
+                                  itemId: model.itemPhotos[index].itemsId,
+                                  codiId: model.codiPhotos[index].codiId,
+                                )));
                   },
                   child: AspectRatio(
                     aspectRatio: 4,
@@ -43,7 +46,7 @@ class SearchTabViewItem extends ConsumerWidget {
                       borderRadius: BorderRadius.circular(8.0),
                       child: CachedNetworkImage(
                         imageUrl:
-                        '$baseURL${model!.itemPhotos[index].photoPath}',
+                            '$baseURL${model!.itemPhotos[index].photoPath}',
                         placeholder: (context, url) => Shimmer.fromColors(
                           baseColor: Colors.grey[300]!,
                           highlightColor: Colors.grey[100]!,
@@ -51,8 +54,7 @@ class SearchTabViewItem extends ConsumerWidget {
                             color: Colors.white,
                           ),
                         ),
-                        errorWidget: (context, url, error) =>
-                            Icon(Icons.error),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -88,6 +90,5 @@ class SearchTabViewItem extends ConsumerWidget {
         );
       },
     );
-
   }
 }
