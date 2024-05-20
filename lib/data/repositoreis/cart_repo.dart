@@ -46,8 +46,12 @@ class CartRepo {
   }
 
   Future<ResponseDTO> removeItem(int cartId) async {
+    print('🚧🚧🚧🚧🚧🚧');
+    print(cartId);
+    print(cartId);
+    print(cartId);
     final response = await dio.delete('/app/carts/${cartId}');
-    // Logger().d(response.data!);
+    logger.d(response.data!);
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
     return responseDTO;
   }

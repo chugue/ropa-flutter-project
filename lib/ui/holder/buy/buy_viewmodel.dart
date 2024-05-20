@@ -59,7 +59,6 @@ class BuyViewModel extends StateNotifier<BuyModel?> {
 
     if (responseDTO.success) {
       ref.read(cartProvider.notifier).removeSelectedItems();
-
       Navigator.pushNamedAndRemoveUntil(
           mContext!, Move.mainHolder, (route) => false);
     }
