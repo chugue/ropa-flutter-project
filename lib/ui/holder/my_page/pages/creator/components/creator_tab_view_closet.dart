@@ -1,67 +1,57 @@
+import 'package:final_project_team02/ui/holder/my_page/pages/creator/components/creator_Item_list_view.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
 import 'package:flutter/material.dart';
 
-// TODO : 사용하지 않는 클래스?
 class CreatorTabViewCloset extends StatelessWidget {
+  final CreatorModel model;
+
   const CreatorTabViewCloset({
     super.key,
+    required this.model,
   });
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      physics: NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisSpacing: 1,
-        crossAxisCount: 2,
-        mainAxisSpacing: 0,
-      ),
-      itemCount: 42,
-      itemBuilder: (context, index) {
-        return Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: AspectRatio(
-                  aspectRatio: 4,
-                  child: ClipRRect(
-                    child: Image.network(
-                        // "https://picsum.photos/400/400",
-                        "https://picsum.photos/id/${index + 1}/600/600",
-                        fit: BoxFit.cover),
+    return model.itemList.isEmpty
+        // ✅ itemList가 비었을 때 메세지
+        ? _emptyItemList()
+
+        // ✅ itemList 뿌리기
+        : CreatorItemListView(model: model);
+  }
+
+  Center _emptyItemList() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 60,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Icon(
+                  Icons.checkroom_outlined,
+                  color: Colors.grey,
+                  size: 30,
+                ),
+                Positioned(
+                  top: 8,
+                  child: Container(
+                    width: 60,
+                    height: 1.5,
+                    color: Colors.grey,
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("옷제목",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold)),
-                    Text(
-                      "옷설명",
-                      style: TextStyle(
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    //numberFormat 사용하면되
-                    Text(
-                      "가격 : 10,000원",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: 15),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
-        );
-      },
+          Text(
+            "옷장이 비었습니다.",
+            style: TextStyle(color: Colors.grey),
+          ),
+        ],
+      ),
     );
   }
 }

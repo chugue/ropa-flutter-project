@@ -1,8 +1,9 @@
 import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/components/creator_view_Item_list_view.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/creator_view_viewmodel.dart';
 import 'package:flutter/material.dart';
 
 class CreatorViewTabViewCloset extends StatelessWidget {
-  final model;
+  final CreatorVModel model;
 
   const CreatorViewTabViewCloset({
     super.key,
@@ -16,7 +17,7 @@ class CreatorViewTabViewCloset extends StatelessWidget {
         ? _emptyItemList()
 
         // ✅ itemList 뿌리기
-        : ItemListView(model: model);
+        : CreatorViewItemListView(model: model);
   }
 
   Center _emptyItemList() {

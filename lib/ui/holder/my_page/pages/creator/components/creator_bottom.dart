@@ -2,8 +2,9 @@ import 'package:final_project_team02/ui/holder/my_page/pages/creator/components/
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/components/creator_tab_bar.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/components/creator_tab_view_gird.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/components/creator_view_tab_view_closet.dart';
 import 'package:flutter/material.dart';
+
+import 'creator_tab_view_closet.dart';
 
 class CreatorBottom extends StatelessWidget {
   final CreatorModel model;
@@ -45,7 +46,7 @@ class CreatorBottom extends StatelessWidget {
                       ),
 
                       // ✅ Creator 아이템 목록
-                      CreatorViewTabViewCloset(model: model),
+                      CreatorTabViewCloset(model: model),
                     ],
                   ),
                 ),
