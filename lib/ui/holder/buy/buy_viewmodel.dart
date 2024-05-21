@@ -54,7 +54,32 @@ class BuyViewModel extends StateNotifier<BuyModel?> {
 
   BuyViewModel(super.state, this.ref, this.sessionData);
 
-  Future<ResponseDTO> buySave(BuySaveReqDTO reqDTO) async {
+  Future<ResponseDTO> buySave() async {
+    BuyModel model = state!;
+
+    PurchaseInfo purchaseInfo = PurchaseInfo(
+      orderAmount: model.orderInfo.orderAmount,
+      deliveryType: 'FREE',
+      deliveryFee: model.orderInfo.deliveryFee,
+      discount: model.orderInfo.discount,
+      purchaseAmount: model.orderInfo.purchaseAmount,
+      payMethod: model.orderInfo.payMethod,
+      savedPayMethod: model.orderInfo.savedPayMethod,
+    );
+
+    BuySaveReqDTO reqDTO = BuySaveReqDTO(
+      selectedCodiId: model.selectedCodiId!,
+      name: model.buy.name,
+      phone: model.buy.phone,
+      email: model.buy.email,
+      address: model.buy.address,
+      isBaseAddress: model.buy.isBaseAddress,
+      deliveryRequest: model.buy.deliveryRequest,
+      detailAddress: model.buy.detailAddress,
+      purchaseInfo: purchaseInfo,
+      postCode: "12345",
+    );
+
     ResponseDTO responseDTO = await BuyRepo().callBuySave(reqDTO);
 
     if (responseDTO.success) {
@@ -72,12 +97,9 @@ class BuyViewModel extends StateNotifier<BuyModel?> {
   void selectPayment(int paymentId, String payMethod) {
     newSelectedOptionId = paymentId;
     newPayMethod = payMethod;
-    state = BuyModel(
-      buy: state!.buy,
-      cartInfos: state!.cartInfos,
-      orderInfo: state!.orderInfo.copyWith(payMethod: newPayMethod),
-      orderBuy: state!.orderBuy,
+    state = state!.copyWith(
       selectedOptionId: newSelectedOptionId,
+      orderInfo: state!.orderInfo.copyWith(payMethod: newPayMethod),
     );
   }
 
@@ -87,8 +109,6 @@ class BuyViewModel extends StateNotifier<BuyModel?> {
     for (int i = 0; i < state!.cartInfos.length; i++) {
       newOrderBuy += state!.cartInfos[i].price;
     }
-    print("🚧🚧🚧🚧🚧🚧🚧🚧${newOrderBuy}");
-
     state!.orderBuy = newOrderBuy; // copyWith 사용 또는 다른 방식으로 state 업데이트
   }
 
@@ -103,68 +123,41 @@ class BuyViewModel extends StateNotifier<BuyModel?> {
 
   void updateName(String name) {
     if (state != null) {
-      state = BuyModel(
-        buy: state!.buy.copyWith(name: name),
-        cartInfos: state!.cartInfos,
-        orderInfo: state!.orderInfo,
-        orderBuy: state!.orderBuy,
-      );
+      state = state!.copyWith(buy: state!.buy.copyWith(name: name));
     }
   }
 
   void updatePhone(String phone) {
     if (state != null) {
-      state = BuyModel(
-        buy: state!.buy.copyWith(phone: phone),
-        cartInfos: state!.cartInfos,
-        orderInfo: state!.orderInfo,
-        orderBuy: state!.orderBuy,
-      );
+      state = state!.copyWith(buy: state!.buy.copyWith(phone: phone));
     }
   }
 
   void updateAddress(String address) {
     if (state != null) {
-      state = BuyModel(
-        buy: state!.buy.copyWith(address: address),
-        cartInfos: state!.cartInfos,
-        orderInfo: state!.orderInfo,
-        orderBuy: state!.orderBuy,
-      );
+      state = state!.copyWith(buy: state!.buy.copyWith(address: address));
     }
   }
 
   void updateDetailAddress(String detailAddress) {
     if (state != null) {
-      state = BuyModel(
-        buy: state!.buy.copyWith(detailAddress: detailAddress),
-        cartInfos: state!.cartInfos,
-        orderInfo: state!.orderInfo,
-        orderBuy: state!.orderBuy,
-      );
+      state = state!.copyWith(buy: state!.buy.copyWith(detailAddress: detailAddress));
     }
   }
 
   void updateEmail(String email) {
     if (state != null) {
-      state = BuyModel(
-        buy: state!.buy.copyWith(email: email),
-        cartInfos: state!.cartInfos,
-        orderInfo: state!.orderInfo,
-        orderBuy: state!.orderBuy,
-      );
+      state = state!.copyWith(buy: state!.buy.copyWith(email: email));
     }
   }
 
   void selectedCodiId(int codiId) {
     if (state != null) {
-      print(codiId);
-      print(codiId);
-      print(codiId);
-      print(codiId);
       state = state!.copyWith(selectedCodiId: codiId);
     }
   }
+
+
 }
 
 final buyProvider = StateNotifierProvider<BuyViewModel, BuyModel?>((ref) {

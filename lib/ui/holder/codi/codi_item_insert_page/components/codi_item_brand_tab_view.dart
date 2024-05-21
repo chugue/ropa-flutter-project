@@ -35,7 +35,7 @@ class CodiItemBrandTabView extends ConsumerWidget {
         final brand = model.brandList[selectedIndex];
         return GestureDetector(
           onTap: () {
-            ref.read(codiInsertProvider.notifier).pickAndAddImageFromBase64(
+            ref.read(codiInsertProvider.notifier).pickAndAddItemImage(
                 item.photoPath,
                 item.itemName,
                 item.itemId,

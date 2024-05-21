@@ -1,5 +1,6 @@
 import 'dart:io'; // dart:io 패키지의 File 클래스를 사용하기 위해 추가
 
+import 'package:final_project_team02/ui/holder/codi/codi_insert_page/codi_insert_data/codi_insert.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_insert_page/codi_insert_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
@@ -28,7 +29,7 @@ class CodiPicInsertScroll extends ConsumerWidget {
                     onTap: () async {
                       await ref
                           .read(codiInsertProvider.notifier)
-                          .pickAndAddImage();
+                          .pickAndAddCodiImage();
                     },
                     child: Container(
                       width: 120,
@@ -59,7 +60,7 @@ class CodiPicInsertScroll extends ConsumerWidget {
                             } else {
                               return Center(child: CircularProgressIndicator());
                             }
-                          },
+                            },
                         ),
                       ),
                       Positioned(

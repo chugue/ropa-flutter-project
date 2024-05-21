@@ -37,6 +37,32 @@ class BuySaveReqDTO {
     required this.isBaseAddress,
     this.purchaseInfo,
   });
+
+  BuySaveReqDTO copyWith({
+    String? name,
+    String? phone,
+    String? email,
+    String? postCode,
+    String? address,
+    String? detailAddress,
+    String? deliveryRequest,
+    int? selectedCodiId,
+    bool? isBaseAddress,
+    PurchaseInfo? purchaseInfo,
+  }) {
+    return BuySaveReqDTO(
+      name: name ?? this.name,
+      phone: phone ?? this.phone,
+      email: email ?? this.email,
+      postCode: postCode ?? this.postCode,
+      address: address ?? this.address,
+      detailAddress: detailAddress ?? this.detailAddress,
+      deliveryRequest: deliveryRequest ?? this.deliveryRequest,
+      selectedCodiId: selectedCodiId ?? this.selectedCodiId,
+      isBaseAddress: isBaseAddress ?? this.isBaseAddress,
+      purchaseInfo: purchaseInfo ?? this.purchaseInfo,
+    );
+  }
 }
 
 class PurchaseInfo {

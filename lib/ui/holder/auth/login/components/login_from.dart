@@ -52,15 +52,11 @@ class LoginFrom extends ConsumerWidget {
                 String email = _email.text.trim();
                 String password = _password.text.trim();
 
-                print("email: ${email}, pw: ${password}");
                 LoginReqDTO loginReqDTO =
                     LoginReqDTO(email: email, password: password);
 
-                print("LoginReqDTO: ${loginReqDTO.toJson()}");
-
-                SessionData s = ref.read(sessionProvider);
-
-                s.login(loginReqDTO);
+                SessionData sessionData = ref.read(sessionProvider);
+                sessionData.login(loginReqDTO);
               }
             },
             child: const Text('로그인'),
