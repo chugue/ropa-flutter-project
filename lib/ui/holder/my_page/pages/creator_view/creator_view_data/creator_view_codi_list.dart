@@ -19,7 +19,7 @@ class CreatorViewCodiList {
       codiPhotoId: json["codiPhotoId"] ?? null,
       photoName: json["photoName"] ?? '',
       photoPath: json["photoPath"],
-      codiPhoto: json["codiPhoto"],
+      codiPhoto: json["codiPhoto"] ?? '' ,
     );
   }
 }

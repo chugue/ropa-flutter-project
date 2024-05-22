@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class CodiPage extends StatelessWidget {
   final int codiId;
+
   const CodiPage({
     required this.codiId,
   });

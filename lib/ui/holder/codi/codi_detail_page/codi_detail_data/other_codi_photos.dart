@@ -3,12 +3,13 @@ class OtherCodiPhotos {
   final int codiId;
   final String codiPhotoName;
   final String photoPath;
-  final bool isMainPhoto = true;
+  final bool? isMainPhoto;
 
   const OtherCodiPhotos({
     required this.codiPhotoId,
     required this.codiId,
     required this.codiPhotoName,
+    this.isMainPhoto,
     required this.photoPath,
   });
 

@@ -7,7 +7,6 @@ import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail_data/main_photos.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail_data/other_codi_photos.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logger/logger.dart';
 
 class CodiDetailModel {
   final Codi codi;
@@ -44,6 +43,16 @@ class CodiDetailViewModel extends StateNotifier<CodiDetailModel?> {
 
   CodiDetailViewModel(super.state, this.ref, this.sessionData);
 
+  void addNewCodi(OtherCodiPhotos newOtherCodiPhotos) {
+    if (state != null) {
+      List<OtherCodiPhotos> updatedOtherCodiPhotos = [
+        newOtherCodiPhotos,
+        ...state!.otherCodiPhotos
+      ];
+      state = state!.copyWith(otherCodiPhotos: updatedOtherCodiPhotos);
+    }
+  }
+
   Future<ResponseDTO> loveCount(int codiId) async {
     if (state!.codi.isLoved == false) {
       ResponseDTO responseDTO = await CodiRepo().callSaveLoveCount(codiId);
@@ -74,16 +83,16 @@ class CodiDetailViewModel extends StateNotifier<CodiDetailModel?> {
   Future<ResponseDTO> notifyInit(int codiId) async {
     ResponseDTO responseDTO = await CodiRepo().callCodiDetail(codiId);
     if (responseDTO.success) {
-      state = responseDTO.response;
-      Logger().d(responseDTO.response);
+      CodiDetailModel model = responseDTO.response;
+      state = model;
     }
     return responseDTO;
   }
 }
 
 final codiDetailProvider =
-    StateNotifierProvider.family<CodiDetailViewModel, CodiDetailModel?, int>(
+    StateNotifierProvider.family<CodiDetailViewModel, CodiDetailModel?, int?>(
         (ref, codiId) {
   SessionData sessionData = ref.read(sessionProvider);
-  return CodiDetailViewModel(null, ref, sessionData)..notifyInit(codiId);
+  return CodiDetailViewModel(null, ref, sessionData)..notifyInit(codiId!);
 });

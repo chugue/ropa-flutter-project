@@ -28,5 +28,23 @@ class UserProfile {
           PhotoDTO.fromJson(json["photoDTO"]) /* ✅list는 DTO.fromJson()으로 */,
     );
   }
+
+  UserProfile copyWith({
+    int? userId,
+    String? email,
+    String? myName,
+    String? nickName,
+    String? mobile,
+    PhotoDTO? photoDTO,
+  }) {
+    return UserProfile(
+      userId: userId ?? this.userId,
+      email: email ?? this.email,
+      myName: myName ?? this.myName,
+      nickName: nickName ?? this.nickName,
+      mobile: mobile ?? this.mobile,
+      photoDTO: photoDTO ?? this.photoDTO,
+    );
+  }
 //
 }

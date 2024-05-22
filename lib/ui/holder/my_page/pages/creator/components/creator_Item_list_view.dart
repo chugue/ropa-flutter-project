@@ -24,7 +24,7 @@ class CreatorItemListView extends StatelessWidget {
         crossAxisCount: 2,
         mainAxisSpacing: 0,
       ),
-      itemCount: model!.itemList.length,
+      itemCount: model.itemList.length,
       itemBuilder: (context, itemIndex) {
         return Container(
           child: Column(
@@ -36,8 +36,10 @@ class CreatorItemListView extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            ItemPage(itemId: model.itemList[itemIndex].itemId),
+                        builder: (context) => ItemPage(
+                          itemId: model.itemList[itemIndex].itemId,
+                          codiId: null,
+                        ),
                       ),
                     );
                   },

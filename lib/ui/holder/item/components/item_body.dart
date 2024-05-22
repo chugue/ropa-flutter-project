@@ -11,8 +11,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class ItemBody extends ConsumerWidget {
   const ItemBody({
     required this.itemId,
+    required this.codiId,
   });
 
+  final int? codiId;
   final int itemId;
 
   @override
@@ -65,7 +67,7 @@ class ItemBody extends ConsumerWidget {
           ),
         ];
       },
-      body: ItemDetailView(model: model, itemId: itemId),
+      body: ItemDetailView(model: model, itemId: itemId, codiId: codiId),
     );
   }
 }

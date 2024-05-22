@@ -14,12 +14,23 @@ import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/creato
 import 'package:final_project_team02/ui/holder/my_page/pages/profile/profile_data/user_profile.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/settings/setting_data/user_setting.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/user/user_data/user_my_page.dart';
-import 'package:logger/logger.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/user/user_my_pageviewmodel.dart';
 
 class UserRepo {
+  Future<ResponseDTO> callUserProfileUpdate(
+      int userId, UserProfileUpdateDTO reqDTO) async {
+    Response response = await dio.put("/user/profile/${userId}",
+        data: reqDTO.toJson(),
+        options: Options(headers: {"Authorization": "$globalAccessToken"}));
+    ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+    if (responseDTO.success) {
+      responseDTO.response = User.fromJson(responseDTO.response);
+    }
+    return responseDTO;
+  }
+
   Future<ResponseDTO> callCreatorMyPage() async {
     final response = await dio.get("/app/creator-my-page");
-    Logger().d(response.data);
 
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
 
@@ -59,8 +70,11 @@ class UserRepo {
   Future<ResponseDTO> callUserMyPage() async {
     final response = await dio.get("/app/user-my-page");
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+
     if (responseDTO.success) {
       responseDTO.response = UserMyPage.fromJson(responseDTO.response);
+      UserMyPageModel model = UserMyPageModel(userMyPage: responseDTO.response);
+      responseDTO.response = model;
     }
 
     return responseDTO;
@@ -130,7 +144,6 @@ class UserRepo {
     if (responseDTO.success) {
       responseDTO.response = UserProfile.fromJson(responseDTO.response);
     }
-
     return responseDTO;
   }
 

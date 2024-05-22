@@ -10,8 +10,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class BuyBody extends ConsumerWidget {
   final List<int> itemIds;
+  final int? codiId;
 
-  BuyBody({required this.itemIds});
+  const BuyBody({
+    required this.itemIds,
+    required this.codiId,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -42,7 +46,7 @@ class BuyBody extends ConsumerWidget {
             BuyPageBodyBoxDivider(),
 
             //결제 하기
-            BuyOrderButton(model: model, text: "결제하기")
+            BuyOrderButton(model: model, text: "결제하기", codiId: codiId)
           ],
         ),
       );

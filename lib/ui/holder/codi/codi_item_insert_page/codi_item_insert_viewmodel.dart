@@ -71,5 +71,5 @@ class CodiItemInsertViewModel extends StateNotifier<CodiItemInsertModel?> {
 
 final codiItemInsertProvider = StateNotifierProvider.family<
     CodiItemInsertViewModel, CodiItemInsertModel?, String?>((ref, category) {
-  return CodiItemInsertViewModel(null)..callItemInsert(category!);
+  return CodiItemInsertViewModel(null);
 });

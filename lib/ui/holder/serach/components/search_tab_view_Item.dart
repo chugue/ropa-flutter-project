@@ -9,8 +9,6 @@ import 'package:logger/logger.dart';
 import 'package:shimmer/shimmer.dart';
 
 class SearchTabViewItem extends ConsumerWidget {
-  SearchTabViewItem();
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     SearchModel? model = ref.watch(searchProvider);
@@ -38,7 +36,9 @@ class SearchTabViewItem extends ConsumerWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) => ItemPage(
-                                itemId: model.itemPhotos[index].itemsId)));
+                                  itemId: model.itemPhotos[index].itemsId,
+                                  codiId: model.codiPhotos[index].codiId,
+                                )));
                   },
                   child: AspectRatio(
                     aspectRatio: 4,
@@ -55,7 +55,7 @@ class SearchTabViewItem extends ConsumerWidget {
                           ),
                         ),
                         errorWidget: (context, url, error) => Icon(Icons.error),
-                        fit: BoxFit.contain,
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),

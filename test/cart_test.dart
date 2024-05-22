@@ -9,7 +9,7 @@ void main() async {
 }
 
 Future<void> callCartSave_test() async {
-  CartSaveDTO reqDTO = CartSaveDTO(itemId: 1, quantity: 1);
+  CartSaveDTO reqDTO = CartSaveDTO(itemId: 1, quantity: 1, codiId: 1);
   await CartRepo().callCartSave(reqDTO);
 }
 

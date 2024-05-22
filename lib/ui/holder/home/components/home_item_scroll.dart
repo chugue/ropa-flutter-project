@@ -7,7 +7,7 @@ import 'package:shimmer/shimmer.dart';
 import '../../../../_core/constants/http.dart';
 
 class ItemScroll extends StatelessWidget {
-  final HomeModel? model;
+  final HomeModel model;
 
   ItemScroll({
     required this.model,
@@ -33,7 +33,8 @@ class ItemScroll extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) => ItemPage(
-                              itemId: model!.itemsPhotos[index].itemsId,
+                              itemId: model.itemsPhotos[index].itemsId,
+                              codiId: null,
                             ),
                           ),
                         );
