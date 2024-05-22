@@ -10,9 +10,10 @@ import '../../../../../data/session_data/session_data.dart';
 
 class JoinFrom extends ConsumerWidget {
   final _formKey = GlobalKey<FormState>();
-  final _email = TextEditingController(text: "ssar@nate.com");
-  final _password = TextEditingController(text: "1234");
-  final _nickName = TextEditingController(text: "ssar");
+  final _email = TextEditingController(text: "ropa@nate.com");
+  final _password = TextEditingController(text: "password1234");
+  final _nickName = TextEditingController(text: "ropa");
+  final _myName = TextEditingController(text: "로파");
 
   bool agreePersonalData = true;
 
@@ -38,6 +39,7 @@ class JoinFrom extends ConsumerWidget {
             text: 'Password',
             controller: _password,
             validator: validatePassword(),
+            obscureText: true,
           ),
           const SizedBox(height: 25.0),
 
@@ -46,6 +48,13 @@ class JoinFrom extends ConsumerWidget {
             text: 'NickName',
             controller: _nickName,
             validator: validateNickName(),
+          ),
+          SizedBox(height: 25.0),
+
+          CustomFormField(
+            text: 'MyName',
+            controller: _myName,
+            validator: validateMyName(),
           ),
           SizedBox(height: 25.0),
 
@@ -61,13 +70,15 @@ class JoinFrom extends ConsumerWidget {
                 String nickName = _nickName.text.trim();
                 String password = _password.text.trim();
                 String email = _email.text.trim();
+                String myName = _myName.text.trim();
                 print(
-                    "nickName: ${nickName} password: ${password} email: ${email}");
+                    "nickName: ${nickName} password: ${password} email: ${email} my: ${myName}");
 
                 JoinReqDTO joinReqDTO = JoinReqDTO(
                   nickName: nickName,
                   password: password,
                   email: email,
+                  myName: myName,
                 );
                 print("joinReqDTO: ${joinReqDTO.toJson()}");
                 SessionData s = ref.read(sessionProvider);
