@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:final_project_team02/ui/holder/serach/components/search_tab_bar.dart';
 import 'package:final_project_team02/ui/holder/serach/components/search_tab_view_Item.dart';
 import 'package:final_project_team02/ui/holder/serach/components/search_tab_view_codi.dart';
@@ -13,10 +11,10 @@ class SearchBody extends ConsumerWidget {
   });
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     SearchModel? model = ref.watch(searchProvider);
 
-    if(model == null)return Center(child: CircularProgressIndicator());
+    if (model == null) return Center(child: CircularProgressIndicator());
     return DefaultTabController(
       length: 2,
       child: NestedScrollView(
@@ -25,7 +23,7 @@ class SearchBody extends ConsumerWidget {
             SliverAppBar(
               pinned: true,
               expandedHeight: 10,
-              collapsedHeight: 100,
+              collapsedHeight: 128,
               toolbarHeight: 90,
               flexibleSpace: FlexibleSpaceBar(
                 collapseMode: CollapseMode.pin,
@@ -72,7 +70,8 @@ class SearchBody extends ConsumerWidget {
           ],
         ),
       ),
-    );  }
+    );
+  }
 }
 
 class MyPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
