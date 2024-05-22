@@ -1,4 +1,5 @@
 import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/components/creator_view_tab_bar.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/creator_view_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -6,7 +7,7 @@ import 'creator_view_tab_view_closet.dart';
 import 'creator_view_tab_view_grid.dart';
 
 class CreatorViewBottom extends StatelessWidget {
-  final model;
+  final CreatorVModel model;
 
   CreatorViewBottom({
     required this.model,

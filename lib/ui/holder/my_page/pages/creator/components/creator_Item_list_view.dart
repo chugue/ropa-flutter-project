@@ -2,17 +2,17 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/_core/uitls/format_util.dart';
 import 'package:final_project_team02/ui/holder/item/item_page.dart';
-import 'package:final_project_team02/ui/holder/my_page/pages/creator_view/creator_view_viewmodel.dart';
+import 'package:final_project_team02/ui/holder/my_page/pages/creator/creator_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-class CreatorViewItemListView extends StatelessWidget {
-  const CreatorViewItemListView({
+class CreatorItemListView extends StatelessWidget {
+  const CreatorItemListView({
     super.key,
     required this.model,
   });
 
-  final CreatorVModel model;
+  final CreatorModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class CreatorViewItemListView extends StatelessWidget {
         mainAxisSpacing: 0,
       ),
       itemCount: model!.itemList.length,
-      itemBuilder: (context, index) {
+      itemBuilder: (context, itemIndex) {
         return Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,9 +36,8 @@ class CreatorViewItemListView extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ItemPage(
-                            itemId: model.itemList[index].itemId,
-                            codiId: model.codiList[index].codiId),
+                        builder: (context) =>
+                            ItemPage(itemId: model.itemList[itemIndex].itemId),
                       ),
                     );
                   },
@@ -46,7 +45,8 @@ class CreatorViewItemListView extends StatelessWidget {
                     aspectRatio: 2 / 1,
                     child: ClipRRect(
                       child: CachedNetworkImage(
-                        imageUrl: '$baseURL${model.itemList[index].photoPath}',
+                        imageUrl:
+                            '$baseURL${model.itemList[itemIndex].photoPath}',
                         placeholder: (context, url) => Shimmer.fromColors(
                           baseColor: Colors.grey[300]!,
                           highlightColor: Colors.grey[100]!,
@@ -67,9 +67,10 @@ class CreatorViewItemListView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      model.itemList[index].name.length > 15
-                          ? model.itemList[index].name.substring(0, 15) + "..."
-                          : model.itemList[index].name,
+                      model.itemList[itemIndex].name.length > 15
+                          ? model.itemList[itemIndex].name.substring(0, 15) +
+                              "..."
+                          : model.itemList[itemIndex].name,
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -81,7 +82,7 @@ class CreatorViewItemListView extends StatelessWidget {
                     //       overflow: TextOverflow.ellipsis,
                     //     )),
                     Text(
-                      "${formatCurrency(model.itemList[index].price)}",
+                      "${formatCurrency(model.itemList[itemIndex].price)}",
                       style: TextStyle(
                         fontSize: 12,
                       ),
