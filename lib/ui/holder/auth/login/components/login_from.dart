@@ -12,8 +12,7 @@ import '../../../../components/custom_form_field.dart';
 // 게스트 계정  : junghein
 
 class LoginFrom extends ConsumerWidget {
-  final _email = TextEditingController(
-      text: "bunwuseok@example.com"); // bunwuseok,junghein
+  final _email = TextEditingController(); // bunwuseok,junghein
   final _password = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool rememberPassword = true;
@@ -40,6 +39,7 @@ class LoginFrom extends ConsumerWidget {
             text: 'Password',
             controller: _password,
             validator: validatePassword(),
+            obscureText: true,
           ),
           const SizedBox(height: 25.0),
 

@@ -2,11 +2,13 @@ class JoinReqDTO {
   final String nickName;
   final String password;
   final String email;
+  final String myName;
 
   JoinReqDTO({
     required this.nickName,
     required this.password,
     required this.email,
+    required this.myName,
   });
 
   Map<String, dynamic> toJson() {
@@ -14,6 +16,7 @@ class JoinReqDTO {
       "nickName": this.nickName,
       "password": this.password,
       "email": this.email,
+      "myName": this.myName,
     };
   }
 }

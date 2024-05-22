@@ -42,6 +42,18 @@ Function validateEmail() {
   };
 }
 
+Function validateMyName() {
+  return (String? value) {
+    if (value!.isEmpty) {
+      return "이름은 공백이 들어갈 수 없습니다.";
+    } else if (value.length > 10) {
+      return "이름의 길이를 초과하였습니다.";
+    } else {
+      return null;
+    }
+  };
+}
+
 Function validateTitle() {
   return (String? value) {
     if (value!.isEmpty) {
