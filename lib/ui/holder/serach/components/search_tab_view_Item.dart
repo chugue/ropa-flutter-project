@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:final_project_team02/_core/constants/http.dart';
+import 'package:final_project_team02/_core/uitls/format_util.dart';
 import 'package:final_project_team02/ui/holder/item/item_page.dart';
 import 'package:final_project_team02/ui/holder/serach/search_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:shimmer/shimmer.dart';
-
-import '../../../../_core/constants/http.dart';
 
 class SearchTabViewItem extends ConsumerWidget {
   SearchTabViewItem();
@@ -34,8 +34,11 @@ class SearchTabViewItem extends ConsumerWidget {
               Expanded(
                 child: InkWell(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ItemPage(itemId: model.itemPhotos[index].itemsId)));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ItemPage(
+                                itemId: model.itemPhotos[index].itemsId)));
                   },
                   child: AspectRatio(
                     aspectRatio: 4,
@@ -43,7 +46,7 @@ class SearchTabViewItem extends ConsumerWidget {
                       borderRadius: BorderRadius.circular(8.0),
                       child: CachedNetworkImage(
                         imageUrl:
-                        '$baseURL${model!.itemPhotos[index].photoPath}',
+                            '$baseURL${model.itemPhotos[index].photoPath}',
                         placeholder: (context, url) => Shimmer.fromColors(
                           baseColor: Colors.grey[300]!,
                           highlightColor: Colors.grey[100]!,
@@ -51,9 +54,8 @@ class SearchTabViewItem extends ConsumerWidget {
                             color: Colors.white,
                           ),
                         ),
-                        errorWidget: (context, url, error) =>
-                            Icon(Icons.error),
-                        fit: BoxFit.cover,
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                        fit: BoxFit.contain,
                       ),
                     ),
                   ),
@@ -64,19 +66,24 @@ class SearchTabViewItem extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("옷제목",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold)),
                     Text(
-                      "옷설명",
+                      model.itemPhotos[index].itemName.length > 15
+                          ? model.itemPhotos[index].itemName.substring(0, 15) +
+                              "..."
+                          : model.itemPhotos[index].itemName,
                       style: TextStyle(
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
                     ),
+                    // Text(
+                    //   model.itemPhotos[index].itemDescription,
+                    //   style: TextStyle(
+                    //     overflow: TextOverflow.ellipsis,
+                    //   ),
+                    // ),
                     Text(
-                      "가격 : 10,000원",
+                      "${formatCurrency(model.itemPhotos[index].itemPrice)}",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 15),
@@ -88,6 +95,5 @@ class SearchTabViewItem extends ConsumerWidget {
         );
       },
     );
-
   }
 }

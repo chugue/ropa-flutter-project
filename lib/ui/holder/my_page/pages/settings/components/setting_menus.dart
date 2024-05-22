@@ -24,10 +24,14 @@ class SettingMenus extends StatelessWidget {
             Container(
               child: Row(
                 children: [
-                  Text(
-                    value,
-                    style: TextStyle(
-                      color: Colors.black26,
+                  Container(
+                    alignment: Alignment.center,
+                    height: 40,
+                    child: Text(
+                      value,
+                      style: TextStyle(
+                        color: Colors.black26,
+                      ),
                     ),
                   ),
                   if (isEdit == true)
