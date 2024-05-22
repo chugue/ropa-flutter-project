@@ -45,17 +45,11 @@ class SessionData extends SessionUser {
   }
 
   void logout(WidgetRef ref) async {
-    this.user = null;
-    logger.d(this.user);
-    logger.d(this.user);
-    logger.d(this.user);
-    this.isLogin = false;
+    user = null;
+    isLogin = false;
     globalAccessToken = null;
 
     await secureStorage.delete(key: "accessToken");
-
-    // ref.read(sessionProvider.notifier).state = SessionData();
-
     Navigator.pushNamedAndRemoveUntil(
         mContext!, Move.mainHolder, (route) => false);
   }
@@ -112,7 +106,6 @@ class SessionData extends SessionUser {
       logger.d(this.user.toString());
       logger.d(this.user.toString());
       logger.d('😍😍😍😍😍😍😍😍😍😍');
-
       Navigator.pushNamedAndRemoveUntil(
           mContext!, Move.mainHolder, (route) => false);
     } else {

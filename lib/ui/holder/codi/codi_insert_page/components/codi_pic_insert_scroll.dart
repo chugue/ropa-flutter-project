@@ -1,9 +1,7 @@
-import 'dart:io'; // dart:io 패키지의 File 클래스를 사용하기 위해 추가
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_insert_page/codi_insert_data/codi_insert.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_insert_page/codi_insert_viewmodel.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CodiPicInsertScroll extends ConsumerWidget {
@@ -49,18 +47,13 @@ class CodiPicInsertScroll extends ConsumerWidget {
                         margin: EdgeInsets.only(right: 16),
                         width: 120,
                         height: 120,
-                        child: FutureBuilder<File>(
-                          future: DefaultCacheManager()
-                              .getSingleFile(model.images[index].path),
-                          builder: (context, snapshot) {
-                            if (snapshot.connectionState ==
-                                ConnectionState.done) {
-                              return Image.file(snapshot.data!,
-                                  fit: BoxFit.cover);
-                            } else {
-                              return Center(child: CircularProgressIndicator());
-                            }
-                            },
+                        child: CachedNetworkImage(
+                          imageUrl: model.images[index].path,
+                          placeholder: (context, url) =>
+                              CircularProgressIndicator(),
+                          errorWidget: (context, url, error) =>
+                              Icon(Icons.error),
+                          fit: BoxFit.cover,
                         ),
                       ),
                       Positioned(

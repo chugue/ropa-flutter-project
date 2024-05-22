@@ -13,7 +13,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as path;
 
 class UserProfileModel {
-  UserProfile userProfile;
+  final UserProfile userProfile;
 
   final XFile? images;
   final String? prevImg;
@@ -75,7 +75,6 @@ class UserProfileViewModel extends StateNotifier<UserProfileModel?> {
       int userId, UserProfileUpdateDTO repDTO) async {
     ResponseDTO responseDTO =
         await UserRepo().callUserProfileUpdate(userId, repDTO);
-
     if (responseDTO.success) {
       state = state!.copyWith(userProfile: responseDTO.response);
     }
@@ -127,8 +126,11 @@ class UserProfileViewModel extends StateNotifier<UserProfileModel?> {
   Future<void> notifyInit() async {
     ResponseDTO responseDTO = await UserRepo().callUserProfile();
 
+    print(responseDTO.response);
+
     if (responseDTO.success) {
       state = responseDTO.response;
+      print(state);
     } else {
       ScaffoldMessenger.of(mContext!).showSnackBar(
         SnackBar(

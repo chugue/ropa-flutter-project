@@ -18,7 +18,7 @@ class ProfileSetting extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     UserProfileModel? model = ref.watch(userProfileProvider);
-
+    print(model);
     if (model == null) {
       return Center(
         child: CircularProgressIndicator(
@@ -56,16 +56,28 @@ class ProfileSetting extends ConsumerWidget {
                 // 이름
                 SizedBox(height: 50),
                 EditInfo(
+                  fieldValue: '',
+                  controller: TextEditingController(
+                    text: ref.watch(
+                      userProfileProvider
+                          .select((model) => model?.userProfile.nickName),
+                    ),
+                  ),
                   fieldName: "닉네임",
-                  fieldValue: model.userProfile.nickName,
                   onChanged: (fieldName, value) => ref
                       .read(userProfileProvider.notifier)
                       .updateValue(fieldName, value),
                 ),
                 SizedBox(height: 50),
                 EditInfo(
+                  controller: TextEditingController(
+                    text: ref.watch(
+                      userProfileProvider
+                          .select((model) => model?.userProfile.mobile),
+                    ),
+                  ),
                   fieldName: "핸드폰 번호",
-                  fieldValue: "model.userProfile.mobile",
+                  fieldValue: '',
                   onChanged: (fieldName, value) => ref
                       .read(userProfileProvider.notifier)
                       .updateValue(fieldName, value),
@@ -73,8 +85,9 @@ class ProfileSetting extends ConsumerWidget {
                 // _buildMobileChange(),
                 SizedBox(height: 50),
                 EditInfo(
+                  controller: null,
                   fieldName: "비밀번호",
-                  fieldValue: "****",
+                  fieldValue: "",
                   onChanged: (fieldName, value) => ref
                       .read(userProfileProvider.notifier)
                       .updateValue(fieldName, value),

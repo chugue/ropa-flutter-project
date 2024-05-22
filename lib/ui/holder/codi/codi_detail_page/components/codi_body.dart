@@ -27,6 +27,8 @@ class CodiBody extends ConsumerWidget {
     CodiDetailModel? model = ref.watch(codiDetailProvider(codiId));
     SessionData session = ref.watch(sessionProvider);
 
+    print(model);
+
     if (model == null) return Align(child: const CircularProgressIndicator());
     if (session.user?.id == null) return Align(child: LoginIsCheck());
 

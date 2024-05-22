@@ -2,77 +2,67 @@ import 'package:image_picker/image_picker.dart';
 
 class CodiInsertModel {
   final List<XFile> images;
-  final String prevImg;
-  final String? fileName;
-  final String? fileExtension;
-  final bool? isMainPhoto;
-
-  final int? topItemId;
-  final int? topBrandId;
+  final List<String> prevImgs;
+  final List<String?> fileNames;
+  final List<String?> fileExtensions;
+  final List<bool> isMainPhotos;
   final String? topPhotoPath;
-  final int? topImageId;
-  final String? topItemName;
-
-  final int? bottomItemId;
-  final int? bottomBrandId;
   final String? bottomPhotoPath;
+  final int? topBrandId;
+  final int? topImageId;
+  final int? topItemId;
+  final int? bottomBrandId;
+  final int? bottomItemId;
   final int? bottomImageId;
-  final String? bottomItemName;
   final String comment;
 
-  const CodiInsertModel({
-    required this.images,
-    required this.prevImg,
-    this.fileName,
-    this.fileExtension,
-    this.isMainPhoto,
-    this.topItemId,
-    this.topBrandId,
+  CodiInsertModel({
+    this.images = const [],
+    this.prevImgs = const [],
+    this.fileNames = const [],
+    this.fileExtensions = const [],
+    this.isMainPhotos = const [],
     this.topPhotoPath,
-    this.topImageId,
-    this.topItemName,
-    this.bottomItemId,
-    this.bottomBrandId,
     this.bottomPhotoPath,
+    this.topBrandId,
+    this.topItemId,
+    this.topImageId,
+    this.bottomBrandId,
+    this.bottomItemId,
     this.bottomImageId,
-    this.bottomItemName,
-    required this.comment,
+    this.comment = '',
   });
 
   CodiInsertModel copyWith({
     List<XFile>? images,
-    String? prevImg,
-    String? fileName,
-    String? fileExtension,
-    bool? isMainPhoto,
-    int? topItemId,
-    int? topBrandId,
+    List<String>? prevImgs,
+    List<String?>? fileNames,
+    List<String?>? fileExtensions,
+    List<bool>? isMainPhotos,
     String? topPhotoPath,
-    int? topImageId,
-    String? topItemName,
-    int? bottomItemId,
-    int? bottomBrandId,
     String? bottomPhotoPath,
+    int? topBrandId,
+    int? topItemId,
+    int? topImageId,
+    int? bottomBrandId,
+    int? bottomItemId,
     int? bottomImageId,
-    String? bottomItemName,
     String? comment,
   }) {
     return CodiInsertModel(
       images: images ?? this.images,
-      prevImg: prevImg ?? this.prevImg,
-      fileName: fileName ?? this.fileName,
-      fileExtension: fileExtension ?? this.fileExtension,
-      isMainPhoto: isMainPhoto ?? this.isMainPhoto,
-      topItemId: topItemId ?? this.topItemId,
-      topBrandId: topBrandId ?? this.topBrandId,
+      prevImgs: prevImgs ?? this.prevImgs,
+      fileNames: fileNames ?? this.fileNames,
+      fileExtensions: fileExtensions ?? this.fileExtensions,
+      isMainPhotos: isMainPhotos ?? this.isMainPhotos,
       topPhotoPath: topPhotoPath ?? this.topPhotoPath,
-      topImageId: topImageId ?? this.topImageId,
-      topItemName: topItemName ?? this.topItemName,
-      bottomItemId: bottomItemId ?? this.bottomItemId,
-      bottomBrandId: bottomBrandId ?? this.bottomBrandId,
       bottomPhotoPath: bottomPhotoPath ?? this.bottomPhotoPath,
+      topBrandId: topBrandId ?? this.topBrandId,
+      topImageId: topImageId ?? this.topImageId,
+      topItemId: topItemId ?? this.topItemId,
+      bottomBrandId: bottomBrandId ?? this.bottomBrandId,
       bottomImageId: bottomImageId ?? this.bottomImageId,
-      bottomItemName: bottomItemName ?? this.bottomItemName,
+      bottomItemId: bottomItemId ?? this.bottomItemId,
       comment: comment ?? this.comment,
     );
   }

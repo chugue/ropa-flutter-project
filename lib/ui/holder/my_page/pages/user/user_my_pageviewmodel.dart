@@ -1,3 +1,4 @@
+import 'package:final_project_team02/_core/constants/http.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/repositoreis/user_repo.dart';
 import 'package:final_project_team02/main.dart';
@@ -33,11 +34,9 @@ class UserMyPageViewModel extends StateNotifier<UserMyPageModel?> {
 
   Future<void> notifyInit() async {
     ResponseDTO responseDTO = await UserRepo().callUserMyPage();
+    logger.d(responseDTO.response);
 
     if (responseDTO.success) {
-      // UserMyPageModel userMyPageModel = responseDTO.response;
-      // state = userMyPageModel;
-
       state = responseDTO.response;
     }
   }

@@ -13,6 +13,7 @@ import 'package:final_project_team02/ui/holder/codi/codi_item_insert_page/codi_i
 // options: Options(headers: {'Authorization': '${ }'})
 class CodiRepo {
   Future<ResponseDTO> callSetItemInsert(CodiInsertReqDTO reqDTO) async {
+    logger.d(reqDTO.toJson());
     final response = await dio.post(
       '/app/codi-register',
       data: reqDTO.toJson(),

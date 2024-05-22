@@ -16,10 +16,10 @@ class CodiInsetPageBody extends ConsumerWidget {
   });
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
-
+  Widget build(BuildContext context, WidgetRef ref) {
     SessionData sessionData = ref.read(sessionProvider); // 세션 데이터 읽기
-    CodiInsertModel model = ref.watch(codiInsertProvider); // CodiInsertModel 데이터 읽기
+    CodiInsertModel model =
+        ref.watch(codiInsertProvider); // CodiInsertModel 데이터 읽기
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -29,18 +29,13 @@ class CodiInsetPageBody extends ConsumerWidget {
           children: [
             CodiInsertTitle(),
             SizedBox(height: 20.0),
-
             CodiPicInsertScroll(),
             SizedBox(height: 50),
-
             CodiInsertSubTitle(subTitle: "착용 아이템"),
             CodiPicItemInsertScroll(),
             SizedBox(height: 50),
-
             CodiInsertSubTitle(subTitle: "스타일링 코멘트"),
             StylingComment(),
-
-
             ElevatedButton(
               onPressed: () {
                 List<Items> items = [];
@@ -49,37 +44,34 @@ class CodiInsetPageBody extends ConsumerWidget {
                 if (model.topPhotoPath != null) {
                   items.add(Items(
                       brandId: model.topBrandId, itemsId: model.topImageId));
-                  codiPhotos.add(CodiPhots(
-                    photoName: model.fileName,
-                    photoBase64: model.prevImg,
-                    type: "CODI",
-                    isMainPhoto: model.isMainPhoto ?? false,
-                  ));
                 }
 
                 if (model.bottomPhotoPath != null) {
                   items.add(Items(
                       brandId: model.bottomBrandId,
                       itemsId: model.bottomImageId));
+                }
+
+                for (int i = 0; i < model.images.length; i++) {
                   codiPhotos.add(CodiPhots(
-                    photoName: model.fileName,
-                    photoBase64: model.prevImg,
+                    photoName: model.fileNames[i],
+                    photoBase64: model.prevImgs[i],
                     type: "CODI",
-                    isMainPhoto: model.isMainPhoto ?? false,
+                    isMainPhoto: model.isMainPhotos[i],
                   ));
                 }
+
                 print('😒😒😒${model.comment}');
                 CodiInsertReqDTO reqDTO = CodiInsertReqDTO(
                   title: null,
                   userId: sessionData.user!.id!,
-                  description: model.comment, // Set your description here
+                  description: model.comment,
                   codiPhotos: codiPhotos,
                   items: items,
                 );
 
                 ref.read(codiInsertProvider.notifier).codiSave(reqDTO);
-              }
-              ,
+              },
               child: const Text('완료'),
               style: ButtonStyle(
                 minimumSize: MaterialStateProperty.all(
@@ -98,4 +90,3 @@ class CodiInsetPageBody extends ConsumerWidget {
     );
   }
 }
-

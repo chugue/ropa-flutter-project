@@ -20,6 +20,7 @@ class ProfileButton extends ConsumerWidget {
       child: ElevatedButton(
         onPressed: () {
           Photo photo = Photo(name: model.fileName, base64: model.prevImg);
+
           UserProfileUpdateDTO reqDTO = UserProfileUpdateDTO(
             myName: model.userProfile.myName,
             nickName: model.newNickName,

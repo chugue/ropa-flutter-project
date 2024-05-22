@@ -1,9 +1,12 @@
 import 'dart:convert';
+
 import 'package:final_project_team02/data/dtos/codi_req.dart';
 import 'package:final_project_team02/data/dtos/respons_dto.dart';
 import 'package:final_project_team02/data/repositoreis/codi_repo.dart';
 import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:final_project_team02/main.dart';
+import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail_data/other_codi_photos.dart';
+import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail_viewmodel.dart';
 import 'package:final_project_team02/ui/holder/codi/codi_insert_page/codi_insert_data/codi_insert.dart';
 import 'package:final_project_team02/ui/holder/home/home_data/popular_codi_photos.dart';
 import 'package:final_project_team02/ui/holder/home/home_viewmodel.dart';
@@ -23,17 +26,9 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
   final mContext = navigatorKey.currentContext;
   SessionData sessionData;
 
-  CodiInsertViewModel(this.ref, this.sessionData)
-      : super(CodiInsertModel(
-            prevImg: '',
-            images: [],
-            isMainPhoto: false,
-            topPhotoPath: null,
-            bottomPhotoPath: null,
-            comment: ''));
+  CodiInsertViewModel(this.ref, this.sessionData) : super(CodiInsertModel());
 
   Future<void> codiSave(CodiInsertReqDTO reqDTO) async {
-    print('${reqDTO.toJson()}');
     ResponseDTO responseDTO = await CodiRepo().callSetItemInsert(reqDTO);
 
     if (responseDTO.success) {
@@ -42,8 +37,14 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
       ref.read(homeProvider.notifier).addNewCodiPhotos(codiPhotos);
 
       CreatorCodiList newCodi = CreatorCodiList.fromJson(responseDTO.response);
-
       ref.read(creatorProvider.notifier).addNewCodi(newCodi);
+      Navigator.pop(mContext!);
+
+      OtherCodiPhotos newOtherCodiPhotos =
+          OtherCodiPhotos.fromJson(responseDTO.response);
+      ref
+          .read(codiDetailProvider(null).notifier)
+          .addNewCodi(newOtherCodiPhotos);
       Navigator.pop(mContext!);
     }
   }
@@ -60,27 +61,20 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
         topBrandId: brandId,
         topItemId: itemId,
         topPhotoPath: photoPath,
-        topItemName: itemName,
-        topImageId: itemId,
       );
-      Navigator.pop(navigatorKey.currentContext!);
+      Navigator.pop(mContext!);
     } else if (category == 'bottom') {
       state = state.copyWith(
         bottomBrandId: brandId,
         bottomItemId: itemId,
         bottomPhotoPath: photoPath,
-        bottomItemName: itemName,
-        bottomImageId: itemId,
       );
-
-      Navigator.pop(navigatorKey.currentContext!);
+      Navigator.pop(mContext!);
     }
   }
 
   void updateComment(String comment) {
-    if (state != null) {
-      state = state.copyWith(comment: comment);
-    }
+    state = state.copyWith(comment: comment);
   }
 
   Future<void> pickAndAddCodiImage() async {
@@ -89,40 +83,59 @@ class CodiInsertViewModel extends StateNotifier<CodiInsertModel> {
       String base64String = await convertToBase64(image);
 
       // 파일 경로에서 파일 이름과 확장자 추출
-      String fileName =basename(image.path);
+      String fileName = basename(image.path);
       String fileExtension = extension(image.path);
 
+      // 파일을 캐시에 저장
       await cacheManager.putFile(
         image.path,
         await image.readAsBytes(),
         fileExtension: fileExtension,
       );
 
-      // isMainPhoto 설정
+      // isMainPhoto 설정: 첫 번째 이미지인 경우 true로 설정
       bool isMainPhoto = state.images.isEmpty;
 
       state = state.copyWith(
         images: [...state.images, image],
-        prevImg: base64String,
-        fileName: fileName,
-        fileExtension: fileExtension,
-        isMainPhoto: isMainPhoto,
+        prevImgs: [...state.prevImgs, base64String],
+        fileNames: [...state.fileNames, fileName],
+        fileExtensions: [...state.fileExtensions, fileExtension],
+        isMainPhotos: [...state.isMainPhotos, isMainPhoto],
       );
+
+      // 디버깅 로그 추가
+      print('isMainPhoto: $isMainPhoto');
+      print('Current images: ${state.images.length}');
     }
   }
 
   Future<String> convertToBase64(XFile image) async {
     Uint8List imageBytes = await image.readAsBytes();
-    return compute(base64Encode, imageBytes);
+    return base64Encode(imageBytes);
   }
 
   void setMainImg(String pushImages) {
-    state = state.copyWith(prevImg: pushImages);
+    state = state.copyWith(prevImgs: [...state.prevImgs, pushImages]);
   }
 
   void removeImage(int index) {
     List<XFile> updatedImages = List.from(state.images)..removeAt(index);
-    state = state.copyWith(images: updatedImages);
+    List<String> updatedPrevImgs = List.from(state.prevImgs)..removeAt(index);
+    List<String?> updatedFileNames = List.from(state.fileNames)
+      ..removeAt(index);
+    List<String?> updatedFileExtensions = List.from(state.fileExtensions)
+      ..removeAt(index);
+    List<bool> updatedIsMainPhotos = List.from(state.isMainPhotos)
+      ..removeAt(index);
+
+    state = state.copyWith(
+      images: updatedImages,
+      prevImgs: updatedPrevImgs,
+      fileNames: updatedFileNames,
+      fileExtensions: updatedFileExtensions,
+      isMainPhotos: updatedIsMainPhotos,
+    );
   }
 }
 
