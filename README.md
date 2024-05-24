@@ -1,106 +1,221 @@
-# ROPA Project
-![ropa_home_logo 1](https://github.com/chugue/ropa-flutter-project/assets/97007464/77172cf5-89d6-43b0-bc96-4c68a9eaef76)
+# 🚀 "ROPA" - 2조 파이널 프로젝트
 
-# 앱소개
-로파는 의류를 판매하는 쇼핑몰 앱입니다.
 
-로파는 개성있는 크리에이터들이 상품을 보다 활용성 있게 홍보하고, 
+<p align="center">
+  <img src="https://github.com/chugue/ropa-admin/assets/30003848/70af4146-2333-412b-b2fd-8eb1be45f8e7"  style="width: 50%; height: auto;"/>
+</p>
 
-크리에이터들의 홍보를 통해 판매가 이루어졌을 때, 
 
-상점에서 마일리지를 제공하는 서비스가 있습니다.
 
-때문에 구매자에게는 제품의 입체감을, 판매자에게는 상품의 활성도를 제공합니다.
+<br>
 
-# 시연영상
-https://
-# 발표자료
-+++ 2조 아자아자 화이팅
-# 프로젝트 기간
-2024.04.17 ~ 2024.05.22
-# 팀원 소개
-### 팀장
-- 김성훈 [(@chgue)](https://github.com/chugue)
-### Front-End
-- 김주혁 [(@kjh5848)](https://github.com/chugue)
-- 양승호 [(@LifeIsOne)](https://github.com/LifeIsOne)
-### Back-End
-- 김완준 [(@tkffkels93)](https://github.com/tkffkels93)
-- 박선규 [(@p4rksk)](https://github.com/p4rksk)
-# 기술 스택
-## IDE
-<img src="https://img.shields.io/badge/IntelliJ IDEA-000000?style=for-the-badge&logo=intellijidea&logoColor=white"> <img src="https://img.shields.io/badge/Android Studio-34A853?style=for-the-badge&logo=android&logoColor=white">
-## FrameWork
-<img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> <img src="https://img.shields.io/badge/flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white">
-## DB
-<img src="https://img.shields.io/badge/h2-000000?style=for-the-badge&logoColor=white"> <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
-## 사용기술
-### Front-End
-<img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white"> <img src="https://img.shields.io/badge/RiverPod-02569B?style=for-the-badge&logo=flutter&logoColor=white">
+# 👉 코디 아이템 중개 플랫폼
+> ### 개발기간: 2024.04.17 ~ 2024.05.22
 
-+++ 기술 적기
-### Back-End
-<img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white"> <img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
+<br>
 
-+++ 기술 적기
-## 협업 툴
-<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/Notioin-000000?style=for-the-badge&logo=notion&logoColor=white"> <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white"> <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
-## ERD
-### One
-![image](https://github.com/chugue/ropa-flutter-project/assets/97007464/4adb319a-bef6-4fd1-8b32-88e547ce965c)
+# 👉 배포 주소
+  
+> #### 프론트 서버 : [https://github.com/chugue/ropa-admin](https://github.com/chugue/ropa-admin)<br>
+> #### 백엔드 서버 : [https://github.com/chugue/ropa-flutter-project](https://github.com/chugue/ropa-flutter-project)<br>
+<br>
 
-### TWO
-![image](https://github.com/chugue/ropa-flutter-project/assets/97007464/5dc7a461-0164-4b15-b103-744912bdfc3b)
+# 👉 개발팀 소개
 
-### THREE
-![image](https://github.com/chugue/ropa-flutter-project/assets/97007464/7a0bc1be-cb7b-44f3-acdb-4b3500f4c489)
 
-# 전략
+<table style="width:100%; text-align:center;">
+  <tr>
+    <th style="text-align:center;">김성훈(팀장)</th>
+    <th style="text-align:center;">김주혁(프론트)</th>
+    <th style="text-align:center;">양승호(프론트)</th>
+    <th style="text-align:center;">김완준(백엔드)</th>
+    <th style="text-align:center;">박선규(백엔드)</th>
+  </tr>
+  <tr>
+    <td style="text-align:center; vertical-align:middle;"><img width="160px" src="https://avatars.githubusercontent.com/u/30003848?v=4" /></td>
+    <td style="text-align:center; vertical-align:middle;"><img width="160px" src="https://avatars.githubusercontent.com/u/153582123?v=4" /></td>
+    <td style="text-align:center; vertical-align:middle;"><img width="160px" src="https://avatars.githubusercontent.com/u/97007464?v=4"/></td>
+    <td style="text-align:center; vertical-align:middle;"><img width="160px" src="https://avatars.githubusercontent.com/u/81667935?v=4" /></td>
+    <td style="text-align:center; vertical-align:middle;"><img width="160px" src="https://avatars.githubusercontent.com/u/153582360?v=4" /></td>
+  </tr>
+  <tr>
+    <td style="text-align:center; vertical-align:middle;"><a href="https://github.com/chugue">@chugue</a></td>
+    <td style="text-align:center; vertical-align:middle;"><a href="https://github.com/kjh5848">@kjh5848</a></td>
+    <td style="text-align:center; vertical-align:middle;"><a href="https://github.com/LifeIsOne">@LifeIsOne</a></td>
+    <td style="text-align:center; vertical-align:middle;"><a href="https://github.com/tkffkels93">@tkffkels93</a></td>
+    <td style="text-align:center; vertical-align:middle;"><a href="https://github.com/p4rksk">@p4rksk</a></td>
+  </tr>
+</table>
 
-# 시나리오
 
-## 1. 사용자 시나리오
-### 1-1. 사용자 회원가입
+<br>
 
-### 1-2. 크리에이터 신청
+# 👉프로젝트 소개 (핵심로직 설명)
+> #### 로파는 의류를 판매하는 쇼핑몰 앱입니다.
+> #### 브랜드는 로파 플랫폼에 입점을 하여서 상품을 등록하고
+> #### 개성있는 크리에이터들은 자신의 코디를 자랑하며 보다 활용성 있게 브랜드 제품을 홍보하고,
+> #### 사용자는 맘에 드는 코디를 발견하면 해당 아이템을 바로 구매 할 수 있습니다.
+> #### 코디를 통해 판매된 제품은 해당 브랜드가 크리에이터와 플랫폼에게 수수료를 지불합니다.
+> #### 때문에 브랜드는 홍보비를 아낄 수 있고, 크리에이터에겐 자신의 표현과 수익을 얻을 수 있는 `환경을` 제공합니다.
 
-### 1-3. 관리자 크리에이터 확인 및 승인
 
-### 1-4. 크리에이터 승인 후 코디 등록
+<div style="display: grid; grid-template-columns: 1fr; gap: 10px;">
+  <div>
+    <img src="https://github.com/chugue/ropa-admin/assets/30003848/014532ae-1d72-4dcd-b99d-a6fc5dbccb51" alt="시연02" style="width: 100%; height: auto;"/>
+  </div>
+</div>
+<br>
 
-### 1-5. 일반 사용자 로그인
+# 👉 Stacks
 
-### 1-6. 코디 조회, 아이템 상세보기
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=for-the-badge&logo=Visual%20Studio%20Code&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![BootStrap](https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![Spring](https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
+![Flutter](https://img.shields.io/badge/flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
+![AmazonAWS](https://img.shields.io/badge/amazonaws-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
+![Gradle](https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white)
+![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)    ![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white)
 
-### 1-7. 아이템 장바구니 추가
+### Communication
 
-### 1-8. 구매페이지 이동
-배송지 입력 후 결제 선택, 구매
+![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=Slack&logoColor=white)
+![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white)
 
-### 1-9. 웹 주문 내역 확인
-배송중 상태 확인
+<br>
 
-### 1-10. 크리에이터로 마일리지 적립 확인.
+# 👉 Dependencies
+```
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-mustache'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+    implementation group: 'com.auth0', name: 'java-jwt', version: '4.3.0'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation group: 'org.qlrm', name: 'qlrm', version: '4.0.1'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'commons-codec:commons-codec:1.15'
+}
+```
 
-## 2. 브랜드 시나리오
-### 2-1. 브랜드 회원가입
+<br>
 
-### 2-2. 브랜드 정보 입력
+# 👉 테이블 설계
+![테이블 소개](https://github.com/chugue/ropa-admin/assets/30003848/275af45f-d141-44cb-a0dd-8cb45488dd8a)
 
-### 2-3. 브랜드 아이템 등록
 
-### 2-4. 앱에서 확인
 
-### 2-5. 사용자 해당 아이템 장바구니 추가
+<br>
 
-### 2-6. 배송지 입력 및 결제
+# 👉 프로젝트 기능 정리
 
-### 2-7. 결제
+> ### 1단계   (🟦: WEB, 🟨:APP)
 
-### 2-8. 배송중 상태 확인
+* #### 🟦 화면 구축
+* #### 🟨 화면 구축
+* #### 🟦 로그인 인터셉터 - 세션 기반
+* #### 🟨 로그인 인터셉터 - JWT 토큰 인증
+* #### 🟦 아이템 등록 구현
+* #### 🟨 크리에이터 지원하기
+* #### 🟦 크리에이터 지원자 조회 / 승인
+* #### 🟨 크리에이터 코디 등록
+* #### 🟨 크리에이터 코디 - 아이템 연결
+* #### 🟨 일반사용자 아이템 상세보기 / 구매
+* #### 🟦 브랜드 수수료 지급 로직 구현
+<br>
 
-### 2-9. 브랜드 주문확인
 
-### 2-10. 수수료 지출 확인
+> ### 2단계   (🟦: WEB, 🟨:APP)
 
-### 2-11. 로파 관리자 매출확인
+* #### 🟦 MultiPartFile 사진 CRUD 구현
+* #### 🟨 Base64 사진 CRUD 구현
+* #### 🟨 API 문서 작성 GitBook 활용
+* #### 🟦 검색어 검색 구현
+* #### 🟦 날짜 기간 검색 구현
+* #### 🟦 좋아요 기능 구현
+* #### 🟦 Exception Handler 구현
+* #### 🟦 AOP 구현
+* #### 🟦 장바구니 CRUD 구현
+* #### 🟨 ImagePicker 적용
+* #### 🟨 Dio 데이터 송수신 & 바인딩
+* #### 🟨 RiverPod을 활용한 MVVM패턴 적용
+* #### 🟨 Splash Screen / 자동로그인 구현
+<br>
+
+
+> ### 3단계 (🟦: WEB, 🟨:APP)
+
+* #### 🟦 단위 테스트 적용
+* #### 🟦 RestDoc API 문서 작성
+* #### 🟦 통합 테스트
+* #### 🟦 CI / CD 배포
+* #### 🟨 CopyWith 적용으로 코드 가독성 관리
+
+<br>
+
+# 👉 컨벤션 정리
+[코드 컨벤션 정리 링크](https://www.notion.so/stephenkiim/137f2114decc444bbf308520a340238e)
+
+<br>
+
+
+# 👉 팀 블로깅  
+[팀 블로그 링크](https://www.notion.so/stephenkiim/23dafc6dac1649318bc1bc1ece61c2fd)
+
+<br>
+
+# 👉 핵심 시나리오 시연
+### 🔹브랜드 아이템 등록
+
+![브랜드 아이템 등록](https://github.com/chugue/ropa-admin/assets/30003848/acd9e3df-5eee-44b7-b831-b508baeef10d)
+
+<br>
+
+### 🔹 목록 보기
+![홈 목록보기](https://github.com/chugue/ropa-admin/assets/30003848/dd09bfc5-c139-400c-a23e-13713717d937)
+
+<br>
+
+### 🔹 아이템 상세보기
+![녹화_2024_05_24_10_57_37_548](https://github.com/chugue/ropa-admin/assets/30003848/6ce1593a-a75f-40c7-87de-4216d558b71a)
+
+<br>
+
+### 🔹 장바구니 추가
+![녹화_2024_05_24_10_59_38_776](https://github.com/chugue/ropa-admin/assets/30003848/dcb75176-c179-43e4-9536-f1fdb0408040)
+
+<br>
+
+### 🔹 배송지 입력 / 결제
+![녹화_2024_05_24_11_01_15_270](https://github.com/chugue/ropa-admin/assets/30003848/6eacc1fe-a391-450d-8efd-3f30a64faa83)
+
+<br>
+
+### 🔹 크리에이터 지원하기 
+![녹화_2024_05_24_11_05_38_97](https://github.com/chugue/ropa-admin/assets/30003848/78555567-da40-4b26-a99a-66291fcc11d3)
+
+<br>
+
+### 🔹 크리에이터 승인하기
+![녹화_2024_05_24_11_09_41_220](https://github.com/chugue/ropa-admin/assets/30003848/f487a0fe-7ba2-4444-b6f4-915612222410)
+
+<br>
+
+### 🔹 크리에이터 코디 메인사진 등록하기
+![녹화_2024_05_24_11_11_54_847](https://github.com/chugue/ropa-admin/assets/30003848/a5a2596a-29bf-4d38-a36e-99c4a6a123cb)
+
+<br>
+
+### 🔹 크리에이터 코디에 아이템 연결하기
+![녹화_2024_05_24_11_12_24_872](https://github.com/chugue/ropa-admin/assets/30003848/71935699-78e8-4b78-a86e-4fe234dd5f20)
+
