@@ -16,8 +16,8 @@
 
 # 👉 배포 주소
   
-> #### 프론트 서버 : [https://github.com/chugue/ropa-admin](https://github.com/chugue/ropa-admin)<br>
-> #### 백엔드 서버 : [https://github.com/chugue/ropa-flutter-project](https://github.com/chugue/ropa-flutter-project)<br>
+> #### 백엔드 서버 : [https://github.com/chugue/ropa-admin](https://github.com/chugue/ropa-admin)<br>
+> #### 프론트 서버 : [https://github.com/chugue/ropa-flutter-project](https://github.com/chugue/ropa-flutter-project)<br>
 <br>
 
 # 👉 개발팀 소개
