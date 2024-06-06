@@ -13,18 +13,22 @@ import 'package:final_project_team02/ui/holder/codi/codi_item_insert_page/codi_i
 // options: Options(headers: {'Authorization': '${ }'})
 class CodiRepo {
   Future<ResponseDTO> callSetItemInsert(CodiInsertReqDTO reqDTO) async {
-  print(reqDTO.toJson());
+    logger.d(reqDTO.toJson());
     final response = await dio.post(
       '/app/codi-register',
       data: reqDTO.toJson(),
     );
+    logger.d(response.data);
+    logger.d('🤣🤣🤣🤣🤣🤣🤣🤣');
+
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
     logger.d(responseDTO.response);
     return responseDTO;
   }
 
   Future<ResponseDTO> callGetItemInsert(String? category) async {
-    final response = await dio.get('/app/codi-register/add-item/${category}',options: Options(headers: {'Authorization': '${globalAccessToken}'}));
+    final response = await dio.get('/app/codi-register/add-item/${category}',
+        options: Options(headers: {'Authorization': '${globalAccessToken}'}));
     logger.d(response.data);
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
 
@@ -55,6 +59,7 @@ class CodiRepo {
 
   Future<ResponseDTO> callCodiDetail(int codiId) async {
     final response = await dio.get('/app/codi-pages/${codiId}');
+    logger.d(response.data);
 
     ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
     if (responseDTO.success) {

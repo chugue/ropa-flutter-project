@@ -12,7 +12,7 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         home: Icons.home,
-        setting: Icons.settings,
+        setting: null,
         cart: null,
       ),
       body: SettingsBody(),

@@ -25,7 +25,7 @@ class CreatorViewItemListView extends StatelessWidget {
         mainAxisSpacing: 0,
       ),
       itemCount: model!.itemList.length,
-      itemBuilder: (context, itemIndex) {
+      itemBuilder: (context, index) {
         return Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,8 +36,9 @@ class CreatorViewItemListView extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            ItemPage(itemId: model.itemList[itemIndex].itemId),
+                        builder: (context) => ItemPage(
+                            itemId: model.itemList[index].itemId,
+                            codiId: model.codiList[index].codiId),
                       ),
                     );
                   },
@@ -45,8 +46,7 @@ class CreatorViewItemListView extends StatelessWidget {
                     aspectRatio: 2 / 1,
                     child: ClipRRect(
                       child: CachedNetworkImage(
-                        imageUrl:
-                            '$baseURL${model.itemList[itemIndex].photoPath}',
+                        imageUrl: '$baseURL${model.itemList[index].photoPath}',
                         placeholder: (context, url) => Shimmer.fromColors(
                           baseColor: Colors.grey[300]!,
                           highlightColor: Colors.grey[100]!,
@@ -67,10 +67,9 @@ class CreatorViewItemListView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      model.itemList[itemIndex].name.length > 15
-                          ? model.itemList[itemIndex].name.substring(0, 15) +
-                              "..."
-                          : model.itemList[itemIndex].name,
+                      model.itemList[index].name.length > 15
+                          ? model.itemList[index].name.substring(0, 15) + "..."
+                          : model.itemList[index].name,
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -82,7 +81,7 @@ class CreatorViewItemListView extends StatelessWidget {
                     //       overflow: TextOverflow.ellipsis,
                     //     )),
                     Text(
-                      "${formatCurrency(model.itemList[itemIndex].price)}",
+                      "${formatCurrency(model.itemList[index].price)}",
                       style: TextStyle(
                         fontSize: 12,
                       ),

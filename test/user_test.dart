@@ -8,13 +8,27 @@ final accessToken =
     'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJibG9nIiwicm9sZSI6dHJ1ZSwibmFtZSI6IuyCrOyaqeyekDHsnZgg7Iuk66qFIiwiaWQiOjEsImV4cCI6MTcxNTY3MTk5NCwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSJ9.1RnYFrIsghzIDfSlA1_kTaOnOBhR6jFPFz7JD7wN7AGOP5gDLTsNecGu-JWDL3P0odrV1Zo_7xG_nWn3wryQUw';
 
 void main() async {
-  await callLogin_test2();
+  // await callLogin_test2();
+  await callUserProfileUpdate_test();
 
   // await callUserMyPage(accessToken);
   // await callUserCreatorApply_test();
 }
 
-Future<void> callUserMyPage(accessToken) async {
+Future<void> callUserProfileUpdate_test() async {
+  Photo photo =
+      Photo(name: "profile_picture.jpg", base64: "/9j/4AAQSkZJRgABAQA");
+  UserProfileUpdateDTO reqDTO = UserProfileUpdateDTO(
+    myName: "John Doe",
+    nickName: "Johnny",
+    mobile: "010-1234-5678",
+    password: "password123",
+    photo: photo,
+  );
+  await UserRepo().callUserProfileUpdate(1, reqDTO);
+}
+
+Future<void> callUserMyPage_test(accessToken) async {
   await UserRepo().callCreatorView(1);
 }
 
@@ -38,8 +52,11 @@ Future<void> callUserSetting_test() async {
 }
 
 Future<void> callJoin_test() async {
-  JoinReqDTO reqDTO =
-      JoinReqDTO(email: "asd@nate.com", nickName: "asdasd", password: "1234");
+  JoinReqDTO reqDTO = JoinReqDTO(
+      email: "asd@nate.com",
+      nickName: "asdasd",
+      password: "1234",
+      myName: 'hello');
   await UserRepo().callJoin(reqDTO);
 }
 

@@ -8,17 +8,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ItemBuyButton extends ConsumerWidget {
+  final int? codiId;
   final int itemId;
 
   const ItemBuyButton({
     required this.itemId,
+    required this.codiId,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    print(codiId);
+    print(codiId);
+    print(codiId);
+    print(codiId);
+    print(codiId);
     ItemDetailListModel? model = ref.watch(itemDetailListProvider(itemId));
     final List<String> optionList = ['1', '2', '3'];
-    // final String optionName = '수량';
+    final String optionName = '수량';
 
     // 유효한 선택지인지 확인하고, 아니면 첫 번째 옵션을 기본값으로 설정
     int? currentItem = model?.selecteItem;
@@ -80,48 +87,48 @@ class ItemBuyButton extends ConsumerWidget {
                         ),
                       ),
                       SizedBox(height: 20),
-                      // Container(
-                      //   decoration: BoxDecoration(
-                      //     color: Colors.white,
-                      //     borderRadius: BorderRadius.circular(10),
-                      //   ),
-                      //   child: Padding(
-                      //     padding: const EdgeInsets.only(bottom: 8.0),
-                      //     child: Align(
-                      //       child: DropdownButton<int>(
-                      //         // hint: Text("수량"),
-                      //         // value: isValidItem ? currentItem : null,
-                      //         // onChanged: (int? newValue) {
-                      //         //   if (newValue != null) {
-                      //         //     ref
-                      //         //         .read(itemDetailListProvider(itemId)
-                      //         //             .notifier)
-                      //         //         .updateSelection(newValue);
-                      //         //   }
-                      //         // },
-                      //         // style: TextStyle(
-                      //         //   color: Colors.black, // 드롭다운 텍스트 색상
-                      //         //   fontSize: 16,
-                      //         //   fontWeight: FontWeight.bold,
-                      //         // ),
-                      //         // dropdownColor: Colors.white,
-                      //         // // 드롭다운 배경 색상 설정
-                      //         // items: optionList
-                      //         //     .map<DropdownMenuItem<int>>((String value) {
-                      //         //   return DropdownMenuItem<int>(
-                      //         //     value: int.parse(value), // 문자열을 정수로 변환
-                      //         //     child: Container(
-                      //         //       width: 200, // Width of each dropdown item
-                      //         //       height: 40, // Height of each dropdown item
-                      //         //       alignment: Alignment.centerLeft,
-                      //         //       child: Text(value.toString()),
-                      //         //     ),
-                      //         //   );
-                      //         // }).toList(),
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        // child: Padding(
+                        //   padding: const EdgeInsets.only(bottom: 8.0),
+                        //   child: Align(
+                        //     child: DropdownButton<int>(
+                        //       hint: Text("수량"),
+                        //       value: isValidItem ? currentItem : null,
+                        //       onChanged: (int? newValue) {
+                        //         if (newValue != null) {
+                        //           ref
+                        //               .read(itemDetailListProvider(itemId)
+                        //                   .notifier)
+                        //               .updateSelection(newValue);
+                        //         }
+                        //       },
+                        //       style: TextStyle(
+                        //         color: Colors.black, // 드롭다운 텍스트 색상
+                        //         fontSize: 16,
+                        //         fontWeight: FontWeight.bold,
+                        //       ),
+                        //       dropdownColor: Colors.white,
+                        //       // 드롭다운 배경 색상 설정
+                        //       items: optionList
+                        //           .map<DropdownMenuItem<int>>((String value) {
+                        //         return DropdownMenuItem<int>(
+                        //           value: int.parse(value), // 문자열을 정수로 변환
+                        //           child: Container(
+                        //             width: 200, // Width of each dropdown item
+                        //             height: 40, // Height of each dropdown item
+                        //             alignment: Alignment.centerLeft,
+                        //             child: Text(value.toString()),
+                        //           ),
+                        //         );
+                        //       }).toList(),
+                        //     ),
+                        //   ),
+                        // ),
+                      ),
                       SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -131,8 +138,8 @@ class ItemBuyButton extends ConsumerWidget {
                             onTap: () {
                               Navigator.pop(context);
 
-                              CartSaveDTO reqDTO =
-                                  CartSaveDTO(itemId: itemId, quantity: 1);
+                              CartSaveDTO reqDTO = CartSaveDTO(
+                                  itemId: itemId, quantity: 1, codiId: codiId);
                               ref.read(cartProvider.notifier).cartSave(reqDTO);
                             },
                             child: Container(
@@ -164,8 +171,8 @@ class ItemBuyButton extends ConsumerWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          BuyPage(itemIds: [itemId])));
+                                      builder: (context) => BuyPage(
+                                          itemIds: [itemId], codiId: codiId)));
                             },
                             child: Container(
                               width: MediaQuery.of(context).size.width * 0.4,

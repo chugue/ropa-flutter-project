@@ -23,7 +23,7 @@ class SearchBody extends ConsumerWidget {
             SliverAppBar(
               pinned: true,
               expandedHeight: 10,
-              collapsedHeight: 150,
+              collapsedHeight: 128,
               toolbarHeight: 90,
               flexibleSpace: FlexibleSpaceBar(
                 collapseMode: CollapseMode.pin,

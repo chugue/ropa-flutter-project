@@ -1,4 +1,3 @@
-
 import 'package:final_project_team02/data/session_data/session_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,7 +7,12 @@ class SplashPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.read(sessionProvider).autoLogin();
+    Future<void> performAutoLogin() async {
+      await Future.delayed(Duration(seconds: 3)); // 3초 지연
+      ref.read(sessionProvider).autoLogin();
+    }
+
+    performAutoLogin(); // 지연 후 자동 로그인 수행
 
     return Scaffold(
       body: Center(

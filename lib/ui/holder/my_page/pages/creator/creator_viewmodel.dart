@@ -58,24 +58,13 @@ class CreatorViewModel extends StateNotifier<CreatorModel?> {
 
   void addNewCodi(CreatorCodiList newCodi) {
     if (state != null) {
-      List<CreatorCodiList> updatedCodiList = List.from(state!.codiList)
-        ..add(newCodi);
+      List<CreatorCodiList> updatedCodiList = [newCodi, ...state!.codiList];
       state = state!.copyWith(codiList: updatedCodiList);
     }
   }
 }
 
-// PROVIDER 정의: CreatorViewModel 인스턴스를 생성하고 초기화
-final creatorProvider = StateNotifierProvider<CreatorViewModel, CreatorModel?>(
-  (ref) {
-    // CreatorViewModel 인스턴스를 생성하고 초기화 메소드 호출
-    return CreatorViewModel(null, ref)..notifyInit();
-  },
-);
-
-// 주석 처리된 다른 형태의 provider 정의 예제: 기본 형태의 StateNotifierProvider 사용
-// final creatorProvider = StateNotifierProvider<CreatorViewModel, CreatorModel?>(
-//   (ref) {
-//     return CreatorViewModel(null, ref,s)..notifyInit();
-//   },
-// );
+final creatorProvider =
+    StateNotifierProvider<CreatorViewModel, CreatorModel?>((ref) {
+  return CreatorViewModel(null, ref)..notifyInit();
+});

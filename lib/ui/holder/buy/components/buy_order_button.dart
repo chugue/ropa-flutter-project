@@ -6,11 +6,13 @@ import '../buy_viewmodel.dart';
 
 class BuyOrderButton extends ConsumerWidget {
   final String text;
+  final int? codiId;
   BuyModel model;
 
   BuyOrderButton({
     required this.text,
     required this.model,
+    required this.codiId,
   });
 
   @override
@@ -22,31 +24,7 @@ class BuyOrderButton extends ConsumerWidget {
         height: 50,
         child: ElevatedButton(
           onPressed: () {
-
-            PurchaseInfo purchaseInfo = PurchaseInfo(
-              orderAmount: model.orderInfo.orderAmount,
-              deliveryType: "FREE",
-              deliveryFee: model.orderInfo.deliveryFee,
-              discount: model.orderInfo.discount,
-              purchaseAmount: model.orderInfo.purchaseAmount,
-              payMethod: model.orderInfo.payMethod,
-              savedPayMethod: model.orderInfo.savedPayMethod,
-            );
-
-            BuySaveReqDTO reqDTO = BuySaveReqDTO(
-              name: model.buy.name,
-              phone: model.buy.phone,
-              email: model.buy.email,
-              address: model.buy.address,
-              isBaseAddress: model.buy.isBaseAddress,
-              deliveryRequest: model.buy.deliveryRequest,
-              detailAddress: model.buy.detailAddress,
-              purchaseInfo: purchaseInfo,
-              postCode: "12345",
-            );
-            print("😍😍😍😍😍😍😍😍${reqDTO.toString()}");
-            //여기에 메소드 넣기
-            ref.read(buyProvider.notifier).buySave(reqDTO);
+            ref.read(buyProvider.notifier).buySave();
           },
           child: Text(
             text,

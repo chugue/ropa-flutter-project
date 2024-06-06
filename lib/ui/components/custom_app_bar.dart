@@ -1,3 +1,4 @@
+import 'package:final_project_team02/_core/constants/move.dart';
 import 'package:final_project_team02/ui/holder/my_page/pages/settings/settings_page.dart';
 import 'package:flutter/material.dart';
 
@@ -24,10 +25,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           TextButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MainHolder()),
-              );
+              Navigator.pushNamedAndRemoveUntil(
+                  context, Move.mainHolder, (_) => false);
             },
             child: Icon(home),
           ),

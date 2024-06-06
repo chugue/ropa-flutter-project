@@ -25,18 +25,24 @@ class BuyAddressTabBarViewInputRightSide extends ConsumerWidget {
           children: [
             BuyAddressTabBarViewInputTextForm(
               controller: TextEditingController(
-                  text: ref
-                      .watch(buyProvider.select((model) => model?.buy.name))),
+                text: ref.watch(
+                  buyProvider.select((model) =>
+                      model?.buy.isBaseAddress == true ? model?.buy.name : ''),
+                ),
+              ),
               onChanged: (value) =>
                   ref.read(buyProvider.notifier).updateName(value),
               text: "이름",
             ),
-            // BuyAddressTabBarViewInputAddressSearch(),
             SizedBox(height: 30),
             BuyAddressTabBarViewInputTextForm(
               controller: TextEditingController(
-                  text: ref.watch(
-                      buyProvider.select((model) => model?.buy.address))),
+                text: ref.watch(
+                  buyProvider.select((model) => model?.buy.isBaseAddress == true
+                      ? model?.buy.address
+                      : ''),
+                ),
+              ),
               onChanged: (value) =>
                   ref.read(buyProvider.notifier).updateAddress(value),
               text: "주소",
@@ -44,8 +50,12 @@ class BuyAddressTabBarViewInputRightSide extends ConsumerWidget {
             SizedBox(height: 30),
             BuyAddressTabBarViewInputTextForm(
               controller: TextEditingController(
-                  text: ref.watch(
-                      buyProvider.select((model) => model?.buy.detailAddress))),
+                text: ref.watch(
+                  buyProvider.select((model) => model?.buy.isBaseAddress == true
+                      ? model?.buy.detailAddress
+                      : ''),
+                ),
+              ),
               onChanged: (value) =>
                   ref.read(buyProvider.notifier).updateDetailAddress(value),
               text: "상세주소",
@@ -53,24 +63,27 @@ class BuyAddressTabBarViewInputRightSide extends ConsumerWidget {
             SizedBox(height: 45),
             BuyAddressTabBarViewInputTextForm(
               controller: TextEditingController(
-                  text: ref
-                      .watch(buyProvider.select((model) => model?.buy.phone))),
+                text: ref.watch(
+                  buyProvider.select((model) =>
+                      model?.buy.isBaseAddress == true ? model?.buy.phone : ''),
+                ),
+              ),
               onChanged: (value) =>
                   ref.read(buyProvider.notifier).updatePhone(value),
               text: "휴대번호",
             ),
-            // BuyAddressTabBarViewInputPhoneNumber(),
-
             SizedBox(height: 15),
             BuyAddressTabBarViewInputTextForm(
               controller: TextEditingController(
-                  text: ref
-                      .watch(buyProvider.select((model) => model?.buy.email))),
+                text: ref.watch(
+                  buyProvider.select((model) =>
+                      model?.buy.isBaseAddress == true ? model?.buy.email : ''),
+                ),
+              ),
               onChanged: (value) =>
                   ref.read(buyProvider.notifier).updateEmail(value),
               text: "이메일",
             ),
-            // BuyAddressTabBarViewInputEmail(),
           ],
         ),
       ),

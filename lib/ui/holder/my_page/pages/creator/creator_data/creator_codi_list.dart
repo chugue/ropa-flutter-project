@@ -1,12 +1,16 @@
 class CreatorCodiList {
   int codiId;
-  int codiPhotoId;
-  String photoName;
-  String photoPath;
-  String codiPhoto;
+  int? userId;
+  int? photoId;
+  int? codiPhotoId;
+  String? photoName;
+  String? photoPath;
+  String? codiPhoto;
 
   CreatorCodiList({
     required this.codiId,
+    required this.userId,
+    required this.photoId,
     required this.codiPhotoId,
     required this.photoName,
     required this.photoPath,
@@ -16,10 +20,12 @@ class CreatorCodiList {
   factory CreatorCodiList.fromJson(Map<String, dynamic> json) {
     return CreatorCodiList(
       codiId: json["codiId"],
+      userId: json["userId"] ?? null,
+      photoId: json["photoId"] ?? null,
       codiPhotoId: json["codiPhotoId"] ?? null,
-      photoName: json["photoName"],
-      photoPath: json["photoPath"],
-      codiPhoto: json["codiPhoto"],
+      photoName: json["photoName"] ?? '',
+      photoPath: json["photoPath"] ?? '',
+      codiPhoto: json["codiPhoto"] ?? '',
     );
   }
 }

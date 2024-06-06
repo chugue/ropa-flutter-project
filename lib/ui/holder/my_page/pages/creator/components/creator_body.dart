@@ -12,8 +12,6 @@ class CreatorBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     CreatorModel? model = ref.watch(creatorProvider);
-    print(model.toString());
-    print("크리에이터 바디");
 
     if (model == null) {
       return Center(

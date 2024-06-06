@@ -35,7 +35,7 @@ class UserSettingViewModel extends StateNotifier<UserSettingModel?> {
 
 // 프로바이더 = 공급자 제공자
 final userSettingProvider =
-    StateNotifierProvider<UserSettingViewModel, UserSettingModel?>(
+    AutoDisposeStateNotifierProvider<UserSettingViewModel, UserSettingModel?>(
   (ref) {
     return UserSettingViewModel(null, ref)..notifyInit();
   },

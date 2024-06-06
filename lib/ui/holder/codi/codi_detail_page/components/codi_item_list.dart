@@ -3,13 +3,16 @@ import 'package:final_project_team02/ui/holder/codi/codi_detail_page/codi_detail
 import 'package:final_project_team02/ui/holder/item/item_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+
 import '../../../../../_core/constants/http.dart';
 
 class ItemList extends StatelessWidget {
   final CodiDetailModel? model;
+  final int codiId;
 
   const ItemList({
     required this.model,
+    required this.codiId,
   });
 
   @override
@@ -28,12 +31,13 @@ class ItemList extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        print("사진 클릭 됨");
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => ItemPage(
-                                  itemId: model!.itemPhotos[index].itemsId)),
+                                    itemId: model!.itemPhotos[index].itemsId,
+                                    codiId: codiId ?? 0,
+                                  )),
                         );
                       },
                       child: SizedBox(
